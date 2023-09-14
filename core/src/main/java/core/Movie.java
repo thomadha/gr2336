@@ -1,8 +1,8 @@
 package core;
 
 public class Movie {
-  String name; 
-  double score;
+  private String name; 
+  private double score;
 
   public Movie(String name, double score){
     if(!validScore(score)){
