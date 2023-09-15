@@ -8,6 +8,9 @@ public class Movie {
     if(!validScore(score)){
       throw new IllegalArgumentException("Score must be between 0 and 10");
     }
+    if(!validName(name)){
+      throw new IllegalArgumentException("Must have a name");
+    }
     this.name = name;
     this.score = score; 
   }
@@ -27,6 +30,10 @@ public class Movie {
 
   private boolean validScore(double score){
     return score<=10 && score>=0;
+  }
+
+  private boolean validName(String name){
+    return !name.isEmpty();
   }
 
   
