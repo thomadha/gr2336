@@ -55,7 +55,7 @@ public class AppController {
     private void updateMovieListField(){
         movieListField.setText("");
         for (Movie m : movieList.getMovies()) {
-            movieListField.setText("Title: " + m.getName() + ", score: " + m.getScore() + "\n");
+            movieListField.appendText("Title: " + m.getName() + ", score: " + m.getScore() + "\n");
         }
     }
 }
