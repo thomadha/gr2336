@@ -11,10 +11,10 @@ import javafx.scene.control.TextField;
 
 public class AppController {
 
-    @FXML private TextField titleField = new TextField();
-    @FXML private Slider scoreField = new Slider();
-    @FXML private Button addBtn = new Button();
-    @FXML private TextArea movieListField = new TextArea();
+    @FXML private TextField titleField;
+    @FXML private Slider scoreField;
+    @FXML private Button addBtn;
+    @FXML private TextArea movieListField;
 
     private MovieList movieList;
 
