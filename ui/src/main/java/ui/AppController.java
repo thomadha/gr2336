@@ -53,7 +53,7 @@ public class AppController {
 
     @FXML
     private void updateMovieListField(){
-        movieListField.setText("");
+        this.movieListField.setText("");
         for (Movie m : movieList.getMovies()) {
             movieListField.appendText("Title: " + m.getName() + ", score: " + m.getScore() + "\n");
         }
