@@ -5,8 +5,6 @@ import core.MovieList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -28,24 +26,12 @@ public class AppController {
         return movieList;
     }
 
-    public void setMovieList(MovieList movieList) {
-        this.movieList = movieList;
-        updateOperandsView();
-    }
-
-    @FXML
-    private ListView<Double> operandsView;
-
-    @FXML
-    private Label operandView;
 
     @FXML
     void initialize() {
-        updateOperandsView();
+        updateMovieListField();
     }
 
-    private void updateOperandsView() {
-    }
 
     @FXML
     private void handleAddBtn(ActionEvent event){
@@ -69,7 +55,7 @@ public class AppController {
     private void updateMovieListField(){
         movieListField.setText("");
         for (Movie m : movieList.getMovies()) {
-            movieListField.setText("Title: " + m.getName() + ", score: " + m.getScore() + "/n");
+            movieListField.setText("Title: " + m.getName() + ", score: " + m.getScore() + "\n");
         }
     }
 }
