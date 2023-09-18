@@ -2,6 +2,7 @@ package ui;
 
 import core.Movie;
 import core.MovieList;
+import json.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,10 +17,13 @@ public class AppController {
     @FXML private Button addBtn;
     @FXML private TextArea movieListField;
 
+    private MovieListHandler fileHandler;
+
     private MovieList movieList;
 
     public AppController() {
         movieList = new MovieList();
+        fileHandler = new MovieListHandler();
     }
 
     public MovieList getMovieList() {
@@ -41,6 +45,7 @@ public class AppController {
         Movie new_movie = new Movie(title, score); 
         movieList.addMovie(new_movie);
 
+        addMovieToList(movieList);
         clearTextFields();
         updateMovieListField();
     }
@@ -49,6 +54,11 @@ public class AppController {
     private void clearTextFields(){
         this.titleField.setText("");
         this.scoreField.setValue(0);
+    }
+
+    @FXML
+    private void addMovieToList(MovieList list){
+        fileHandler.writeMovieListToFile(list);
     }
 
     @FXML
