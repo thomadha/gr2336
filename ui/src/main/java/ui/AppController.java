@@ -33,7 +33,7 @@ public class AppController {
 
     @FXML
     void initialize() {
-        updateMovieListField();
+        initializeMovieField();
     }
 
 
@@ -61,11 +61,19 @@ public class AppController {
         fileHandler.writeMovieListToFile(list);
     }
 
+
+    @FXML
+    private void initializeMovieField(){
+        this.movieListField.setText("");
+    }
+
     @FXML
     private void updateMovieListField(){
         this.movieListField.setText("");
+
+        MovieList movies = fileHandler.readMovieListFromFile();
         
-        for (Movie m : movieList.getMovies()) {
+        for (Movie m : movies.getMovies()) {
             movieListField.appendText("Title: " + m.getName() + ", score: " + m.getScore() + "\n");
         }
     }
