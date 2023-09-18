@@ -21,9 +21,9 @@ public class MovieListTest {
         //movielist.addMovie(new Movie("WRONG", 13));
         movielist.addMovie(harry);
 
-        Assertions.assertEquals(shark, movielist.getMovies().get(0));
-        Assertions.assertEquals(meangirls, movielist.getMovies().get(1));
-        Assertions.assertEquals(harry, movielist.getMovies().get(2));
+        Assertions.assertEquals(shark, movielist.getMovies().get(2));
+        Assertions.assertEquals(meangirls, movielist.getMovies().get(0));
+        Assertions.assertEquals(harry, movielist.getMovies().get(1));
 
 
     }
