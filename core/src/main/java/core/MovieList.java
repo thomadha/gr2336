@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class MovieList {
@@ -16,6 +17,7 @@ public class MovieList {
   
   public void addMovie(Movie movie){
     movies.add(movie); 
+    movies.sort(Comparator.comparingDouble(Movie::getScore));
   }
 
   public int getNumberOfMovies(){
