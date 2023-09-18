@@ -1,0 +1,16 @@
+{
+  "movies": [
+    {
+      "name": "Harry Potter",
+      "score": 2.0
+    },
+    {
+      "name": "Yolo",
+      "score": 3.0
+    },
+    {
+      "name": "Haisommer",
+      "score": 5.0
+    }
+  ]
+}

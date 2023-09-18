@@ -17,7 +17,7 @@ public class MovieList {
   
   public void addMovie(Movie movie){
     movies.add(movie); 
-    movies.sort(Comparator.comparingDouble(Movie::getScore));
+    movies.sort(Comparator.comparingDouble(Movie::getScore).reversed());
   }
 
   public int getNumberOfMovies(){
