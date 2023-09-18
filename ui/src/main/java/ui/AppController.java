@@ -64,10 +64,8 @@ public class AppController {
     @FXML
     private void updateMovieListField(){
         this.movieListField.setText("");
-
-        MovieList movies = fileHandler.readMovieListFromFile();
-
-        for (Movie m : movies.getMovies()) {
+        
+        for (Movie m : movieList.getMovies()) {
             movieListField.appendText("Title: " + m.getName() + ", score: " + m.getScore() + "\n");
         }
     }
