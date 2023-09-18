@@ -11,20 +11,20 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AppController">
    <children>
-      <Label layoutX="79.0" layoutY="53.0" text="Min filmdagbok:">
+      <Label layoutX="79.0" layoutY="53.0" text="My movie diary:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Separator layoutX="295.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="406.0" prefWidth="11.0" />
-      <Label layoutX="411.0" layoutY="53.0" text="Ny film:">
+      <Label layoutX="373.0" layoutY="53.0" text="Add new movie:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <TextField id="titleField" fx:id="titleField" layoutX="331.0" layoutY="141.0" prefHeight="29.0" prefWidth="170.0" />
       <Slider id="scoreField" fx:id="scoreField" layoutX="331.0" layoutY="223.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="47.0" prefWidth="170.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-      <Label layoutX="331.0" layoutY="112.0" text="Tittel:">
+      <Label layoutX="331.0" layoutY="112.0" text="Title:">
          <font>
             <Font size="18.0" />
          </font>
@@ -34,7 +34,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button id="addBtn" fx:id="addBtn" layoutX="479.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleAddBtn" text="Legg til">
+      <Button id="addBtn" fx:id="addBtn" layoutX="479.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleAddBtn" text="Add movie">
          <font>
             <Font size="14.0" />
          </font>
