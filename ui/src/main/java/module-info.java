@@ -1,5 +1,5 @@
-module ui {
-    requires core;
+module movie.ui {
+    requires movie.core;
     requires javafx.controls;
     requires javafx.fxml;
 

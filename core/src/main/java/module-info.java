@@ -1,3 +1,3 @@
-module core {
+module movie.core {
     exports core;
 }
