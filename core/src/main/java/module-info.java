@@ -1,3 +1,3 @@
-module core.core {
+module core {
     exports core;
 }
