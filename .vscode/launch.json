@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MovieList",
+            "request": "launch",
+            "mainClass": "movie.core/core.MovieList",
+            "projectName": "modules-core"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "movie.ui/ui.App",

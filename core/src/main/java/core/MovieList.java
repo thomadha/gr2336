@@ -21,4 +21,29 @@ public class MovieList {
   public int getNumberOfMovies(){
     return movies.size(); 
   }
+
+  public String movieListToString(){
+    String s = ""; 
+    for (Movie movie : movies) {
+      s += movie.getName() + ", " + movie.getScore() + "\n"; 
+    }
+    return s; 
+  }
+
+  public static void main(String args[]){
+    MovieList ml = new MovieList(); 
+
+    Movie m1 = new Movie("hai", 1.0);
+    Movie m2 = new Movie("sommer", 5.0);
+    Movie m3 = new Movie("mathilde", 7.0);
+    Movie m4 = new Movie("isak", 8.0);
+
+    ml.addMovie(m1);
+    ml.addMovie(m2);
+    ml.addMovie(m3);
+    ml.addMovie(m4);
+
+    System.out.println(ml.movieListToString());
+
+  }
 }
