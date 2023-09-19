@@ -1,8 +1,15 @@
 package ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testfx.api.FxAssert.verifyThat;
+
+import javafx.scene.input.MouseButton;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import javafx.scene.Node;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,6 +24,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import ui.AppController;
 
@@ -48,9 +56,37 @@ public class AppTest extends ApplicationTest {
 
     @Test
     public void testAddingMovie() {
+        
         clickOn("#titleField").write("Movie Title");
-        clickOn("#scoreField").write("5.0");
+        //clickOn("#scoreField").write("5.0");
+        
+        Slider slider = lookup("#scoreField").query();
+
+        // Define the desired slider value (e.g., 5)
+        double desiredValue = 5.0;
+
+        Node thumb = slider.lookup(".thumb");
+        // Click on the slider to focus it
+        clickOn(thumb, MouseButton.PRIMARY);
+
+        // Calculate the relative x-coordinate based on the desired value
+        double sliderMaxValue = slider.getMax();
+        double sliderWidth = slider.getWidth();
+        double relativeX = (desiredValue / sliderMaxValue) * sliderWidth;
+
+        // Simulate dragging the thumb to the desired value
+        drag(thumb).dropBy(relativeX, 0);
+        sleep(1000);
+
         clickOn("#addBtn");
+        
+        //verifyThat(slider, hasText("5.0"));
+
+    // You can also check the value programmatically
+        //assertEquals(5.0, slider.getValue(), 0.1);
+
+
+        sleep(5000);
         //Assertions.assertEquals();
 
         // Add your assertions to validate the expected behavior
