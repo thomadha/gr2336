@@ -9,36 +9,42 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AppController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9AADBF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AppController">
    <children>
-      <Label layoutX="79.0" layoutY="53.0" text="My movie diary:">
+      <Label layoutX="61.0" layoutY="56.0" text="My movie diary:">
          <font>
-            <Font size="24.0" />
+            <Font name="Broadway" size="24.0" />
          </font>
       </Label>
       <Separator layoutX="295.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="406.0" prefWidth="11.0" />
-      <Label layoutX="373.0" layoutY="53.0" text="Add new movie:">
+      <Label layoutX="331.0" layoutY="56.0" text="Add new movie:">
          <font>
-            <Font size="24.0" />
+            <Font name="Broadway" size="24.0" />
          </font>
       </Label>
-      <TextField id="titleField" fx:id="titleField" layoutX="331.0" layoutY="141.0" prefHeight="29.0" prefWidth="170.0" />
+      <TextField id="titleField" fx:id="titleField" layoutX="331.0" layoutY="141.0" prefHeight="29.0" prefWidth="170.0" style="-fx-border-color: #517594;">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font></TextField>
       <Slider id="scoreField" fx:id="scoreField" layoutX="331.0" layoutY="223.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="47.0" prefWidth="170.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
       <Label layoutX="331.0" layoutY="112.0" text="Title:">
          <font>
-            <Font size="18.0" />
+            <Font name="Century Gothic" size="18.0" />
          </font>
       </Label>
       <Label layoutX="331.0" layoutY="189.0" text="Score:">
          <font>
-            <Font size="18.0" />
+            <Font name="Century Gothic" size="18.0" />
          </font>
       </Label>
-      <Button id="addBtn" fx:id="addBtn" layoutX="479.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleAddBtn" text="Add movie">
+      <Button id="addBtn" fx:id="addBtn" layoutX="462.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleAddBtn" style="-fx-background-color: #153243;" text="Add movie" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="Century Gothic Bold" size="14.0" />
          </font>
       </Button>
-      <TextArea id="movieListField" fx:id="movieListField" layoutX="66.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0" editable="false" />
+      <TextArea id="movieListField" fx:id="movieListField" editable="false" layoutX="66.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #517594;">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font></TextArea>
    </children>
 </Pane>
