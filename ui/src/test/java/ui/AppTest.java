@@ -86,7 +86,7 @@ public class AppTest extends ApplicationTest {
         //assertEquals(5.0, slider.getValue(), 0.1);
 
 
-        sleep(5000);
+        sleep(2000);
         //Assertions.assertEquals();
 
         // Add your assertions to validate the expected behavior
