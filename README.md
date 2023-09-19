@@ -30,3 +30,13 @@ All projects can be tried out by cd-ing into the corresponding folder and using 
 - compile with `mvn compile` (after `cd javafx-template` of course)
 - test with `mvn test` (it should fail until you complete the RPN calculator)
 - run with `mvn javafx:run` (it should open, but not work properly)
+
+
+## Content
+The project is structuren into three:
+1. core
+    Here you can find the "backend" code for movie. This includes attributes for movie and movielist, and how these work. You can also find tests for the code here.
+2. docs
+    Here you can find all the documentation and illustrations of how the project works. It's sorted into releases
+3. ui
+    ui stands for user interface. Here you can find all the code for how the app interacts with the user, such as the appcontroller or the class that launched the app. You can also find tests for the code in ui here
