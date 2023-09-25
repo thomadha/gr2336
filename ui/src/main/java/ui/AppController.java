@@ -6,6 +6,8 @@ import json.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -16,6 +18,11 @@ public class AppController {
     @FXML private Slider scoreField;
     @FXML private Button addBtn;
     @FXML private TextArea movieListField;
+    @FXML private MenuButton genrebtn; 
+    @FXML private MenuItem action; 
+    @FXML private MenuItem horror; 
+    @FXML private MenuItem romcom; 
+
 
     private MovieListHandler fileHandler;
 
@@ -77,4 +84,11 @@ public class AppController {
             movieListField.appendText("Title: " + m.getName() + ", score: " + m.getScore() + "\n");
         }
     }
+
+    @FXML
+    private void handleChoise(ActionEvent event){
+        MenuItem genrechoise = (MenuItem) event.getSource();
+        this.genrebtn.setText(genrechoise.getText());
+    }
+
 }

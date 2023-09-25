@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
@@ -22,22 +24,22 @@
             <Font name="Broadway" size="24.0" />
          </font>
       </Label>
-      <TextField id="titleField" fx:id="titleField" layoutX="331.0" layoutY="141.0" prefHeight="29.0" prefWidth="170.0" style="-fx-border-color: #517594;">
+      <TextField id="titleField" fx:id="titleField" layoutX="331.0" layoutY="119.0" prefHeight="29.0" prefWidth="170.0" style="-fx-border-color: #517594;">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></TextField>
-      <Slider id="scoreField" fx:id="scoreField" layoutX="331.0" layoutY="223.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="47.0" prefWidth="170.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-      <Label layoutX="331.0" layoutY="112.0" text="Title:">
+      <Slider id="scoreField" fx:id="scoreField" layoutX="331.0" layoutY="189.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="47.0" prefWidth="170.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+      <Label layoutX="331.0" layoutY="89.0" text="Title:">
          <font>
             <Font name="Century Gothic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="331.0" layoutY="189.0" text="Score:">
+      <Label layoutX="331.0" layoutY="158.0" text="Score:">
          <font>
             <Font name="Century Gothic" size="18.0" />
          </font>
       </Label>
-      <Button id="addBtn" fx:id="addBtn" layoutX="462.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleAddBtn" style="-fx-background-color: #153243;" text="Add movie" textFill="WHITE">
+      <Button id="addBtn" fx:id="addBtn" layoutX="460.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleAddBtn" style="-fx-background-color: #153243;" text="Add movie" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="14.0" />
          </font>
@@ -46,5 +48,19 @@
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></TextArea>
+      <Label layoutX="331.0" layoutY="236.0" text="Genre:">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Label>
+      <MenuButton id="genrebtn" fx:id="genrebtn" layoutX="331.0" layoutY="259.0" mnemonicParsing="false" text="Choose genre">
+        <items>
+          <MenuItem id="action" fx:id="action" mnemonicParsing="false" text="Action" onAction="#handleChoise" />
+          <MenuItem id="horror" fx:id="horror" mnemonicParsing="false" text="Horror" onAction="#handleChoise" />
+          <MenuItem id="romcom" fx:id="romcom" mnemonicParsing="false" text="Romcom" onAction="#handleChoise" />
+          <MenuItem id="scifi" fx:id="scifi" mnemonicParsing="false" text="Scifi" onAction="#handleChoise" />
+          <MenuItem id="other" fx:id="other" mnemonicParsing="false" text="Other" onAction="#handleChoise" />
+        </items>
+      </MenuButton>
    </children>
 </Pane>
