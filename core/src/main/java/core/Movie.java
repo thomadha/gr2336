@@ -2,6 +2,7 @@ package core;
 
 public class Movie {
   private String name; 
+  private String genre; 
   private double score;
 
   public Movie(String name, double score){
@@ -18,6 +19,10 @@ public class Movie {
   public String getName() {
     return name;
   }
+  public String getGenre() {
+    return genre;
+  }
+
   public double getScore() {
     return score;
   }
@@ -27,6 +32,10 @@ public class Movie {
   public void setScore(double score) {
     this.score = score;
   } 
+
+  public void setGenre(String genre) {
+    this.genre = genre;
+  }
 
   private boolean validScore(double score){
     return score<=10 && score>=0;

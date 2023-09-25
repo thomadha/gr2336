@@ -48,8 +48,14 @@ public class AppController {
     private void handleAddBtn(ActionEvent event){
         String title = this.titleField.getText();
         double score = this.scoreField.getValue();
+        String genre = this.genrebtn.getText();
+
+        if(genre.equals("Choose genre")){
+            genre = "Not specified";
+        }
 
         Movie new_movie = new Movie(title, score); 
+        new_movie.setGenre(genre);
         movieList.addMovie(new_movie);
 
         addMovieToList(movieList);
@@ -81,7 +87,7 @@ public class AppController {
         MovieList movies = fileHandler.readMovieListFromFile();
         
         for (Movie m : movies.getMovies()) {
-            movieListField.appendText("Title: " + m.getName() + ", score: " + m.getScore() + "\n");
+            movieListField.appendText(m.getName() + ", score: " + m.getScore() + ", genre: " + m.getGenre() + "\n");
         }
     }
 
