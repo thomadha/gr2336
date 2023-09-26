@@ -61,6 +61,7 @@ public class AppController {
         addMovieToList(movieList);
         clearTextFields();
         updateMovieListField();
+        resetGenreBtn();
     }
 
     @FXML
@@ -95,6 +96,11 @@ public class AppController {
     private void handleChoise(ActionEvent event){
         MenuItem genrechoise = (MenuItem) event.getSource();
         this.genrebtn.setText(genrechoise.getText());
+    }
+
+    @FXML
+    private void resetGenreBtn(){
+        this.genrebtn.setText("Choose genre");
     }
 
 }
