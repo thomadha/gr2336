@@ -16,7 +16,9 @@ public class MovieList {
   } 
   
   public void addMovie(Movie movie){
-    movies.add(movie); 
+    if(!checkDuplicate(movie)){
+      movies.add(movie); 
+    }
     movies.sort(Comparator.comparingDouble(Movie::getScore).reversed());
   }
 
@@ -30,6 +32,23 @@ public class MovieList {
       s += movie.getName() + ", " + movie.getScore() + "\n"; 
     }
     return s; 
+  }
+
+  public boolean checkDuplicate(Movie newMovie){
+    boolean hasDuplicate = false;
+    String newTitle = newMovie.getName();
+    for(Movie m : getMovies()){
+      String oldTitle = m.getName();
+      if (oldTitle.equals(newTitle)){
+        Double newScore = ((m.getScore() + newMovie.getScore()) / 2);
+        String newGenre = newMovie.getGenre();
+        m.setScore(newScore);
+        m.setGenre(newGenre);
+        m.addDuplicate();
+        hasDuplicate = true;
+      }
+    }
+    return hasDuplicate;
   }
 
   public static void main(String args[]){
