@@ -22,6 +22,7 @@ public class AppController {
     @FXML private MenuItem action; 
     @FXML private MenuItem horror; 
     @FXML private MenuItem romcom; 
+    @FXML private Button openListBtn;
 
 
     private MovieListHandler fileHandler;
@@ -101,6 +102,11 @@ public class AppController {
     @FXML
     private void resetGenreBtn(){
         this.genrebtn.setText("Choose genre");
+    }
+
+    @FXML 
+    private void handleOpenList(){
+
     }
 
 }
