@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 public class AppController {
 
     @FXML private TextField titleField;
+    @FXML private TextField userName;
     @FXML private Slider scoreField;
     @FXML private Button addBtn;
     @FXML private TextArea movieListField;
@@ -23,6 +24,8 @@ public class AppController {
     @FXML private MenuItem horror; 
     @FXML private MenuItem romcom; 
     @FXML private Button openListBtn;
+    @FXML private Button saveListBtn;
+
 
 
     private MovieListHandler fileHandler;
@@ -71,7 +74,7 @@ public class AppController {
         this.scoreField.setValue(0);
     }
 
-    @FXML
+    @FXML 
     private void addMovieToList(MovieList list){
         fileHandler.writeMovieListToFile(list);
     }
@@ -106,7 +109,16 @@ public class AppController {
 
     @FXML 
     private void handleOpenList(){
+        fileHandler.writeMovieListToFile(movieList, userName.getText()+".json");
+        userName.clear();
+    }
 
+    @FXML 
+    private void handleSaveList(){
+        fileHandler.writeMovieListToFile(movieList, userName.getText() +".json");
+        clearTextFields();
+        userName.clear();
+        
     }
 
 }
