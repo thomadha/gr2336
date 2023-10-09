@@ -1,10 +1,10 @@
 {
   "movies": [
     {
-      "name": "h",
+      "name": "heo",
       "genre": "Action",
-      "score": 1.0,
-      "movieCount": 1
+      "score": 4.0,
+      "movieCount": 3
     }
   ]
 }
