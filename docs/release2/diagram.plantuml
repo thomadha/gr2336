@@ -1,0 +1,6 @@
+@startuml Release 2
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+
+@enduml
