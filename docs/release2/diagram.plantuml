@@ -1,6 +1,33 @@
+java -jar plantuml.jar -picoweb:8000:127.0.0.1
 @startuml Release 2
 skinparam Style strictuml
 skinparam SequenceMessageAlignment center
+
+class Movie {
+ - Title: String 
+ - Score: double 
+ - Genre: String 
+ - Count: int 
+ + void setName(String name)
+ + void setScore(double score)
+ + void setGenre(String genre)
+ + void addDuplicate()
+ + String getName()
+ + String getGenre()
+ + double getScore()
+ + int getCount()
+}
+
+class MovieList {
+ - Movies: List<Movie>
+ + List getMovies()
+ + void addMovie(Movie movie)
+ + int getNumberOfMovies()
+ + String movieListToString()
+ + boolean checkDuplicate()
+}
+
+MovieList --o Movie : movies
 
 
 @enduml
