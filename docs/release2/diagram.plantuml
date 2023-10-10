@@ -1,4 +1,3 @@
-java -jar plantuml.jar -picoweb:8000:127.0.0.1
 @startuml Release 2
 skinparam Style strictuml
 skinparam SequenceMessageAlignment center

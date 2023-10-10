@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="472px" preserveAspectRatio="none" style="width:234px;height:472px;background:#FFFFFF;" version="1.1" viewBox="0 0 234 472" width="234px" zoomAndPan="magnify"><defs/><g><!--MD5=[e69084ab16b022bdbef99762ea85e9d6]
+class Movie--><g id="elem_Movie"><rect codeLine="4" fill="#F1F1F1" height="240.3477" id="Movie" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="216" x="9" y="225.42"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="97" y="243.9552">Movie</text><line style="stroke:#181818;stroke-width:0.5;" x1="10" x2="224" y1="251.9083" y2="251.9083"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="17" y="262.6524"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="29" y="269.4434">Title: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="17" y="279.1407"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="29" y="285.9317">Score: double</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="17" y="295.629"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="90" x="29" y="302.42">Genre: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="17" y="312.1173"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="29" y="318.9083">Count: int</text><line style="stroke:#181818;stroke-width:0.5;" x1="10" x2="224" y1="325.8614" y2="325.8614"/><ellipse cx="20" cy="339.6055" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="185" x="29" y="343.3966">void setName(String name)</text><ellipse cx="20" cy="356.0938" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190" x="29" y="359.8848">void setScore(double score)</text><ellipse cx="20" cy="372.5821" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="189" x="29" y="376.3731">void setGenre(String genre)</text><ellipse cx="20" cy="389.0704" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="133" x="29" y="392.8614">void addDuplicate()</text><ellipse cx="20" cy="405.5587" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="29" y="409.3497">String getName()</text><ellipse cx="20" cy="422.047" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="118" x="29" y="425.838">String getGenre()</text><ellipse cx="20" cy="438.5352" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="29" y="442.3262">double getScore()</text><ellipse cx="20" cy="455.0235" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="29" y="458.8145">int getCount()</text></g><!--MD5=[aea6f783ed26d2831cd18a3170179b1a]
+class MovieList--><g id="elem_MovieList"><rect codeLine="19" fill="#F1F1F1" height="141.418" id="MovieList" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="220" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="85.5" y="25.5352">MovieList</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="226" y1="33.4883" y2="33.4883"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="44.2324"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="140" x="27" y="51.0234">Movies: List&lt;Movie&gt;</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="226" y1="57.9766" y2="57.9766"/><ellipse cx="18" cy="71.7207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106" x="27" y="75.5117">List getMovies()</text><ellipse cx="18" cy="88.209" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="194" x="27" y="92">void addMovie(Movie movie)</text><ellipse cx="18" cy="104.6973" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="172" x="27" y="108.4883">int getNumberOfMovies()</text><ellipse cx="18" cy="121.1855" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="178" x="27" y="124.9766">String movieListToString()</text><ellipse cx="18" cy="137.6738" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="173" x="27" y="141.4648">boolean checkDuplicate()</text></g><!--MD5=[1d7cdd6f5212860b1dd246ed53751de9]
+link MovieList to Movie--><g id="link_MovieList_Movie"><path codeLine="28" d="M117,148.92 C117,168.01 117,189.34 117,210.71 " fill="none" id="MovieList-to-Movie" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="117,223.59,121,217.59,117,211.59,113,217.59,117,223.59" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="45" x="118" y="191.9884">movies</text></g><!--MD5=[1afabfe15379548cc35184e14de7dbfa]
+@startuml Release 2
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+class Movie {
+ - Title: String 
+ - Score: double 
+ - Genre: String 
+ - Count: int 
+ + void setName(String name)
+ + void setScore(double score)
+ + void setGenre(String genre)
+ + void addDuplicate()
+ + String getName()
+ + String getGenre()
+ + double getScore()
+ + int getCount()
+}
+
+class MovieList {
+ - Movies: List<Movie>
+ + List getMovies()
+ + void addMovie(Movie movie)
+ + int getNumberOfMovies()
+ + String movieListToString()
+ + boolean checkDuplicate()
+}
+
+MovieList - -o Movie : movies
+
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 19:01:30 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: nb
+Country: NO
+--></g></svg>
