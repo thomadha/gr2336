@@ -1,4 +1,5 @@
 ## Content
+
 The project is located inside the folder movielist. Within the project, there are two primary dividers:
 1. core
 
@@ -16,7 +17,7 @@ The project is located inside the folder movielist. Within the project, there ar
     FXML-file: movielist/ui/src/main/resources/ui
     AppTest: movielist/ui/src/test/java/ui
 
-Additionally, there is a folder named "docs", including the documentation from the different releases: 
+Additionally, there is a folder named "docs", as well as an "assets"-folder: 
 1. docs
 
     Here you can find all the documentation and illustrations of how the project works. It's sorted into releases
@@ -25,6 +26,9 @@ Additionally, there is a folder named "docs", including the documentation from t
     Release 2: docs/release2
     Release 3: docs/release3
 
+2. assets
+
+    The "assets"-folder is where all pictures and other media are stored. This mainly includes screenshots regarding the application and its functionality. Filepaths leading to these assets are provided in the corresponding README.md-files. 
 
 ## Dependecies
 Following JAVA version is needed: 16.0.1
