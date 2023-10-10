@@ -7,9 +7,9 @@ class Movie {
  - Score: double 
  - Genre: String 
  - Count: int 
- + void setName(String name)
- + void setScore(double score)
- + void setGenre(String genre)
+ + void setName(String)
+ + void setScore(double)
+ + void setGenre(String)
  + void addDuplicate()
  + String getName()
  + String getGenre()
@@ -20,7 +20,7 @@ class Movie {
 class MovieList {
  - Movies: List<Movie>
  + List getMovies()
- + void addMovie(Movie movie)
+ + void addMovie(Movie)
  + int getNumberOfMovies()
  + String movieListToString()
  + boolean checkDuplicate()
@@ -28,5 +28,30 @@ class MovieList {
 
 MovieList --o Movie : movies
 
+class AppController {
+    - fileHandler: MovieListHandler 
+    - movieList: MovieList 
+    - MovieList getMovieList()
+    - void initialize()
+    - void handleAddBtn(ActionEvent)
+    - void clearTextFields()
+    - void addMovieToList(MovieList)
+    - void initializeMovieField()
+    - void updateMovieListField()
+    - void handleChoise(ActionEvent)
+    - void resetGenreBtn()
+    - void handleOpenList()
+    - void handleSaveList()
+
+}
+
+class MovieListHandler {
+    - gson: Gson
+    - filePath: String
+    + void writeMovieListToFile(MovieList, String) 
+    + void writeMovieListToFile(MovieList)
+    + MovieList readMovieListFromFile(String)
+    + MovieList readMovieListFromFile()
+}
 
 @enduml
