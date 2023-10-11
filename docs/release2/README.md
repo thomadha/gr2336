@@ -14,3 +14,11 @@ The Movie App is a JavaFX application that allows you to add and display a list 
 ## How to use
 
 If you haven't already, you need to clone the repository to your local machine. The app can be run from the App.java class by clicking run, or with mvn javafx:run if Maven is installed.
+
+## Diagrams related to the release
+
+For this release, the group has included two diagrams to illustrate the architecture of the application. A class diagram and a sequence diagram is linked underneath:
+
+![Class Diagram](http://your-plantuml-server-url.com/plantuml/svg/ZLJRRjim37ttL-ZHsPOVC8QXMRfs3xqCY7z0iLY7g2ovafpTi7-VH4cnrIP0ys1OXuU7XnITA-kuSTCWsLPoQzaryjxmeRBFg4RktzZE_PR0h3FO1Tuo0YyJg0xkmLhUmqPYhmPGZdN-0QQgEfAyrqS4zhTYQzQYaz1uIOEgPm7PTTfuHEXfxwi4v1QKAJbRFIdNCFJA5Vl8ZXe5i-0U-01rfAsME4dMKR48aFAR32x4zJHAxBY3ck1KkaybNc5HXS3akiyr2GmsFKAcFVAl6CCTMXT7GKVRi81yfiENa4q4dnx3TM6Ji9gUoqeFqx07y_YqJ4bsXroprH69qRtM4hXYtG6wvsNptkniSxtMwUwQA6HpAvjnt6hbZ9OIJ6Z7_zRi2ILyvqfuh9cxJGXBf9EZ1IN7PY0F81o2PGhJ652XGoxn3vJuWSfiXFZgLBtf76hrxUZNi21rlclJmYztWo25BHNoW5jDLK_rBvIdEEcKCjCe_2nFsMSOqUhseD72HQi6yiA6XixaFuwWteudndRyc4TtPl_oZUHxwwrM3RlrpyL5_k3ka3z2WjCQ_ZIuwAxLDvuxp-fJobYnz-Ui4dM-VGDSp0CqUg24qtVxBdQvoxdb3yibIrij_RkjofM-pAkkG0d_D_WV "Class Diagram")
+
+![Sequence Diagram](http://your-plantuml-server-url.com/plantuml/svg/ZP71Ri8m38RlUGeVXpJs01mGY5sG1ZjKF83dU9MtDEaIXuaz_LAAHe4YxP8uzl_zJfn5KeoQ6mSLVsNsnF0iM4TiJFeKtsA9eDA3OqWQXJhfi7A2DfmIrhnqKlk6lGALXQCnI1eYx5A92w52qc8fhuBN69oxIc_2NlX5ajvcZUbCO3eVi3DOMWjR_kubiFPjLdEkT-fZPGQhoAWyqBw-VJ2fwG_JAzkXv8JQST-r5nLqyiENq8F7XXyXKOXbOwMdoNzwdUr6-tMZwHzzGMc0uz3-D7U14UNeTGh15gfCL3xsFJjtC6R1tfRV_mK0 "Sequence Diagram")
