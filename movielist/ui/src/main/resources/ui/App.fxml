@@ -63,17 +63,17 @@
           <MenuItem id="other" fx:id="other" mnemonicParsing="false" onAction="#handleChoise" text="Other" />
         </items>
       </MenuButton>
-      <TextField id="titleField" fx:id="userName" layoutX="446.0" layoutY="37.0" prefHeight="6.0" prefWidth="106.0" style="-fx-border-color: #517594;">
+      <TextField id="userName" fx:id="userName" layoutX="480.0" layoutY="37.0" prefHeight="6.0" prefWidth="106.0" style="-fx-border-color: #517594;">
          <font>
             <Font name="Century Gothic" size="10.0" />
          </font>
       </TextField>
-      <Label layoutX="381.0" layoutY="14.0" text="Want to open a movie diary?">
+      <Label layoutX="415.0" layoutY="14.0" text="Want to open a movie diary?">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="343.0" layoutY="41.0" text="Write username:">
+      <Label layoutX="377.0" layoutY="41.0" text="Write username:">
          <font>
             <Font name="Century Gothic Italic" size="12.0" />
          </font>
@@ -84,7 +84,15 @@
             <Font name="Broadway" size="48.0" />
          </font>
       </Label>
-      <Button id="openListBtn" fx:id="openListBtn" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="564.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleOpenList" prefHeight="61.0" prefWidth="22.0" style="-fx-background-color: #153243;" text="OPEN" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+      <Button id="openListBtn" fx:id="openListBtn" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="564.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleOpenList" prefHeight="61.0" prefWidth="22.0" style="-fx-background-color: #153243;" text="OPEN" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="Century Gothic Bold" size="10.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button id="saveListBtn" fx:id="saveListBtn" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="537.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleSaveList" prefHeight="61.0" prefWidth="22.0" style="-fx-background-color: #153243;" text="SAVE" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
          <font>
             <Font name="Century Gothic Bold" size="10.0" />
          </font>
