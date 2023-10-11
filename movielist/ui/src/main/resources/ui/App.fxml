@@ -14,7 +14,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" style="-fx-background-color: #9AADBF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AppController">
    <children>
-      <Label layoutX="62.0" layoutY="163.0" text="My movie diary:">
+      <Label id="header" fx:id="header" layoutX="62.0" layoutY="163.0" text="My movie diary:">
          <font>
             <Font name="Broadway" size="24.0" />
          </font>

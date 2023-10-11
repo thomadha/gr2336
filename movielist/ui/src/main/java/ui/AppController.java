@@ -9,6 +9,7 @@ import json.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
@@ -28,6 +29,7 @@ public class AppController {
     @FXML private MenuItem romcom; 
     @FXML private Button openListBtn;
     @FXML private Button saveListBtn;
+    @FXML private Label header; 
 
 
 
@@ -115,6 +117,7 @@ public class AppController {
     @FXML 
     private void handleOpenList(){
         initializeMovieField();
+        header.setText(userName.getText() + "'s movie diary:");
         MovieList newMovieList = movieOverview.getMovieList(userName.getText().trim()); 
         this.movieList = newMovieList;
         fileHandler.writeMovieListToFile(movieList);
