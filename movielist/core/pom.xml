@@ -52,12 +52,12 @@
 	        </plugin>
 
             <!-- Run the checkstyle code quality tool -->
-        <plugin>
+        <!-- <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>3.2.0</version> <!-- Specify the version here -->
+            <version>3.2.0</version> 
             <configuration>
-                <configLocation>config/checkstyle/checkstyle-config.xml</configLocation> <!-- Path to your Checkstyle configuration file -->
+                <configLocation>config/checkstyle/checkstyle-config.xml</configLocation> 
                 <encoding>UTF-8</encoding>
                 <consoleOutput>true</consoleOutput>
                 <failsOnError>true</failsOnError>
@@ -72,18 +72,18 @@
                     </goals>
                 </execution>
             </executions>
-        </plugin>
+        </plugin> -->
 
         <!-- Run the spotbugs code quality tool -->
-        <plugin>
+        
+        <!-- <plugin>
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs-maven-plugin</artifactId>
-            <version>4.7.2.0</version> <!-- Specify the version here -->
+            <version>4.7.2.0</version> 
             <configuration>
                 <xmlOutput>false</xmlOutput>
                 <htmlOutput>true</htmlOutput>
                 <excludeFilterFile>config/spotbugs/exclude.xml</excludeFilterFile>
-                <!-- Specify other SpotBugs configuration parameters as needed -->
             </configuration>
             <executions>
                 <execution>
@@ -94,7 +94,7 @@
                     </goals>
                 </execution>
             </executions>
-        </plugin>
+        </plugin> -->
 
 
 

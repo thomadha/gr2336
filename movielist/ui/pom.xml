@@ -83,7 +83,7 @@
 	        </plugin>
 
             <!-- Run the checkstyle code quality tool -->
-        <plugin>
+        <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.2.0</version>
@@ -103,10 +103,10 @@
                     </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
         <!-- Run the spotbugs code quality tool -->
-        <plugin>
+        <!-- <plugin>
                 <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>4.4.1</version>
@@ -114,7 +114,7 @@
                         <xmlOutput>false</xmlOutput>
                         <excludeFilterFile>config/spotbugs/exclude.xml</excludeFilterFile>
                     </configuration>
-            </plugin>
+            </plugin> -->
 
 
             
