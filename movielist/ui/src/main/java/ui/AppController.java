@@ -30,6 +30,7 @@ public class AppController {
     @FXML private Button openListBtn;
     @FXML private Button saveListBtn;
     @FXML private Label header; 
+    @FXML private Label feedback; 
 
 
 
@@ -116,29 +117,43 @@ public class AppController {
 
     @FXML 
     private void handleOpenList(){
-        initializeMovieField();
-        header.setText(userName.getText() + "'s movie diary:");
-        MovieList newMovieList = movieOverview.getMovieList(userName.getText().trim()); 
-        this.movieList = newMovieList;
-        fileHandler.writeMovieListToFile(movieList);
+        if(validateUsernameField()){
+            initializeMovieField();
+            header.setText(userName.getText() + "'s movie diary:");
+            MovieList newMovieList = movieOverview.getMovieList(userName.getText().trim()); 
+            this.movieList = newMovieList;
+            fileHandler.writeMovieListToFile(movieList);
 
-        for (Movie m : movieList.getMovies()) {
-            movieListField.appendText(m.getName() + ", score: " + m.getScore() + ", genre: " + m.getGenre() + "\n");
+            for (Movie m : movieList.getMovies()) {
+                movieListField.appendText(m.getName() + ", score: " + m.getScore() + ", genre: " + m.getGenre() + "\n");
+            }
         }
-        userName.clear();
     }
 
     @FXML 
     private void handleSaveList(){
-        movieOverview.addMovieList(userName.getText(), fileHandler.readMovieListFromFile());
+        if(validateUsernameField()){
+            movieOverview.addMovieList(userName.getText(), fileHandler.readMovieListFromFile());
 
-        movieList.getMovies().clear();
-        this.movieListField.setText("");
-        fileHandler.writeMovieListToFile(movieList);
+            movieList.getMovies().clear();
+            this.movieListField.setText("");
+            fileHandler.writeMovieListToFile(movieList);
 
-        clearTextFields();
-        userName.clear();
-        
+            clearTextFields();
+            userName.clear();
+            header.setText("New movie diary:");
+        }
+    }
+
+    @FXML
+    private boolean validateUsernameField(){
+        if(userName.getText().equals("")){
+            feedback.setText("You have to fill inn a username");
+            return false;
+        } else {
+            feedback.setText("");
+            return true;
+        }
     }
 
 }
