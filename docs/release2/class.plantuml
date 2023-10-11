@@ -1,4 +1,4 @@
-@startuml Release 2
+@startuml Class Diagram
 skinparam Style strictuml
 skinparam SequenceMessageAlignment center
 
@@ -53,5 +53,8 @@ class MovieListHandler {
     + MovieList readMovieListFromFile(String)
     + MovieList readMovieListFromFile()
 }
+
+MovieListHandler *- MovieList : movielists
+AppController *- MovieList : movielists
 
 @enduml
