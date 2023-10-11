@@ -1,7 +1,7 @@
-module movie.ui {
-    requires movie.core;
+module ui {
+    requires core; //module
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens ui to javafx.graphics, javafx.fxml;
+    opens ui to javafx.graphics, javafx.fxml; //ui package
 }
