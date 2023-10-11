@@ -1,7 +1,10 @@
 package ui;
 
+import java.util.HashMap;
+
 import core.Movie;
 import core.MovieList;
+import core.MovieListOverview;
 import json.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,12 +32,14 @@ public class AppController {
 
 
     private MovieListHandler fileHandler;
+    private MovieListOverview movieOverview;
 
     private MovieList movieList;
 
     public AppController() {
         movieList = new MovieList();
         fileHandler = new MovieListHandler();
+        movieOverview = new MovieListOverview();
     }
 
     public MovieList getMovieList() {
@@ -109,13 +114,24 @@ public class AppController {
 
     @FXML 
     private void handleOpenList(){
-        fileHandler.writeMovieListToFile(movieList, userName.getText()+".json");
+        MovieList newMovieList = movieOverview.getMovieList(userName.getText().trim()); 
+        this.movieList = newMovieList;
+        fileHandler.writeMovieListToFile(movieList);
+
+        for (Movie m : movieList.getMovies()) {
+            movieListField.appendText(m.getName() + ", score: " + m.getScore() + ", genre: " + m.getGenre() + "\n");
+        }
         userName.clear();
     }
 
     @FXML 
     private void handleSaveList(){
-        fileHandler.writeMovieListToFile(movieList, userName.getText() +".json");
+        movieOverview.addMovieList(userName.getText(), fileHandler.readMovieListFromFile());
+
+        movieList.getMovies().clear();
+        this.movieListField.setText("");
+        fileHandler.writeMovieListToFile(movieList);
+
         clearTextFields();
         userName.clear();
         
