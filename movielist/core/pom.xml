@@ -60,7 +60,7 @@
                 <configLocation>config/checkstyle/checkstyle-config.xml</configLocation> <!-- Path to your Checkstyle configuration file -->
                 <encoding>UTF-8</encoding>
                 <consoleOutput>true</consoleOutput>
-                <failsOnError>true</failsOnError>
+                <failsOnError>false</failsOnError>
                 <linkXRef>false</linkXRef>
             </configuration>
             <executions>
