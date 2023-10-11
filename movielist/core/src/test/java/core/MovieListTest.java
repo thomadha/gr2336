@@ -24,10 +24,29 @@ public class MovieListTest {
         Assertions.assertEquals(shark, movielist.getMovies().get(2));
         Assertions.assertEquals(meangirls, movielist.getMovies().get(0));
         Assertions.assertEquals(harry, movielist.getMovies().get(1));
+        Assertions.assertEquals(3, movielist.getNumberOfMovies());
 
 
     }
-    
+
+    @Test
+    @DisplayName("Check if duplicates work")
+    public void testDuplicateMovieList() throws IllegalArgumentException{
+        Movie shark1 = new Movie("Shark 2", 2);
+
+        MovieList movielist = new MovieList();
+
+        movielist.addMovie(shark1);
+
+        Movie shark2 = new Movie("Shark 2", 7);
+
+        movielist.addMovie(shark2);
+
+        Assertions.assertEquals(2 , movielist.getMovies().get(0).getCount());
+        Assertions.assertEquals(4.5 , movielist.getMovies().get(0).getScore());
+
+
+    }
 
 
 }
