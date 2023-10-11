@@ -114,6 +114,7 @@ public class AppController {
 
     @FXML 
     private void handleOpenList(){
+        initializeMovieField();
         MovieList newMovieList = movieOverview.getMovieList(userName.getText().trim()); 
         this.movieList = newMovieList;
         fileHandler.writeMovieListToFile(movieList);
