@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.3">
+<file name="/Users/isaktonnesen/Documents/NTNU/H2023/TDT1901/gr2336/movielist/ui/src/main/java/ui/AppController.java">
+</file>
+<file name="/Users/isaktonnesen/Documents/NTNU/H2023/TDT1901/gr2336/movielist/ui/src/main/java/ui/App.java">
+</file>
+</checkstyle>
