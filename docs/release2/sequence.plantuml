@@ -1,0 +1,19 @@
+@startuml Sequence Diagram
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+actor User
+participant Controller
+participant MovieList
+participant Movie
+
+User -> Controller: Add New Movie Input
+Controller -> Movie: Create New Movie Object
+Movie --> Controller: Movie Object Created
+Controller -> Movie: Initialize Movie Object (name, score, etc.)
+Movie --> Controller: Movie Object Initialized
+Controller -> MovieList: Add Movie Object to List
+MovieList -> MovieList: Add Movie to List
+MovieList --> Controller: Movie Added Successfully
+
+@enduml
