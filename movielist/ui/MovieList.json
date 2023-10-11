@@ -1,0 +1,10 @@
+{
+  "movies": [
+    {
+      "name": "Movie Title",
+      "genre": "Not specified",
+      "score": 6.0,
+      "movieCount": 1
+    }
+  ]
+}
