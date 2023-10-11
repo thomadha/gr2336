@@ -83,16 +83,39 @@
 	        </plugin>
 
             <!-- Run the checkstyle code quality tool -->
-            <plugin>
+        <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <configLocation>config/checkstyle/checkstyle-config.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                    <id>checkstyle-check</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                    </execution>
+                </executions>
             </plugin>
 
-            <!-- Run the spotbugs code quality tool -->
-            <plugin>
+        <!-- Run the spotbugs code quality tool -->
+        <plugin>
                 <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>4.4.1</version>
+                    <configuration>
+                        <xmlOutput>false</xmlOutput>
+                        <excludeFilterFile>config/spotbugs/exclude.xml</excludeFilterFile>
+                    </configuration>
             </plugin>
+
 
             
             <plugin>
