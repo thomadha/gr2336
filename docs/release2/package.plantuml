@@ -1,41 +1,66 @@
 @startuml Package diagram
 
-package "movielist" {
-  package "core" {
-    package "src" {
-        package "main" {
-            package "java" {
-                package "core" {
-                    class Movie <<Java>>
-                    class MovieList <<Java>>
-                    class MovieListOverview <<Java>>
-                }
-                package "json" {
-                    class MovieListHandler <<Java>>
-                }
-            }
-        }
-    }
-  }
+package "movielist.core.src.main.java.core" {
+  class Movie 
+  class MovieList 
+  class MovieListOverview 
+}
 
-package "ui" {
-    package "src" {
-        package "main" {
-            package "java" {
-                package "ui" {
-                    class App <<Java>>
-                    class AppController <<Java>>
-                }
-            package "resources"{
-                package "ui"{
-                    class App <<FXML>>
-                }
-            }
-            }
-        }
-    }
-    class MovieList <<JSON>>            
-    }
+package "movielist.core.src.main.java.json" {
+  class MovieListHandler 
+}
+
+package "movielist.ui.src.main.java.ui" {
+  class App 
+  class AppController 
+}
+
+package "movielist.ui.src.main.resources.ui" {
+  class App
 }
 
 @enduml
+
+
+' @startuml Package diagram
+
+' package "movielist" {
+'   package "core" {
+'     package "src" {
+'       package "main" {
+'         package "java" {
+'           package "core" {
+'             class Movie 
+'             class MovieList 
+'             class MovieListOverview 
+'           }
+'           package "json" {
+'             class MovieListHandler 
+'           }
+'         }
+'       }
+'     }
+'   }
+' }
+
+' package "ui" {
+'   package "src" {
+'     package "main" {
+'       package "java" {
+'         package "ui" {
+'           class App 
+'           class AppController 
+'         }
+'         package "resources" {
+'           package "ui" {
+'             class App
+'           }
+'         }
+'         class MovieList             
+'       }
+'     }
+'   }
+' }
+
+' @enduml
+
