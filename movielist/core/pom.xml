@@ -95,9 +95,6 @@
                 </execution>
             </executions>
         </plugin>
-
-
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -107,7 +104,42 @@
                     </propertyName>
                 </configuration>
             </plugin>
-            
+
+            <!-- Checkstyle Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <redirectXRefResults>true</redirectXRefResults>
+                            <outputFile>checkstyle-results.txt</outputFile>
+                            <excludes>**/module-info.java</excludes>
+                            <failOnViolation>false</failOnViolation>
+                        </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> 
+
+            <!-- SpotBugs Plugin -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.7.3.6</version>
+            </plugin>
+        
         </plugins>
     </build>
+
+    <properties>
+        <!-- Skip SpotBugs when running -->
+        <skipSpotbugs>true</skipSpotbugs>
+    </properties>
+    
 </project>
