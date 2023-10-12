@@ -26,3 +26,10 @@ For this release, the group has included three diagrams to illustrate the archit
 ![Sequence Diagram](http://your-plantuml-server-url.com/plantuml/svg/ZP71Ri8m38RlUGeVXpJs01mGY5sG1ZjKF83dU9MtDEaIXuaz_LAAHe4YxP8uzl_zJfn5KeoQ6mSLVsNsnF0iM4TiJFeKtsA9eDA3OqWQXJhfi7A2DfmIrhnqKlk6lGALXQCnI1eYx5A92w52qc8fhuBN69oxIc_2NlX5ajvcZUbCO3eVi3DOMWjR_kubiFPjLdEkT-fZPGQhoAWyqBw-VJ2fwG_JAzkXv8JQST-r5nLqyiENq8F7XXyXKOXbOwMdoNzwdUr6-tMZwHzzGMc0uz3-D7U14UNeTGh15gfCL3xsFJjtC6R1tfRV_mK0 "Sequence Diagram")
 
 ![Package diagram](http://your-plantuml-server-url.com/plantuml/svg/RP1H3eCW38QVrrFq11nXyGYxGeD8q046mPWitdsjMmQQySRNZ_wbtP8fvUAV-20zaJNOExA9F82EVex1X8mw9eClkCrVnSVL6INqoiOb1jW1ge5AtTjYqzRodTl-TAaVkhs8nR66VCvXnSdRgesqqh39e9KD6t-DoLvZk9k4VEmp4_kYDQF_uSSE03eJUjxX6m00 "Package diagram")
+
+## Architecture
+
+The architecture of the project is described in the diagram above. The project can be found within the folder movielist, where the two main dividers are "core" and "ui". Classes like the Movie-object, MovieList-object, as well as the file handler can be found here. The "ui"-folder includes the App and AppController. The json-file where the data is stored can also be located here. Tests for each of the packages can be found in their respective folder, for example ui/src/main/test/java/ui for "ui". Documentation is to be found in the docs-package, whereas the screenshots of the application is in the "assets"-folder.
+
+## Work habits
+
