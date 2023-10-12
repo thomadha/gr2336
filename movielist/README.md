@@ -3,7 +3,7 @@
 # Release 1
     Jack loves movies, and needs a way to keep track of the movies that he watches. He is presented with our movie list application, with the logic that is implemented for release 1. Jack wants to add his fifteen favorite movies to the movie list. He opens the application, and enters the first movie's title, genre and his personal score into the respective input fields. When he clicks the "Add movie"-button, the movie details he put in should be validated. If the validation is successful, the movie should be added to the movie list, and displayed on the screen. He continues with this for all of his favorite movies, until a completed and sorted list is displayed on the left side of the screen. Jack is thrilled that he now has a simple way of accessing all of his favorite movies.
 
-    Screenshot showing the application and its functionality: assets/illustrated.png
+    Screenshot showing the application and its functionality: assets/release1
 
 # Release 2
 
