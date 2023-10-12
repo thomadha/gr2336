@@ -1,3 +1,16 @@
 {
-  "movies": []
+  "movies": [
+    {
+      "name": "heihei",
+      "genre": "Action",
+      "score": 7.5,
+      "movieCount": 2
+    },
+    {
+      "name": "kult",
+      "genre": "Horror",
+      "score": 1.0,
+      "movieCount": 1
+    }
+  ]
 }
