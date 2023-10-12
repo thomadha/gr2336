@@ -1,15 +1,15 @@
 {
   "movies": [
     {
-      "name": "heihei",
-      "genre": "Action",
-      "score": 7.5,
-      "movieCount": 2
+      "name": "Mean Girls",
+      "genre": "Romcom",
+      "score": 8.0,
+      "movieCount": 1
     },
     {
-      "name": "kult",
-      "genre": "Horror",
-      "score": 1.0,
+      "name": "Star Wars I",
+      "genre": "Scifi",
+      "score": 7.0,
       "movieCount": 1
     }
   ]
