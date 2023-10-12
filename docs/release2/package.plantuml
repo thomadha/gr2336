@@ -1,66 +1,28 @@
 @startuml Package diagram
 
-package "movielist.core.src.main.java.core" {
-  class Movie 
-  class MovieList 
-  class MovieListOverview 
+component core {
+	package movie.core
+	package movie.json
 }
 
-package "movielist.core.src.main.java.json" {
-  class MovieListHandler 
+movie.core ..> movie.json
+
+component gson {
 }
 
-package "movielist.ui.src.main.java.ui" {
-  class App 
-  class AppController 
+movie.json ..> gson
+
+component ui {
+    package movie.ui
 }
 
-package "movielist.ui.src.main.resources.ui" {
-  class App
+component javafx {
+	component fxml {
+	}
 }
+
+ui ..> javafx
+ui ..> fxml
+
 
 @enduml
-
-
-' @startuml Package diagram
-
-' package "movielist" {
-'   package "core" {
-'     package "src" {
-'       package "main" {
-'         package "java" {
-'           package "core" {
-'             class Movie 
-'             class MovieList 
-'             class MovieListOverview 
-'           }
-'           package "json" {
-'             class MovieListHandler 
-'           }
-'         }
-'       }
-'     }
-'   }
-' }
-
-' package "ui" {
-'   package "src" {
-'     package "main" {
-'       package "java" {
-'         package "ui" {
-'           class App 
-'           class AppController 
-'         }
-'         package "resources" {
-'           package "ui" {
-'             class App
-'           }
-'         }
-'         class MovieList             
-'       }
-'     }
-'   }
-' }
-
-' @enduml
-
