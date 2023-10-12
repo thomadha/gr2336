@@ -40,4 +40,30 @@ public class MovieTest {
         //sjekker at den kaster når den skal, altså dersom det blir oppgitt feil format på name
     }
 
+    @Test
+    @DisplayName("Check if count is one for new movies")
+    public void testInitialCount(){
+        Movie shark = new Movie("Shark 2", 2);
+        Assertions.assertEquals(1, shark.getCount());
+
+    }
+
+    @Test
+    @DisplayName("Check if count is three after two duplicates")
+    public void testCounter(){
+        Movie shark = new Movie("Shark 2", 2);
+        shark.addDuplicate();
+        shark.addDuplicate();
+        Assertions.assertEquals(3, shark.getCount());
+
+    }
+
+    @Test
+    @DisplayName("Test setGenre")
+    public void testSetGenre(){
+        Movie shark = new Movie("Shark 2", 2);
+        shark.setGenre("horror");
+        Assertions.assertEquals("horror", shark.getGenre());
+
+    }
 }

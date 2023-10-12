@@ -55,16 +55,29 @@ public class AppTest extends ApplicationTest {
     }
 
     @Test
+    public void testCreatingUser() {
+        //creates new user
+        clickOn("#userName").write("Username123");
+
+    }
+    
+
+    @Test
     public void testAddingMovie() {
         
-        clickOn("#titleField").write("Movie Title");
-        //clickOn("#scoreField").write("5.0");
+        //logs in as user
+        clickOn("#userName").write("Username123");
+
+        // Writes title
+        clickOn("#titleField").write("Batman");
         
+        // initiates slider
         Slider slider = lookup("#scoreField").query();
 
         // Define the desired slider value (e.g., 5)
         double desiredValue = 5.0;
 
+        //locates the slider "button"
         Node thumb = slider.lookup(".thumb");
         // Click on the slider to focus it
         clickOn(thumb, MouseButton.PRIMARY);
@@ -74,24 +87,64 @@ public class AppTest extends ApplicationTest {
         double sliderWidth = slider.getWidth();
         double relativeX = (desiredValue / sliderMaxValue) * sliderWidth;
 
-        // Simulate dragging the thumb to the desired value
+        // Simulate dragging the button to the desired value
         drag(thumb).dropBy(relativeX, 0);
         sleep(1000);
 
+        // select genre for the movie added
+        clickOn("#genrebtn");
+        clickOn("#action");
+
+        //adds movie
         clickOn("#addBtn");
+
+        //saves movie list
+        clickOn("#saveListBtn");
+
+        //logs in as user
+        clickOn("#userName").write("Username123");
+        clickOn("#openListBtn");
+    }
+
+    @Test
+    public void testAddingMovieWithoutGenre() {
         
-        //verifyThat(slider, hasText("5.0"));
+        //logs in as user
+        clickOn("#userName").write("Username123");
 
-    // You can also check the value programmatically
-        //assertEquals(5.0, slider.getValue(), 0.1);
+        // Writes title
+        clickOn("#titleField").write("Batman");
+        
+        // initiates slider
+        Slider slider = lookup("#scoreField").query();
 
+        // Define the desired slider value (e.g., 5)
+        double desiredValue = 5.0;
 
-        sleep(2000);
-        //Assertions.assertEquals();
+        //locates the slider "button"
+        Node thumb = slider.lookup(".thumb");
+        // Click on the slider to focus it
+        clickOn(thumb, MouseButton.PRIMARY);
 
-        // Add your assertions to validate the expected behavior
-        // For example, you can check if the movie list is updated correctly
-        // using controller.getMovieList() and assert the movie's presence.
+        // Calculate the relative x-coordinate based on the desired value
+        double sliderMaxValue = slider.getMax();
+        double sliderWidth = slider.getWidth();
+        double relativeX = (desiredValue / sliderMaxValue) * sliderWidth;
+
+        // Simulate dragging the button to the desired value
+        drag(thumb).dropBy(relativeX, 0);
+        sleep(1000);
+
+        //adds movie
+        clickOn("#addBtn");
+
+        //saves movie list
+        clickOn("#saveListBtn");
+
+        //logs in as user
+        clickOn("#userName").write("Username123");
+        clickOn("#openListBtn");
+        
     }
 
     
