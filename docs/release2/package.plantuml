@@ -21,8 +21,11 @@ component javafx {
 	}
 }
 
-ui ..> javafx
-ui ..> fxml
+movie.ui ..> javafx
+movie.ui ..> fxml
+
+movie.ui ..> movie.json
+movie.ui ..> movie.core
 
 
 @enduml
