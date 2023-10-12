@@ -10,6 +10,8 @@ The Movie App is a JavaFX application that allows you to add and display a list 
     - The score is generated as an average from all the times you have watched it
 - A login feature is also added
     - This seperates your movie list from other users
+    - It works by writing in your username and clicking "Save & Close". If you want to open the list, you write in your username and click "Open"
+    - Currently it is not possible to save your list for later use. Meaning if you close the app after you run it and saved a list, it will not be possible to open the next time you run it. This is planned to implement for the next release.
 
 ## How to use
 
