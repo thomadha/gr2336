@@ -1,16 +1,3 @@
 {
-  "movies": [
-    {
-      "name": "Thomastoget",
-      "score": 10.0
-    },
-    {
-      "name": "Mean Girls",
-      "score": 9.0
-    },
-    {
-      "name": "Star Wars XI",
-      "score": 7.0
-    }
-  ]
+  "movies": []
 }
