@@ -2,7 +2,9 @@
   "movies": [
     {
       "name": "Movie Title",
-      "score": 5.0
+      "genre": "Not specified",
+      "score": 6.0,
+      "movieCount": 1
     }
   ]
 }
