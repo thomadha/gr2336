@@ -30,6 +30,14 @@ Additionally, there is a folder named "docs", as well as an "assets"-folder:
 
     The "assets"-folder is where all pictures and other media are stored. This mainly includes screenshots regarding the application and its functionality. Filepaths leading to these assets are provided in the corresponding README.md-files. 
 
+## Eclipse Che
+This project is Eclipse Che ready. 
+
+You can find the environment through the link: 
+https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336
+
+If meeting any trouble running the project, please "mvn clean install" inside the movielist folder. Then run "mvn javafx:run", "mvn test" and/or other prefered maven commands within the gr2336/movielist/ui folder.
+
 ## Dependecies
 Following JAVA version is needed: 16.0.1
 Following Maven version is needed: Maven Apache 4.0.0
