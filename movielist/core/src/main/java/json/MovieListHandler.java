@@ -1,9 +1,11 @@
 package json;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 import core.MovieList;
 import com.google.gson.Gson;
@@ -11,33 +13,89 @@ import com.google.gson.GsonBuilder;
 
 public class MovieListHandler {
 
-    private Gson gson;
+    private final String filepath;
 
+    public MovieListHandler(String filepath){
+      String userdir = System.getProperty("user.dir");
+      if(userdir.endsWith("GR2336")){
+        userdir = userdir + "/movielist/ui";
+      }
+      if(userdir.endsWith("core")){
+        userdir = userdir.substring(0, userdir.length()-5);
+        userdir = userdir + "/ui";
+      }
+      this.filepath = userdir + filepath; 
+    } 
 
-    public MovieListHandler() {
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
+    /**
+   * Read all movieLists form file
+   *
+   * @return a list of movieLists 
+   */
+  public List<MovieList> getAllMovieListsFromFile() {
+    List<MovieList> movieListList = new ArrayList<>();
+    try (FileReader reader = new FileReader(filepath, StandardCharsets.UTF_8)) { // Specify UTF-8
+      Gson gson = new Gson();
+      MovieList[] movieListArray = gson.fromJson(reader, MovieList[].class);
+      if (movieListArray != null) {
+        for (MovieList movieList : movieListArray) {
+          movieListList.add(movieList);
+        }
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+    return movieListList;
+  }
 
-   
+      /**
+   * Gets a movielist with the specified username 
+   *
+   * @param username the username of the movielist to get
+   * @return a movielist with the specifed username
+   * @throws IllegalArgumentException if the movielist does not exist
+   */
+  public MovieList getMovieList(String username) {
+    return getAllMovieListsFromFile().stream()
+        .filter(a -> a.getUsername().equals(username))
+        .findFirst()
+        .orElseThrow(() -> new IllegalArgumentException("Movielist doesn't exist"));
+  }
 
-    public void writeMovieListToFile(MovieList movieList) {
-        String filePath = "MovieList.json";
-        try (FileWriter writer = new FileWriter(filePath)) {
-            gson.toJson(movieList, writer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    } 
+  /**
+   * Validates that a movieList with the specified username does not already exist.
+   *
+   * @param username the username to validate
+   * @throws IllegalArgumentException if a movieList with the specified username already exists
+   */
+  public void validateNoExistingMovieList(String username) {
+    if (getAllMovieListsFromFile().stream().anyMatch(a -> a.getUsername().equals(username))) {
+      throw new IllegalArgumentException("MovieList already exists");
+    }
+  }
 
-    public MovieList readMovieListFromFile() { 
-        //String filePath = folderPath + filename;
-        String filePath = "MovieList.json";
-        try (FileReader reader = new FileReader(filePath)) {
-            return gson.fromJson(reader, MovieList.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    } 
+   /**
+   * Updates the user file with the specified user.
+   *
+   * @param user the user to update
+   */
+  public void saveToFile(MovieList movielist) {
+    List<MovieList> movieLists = getAllMovieListsFromFile();
+    if(movieLists.stream().anyMatch(a->a.getUsername().equals(movielist.getUsername()))){
+
+      MovieList movieListToUpdate =
+      movieLists.stream().filter(a -> a.getUsername().equals(movielist.getUsername())).findAny().get();
+      movieListToUpdate.setMovies(movielist.getMovies()); 
+    }
+    else{
+      movieLists.add(movielist);
+    }
+    try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) { // Specify UTF-8
+      Gson gson = new GsonBuilder().setPrettyPrinting().create();
+      gson.toJson(movieLists, writer); // Serialize and write the updated user list
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
   
 }
