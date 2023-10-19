@@ -10,9 +10,9 @@ public class MovieListTest {
     @Test 
     @DisplayName("Checks if the list is correct")
     public void testMovieList() throws IllegalArgumentException {
-        Movie shark = new Movie("Shark 2", 2);
-        Movie meangirls = new Movie("Mean Girls", 10);
-        Movie harry = new Movie("Harry Potter 1", 9);
+        Movie shark = new Movie("Shark 2", 2, "");
+        Movie meangirls = new Movie("Mean Girls", 10, "");
+        Movie harry = new Movie("Harry Potter 1", 9, "");
         
         MovieList movielist = new MovieList();
         
@@ -32,13 +32,13 @@ public class MovieListTest {
     @Test
     @DisplayName("Check if duplicates work")
     public void testDuplicateMovieList() throws IllegalArgumentException{
-        Movie shark1 = new Movie("Shark 2", 2);
+        Movie shark1 = new Movie("Shark 2", 2, "");
 
         MovieList movielist = new MovieList();
 
         movielist.addMovie(shark1);
 
-        Movie shark2 = new Movie("Shark 2", 7);
+        Movie shark2 = new Movie("Shark 2", 7, "");
 
         movielist.addMovie(shark2);
 

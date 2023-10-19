@@ -1,19 +1,17 @@
 package ui;
 
-import java.util.HashMap;
 
 import core.Movie;
 import core.MovieList;
-import core.MovieListOverview;
 import json.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class AppController {
@@ -22,7 +20,7 @@ public class AppController {
     @FXML private TextField userName;
     @FXML private Slider scoreField;
     @FXML private Button addBtn;
-    @FXML private TextArea movieListField;
+    @FXML private ListView<Movie> movieListField;
     @FXML private MenuButton genrebtn; 
     @FXML private MenuItem action; 
     @FXML private MenuItem horror; 
@@ -35,115 +33,68 @@ public class AppController {
 
 
     private MovieListHandler fileHandler;
-    private MovieListOverview movieOverview;
 
     private MovieList movieList;
 
     public AppController() {
         movieList = new MovieList();
-        fileHandler = new MovieListHandler();
-        movieOverview = new MovieListOverview();
+        fileHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
     }
 
     public MovieList getMovieList() {
         return movieList;
     }
 
-
-    @FXML
-    void initialize() {
-        initializeMovieField();
-    }
-
-
     @FXML
     private void handleAddBtn(ActionEvent event){
-        String title = this.titleField.getText();
-        double score = this.scoreField.getValue();
-        String genre = this.genrebtn.getText();
-
-        if(genre.equals("Choose genre")){
-            genre = "Not specified";
+        if(validateUsernameField()){
+            try{
+                feedback.setText("");
+                movieList.addMovie(new Movie(titleField.getText(), scoreField.getValue(),genrebtn.getText()));
+                movieList.setUsername(userName.getText());
+                updateMovieListField();
+                fileHandler.saveToFile(movieList);
+                resetChoises();
+            }catch(Exception e){
+                feedback.setText(e.getMessage());
+            }
         }
-
-        Movie new_movie = new Movie(title, score); 
-        new_movie.setGenre(genre);
-        movieList.addMovie(new_movie);
-
-        addMovieToList(movieList);
-        clearTextFields();
-        updateMovieListField();
-        resetGenreBtn();
     }
 
     @FXML
-    private void clearTextFields(){
+    private void resetChoises(){
         this.titleField.setText("");
         this.scoreField.setValue(0);
-    }
-
-    @FXML 
-    private void addMovieToList(MovieList list){
-        fileHandler.writeMovieListToFile(list);
-    }
-
-
-    @FXML
-    private void initializeMovieField(){
-        this.movieListField.setText("");
+        this.genrebtn.setText("Choose genre");
     }
 
     @FXML
     private void updateMovieListField(){
-        this.movieListField.setText("");
-
-        MovieList movies = fileHandler.readMovieListFromFile();
-        
-        for (Movie m : movies.getMovies()) {
-            movieListField.appendText(m.getName() + ", score: " + m.getScore() + ", genre: " + m.getGenre() + "\n");
-        }
+        movieListField.getItems().clear();
+        movieListField.getItems().addAll(movieList.getMovies());
     }
 
     @FXML
-    private void handleChoise(ActionEvent event){
-        MenuItem genrechoise = (MenuItem) event.getSource();
+    private void handleChoise(ActionEvent e){
+        MenuItem genrechoise = (MenuItem) e.getSource();
         this.genrebtn.setText(genrechoise.getText());
-    }
-
-    @FXML
-    private void resetGenreBtn(){
-        this.genrebtn.setText("Choose genre");
     }
 
     @FXML 
     private void handleOpenList(){
         if(validateUsernameField()){
-            initializeMovieField();
-            header.setText(userName.getText() + "'s movie diary:");
-            MovieList newMovieList = movieOverview.getMovieList(userName.getText().trim()); 
-            this.movieList = newMovieList;
-            fileHandler.writeMovieListToFile(movieList);
-
-            for (Movie m : movieList.getMovies()) {
-                movieListField.appendText(m.getName() + ", score: " + m.getScore() + ", genre: " + m.getGenre() + "\n");
-            }
+            try{
+                feedback.setText("");
+                movieList=fileHandler.getMovieList(userName.getText());
+                updateMovieListField();
+            }catch(Exception e){
+                feedback.setText(e.getMessage());
+                movieList = new MovieList();
+                movieListField.getItems().clear();
+            } 
         }
     }
 
-    @FXML 
-    private void handleSaveList(){
-        if(validateUsernameField()){
-            movieOverview.addMovieList(userName.getText(), fileHandler.readMovieListFromFile());
-
-            movieList.getMovies().clear();
-            this.movieListField.setText("");
-            fileHandler.writeMovieListToFile(movieList);
-
-            clearTextFields();
-            userName.clear();
-            header.setText("New movie diary:");
-        }
-    }
 
     @FXML
     private boolean validateUsernameField(){

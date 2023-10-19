@@ -2,11 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -18,7 +18,7 @@
             <Font name="Century Gothic" size="10.0" />
          </font>
       </TextField>
-      <Label id="header" fx:id="header" layoutX="62.0" layoutY="163.0" text="New movie diary:">
+      <Label id="header" fx:id="header" layoutX="58.0" layoutY="163.0" text="New movie diary:">
          <font>
             <Font name="Broadway" size="24.0" />
          </font>
@@ -49,10 +49,6 @@
             <Font name="Century Gothic Bold" size="14.0" />
          </font>
       </Button>
-      <TextArea id="movieListField" fx:id="movieListField" editable="false" layoutX="67.0" layoutY="219.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #517594;">
-         <font>
-            <Font name="Century Gothic" size="12.0" />
-         </font></TextArea>
       <Label layoutX="332.0" layoutY="343.0" text="Genre:">
          <font>
             <Font name="Century Gothic" size="18.0" />
@@ -79,11 +75,11 @@
          </font>
       </Label>
       <Button fx:id="openListBtn" layoutX="132.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleOpenList" style="-fx-background-color: #153243;" text="Open" textFill="WHITE" />
-      <Button fx:id="saveListBtn" layoutX="67.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleSaveList" style="-fx-background-color: #153243;" text="Save and close" textFill="WHITE" />
       <Label fx:id="feedback" layoutX="14.0" layoutY="83.0" textFill="#d31313">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <ListView fx:id="movieListField" layoutX="29.0" layoutY="204.0" prefHeight="218.0" prefWidth="238.0" />
    </children>
 </Pane>

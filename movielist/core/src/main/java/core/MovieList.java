@@ -7,12 +7,26 @@ import java.util.List;
 public class MovieList {
   private List<Movie> movies;
 
+  private String username; 
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public void setMovies(List<Movie> movies){
+    this.movies = movies; 
+  }
+
   public MovieList(){
     this.movies = new ArrayList<Movie>();
   }
 
   public List<Movie> getMovies() {
-    return movies;
+    return new ArrayList<Movie>(movies);
   } 
   
   public void addMovie(Movie movie){
@@ -51,20 +65,4 @@ public class MovieList {
     return hasDuplicate;
   }
 
-  public static void main(String args[]){
-    MovieList ml = new MovieList(); 
-
-    Movie m1 = new Movie("hai", 1.0);
-    Movie m2 = new Movie("sommer", 5.0);
-    Movie m3 = new Movie("mathilde", 7.0);
-    Movie m4 = new Movie("isak", 8.0);
-
-    ml.addMovie(m1);
-    ml.addMovie(m2);
-    ml.addMovie(m3);
-    ml.addMovie(m4);
-
-    System.out.println(ml.movieListToString());
-
-  }
 }

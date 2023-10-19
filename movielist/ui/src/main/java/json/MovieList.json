@@ -1,10 +1,42 @@
-{
-  "movies": [
-    {
-      "name": "Batman",
-      "genre": "Not specified",
-      "score": 5.0,
-      "movieCount": 1
-    }
-  ]
-}
+[
+  {
+    "movies": [
+      {
+        "name": "thomasToget",
+        "genre": "Other",
+        "score": 10.0,
+        "movieCount": 1
+      },
+      {
+        "name": "Star Wars",
+        "genre": "Scifi",
+        "score": 6.5,
+        "movieCount": 2
+      },
+      {
+        "name": "Harry Potter",
+        "genre": "Romcom",
+        "score": 4.0,
+        "movieCount": 1
+      }
+    ],
+    "username": "thomas"
+  },
+  {
+    "movies": [
+      {
+        "name": "Star Wars",
+        "genre": "Scifi",
+        "score": 7.0,
+        "movieCount": 1
+      },
+      {
+        "name": "TooCoolForSchool",
+        "genre": "Romcom",
+        "score": 1.0,
+        "movieCount": 1
+      }
+    ],
+    "username": "jorgen"
+  }
+]
