@@ -45,6 +45,11 @@ public class AppController {
         return movieList;
     }
 
+     public MovieList getMovieList(String username) {
+        
+        return movieList;
+    }
+
     @FXML
     private void handleAddBtn(ActionEvent event){
         if(validateUsernameField()){
