@@ -86,6 +86,8 @@ public class LoginController {
 
   @FXML
     public void makeNewMovieList (ActionEvent event){
+      MovieList movieList =  new MovieList();
+
     }
   
 
