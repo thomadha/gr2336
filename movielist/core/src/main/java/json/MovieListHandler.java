@@ -60,7 +60,7 @@ public class MovieListHandler {
     List<MovieList> movieLists = getAllMovieListsFromFile();
     if (movieLists == null) {
       throw new IllegalStateException("Error loading movie lists from file");
-  }
+    }
     return movieLists.stream()
         .filter(a -> a.getUsername().equals(username) && a.getPassword().equals(password))
         .findFirst()

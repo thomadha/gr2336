@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import json.MovieListHandler;
 
@@ -18,19 +19,26 @@ public class LoginController {
   
   @FXML private TextField usernameInput = new TextField();
   @FXML private TextField passwordInput = new TextField();
-  @FXML private Button loginBtn = new Button();
-  @FXML private Button newUserBtn = new Button();
-  @FXML private TextField newUsernameInput = new TextField();
-  @FXML private TextField newPasswordInput = new TextField();
-  @FXML private Button createUserBtn = new Button();
+
+  @FXML private Button openListBtn = new Button();
+  @FXML private Button newOrLoginBtn = new Button();
+
   @FXML private Label feedback; 
+  @FXML private Text openOrMakeTexts;
+  @FXML private Text changeText;
 
   private MovieList movieList;
   private MovieListHandler movieListHandler;
-    
-    public void setBookingData(MovieList movieList) {
-        this.movieList = movieList;
-    }
+
+  public LoginController() {
+    movieList = new MovieList();
+    movieListHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
+}
+
+  public MovieList getMovieList() {
+    return movieList;
+}
+
 
   @FXML
     public void openExistingMovieList (ActionEvent event){
@@ -46,7 +54,7 @@ public class LoginController {
       // ADD VALIDATOR
 
       if(validateInput(usernameString, passwordString)){
-        MovieList movieList = movieListHandler.getMovieList(usernameString);
+        movieList = movieListHandler.getMovieList(usernameString);
         feedback.setText("");
         openMovieList();
 
@@ -60,7 +68,7 @@ public class LoginController {
         if(validateUsernameField(usernameString)){
             try{
                 feedback.setText("");
-                movieList=movieListHandler.getMovieList(usernameString);
+                movieList = movieListHandler.getMovieList(usernameString);
                 updateMovieListField();
             }catch(Exception e){
                 feedback.setText(e.getMessage());
@@ -77,11 +85,11 @@ public class LoginController {
     if(username.equals("") || password.equals("")){
             feedback.setText("You have to fill inn both a username and password");
             return false;
-        } else {
-            feedback.setText("");
-            return true;
-        }
-
+        } 
+    movieListHandler.getMovieList(username, password);
+    return true;
+        
+  
   }
 
   @FXML
@@ -108,7 +116,7 @@ public class LoginController {
     }
 
     @FXML
-    public void openMovieList(ActionEvent event){    // når bruker trykker på "tilbake til forsiden" knappen
+    public void openMovieList(ActionEvent event){    
       if(validateInput(null, null))
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListApp.fxml"));
@@ -126,17 +134,11 @@ public class LoginController {
     }
 
     
-
     @FXML
     private void cleansePage() {    // hjelpemetode for å rense alle elementer i javaFX filen for tekst så det er klart til neste booking
         // setter alt tilbake til start:
-        usernameInput.setDisable(false);
-        passwordInput.setDisable(false);
-        loginBtn.setDisable(false);
         usernameInput.setText("");
         passwordInput.setText("");
-        newUserBtn.setDisable(false);
     }
-
 
 }
