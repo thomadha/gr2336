@@ -39,15 +39,16 @@ public class LoginController {
       return movieList;
     }
 
-    
+
     @FXML
-    public void openListBtn (ActionEvent event){
+    public void openList (ActionEvent event){
       if(openListBtn.getText().equals("Log in")){
           openExistingMovieList();
       }
       else if(openListBtn.getText().equals("Register")){
           makeNewMovieList();
       }
+      loadMovieList();
     }
   
     @FXML
@@ -80,19 +81,22 @@ public class LoginController {
       String usernameString = this.usernameInput.getText();
       String passwordString = this.passwordInput.getText();
 
-      movieList = movieListHandler.getMovieList(usernameString, passwordString);
-
-      if(!validateInput(usernameString, passwordString)){
-        feedback.setText("Feil brukernavn eller passord :(");
-        return;
+      if(!validInput(usernameString, passwordString)){
+          return;
       }
 
-      // ADD VALIDATOR
+      movieList = movieListHandler.getMovieList(usernameString, passwordString); 
+
+      if(!validateInput(usernameString, passwordString)){
+          feedback.setText("Feil brukernavn eller passord :(");
+          return;
+      }
+
 
       if(validateInput(usernameString, passwordString)){
-        movieList = movieListHandler.getMovieList(usernameString);
-        feedback.setText("");
-        openMovieList();
+          movieList = movieListHandler.getMovieList(usernameString);
+          feedback.setText("");
+          openMovieList();
 
       }
       
@@ -105,53 +109,29 @@ public class LoginController {
 
     }
 
-    @FXML 
-    private void handleOpenList(){
-        if(validateUsernameField(usernameString)){
-            try{
-                feedback.setText("");
-                movieList = movieListHandler.getMovieList(usernameString);
-                updateMovieListField();
-            }catch(Exception e){
-                feedback.setText(e.getMessage());
-                movieList = new MovieList();
-                movieListField.getItems().clear();
-            } 
-        }
-    }
+ 
 
 
     
 
-  private boolean validateInput(String username, String password){
-    if(username.equals("") || password.equals("")){
+    private boolean validInput(String username, String password){
+        boolean valid = true;
+        if(username.equals("") || password.equals("")){
             feedback.setText("You have to fill inn both a username and password");
-            return false;
+            valid = false;
         } 
-    movieListHandler.getMovieList(username, password);
-    return true;
+        try{
+            movieListHandler.getMovieList(username, password);
+        }
+        catch (IllegalArgumentException e){
+            feedback.setText("Movielist doesn't exist or password is incorrect");
+            valid = false;
+        }
+        return valid;
       }
   
-
-  @FXML
-    public void openMovieList(){
-      if(validateUsernameField(usernameString)){
-            try{
-                feedback.setText("");
-                movieList=movieListHandler.getMovieList(userName.getText());
-                updateMovieListField();
-            }catch(Exception e){
-                feedback.setText(e.getMessage());
-                movieList = new MovieList();
-                movieListField.getItems().clear();
-            } 
-        }
-
-    }
-
     @FXML
-    public void openMovieList(ActionEvent event){    
-      if(validateInput(null, null))
+    public void loadMovieList(){    
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListApp.fxml"));
             Parent root = loader.load();
@@ -166,11 +146,9 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-
     
     @FXML
-    private void cleansePage() {    // hjelpemetode for å rense alle elementer i javaFX filen for tekst så det er klart til neste booking
-        // setter alt tilbake til start:
+    private void cleansePage() {    
         usernameInput.setText("");
         passwordInput.setText("");
     }
