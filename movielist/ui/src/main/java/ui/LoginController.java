@@ -53,26 +53,21 @@ public class LoginController {
   
     @FXML
     public void newOrLogin (ActionEvent event){
-      if(newOrLoginBtn.getText().equals("Make a new movie diary")){
+      if(newOrLoginBtn.getText().equals("Make new movie diary")){
         openOrMakeTexts.setText("Make your movie diary:");
         openListBtn.setText("Register");
         changeText.setText("Already have a movie list? Log in instead!");
         newOrLoginBtn.setText("Log into your account");
+        feedback.setText("");
       }
       else if(newOrLoginBtn.getText().equals("Log into your account")){
         openOrMakeTexts.setText("Open your movie diary:");
         openListBtn.setText("Log in");
         changeText.setText("Don't have one yet? Make your own movie diary now!");
         newOrLoginBtn.setText("Make new movie diary");
+        feedback.setText("");
       }
     }
-
-
-
-
-
-
-
 
 
   @FXML
@@ -86,21 +81,6 @@ public class LoginController {
       }
 
       movieList = movieListHandler.getMovieList(usernameString, passwordString); 
-
-      if(!validateInput(usernameString, passwordString)){
-          feedback.setText("Feil brukernavn eller passord :(");
-          return;
-      }
-
-
-      if(validateInput(usernameString, passwordString)){
-          movieList = movieListHandler.getMovieList(usernameString);
-          feedback.setText("");
-          openMovieList();
-
-      }
-      
-
     }
 
     @FXML
@@ -109,25 +89,20 @@ public class LoginController {
 
     }
 
- 
-
-
-    
-
     private boolean validInput(String username, String password){
-        boolean valid = true;
         if(username.equals("") || password.equals("")){
             feedback.setText("You have to fill inn both a username and password");
-            valid = false;
+            return false;
         } 
         try{
             movieListHandler.getMovieList(username, password);
         }
         catch (IllegalArgumentException e){
             feedback.setText("Movielist doesn't exist or password is incorrect");
-            valid = false;
+            return false;
         }
-        return valid;
+        feedback.setText("");
+        return true;
       }
   
     @FXML
@@ -151,6 +126,7 @@ public class LoginController {
     private void cleansePage() {    
         usernameInput.setText("");
         passwordInput.setText("");
+        feedback.setText("");
     }
 
 }
