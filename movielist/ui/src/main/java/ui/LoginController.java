@@ -76,7 +76,9 @@ public class LoginController {
       String passwordString = this.passwordInput.getText();
 
       if(validInput(usernameString, passwordString)){
-          movieList = movieListHandler.getMovieList(usernameString, passwordString); 
+          movieList = movieListHandler.getMovieList(usernameString, passwordString);
+          correctPassword(usernameString,passwordString);
+          movieListHandler.saveToFile(movieList);
           loadMovieList();
       }
     }
@@ -88,8 +90,14 @@ public class LoginController {
       if(usernameString.equals("") || passwordString.equals("")){
           feedback.setText("You have to fill inn both a username and password");
       }
+      else if(takenUsername(usernameString)){
+          feedback.setText("The username you typed is taken");
+      }
       else{
           movieList =  new MovieList();
+          movieList.setUsername(usernameString);
+          movieList.setPassword(passwordString);
+          movieListHandler.saveToFile(movieList);
           loadMovieList();
       }
           
@@ -135,5 +143,24 @@ public class LoginController {
         passwordInput.setText("");
         feedback.setText("");
     }
+
+    /**
+   * Validates that a movieList with the specified username does not already exist.
+   *
+   * @param username the username to validate
+   * @throws IllegalArgumentException if a movieList with the specified username already exists
+   */
+    private boolean takenUsername(String username){
+        return movieListHandler.getAllMovieListsFromFile().stream()
+                                                          .map(a -> a.getUsername())
+                                                          .anyMatch(a -> a.equals(username));
+    }
+
+    private boolean correctPassword(String username, String password){
+        return movieListHandler.getAllMovieListsFromFile().stream()
+                                                          .filter(a -> a.getUsername().equals(username))
+                                                          .allMatch(a -> a.getPassword().equals(password));
+    }
+
 
 }
