@@ -57,14 +57,14 @@ public class LoginController {
         openListBtn.setText("Register");
         changeText.setText("Already have a movie list? Log in instead!");
         newOrLoginBtn.setText("Log into your account");
-        feedback.setText("");
+        cleansePage();
       }
       else if(newOrLoginBtn.getText().equals("Log into your account")){
         openOrMakeTexts.setText("Open your movie diary:");
         openListBtn.setText("Log in");
         changeText.setText("Don't have one yet? Make your own movie diary now!");
         newOrLoginBtn.setText("Make new movie diary");
-        feedback.setText("");
+        cleansePage();
       }
     }
 
@@ -76,7 +76,7 @@ public class LoginController {
       String passwordString = this.passwordInput.getText();
 
       if(validInput(usernameString, passwordString)){
-          movieList = movieListHandler.getMovieList(usernameString, passwordString);
+          movieList = movieListHandler.getMovieList(usernameString);
           correctPassword(usernameString,passwordString);
           movieListHandler.saveToFile(movieList);
           loadMovieList();
@@ -109,11 +109,14 @@ public class LoginController {
             feedback.setText("You have to fill inn both a username and password");
             return false;
         } 
+        else if(!correctPassword(username,password)){
+          feedback.setText("Wrong password");
+        }
         try{
-            movieListHandler.getMovieList(username, password);
+            movieListHandler.getMovieList(username);
         }
         catch (IllegalArgumentException e){
-            feedback.setText("Movielist doesn't exist or password is incorrect");
+            feedback.setText("Movielist doesn't exist");
             return false;
         }
         feedback.setText("");
