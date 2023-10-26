@@ -56,15 +56,15 @@ public class MovieListHandler {
    * @return a movielist with the specifed username and correct password
    * @throws IllegalArgumentException if the movielist does not exist or password is incorrect
    */
-  public MovieList getMovieList(String username, String password) {
+  public MovieList getMovieList(String username) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
     if (movieLists == null) {
       throw new IllegalStateException("Error loading movie lists from file");
     }
     return movieLists.stream()
-        .filter(a -> a.getUsername().equals(username) && a.getPassword().equals(password))
+        .filter(a -> a.getUsername().equals(username))
         .findFirst()
-        .orElseThrow(() -> new IllegalArgumentException("Movielist doesn't exist or password is incorrect"));
+        .orElseThrow(() -> new IllegalArgumentException("Movielist doesn't exist"));
   }
 
   /**
@@ -84,23 +84,51 @@ public class MovieListHandler {
    *
    * @param user the user to update
    */
+  // public void saveToFile(MovieList movielist) {
+  //   List<MovieList> movieLists = getAllMovieListsFromFile();
+  //   if(movieLists.stream().anyMatch(a->a.getUsername().equals(movielist.getUsername()))){
+
+  //     MovieList movieListToUpdate =
+  //     movieLists.stream().filter(a -> a.getUsername().equals(movielist.getUsername())).findAny().get();
+  //     movieListToUpdate.setMovies(movielist.getMovies()); 
+  //   }
+  //   else{
+  //     movieLists.add(movielist);
+  //   }
+  //   try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) { // Specify UTF-8
+  //     Gson gson = new GsonBuilder().setPrettyPrinting().create();
+  //     gson.toJson(movieLists, writer); // Serialize and write the updated user list
+  //   } catch (IOException e) {
+  //     e.printStackTrace();
+  //   }
+  // }
+
   public void saveToFile(MovieList movielist) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
-    if(movieLists.stream().anyMatch(a->a.getUsername().equals(movielist.getUsername()))){
+    boolean found = false;
 
-      MovieList movieListToUpdate =
-      movieLists.stream().filter(a -> a.getUsername().equals(movielist.getUsername())).findAny().get();
-      movieListToUpdate.setMovies(movielist.getMovies()); 
+    for (MovieList existingMovieList : movieLists) {
+        if (existingMovieList.getUsername().equals(movielist.getUsername())) {
+            // Update the existing MovieList with the new movies
+            existingMovieList.setMovies(movielist.getMovies());
+            found = true;
+            break;
+        }
     }
-    else{
-      movieLists.add(movielist);
+
+    // If the MovieList was not found, add it to the list
+    if (!found) {
+        movieLists.add(movielist);
     }
-    try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) { // Specify UTF-8
-      Gson gson = new GsonBuilder().setPrettyPrinting().create();
-      gson.toJson(movieLists, writer); // Serialize and write the updated user list
+
+    // Save the entire list to the file
+    try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        gson.toJson(movieLists, writer);
     } catch (IOException e) {
-      e.printStackTrace();
+        e.printStackTrace();
     }
-  }
+}
+
   
 }
