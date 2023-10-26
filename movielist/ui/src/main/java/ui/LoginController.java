@@ -17,11 +17,11 @@ import json.MovieListHandler;
 
 public class LoginController {
   
-    @FXML private TextField usernameInput = new TextField();
-    @FXML private TextField passwordInput = new TextField();
+    @FXML private TextField usernameInput;
+    @FXML private TextField passwordInput;
 
-    @FXML private Button openListBtn = new Button();
-    @FXML private Button newOrLoginBtn = new Button();
+    @FXML private Button openListBtn;
+    @FXML private Button newOrLoginBtn;
 
     @FXML private Label feedback; 
     @FXML private Text openOrMakeTexts;
@@ -48,7 +48,6 @@ public class LoginController {
       else if(openListBtn.getText().equals("Register")){
           makeNewMovieList();
       }
-      loadMovieList();
     }
   
     @FXML
@@ -76,16 +75,24 @@ public class LoginController {
       String usernameString = this.usernameInput.getText();
       String passwordString = this.passwordInput.getText();
 
-      if(!validInput(usernameString, passwordString)){
-          return;
+      if(validInput(usernameString, passwordString)){
+          movieList = movieListHandler.getMovieList(usernameString, passwordString); 
+          loadMovieList();
       }
-
-      movieList = movieListHandler.getMovieList(usernameString, passwordString); 
     }
 
     @FXML
     public void makeNewMovieList (){
-      movieList =  new MovieList();
+      String usernameString = this.usernameInput.getText();
+      String passwordString = this.passwordInput.getText();
+      if(usernameString.equals("") || passwordString.equals("")){
+          feedback.setText("You have to fill inn both a username and password");
+      }
+      else{
+          movieList =  new MovieList();
+          loadMovieList();
+      }
+          
 
     }
 
