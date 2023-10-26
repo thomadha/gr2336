@@ -49,17 +49,22 @@ public class MovieListHandler {
   }
 
       /**
-   * Gets a movielist with the specified username 
+   * Gets a movielist with the specified username and matching password
    *
    * @param username the username of the movielist to get
-   * @return a movielist with the specifed username
-   * @throws IllegalArgumentException if the movielist does not exist
+   * * @param password the password of the specific movielist
+   * @return a movielist with the specifed username and correct password
+   * @throws IllegalArgumentException if the movielist does not exist or password is incorrect
    */
-  public MovieList getMovieList(String username) {
-    return getAllMovieListsFromFile().stream()
-        .filter(a -> a.getUsername().equals(username))
+  public MovieList getMovieList(String username, String password) {
+    List<MovieList> movieLists = getAllMovieListsFromFile();
+    if (movieLists == null) {
+      throw new IllegalStateException("Error loading movie lists from file");
+  }
+    return movieLists.stream()
+        .filter(a -> a.getUsername().equals(username) && a.getPassword().equals(password))
         .findFirst()
-        .orElseThrow(() -> new IllegalArgumentException("Movielist doesn't exist"));
+        .orElseThrow(() -> new IllegalArgumentException("Movielist doesn't exist or password is incorrect"));
   }
 
   /**
