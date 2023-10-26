@@ -31,7 +31,7 @@
             <Font name="American Typewriter" size="16.0" />
          </font>
       </Text>
-      <Text fx:id="changeText" layoutX="106.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have one yet? Make your own movie diary now!">
+      <Text fx:id="changeText" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have one yet? Make your own movie diary now!" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
             <Font name="American Typewriter" size="15.0" />
          </font>
@@ -46,6 +46,10 @@
             <Font name="American Typewriter" size="14.0" />
          </font>
       </Button>
-      <Label fx:id="feedback" layoutX="219.0" layoutY="253.0" prefHeight="17.0" prefWidth="159.0" />
+      <Label fx:id="feedback" layoutX="153.0" layoutY="249.0" prefHeight="41.0" prefWidth="294.0" textFill="RED">
+         <font>
+            <Font name="American Typewriter" size="13.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
