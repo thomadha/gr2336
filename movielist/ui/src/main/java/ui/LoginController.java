@@ -17,34 +17,70 @@ import json.MovieListHandler;
 
 public class LoginController {
   
-  @FXML private TextField usernameInput = new TextField();
-  @FXML private TextField passwordInput = new TextField();
+    @FXML private TextField usernameInput = new TextField();
+    @FXML private TextField passwordInput = new TextField();
 
-  @FXML private Button openListBtn = new Button();
-  @FXML private Button newOrLoginBtn = new Button();
+    @FXML private Button openListBtn = new Button();
+    @FXML private Button newOrLoginBtn = new Button();
 
-  @FXML private Label feedback; 
-  @FXML private Text openOrMakeTexts;
-  @FXML private Text changeText;
+    @FXML private Label feedback; 
+    @FXML private Text openOrMakeTexts;
+    @FXML private Text changeText;
 
-  private MovieList movieList;
-  private MovieListHandler movieListHandler;
+    private MovieList movieList;
+    private MovieListHandler movieListHandler;
 
-  public LoginController() {
-    movieList = new MovieList();
-    movieListHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
-}
+    public LoginController() {
+      movieList = new MovieList();
+      movieListHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
+  }
 
-  public MovieList getMovieList() {
-    return movieList;
-}
+    public MovieList getMovieList() {
+      return movieList;
+    }
+
+    
+    @FXML
+    public void openListBtn (ActionEvent event){
+      if(openListBtn.getText().equals("Log in")){
+          openExistingMovieList();
+      }
+      else if(openListBtn.getText().equals("Register")){
+          makeNewMovieList();
+      }
+    }
+  
+    @FXML
+    public void newOrLogin (ActionEvent event){
+      if(newOrLoginBtn.getText().equals("Make a new movie diary")){
+        openOrMakeTexts.setText("Make your movie diary:");
+        openListBtn.setText("Register");
+        changeText.setText("Already have a movie list? Log in instead!");
+        newOrLoginBtn.setText("Log into your account");
+      }
+      else if(newOrLoginBtn.getText().equals("Log into your account")){
+        openOrMakeTexts.setText("Open your movie diary:");
+        openListBtn.setText("Log in");
+        changeText.setText("Don't have one yet? Make your own movie diary now!");
+        newOrLoginBtn.setText("Make new movie diary");
+      }
+    }
+
+
+
+
+
+
+
 
 
   @FXML
-    public void openExistingMovieList (ActionEvent event){
+    public void openExistingMovieList (){
   
       String usernameString = this.usernameInput.getText();
       String passwordString = this.passwordInput.getText();
+
+      movieList = movieListHandler.getMovieList(usernameString, passwordString);
 
       if(!validateInput(usernameString, passwordString)){
         feedback.setText("Feil brukernavn eller passord :(");
@@ -60,6 +96,12 @@ public class LoginController {
 
       }
       
+
+    }
+
+    @FXML
+    public void makeNewMovieList (){
+      movieList =  new MovieList();
 
     }
 
@@ -88,15 +130,7 @@ public class LoginController {
         } 
     movieListHandler.getMovieList(username, password);
     return true;
-        
-  
-  }
-
-  @FXML
-    public void makeNewMovieList (ActionEvent event){
-      MovieList movieList =  new MovieList();
-
-    }
+      }
   
 
   @FXML
