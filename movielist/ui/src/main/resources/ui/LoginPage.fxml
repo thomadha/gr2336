@@ -6,8 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField id="usernameInput" fx:id="usernameInput" layoutX="236.0" layoutY="170.0" />
       <TextField id="passwordInput" fx:id="passwordInput" layoutX="236.0" layoutY="210.0" />
@@ -31,17 +30,17 @@
             <Font name="American Typewriter" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="106.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have one yet? Make your own movie diary now!">
+      <Text layoutX="106.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have one yet? Make your own movie diary now!">
          <font>
             <Font name="American Typewriter" size="15.0" />
          </font>
       </Text>
-      <Button id="newUserBtn" fx:id="newUserBtn" layoutX="215.0" layoutY="338.0" mnemonicParsing="false" onAction="#makeNewMovieList" text="Make new movie diary">
+      <Button id="newUserBtn" fx:id="newUserBtn" layoutX="215.0" layoutY="331.0" mnemonicParsing="false" onAction="#makeNewMovieList" text="Make new movie diary">
          <font>
             <Font name="American Typewriter" size="14.0" />
          </font>
       </Button>
-      <Button id="loginBtn" fx:id="loginBtn" layoutX="431.0" layoutY="183.0" mnemonicParsing="false" onAction="#openExistingMovieList" text="Log in">
+      <Button id="loginBtn" fx:id="loginBtn" layoutX="431.0" layoutY="188.0" mnemonicParsing="false" onAction="#openList" text="Log in">
          <font>
             <Font name="American Typewriter" size="14.0" />
          </font>
