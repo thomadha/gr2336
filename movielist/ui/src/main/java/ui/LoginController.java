@@ -77,7 +77,6 @@ public class LoginController {
 
       if(validInput(usernameString, passwordString)){
           movieList = movieListHandler.getMovieList(usernameString);
-          correctPassword(usernameString,passwordString);
           movieListHandler.saveToFile(movieList);
           loadMovieList();
       }
@@ -111,6 +110,7 @@ public class LoginController {
         } 
         else if(!correctPassword(username,password)){
           feedback.setText("Wrong password");
+          return false;
         }
         try{
             movieListHandler.getMovieList(username);
@@ -163,7 +163,7 @@ public class LoginController {
     private boolean correctPassword(String username, String password){
         return movieListHandler.getAllMovieListsFromFile().stream()
                                                           .filter(a -> a.getUsername().equals(username))
-                                                          .allMatch(a -> a.getPassword().equals(password));
+                                                          .anyMatch(a -> a.getPassword().equals(password));
     }
 
 
