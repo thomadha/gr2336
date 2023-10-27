@@ -104,20 +104,21 @@ public class LoginController {
     }
 
     private boolean validInput(String username, String password){
-        if(username.equals("") || password.equals("")){
+      MovieList movieList;
+        if(username.isEmpty() || password.isEmpty()){
             feedback.setText("You have to fill inn both a username and password");
             return false;
         } 
-        else if(!correctPassword(username,password)){
-          feedback.setText("Wrong password");
-          return false;
-        }
         try{
-            movieListHandler.getMovieList(username);
+            movieList = movieListHandler.getMovieList(username);
         }
         catch (IllegalArgumentException e){
             feedback.setText("Movielist doesn't exist");
             return false;
+        }
+        if(!movieList.getPassword().equals(password)){
+          feedback.setText("Wrong password");
+          return false;
         }
         feedback.setText("");
         return true;
@@ -159,12 +160,5 @@ public class LoginController {
                                                           .map(a -> a.getUsername())
                                                           .anyMatch(a -> a.equals(username));
     }
-
-    private boolean correctPassword(String username, String password){
-        return movieListHandler.getAllMovieListsFromFile().stream()
-                                                          .filter(a -> a.getUsername().equals(username))
-                                                          .anyMatch(a -> a.getPassword().equals(password));
-    }
-
 
 }
