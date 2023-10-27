@@ -46,7 +46,7 @@
             <Font name="American Typewriter" size="14.0" />
          </font>
       </Button>
-      <Label layoutX="107.0" layoutY="256.0" prefHeight="27.0" prefWidth="385.0" textAlignment="CENTER" textFill="RED">
+      <Label fx:id="feedback" layoutX="107.0" layoutY="256.0" prefHeight="27.0" prefWidth="385.0" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="American Typewriter" size="13.0" />
          </font>
