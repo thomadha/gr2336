@@ -1,11 +1,16 @@
 package ui;
 
 
+import java.io.IOException;
+
 import core.Movie;
 import core.MovieList;
 import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -13,6 +18,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AppController {
 
@@ -26,6 +32,7 @@ public class AppController {
     @FXML private MenuItem romcom; 
     @FXML private Label header; 
     @FXML private Label feedback; 
+    @FXML private Button backBtn;
 
     private MovieListHandler fileHandler;
 
@@ -74,6 +81,23 @@ public class AppController {
     private void handleChoise(ActionEvent e){
         MenuItem genrechoise = (MenuItem) e.getSource();
         this.genrebtn.setText(genrechoise.getText());
+    }
+
+    @FXML
+    private void handleBackBtn(ActionEvent event){
+        try {
+            FXMLLoader loaders = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
+            Parent roots = loaders.load();
+            movieListField.getItems().clear();
+            resetChoises();
+            Scene scenes = new Scene(roots);
+            Stage stages = new Stage();
+            stages.setScene(scenes);
+            stages.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
