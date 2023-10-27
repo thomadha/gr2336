@@ -38,5 +38,16 @@
       }
     ],
     "username": "jorgen"
+  },
+  {
+    "movies": [
+      {
+        "name": "Batman",
+        "genre": "Action",
+        "score": 5.0,
+        "movieCount": 1
+      }
+    ],
+    "username": "Username123"
   }
 ]
