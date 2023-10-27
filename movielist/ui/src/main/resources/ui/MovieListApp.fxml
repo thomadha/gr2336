@@ -13,11 +13,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" style="-fx-background-color: #9AADBF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AppController">
    <children>
-      <TextField id="userName" fx:id="userName" layoutX="14.0" layoutY="45.0" prefHeight="6.0" prefWidth="106.0" promptText="username" style="-fx-border-color: #517594;">
-         <font>
-            <Font name="Century Gothic" size="10.0" />
-         </font>
-      </TextField>
       <Label id="header" fx:id="header" layoutX="58.0" layoutY="163.0" text="New movie diary:">
          <font>
             <Font name="Broadway" size="24.0" />
@@ -63,23 +58,22 @@
           <MenuItem id="other" fx:id="other" mnemonicParsing="false" onAction="#handleChoise" text="Other" />
         </items>
       </MenuButton>
-      <Label layoutX="14.0" layoutY="14.0" text="Make a new or open an aleady exsisting movie diary:">
-         <font>
-            <Font name="Century Gothic" size="12.0" />
-         </font>
-      </Label>
       <Separator layoutX="-2.0" layoutY="130.0" prefHeight="15.0" prefWidth="606.0" />
-      <Label layoutX="284.0" layoutY="69.0" text="Movie Diary">
+      <Label layoutX="176.0" layoutY="53.0" text="Movie Diary">
          <font>
             <Font name="Broadway" size="48.0" />
          </font>
       </Label>
-      <Button fx:id="openListBtn" layoutX="132.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleOpenList" style="-fx-background-color: #153243;" text="Open" textFill="WHITE" />
       <Label fx:id="feedback" layoutX="14.0" layoutY="83.0" textFill="#d31313">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <ListView fx:id="movieListField" layoutX="29.0" layoutY="204.0" prefHeight="218.0" prefWidth="238.0" />
+      <Button id="backBtn" fx:id="backBtn" layoutX="27.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleBackBtn" style="-fx-background-color: white;" text="Back">
+         <font>
+            <Font name="American Typewriter" size="13.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
