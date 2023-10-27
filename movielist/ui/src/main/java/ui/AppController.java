@@ -3,7 +3,7 @@ package ui;
 
 import core.Movie;
 import core.MovieList;
-import json.MovieListHandler;
+import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,7 +38,7 @@ public class AppController {
 
     public AppController() {
         movieList = new MovieList();
-        fileHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
+        fileHandler = new MovieListHandler("/src/main/java/filehandler/MovieList.json");
     }
 
     public MovieList getMovieList() {
