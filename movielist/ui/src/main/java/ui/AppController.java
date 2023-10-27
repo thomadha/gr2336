@@ -3,7 +3,7 @@ package ui;
 
 import core.Movie;
 import core.MovieList;
-import json.MovieListHandler;
+import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,6 +40,10 @@ public class AppController {
         return movieList;
     }
 
+    public void setMovielist(MovieList movieList){
+        this.movieList = movieList; 
+    }
+
     @FXML
     private void handleAddBtn(ActionEvent event){
         try{
@@ -71,5 +75,7 @@ public class AppController {
         MenuItem genrechoise = (MenuItem) e.getSource();
         this.genrebtn.setText(genrechoise.getText());
     }
+
+
 
 }
