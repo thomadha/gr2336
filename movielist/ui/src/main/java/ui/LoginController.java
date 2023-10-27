@@ -3,6 +3,7 @@ package ui;
 import java.io.IOException;
 
 import core.MovieList;
+import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import json.MovieListHandler;
 
 public class LoginController {
   
@@ -129,7 +129,7 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListApp.fxml"));
             Parent root = loader.load();
             AppController appController = loader.getController();
-            appController.getMovieList();
+            appController.setMovielist(movieList);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);

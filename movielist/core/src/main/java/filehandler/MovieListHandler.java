@@ -1,4 +1,4 @@
-package json;
+package filehandler;
 
 import java.io.FileReader;
 import java.io.FileWriter;
