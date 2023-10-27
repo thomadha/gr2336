@@ -65,7 +65,7 @@ public class AppController {
     }
 
     @FXML
-    private void updateMovieListField(){
+    public void updateMovieListField(){
         movieListField.getItems().clear();
         movieListField.getItems().addAll(movieList.getMovies());
     }

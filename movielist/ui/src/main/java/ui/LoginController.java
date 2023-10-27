@@ -130,6 +130,7 @@ public class LoginController {
             Parent root = loader.load();
             AppController appController = loader.getController();
             appController.setMovielist(movieList);
+            appController.updateMovieListField();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
