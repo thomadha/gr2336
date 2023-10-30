@@ -116,6 +116,7 @@ public class AppController {
             Stage stage = new Stage();
             topRatedController.setStage(stage);
             topRatedController.setMovielist(movieList);
+            topRatedController.initialize();
             stage.setScene(scene);
             stage.show();
             movieDiaryStage.close();

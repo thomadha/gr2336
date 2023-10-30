@@ -27,7 +27,7 @@
             <Font name="Broadway" size="24.0" />
          </font>
       </Label>
-      <MenuButton fx:id="filterbtn" layoutX="27.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleFilterBtn" text="Views">
+      <MenuButton fx:id="filterbtn" layoutX="27.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleFilterBtn" text="Choose filter">
         <items>
             <MenuItem fx:id ="views" mnemonicParsing="false" text="Views" />
             <MenuItem fx:id ="bestRating" mnemonicParsing="false" text="Best rating" />
