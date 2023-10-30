@@ -130,10 +130,11 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListApp.fxml"));
             Parent root = loader.load();
             AppController appController = loader.getController();
-            appController.setMovielist(movieList);
-            appController.updateMovieListField();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            appController.setMovielist(movieList);
+            appController.updateMovieListField();
+            appController.setMovieDiaryStage(stage);
             stage.setScene(scene);
             stage.show();
             cleansePage();

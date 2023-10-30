@@ -29,9 +29,9 @@
       </Label>
       <MenuButton fx:id="filterbtn" layoutX="27.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleFilterBtn" text="Views">
         <items>
-            <MenuItem mnemonicParsing="false" text="Views" />
-            <MenuItem mnemonicParsing="false" text="Best rating" />
-            <MenuItem mnemonicParsing="false" text="Worst rating" />
+            <MenuItem fx:id ="views" mnemonicParsing="false" text="Views" />
+            <MenuItem fx:id ="bestRating" mnemonicParsing="false" text="Best rating" />
+            <MenuItem fx:id ="worstRating" mnemonicParsing="false" text="Worst rating" />
         </items>
       </MenuButton>
       <Text layoutX="27.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose what to filter by:" />
