@@ -1,7 +1,6 @@
 package ui;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import core.Movie;
@@ -12,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -24,6 +24,7 @@ public class TopRatedController {
   @FXML private MenuItem bestRating;
   @FXML private MenuItem worstRating;
   @FXML private ListView<Movie> movieListField; 
+  @FXML private Label header1; 
 
   private List<MovieList> allMovieLists; 
   private MovieList allMovies;
@@ -67,7 +68,23 @@ public class TopRatedController {
   @FXML
   private void handleFilterBtn(ActionEvent event){
       MenuItem filterchoise = (MenuItem) event.getSource();
-      this.filterbtn.setText(filterchoise.getText());
+      String text = filterchoise.getText(); 
+      this.filterbtn.setText(text);
+      switch (text) {
+        case "Views":
+          allMovies.sortByCount();
+          break;
+        
+        case "Worst rating":
+          allMovies.sortByWorstRating();
+          break; 
+        
+        default:
+          allMovies.sortByBestRating();
+          break;
+      }
+      header1.setText(text.toLowerCase());
+      updateMovieListField();
   }
 
 

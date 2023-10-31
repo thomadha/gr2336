@@ -44,6 +44,18 @@
   {
     "movies": [
       {
+        "name": "GOT",
+        "genre": "Romcom",
+        "score": 10.0,
+        "movieCount": 1
+      },
+      {
+        "name": "The Joker",
+        "genre": "Action",
+        "score": 9.96875,
+        "movieCount": 6
+      },
+      {
         "name": "Star Wars",
         "genre": "Action",
         "score": 8.0,
