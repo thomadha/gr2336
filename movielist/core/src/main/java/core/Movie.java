@@ -8,7 +8,7 @@ public class Movie {
 
   @Override
   public String toString() {
-    return name + " \n - Genre: " + genre + " - Score: " + score + " - Count: " + movieCount;
+    return name + " \n - Genre: " + genre + " - Score: " + score + " - Views: " + movieCount;
   }
 
   public Movie(String name, double score, String genre){
@@ -42,7 +42,6 @@ public class Movie {
     this.score = score; 
     this.movieCount = movieCount;
   }
-
   
   public String getName() {
     return name;
