@@ -100,6 +100,7 @@ public class AppController {
             Stage stages = new Stage();
             stages.setScene(scenes);
             stages.show();
+            movieDiaryStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

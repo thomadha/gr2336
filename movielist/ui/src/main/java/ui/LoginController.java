@@ -29,6 +29,7 @@ public class LoginController {
 
     private MovieList movieList;
     private MovieListHandler movieListHandler;
+    private Stage loginControllerStage; 
 
     public LoginController() {
       movieList = new MovieList();
@@ -37,6 +38,10 @@ public class LoginController {
 
     public MovieList getMovieList() {
       return movieList;
+    }
+
+    public void setLoginControllerStage(Stage stage){
+      this.loginControllerStage = stage;
     }
 
 
@@ -138,6 +143,7 @@ public class LoginController {
             stage.setScene(scene);
             stage.show();
             cleansePage();
+            loginControllerStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
