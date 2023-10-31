@@ -2,52 +2,96 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.17</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>movielist</groupId>
+	<groupId>it1901</groupId>
 	<artifactId>springboot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+
+
+	
+	<parent>
+		<groupId>it1901</groupId>
+		<artifactId>movielist</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<!-- <version>0.0.1-SNAPSHOT</version>
 	<name>springboot</name>
 	<description>Implementation of Rest API with Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
-	</properties>
+	</properties> -->
+	
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>it1901</groupId>
+			<artifactId>movielist</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>it1901</groupId>
+			<artifactId>json</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.9.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.7.5</version>
 		</dependency>
+		
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<version>2.7.5</version>
 			<scope>test</scope>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- Spring boot maven plugin-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>
+					--add-opens movielist.springboot/movielist.springboot=ALL-UNNAMED
+					</argLine>
+				</configuration>
+			</plugin>
+
+
+			<!-- Run the checkstyle code quality tool -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+			</plugin>
+			
+			
+			<!-- Spring boot maven plugin-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<!-- Run the spotbugs quality tool-->
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-boot-maven-plugin</artifactId>
+				<version>4.7.3.6</version>
 			</plugin>
 		</plugins>
 	</build>
