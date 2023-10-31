@@ -123,7 +123,7 @@
 <error line="65" column="5" severity="error" message="&apos;method def&apos; child has incorrect indentation level 4, expected level should be 8." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
 <error line="66" column="3" severity="error" message="&apos;method def rcurly&apos; has incorrect indentation level 2, expected level should be 4." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
 </file>
-<file name="C:\Users\Lenovo\Prosjekter\gr2336\movielist\core\src\main\java\json\MovieListHandler.java">
+<file name="C:\Users\Lenovo\Prosjekter\gr2336\movielist\core\src\main\java\filehandler\MovieListHandler.java">
 <error line="19" column="7" severity="error" message="&apos;ctor def&apos; child has incorrect indentation level 6, expected level should be 8." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
 <error line="20" column="7" severity="error" message="&apos;if&apos; has incorrect indentation level 6, expected level should be 8." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
 <error line="21" column="9" severity="error" message="&apos;if&apos; child has incorrect indentation level 8, expected level should be 12." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
