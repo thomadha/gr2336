@@ -9,7 +9,7 @@ public class MovieListRestController {
   
   @RequestMapping("/movielist")
   public String movielist() {
-    return "Movielist";
+    return "Movielist is cool";
   }
 
 }
