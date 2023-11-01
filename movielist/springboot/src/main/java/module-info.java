@@ -6,10 +6,10 @@ module movielist.springboot {
   requires spring.context;
   requires spring.boot.autoconfigure;
   requires spring.beans;
+  requires core;
+  requires ui;
+  
 
-  // requires movielist.core;
-  // requires movielist.json;
-
-  opens movielist.springboot to movielist.springboot, spring.beans, spring.web, spring.context, com.google.gson;
+  opens movielist.springboot to movielist.springboot, spring.beans, spring.web, spring.context, com.google.gson, core, ui;
   
 }
