@@ -32,3 +32,6 @@ For all complete filepaths, see the README.md-file at the outermost level.
 
 ## Work habits
 
+Throughout this release, the team has placed immense emphasis on maintaining the work habits we cultivated from the beginning. Initially, none of us were particularly familiar with working on GitHub, making it a challenge at the start. However, this challenge transformed into a much-improved workflow by this final release. Despite our initial lack of knowledge, each member of the team has undergone significant learning. We have actively utilized development tasks on GitHub, ensuring that these tasks serve as the cornerstone for all our work. Every piece of code has been associated with these tasks, employing informative commit messages and logical branch names.
+
+Our commitment to clarity is evident in our commit messages, which are made as descriptive as possible. Additionally, all merges have been conducted through merge requests linked to relevant issues. Each merge request has undergone thorough review by another team member to guarantee the overall code quality within the group. This approach has been fundamental in our collaborative efforts, leading to a successful and polished final release.
