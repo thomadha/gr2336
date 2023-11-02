@@ -12,9 +12,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 public class TopRatedController {
@@ -23,8 +23,8 @@ public class TopRatedController {
   @FXML private MenuItem views;
   @FXML private MenuItem bestRating;
   @FXML private MenuItem worstRating;
-  @FXML private ListView<Movie> movieListField; 
   @FXML private Label header1; 
+  @FXML private TextArea topfield; 
 
   private List<MovieList> allMovieLists; 
   private MovieList allMovies;
@@ -47,12 +47,6 @@ public class TopRatedController {
 
   public void initialize(){
     getAllMoviesFromFile();
-    updateMovieListField();
-  }
-
-  private void updateMovieListField(){
-    movieListField.getItems().clear();
-    movieListField.getItems().addAll(allMovies.getMovies());
   }
 
   private void getAllMoviesFromFile(){
@@ -69,22 +63,31 @@ public class TopRatedController {
   private void handleFilterBtn(ActionEvent event){
       MenuItem filterchoise = (MenuItem) event.getSource();
       String text = filterchoise.getText(); 
+      header1.setText(text.toLowerCase());
       this.filterbtn.setText(text);
+      topfield.setText("");
       switch (text) {
         case "Views":
           allMovies.sortByCount();
+          for (Movie m : allMovies.getMovies()) {
+            topfield.setText(topfield.getText() + m.viewsString());
+          }
           break;
         
         case "Worst rating":
           allMovies.sortByWorstRating();
+          for (Movie m : allMovies.getMovies()) {
+            topfield.setText(topfield.getText() + m.scoreString());
+          }
           break; 
         
         default:
           allMovies.sortByBestRating();
+          for (Movie m : allMovies.getMovies()) {
+            topfield.setText(topfield.getText() + m.scoreString());
+          }
           break;
       }
-      header1.setText(text.toLowerCase());
-      updateMovieListField();
   }
 
 

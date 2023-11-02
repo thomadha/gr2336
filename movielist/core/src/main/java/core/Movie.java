@@ -11,6 +11,14 @@ public class Movie {
     return name + " \n - Genre: " + genre + " - Score: " + score + " - Views: " + movieCount;
   }
 
+  public String scoreString(){
+    return name + "\n - Score: " + score + "\n\n"; 
+  }
+
+  public String viewsString(){
+    return name + "\n - Views: " + movieCount + "\n\n"; 
+  }
+
   public Movie(String name, double score, String genre){
     if(!validScore(score)){
       throw new IllegalArgumentException("Score must be between 0 and 10");
