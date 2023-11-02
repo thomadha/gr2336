@@ -94,12 +94,14 @@ public class AppController {
         try {
             FXMLLoader loaders = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
             Parent roots = loaders.load();
+            LoginController loginController = loaders.getController(); 
             movieListField.getItems().clear();
             resetChoises();
             Scene scenes = new Scene(roots);
             Stage stages = new Stage();
             stages.setScene(scenes);
             stages.show();
+            loginController.setLoginControllerStage(stages);
             movieDiaryStage.close();
         } catch (IOException e) {
             e.printStackTrace();
