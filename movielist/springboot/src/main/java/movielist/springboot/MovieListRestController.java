@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import core.Movie;
 import core.MovieList;
@@ -69,9 +70,7 @@ public class MovieListRestController {
   // localhost:8080/movielist/{username}
   @PutMapping("{username}")
   public void saveAndCloseMovieList(@PathVariable String username, @RequestBody MovieList movieList) {
-      //TODO: process PUT request
-      
-      return entity;
+      //TODO
   }
 
 

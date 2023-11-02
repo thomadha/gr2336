@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Class for checking if the server is running.
  */
 
- @RestController
+@RestController
 public class ServerController {
   @GetMapping
   public String health() {
