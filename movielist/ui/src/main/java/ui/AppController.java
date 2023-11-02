@@ -34,6 +34,8 @@ public class AppController {
     @FXML private Label feedback; 
     @FXML private Button backBtn;
 
+    private Stage movieDiaryStage; 
+
     private MovieListHandler fileHandler;
 
     private MovieList movieList;
@@ -49,6 +51,10 @@ public class AppController {
 
     public void setMovielist(MovieList movieList){
         this.movieList = movieList; 
+    }
+
+    public void setMovieDiaryStage(Stage stage){
+        this.movieDiaryStage = stage; 
     }
 
     @FXML
@@ -88,16 +94,38 @@ public class AppController {
         try {
             FXMLLoader loaders = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
             Parent roots = loaders.load();
+            LoginController loginController = loaders.getController(); 
             movieListField.getItems().clear();
             resetChoises();
             Scene scenes = new Scene(roots);
             Stage stages = new Stage();
             stages.setScene(scenes);
             stages.show();
+            loginController.setLoginControllerStage(stages);
+            movieDiaryStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+    }
 
+    @FXML
+    private void handleTopListBtn(ActionEvent event){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TopRated.fxml"));
+            Parent root = loader.load();
+            TopRatedController topRatedController = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            topRatedController.setStage(stage);
+            topRatedController.setMovielist(movieList);
+            topRatedController.initialize();
+            stage.setScene(scene);
+            stage.show();
+            movieDiaryStage.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 
