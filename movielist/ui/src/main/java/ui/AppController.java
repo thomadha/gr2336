@@ -11,7 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
@@ -33,6 +36,7 @@ public class AppController {
     @FXML private Label header; 
     @FXML private Label feedback; 
     @FXML private Button backBtn;
+    @FXML private Button deleteMovieListBtn;
 
     private Stage movieDiaryStage; 
 
@@ -127,6 +131,21 @@ public class AppController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleDeleteMovieList(ActionEvent e){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Delete movie list");
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Press OK to confirm, or Cancel to go back.");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                handleBackBtn(e);
+            }
+        });
+}
+
 
 
 

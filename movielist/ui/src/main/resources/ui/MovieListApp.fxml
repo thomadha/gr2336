@@ -76,5 +76,10 @@
          </font>
       </Button>
       <Button layoutX="478.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleTopListBtn" text="Open top lists" />
+      <Button id="deleteMovieListBtn" fx:id="deleteMovieListBtn" layoutX="85.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleDeleteMovieList" style="-fx-background-color: red;" text="Delete movie diary" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
