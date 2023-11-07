@@ -112,22 +112,33 @@ public class MovieListHandler {
     }
   }
 
-  public boolean removeMovieList(MovieList movielist){
+  public void removeMovieList(MovieList movielist){
     List<MovieList> movieLists = getAllMovieListsFromFile(); 
+    boolean found = false; 
+    MovieList movieListToRemove = null;
 
-    if(movieLists.contains(movielist)){
-      movieLists.remove(movielist); 
-
-      try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) {
-          Gson gson = new GsonBuilder().setPrettyPrinting().create();
-          gson.toJson(movieLists, writer);
-      } catch (IOException e) {
-          e.printStackTrace();
-      }
-
-      return true; 
+    for (MovieList exsistingMovieList : movieLists) {
+        if(exsistingMovieList.getUsername().equals(movielist.getUsername())){
+          found = true; 
+          break; 
+        }
     }
-    return false; 
+
+    if(found){
+      for (MovieList exsistingMovieList : movieLists) {
+        if(exsistingMovieList.getUsername().equals(movielist.getUsername())){
+          movieListToRemove = exsistingMovieList;
+        }
+    }
+    movieLists.remove(movieListToRemove);
+  }
+      
+    try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        gson.toJson(movieLists, writer);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
   }
 
   
