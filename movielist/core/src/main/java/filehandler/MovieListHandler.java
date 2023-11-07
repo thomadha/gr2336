@@ -84,24 +84,6 @@ public class MovieListHandler {
    *
    * @param user the user to update
    */
-  // public void saveToFile(MovieList movielist) {
-  //   List<MovieList> movieLists = getAllMovieListsFromFile();
-  //   if(movieLists.stream().anyMatch(a->a.getUsername().equals(movielist.getUsername()))){
-
-  //     MovieList movieListToUpdate =
-  //     movieLists.stream().filter(a -> a.getUsername().equals(movielist.getUsername())).findAny().get();
-  //     movieListToUpdate.setMovies(movielist.getMovies()); 
-  //   }
-  //   else{
-  //     movieLists.add(movielist);
-  //   }
-  //   try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) { // Specify UTF-8
-  //     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-  //     gson.toJson(movieLists, writer); // Serialize and write the updated user list
-  //   } catch (IOException e) {
-  //     e.printStackTrace();
-  //   }
-  // }
 
   public void saveToFile(MovieList movielist) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
@@ -128,7 +110,25 @@ public class MovieListHandler {
     } catch (IOException e) {
         e.printStackTrace();
     }
-}
+  }
+
+  public boolean removeMovieList(MovieList movielist){
+    List<MovieList> movieLists = getAllMovieListsFromFile(); 
+
+    if(movieLists.contains(movielist)){
+      movieLists.remove(movielist); 
+
+      try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) {
+          Gson gson = new GsonBuilder().setPrettyPrinting().create();
+          gson.toJson(movieLists, writer);
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+
+      return true; 
+    }
+    return false; 
+  }
 
   
 }
