@@ -68,7 +68,7 @@ public class MovieListRestController {
    * @param movieList that will be saved
    */
   // localhost:8080/movielist/{username}
-  @PutMapping("{username}")
+  @PutMapping("/{username}")
   public void saveAndCloseMovieList(@PathVariable String username, @RequestBody MovieList movieList) {
       //TODO
   }
