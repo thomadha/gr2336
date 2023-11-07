@@ -4,14 +4,18 @@ The Movie App is a JavaFX application that allows you to add and display a list 
 
 ## New features for this release
 
-- If you add the same movie more than once, the data connected combines instead of making duplicates
-    - In the json file, a count attribute is added, and shows how many times you have watched the movie
-    - The genre attribute is updated to the latest contribution
-    - The score is generated as an average from all the times you have watched it
-- A login feature is also added
-    - This seperates your movie list from other users
-    - It works by writing in your username and clicking "Save & Close". If you want to open the list, you write in your username and click "Open"
-    - Currently it is not possible to save your list for later use. Meaning if you close the app after you run it and saved a list, it will not be possible to open the next time you run it. This is planned to implement for the next release.
+- The login feature is improved immensly in this release
+    - Each movie list now includes both a username and password, significantly enhancing the security of user data.
+    - A new controller and fxml-file has been made to support this new page.
+    - This also means that you can close the app and retrieve the list the next time you run it, as all the data related to the movie diary is saved to a file. The logic regarding the file handling is significally improved.
+- A dedicated page is implemented for top rated movies
+    - This shows the user an overview for highest rated movies, most viewed and most popular genre.
+    - As a result, 
+    - Similarily to the login page, this page has its own controller and fxml-file
+- Making it possible to delete your movie list profile
+    - Implementing a new button within the application interface, enabling users to delete their profiles.
+    - The user is given an alert when pressing this button, ensuring that they actually want their movie diary deleted
+    - If the user selects "Cancel," they are redirected back to their list. However, choosing "OK" deletes their movie diary from the file, causing the application to return to the home page since the previously accessed movie list no longer exists.
 
 ## How to use
 
