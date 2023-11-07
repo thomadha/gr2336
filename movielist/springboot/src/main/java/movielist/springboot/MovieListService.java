@@ -2,10 +2,8 @@ package movielist.springboot;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import core.MovieList;
 import core.Movie;
@@ -29,6 +27,10 @@ public class MovieListService {
       movieListHandler.getMovieList(username);
   }
 
+  @Autowired
+    public MovieListService(MovieListHandler movieListHandler) {
+        this.movieListHandler = movieListHandler;
+    }
   /**
    * Getter for MovieList
    * 
@@ -59,7 +61,9 @@ public class MovieListService {
    * 
    */
   public void addMovietoMovielist(Movie movie, String username) {
-    // TODO
+      MovieList movieList = movieListHandler.getMovieList(username);
+      movieList.addMovie(movie);
+      movieListHandler.saveToFile(movieList);
   }
 
   /**
@@ -68,12 +72,7 @@ public class MovieListService {
    * @param username to save movielist to
    */
   public void saveAndCloseMovieList(String username) {
-    // TODO
+      movieListHandler.saveToFile(movieList);
   }
-  
-
-
-
-  
   
 }

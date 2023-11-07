@@ -5,16 +5,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Service;
 import core.Movie;
 import core.MovieList;
+import filehandler.MovieListHandler;
+
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -23,6 +20,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequestMapping("/movielist")
 public class MovieListRestController {
+
+  private final MovieListHandler movieListHandler;
+
+  @Autowired
+  public MovieListRestController(MovieListHandler movieListHandler) {
+      this.movieListHandler = movieListHandler;
+  }
+
+
   
   // @RequestMapping("/movielist")
   // public String movielist() {
@@ -45,7 +51,7 @@ public class MovieListRestController {
   // localhost:8080/movielist/{username}
   @GetMapping("/{username}")
   public MovieList getMovieList(@PathVariable String username) {
-    return null;
+    return movieListHandler.getMovieList(username);
   }
 
   /**
@@ -57,7 +63,9 @@ public class MovieListRestController {
   // localhost:8080/movielist/add
   @PostMapping("/add")
   public void addMovie(@RequestBody Movie movie, @RequestBody String username) {
-    // TODO
+    MovieList movieList = movieListHandler.getMovieList(username);
+        movieList.addMovie(movie);
+        movieListHandler.saveToFile(movieList);
   }
 
 
@@ -70,20 +78,7 @@ public class MovieListRestController {
   // localhost:8080/movielist/{username}
   @PutMapping("/{username}")
   public void saveAndCloseMovieList(@PathVariable String username, @RequestBody MovieList movieList) {
-      //TODO
+    movieListHandler.saveToFile(movieList);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
