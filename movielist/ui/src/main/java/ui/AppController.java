@@ -141,6 +141,7 @@ public class AppController {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
+                fileHandler.removeMovieList(movieList);
                 handleBackBtn(e);
             }
         });
