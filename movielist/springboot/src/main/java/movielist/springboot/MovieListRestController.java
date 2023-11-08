@@ -1,27 +1,27 @@
-// package movielist.springboot;
-// import org.springframework.context.annotation.Configuration;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RestController;
+package movielist.springboot;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.context.annotation.Bean;
-// import core.Movie;
-// import core.MovieList;
-// import filehandler.MovieListHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import core.Movie;
+import core.MovieList;
+import filehandler.MovieListHandler;
 
-// import org.springframework.web.bind.annotation.PutMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
-// @Configuration
-// @RestController
-// @RequestMapping("/movielist")
-// public class MovieListRestController {
+@Configuration
+@RestController
+@RequestMapping("/movielist")
+public class MovieListRestController {
 
-//   public MovieListService movielistservice = new MovieListService();
+  public MovieListService movielistservice = new MovieListService();
 
 
 
