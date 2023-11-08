@@ -20,7 +20,8 @@
         "movieCount": 1
       }
     ],
-    "username": "thomas"
+    "username": "thomas",
+    "password": "123"
   },
   {
     "movies": [
@@ -37,6 +38,49 @@
         "movieCount": 1
       }
     ],
-    "username": "jorgen"
+    "username": "jorgen",
+    "password": "123"
+  },
+  {
+    "movies": [
+      {
+        "name": "GOT",
+        "genre": "Romcom",
+        "score": 10.0,
+        "movieCount": 1
+      },
+      {
+        "name": "The Joker",
+        "genre": "Action",
+        "score": 9.96875,
+        "movieCount": 6
+      },
+      {
+        "name": "Star Wars",
+        "genre": "Action",
+        "score": 8.0,
+        "movieCount": 1
+      },
+      {
+        "name": "Harry Potter",
+        "genre": "Horror",
+        "score": 7.0,
+        "movieCount": 1
+      },
+      {
+        "name": "Haisommer",
+        "genre": "Action",
+        "score": 6.0,
+        "movieCount": 1
+      },
+      {
+        "name": "thomasToget",
+        "genre": "Scifi",
+        "score": 3.0,
+        "movieCount": 1
+      }
+    ],
+    "username": "TommyT",
+    "password": "123"
   }
 ]

@@ -11,7 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
@@ -33,6 +36,9 @@ public class AppController {
     @FXML private Label header; 
     @FXML private Label feedback; 
     @FXML private Button backBtn;
+    @FXML private Button deleteMovieListBtn;
+
+    private Stage movieDiaryStage; 
 
     private MovieListHandler fileHandler;
 
@@ -49,6 +55,10 @@ public class AppController {
 
     public void setMovielist(MovieList movieList){
         this.movieList = movieList; 
+    }
+
+    public void setMovieDiaryStage(Stage stage){
+        this.movieDiaryStage = stage; 
     }
 
     @FXML
@@ -88,17 +98,55 @@ public class AppController {
         try {
             FXMLLoader loaders = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
             Parent roots = loaders.load();
+            LoginController loginController = loaders.getController(); 
             movieListField.getItems().clear();
             resetChoises();
             Scene scenes = new Scene(roots);
             Stage stages = new Stage();
             stages.setScene(scenes);
             stages.show();
+            loginController.setLoginControllerStage(stages);
+            movieDiaryStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
     }
+
+    @FXML
+    private void handleTopListBtn(ActionEvent event){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TopRated.fxml"));
+            Parent root = loader.load();
+            TopRatedController topRatedController = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            topRatedController.setStage(stage);
+            topRatedController.setMovielist(movieList);
+            topRatedController.initialize();
+            stage.setScene(scene);
+            stage.show();
+            movieDiaryStage.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleDeleteMovieList(ActionEvent e){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Delete movie list");
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Press OK to confirm, or Cancel to go back.");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                fileHandler.removeMovieList(movieList);
+                handleBackBtn(e);
+            }
+        });
+}
+
 
 
 

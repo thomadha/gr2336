@@ -29,6 +29,7 @@ public class LoginController {
 
     private MovieList movieList;
     private MovieListHandler movieListHandler;
+    private Stage loginControllerStage; 
 
     public LoginController() {
       movieList = new MovieList();
@@ -37,6 +38,10 @@ public class LoginController {
 
     public MovieList getMovieList() {
       return movieList;
+    }
+
+    public void setLoginControllerStage(Stage stage){
+      this.loginControllerStage = stage;
     }
 
 
@@ -130,13 +135,15 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListApp.fxml"));
             Parent root = loader.load();
             AppController appController = loader.getController();
-            appController.setMovielist(movieList);
-            appController.updateMovieListField();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            appController.setMovielist(movieList);
+            appController.updateMovieListField();
+            appController.setMovieDiaryStage(stage);
             stage.setScene(scene);
             stage.show();
             cleansePage();
+            loginControllerStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

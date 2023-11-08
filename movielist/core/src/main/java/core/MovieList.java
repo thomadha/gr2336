@@ -45,6 +45,18 @@ public class MovieList {
     movies.sort(Comparator.comparingDouble(Movie::getScore).reversed());
   }
 
+  public void sortByCount(){
+    movies.sort(Comparator.comparingInt(Movie::getCount).reversed()); 
+  }
+
+  public void sortByBestRating(){
+    movies.sort(Comparator.comparingDouble(Movie::getScore).reversed()); 
+  }
+
+  public void sortByWorstRating(){
+    movies.sort(Comparator.comparingDouble(Movie::getScore)); 
+  }
+
   public int getNumberOfMovies(){
     return movies.size(); 
   }
