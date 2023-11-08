@@ -28,9 +28,9 @@ public class MovieListHandler {
     } 
 
     /**
-   * Read all movieLists form file
+   * Read all movieLists form file.
    *
-   * @return a list of movieLists 
+   * @return a list of movieLists.
    */
   public List<MovieList> getAllMovieListsFromFile() {
     List<MovieList> movieListList = new ArrayList<>();
@@ -49,12 +49,12 @@ public class MovieListHandler {
   }
 
       /**
-   * Gets a movielist with the specified username and matching password
+   * Gets a movielist with the specified username and matching password.
    *
-   * @param username the username of the movielist to get
-   * * @param password the password of the specific movielist
-   * @return a movielist with the specifed username and correct password
-   * @throws IllegalArgumentException if the movielist does not exist or password is incorrect
+   * @param username the username of the movielist to get.
+   * * @param password the password of the specific movielist.
+   * @return a movielist with the specifed username and correct password.
+   * @throws IllegalArgumentException if the movielist does not exist or password is incorrect.
    */
   public MovieList getMovieList(String username) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
@@ -70,8 +70,8 @@ public class MovieListHandler {
   /**
    * Validates that a movieList with the specified username does not already exist.
    *
-   * @param username the username to validate
-   * @throws IllegalArgumentException if a movieList with the specified username already exists
+   * @param username the username to validate.
+   * @throws IllegalArgumentException if a movieList with the specified username already exists.
    */
   public void validateNoExistingMovieList(String username) {
     if (getAllMovieListsFromFile().stream().anyMatch(a -> a.getUsername().equals(username))) {
@@ -82,7 +82,7 @@ public class MovieListHandler {
    /**
    * Updates the user file with the specified user.
    *
-   * @param user the user to update
+   * @param user the user to update.
    */
 
   public void saveToFile(MovieList movielist) {
@@ -98,12 +98,12 @@ public class MovieListHandler {
         }
     }
 
-    // If the MovieList was not found, add it to the list
+    // If the MovieList was not found, add it to the list.
     if (!found) {
         movieLists.add(movielist);
     }
 
-    // Save the entire list to the file
+    // Save the entire list to the file.
     try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         gson.toJson(movieLists, writer);
