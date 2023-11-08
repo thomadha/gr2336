@@ -6,6 +6,11 @@ public class Movie {
   private double score;
   private int movieCount = 1;
 
+  /**
+   * toString method for showing objects of the Movie Class.
+   * 
+   * @return a string with name, genre, score and moviecount.
+   */
   @Override
   public String toString() {
     return name + " \n - Genre: " + genre + " - Score: " + score + " - Views: " + movieCount;
