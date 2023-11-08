@@ -27,7 +27,7 @@ public class MovieList {
   }
 
   public void setMovies(List<Movie> movies){
-    this.movies = movies; 
+    this.movies = new ArrayList<>(movies); 
   }
 
   public MovieList(){
