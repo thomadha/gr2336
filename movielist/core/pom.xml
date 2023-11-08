@@ -83,7 +83,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> 
+            </plugin>
 
             <!-- SpotBugs Plugin -->
             <plugin>

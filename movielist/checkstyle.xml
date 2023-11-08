@@ -10,23 +10,21 @@
             <property name="braceAdjustment" value="0"/>
         </module>
         <!-- Rule for maximum line length, set to 120 -->
-        <module name="LineLength">
-            <property name="max" value="120"/>
-            <property name="ignorePattern" value="^import\s.*$"/>
-        </module>
-        <!-- Maximum number of methods in a class is 30 -->
-        <module name="MethodLength">
-            <property name="max" value="30"/>
-        </module>
-        <!-- Maximum cyclomatic complexity of 10 to avoid complex methods -->
-        <module name="CyclomaticComplexity">
-            <property name="max" value="10"/>
-        </module>
-        <!-- Disable the rule that checks for trailing spaces -->
-        <module name="RegexpSingleline">
-            <property name="id" value="noTrailingSpaces"/>
-            <property name="format" value="^$" />
-        </module>
+    <module name="LineLength">
+        <property name="max" value="120"/>
+        <property name="ignorePattern" value="^import\s.*$"/>
+    </module>
+    <!-- Maximum number of methods in a class is 30 -->
+    <module name="MethodLength">
+        <property name="max" value="30"/>
+    </module>
+    <!-- Maximum cyclomatic complexity of 10 to avoid complex methods -->
+    <module name="CyclomaticComplexity">
+        <property name="max" value="10"/>
+    </module>
+    <!-- Disable the rule that checks for trailing spaces -->
+    <module name="RegexpSingleline">
+        <property name="id" value="noTrailingSpaces"/>
+        <property name="format" value="^$" />
     </module>
 </module>
-
