@@ -1,4 +1,4 @@
-module movielist.springboot {
+module springboot {
 
   requires com.google.gson;
   requires spring.web;
@@ -7,9 +7,5 @@ module movielist.springboot {
   requires spring.boot.autoconfigure;
   requires spring.beans;
   requires core;
-  requires ui;
-  
-
-  opens movielist.springboot to movielist.springboot, spring.beans, spring.web, spring.context, com.google.gson, core, ui;
-  
+    
 }

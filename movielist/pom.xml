@@ -80,7 +80,7 @@
 
     <modules>
         <module>core</module>
-        <module>ui</module>
         <module>springboot</module>
+        <module>ui</module>
     </modules>
 </project>
