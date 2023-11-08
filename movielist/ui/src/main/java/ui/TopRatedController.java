@@ -17,38 +17,59 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+/**
+ * Controller for the Top Rated page.
+ */
 public class TopRatedController {
 
   @FXML private MenuButton filterbtn;
   @FXML private MenuItem views;
   @FXML private MenuItem bestRating;
   @FXML private MenuItem worstRating;
-  @FXML private Label header1; 
-  @FXML private TextArea topfield; 
+  @FXML private Label header1;
+  @FXML private TextArea topfield;
 
-  private List<MovieList> allMovieLists; 
+  private List<MovieList> allMovieLists;
   private MovieList allMovies;
   private MovieListHandler fileHandler;
   private MovieList movieList;
-  private Stage topStage; 
+  private Stage topStage;
 
+  /**
+   * Constructor for the toprated controller.
+   * Initiates a movielist and a filehandler.
+   */
   public TopRatedController(){
     this.movieList = new MovieList();
     this.fileHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
   }
 
+  /**
+   * Setter for the movielist.
+   * @param movieList to show.
+   */
   public void setMovielist(MovieList movieList){
     this.movieList = movieList;
   }
 
+  /**
+   * Setter for the TopRatedController stage.
+   * @param stage.
+   */
   public void setStage(Stage stage){
     this.topStage = stage;
   }
 
+  /**
+   * Initializer that uses the getAllMoviesFromFile method.
+   */
   public void initialize(){
     getAllMoviesFromFile();
   }
 
+  /**
+   * Method to retrieve all the movies from the user.
+   */
   private void getAllMoviesFromFile(){
     allMovies = new MovieList();
     allMovieLists = fileHandler.getAllMovieListsFromFile();
@@ -59,10 +80,14 @@ public class TopRatedController {
     }
   }
 
+  /**
+   * FXML method to filter movies by users choice.
+   * @param event.
+   */
   @FXML
   private void handleFilterBtn(ActionEvent event){
       MenuItem filterchoise = (MenuItem) event.getSource();
-      String text = filterchoise.getText(); 
+      String text = filterchoise.getText();
       header1.setText(text.toLowerCase());
       this.filterbtn.setText(text);
       topfield.setText("");
@@ -79,7 +104,7 @@ public class TopRatedController {
           for (Movie m : allMovies.getMovies()) {
             topfield.setText(topfield.getText() + m.scoreString());
           }
-          break; 
+          break;
         
         default:
           allMovies.sortByBestRating();
@@ -91,6 +116,11 @@ public class TopRatedController {
   }
 
 
+  /**
+   * Back button to return to the MovieDiary.
+   * Does not return to login page.
+   * @param event
+   */
   @FXML
   private void handleBackBtn2(ActionEvent event){
   try{
