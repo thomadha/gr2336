@@ -3,6 +3,11 @@ package movielist.springboot;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import core.MovieList;
@@ -13,6 +18,86 @@ import filehandler.MovieListHandler;
  */
 @Service
 public class MovieListService {
+
+  public MovieList movieList = new MovieList();
+  public List<MovieList> movieLists = new ArrayList<MovieList>();
+  public MovieListHandler movieListHandler = new MovieListHandler("/src/main/java/filehandler/MovieList.json"); 
+  Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+  public MovieListService() throws FileNotFoundException{
+    movieListHandler.saveToFile(movieList);
+  }
+
+  public String getUsername(){
+    return movieList.getUsername();
+  }
+
+  public String getPassword(){
+    return movieList.getPassword();
+  }
+
+  public List<Movie> getMovies(){
+    return movieList.getMovies();
+  }
+
+  public int getNumberOfMovies(){
+    return movieList.getNumberOfMovies();
+  }
+
+  public List<MovieList> getMovieLists(){
+    return movieListHandler.getAllMovieListsFromFile();
+  }
+
+  public MovieList getMovieList(){
+    return movieList;
+  }
+
+  public MovieList getMovieListByUsername(String username){
+    movieLists = movieListHandler.getAllMovieListsFromFile();
+    for(MovieList movieList : movieLists){
+      if(movieList.getUsername().equals(username)){
+        return movieList;
+      }
+    }
+    return null;
+  }
+
+  public void addMovieList(MovieList movieList) throws FileNotFoundException{
+    saveChanges();
+  }
+
+  public void deleteMovieList(String username)throws IOException{
+    if(username == null || username.equals("")){
+      throw new IOException("Name is null");
+    }
+    movieLists = movieListHandler.getAllMovieListsFromFile();
+    int i = 0;
+    for(MovieList movieList : movieLists){
+      if(movieList.getUsername().equals(username)){
+        movieLists.remove(i);
+        movieListHandler.removeMovieList(movieList);
+        saveChanges();
+        break;
+      }
+      i++;
+    }
+  }
+
+
+  public void addMovieToList(Movie movie, String movieName){
+    
+  }
+
+
+
+
+  private void saveChanges() throws FileNotFoundException{
+    movieListHandler.saveToFile(movieList);
+  }
+
+  
+
+  
 
 
   // public MovieList movieList = new MovieList();
