@@ -1,8 +1,8 @@
 package core;
 
 public class Movie {
-  private String name; 
-  private String genre; 
+  private String name;
+  private String genre;
   private double score;
   private int movieCount = 1;
 
@@ -17,11 +17,11 @@ public class Movie {
   }
 
   public String scoreString(){
-    return name + "\n - Score: " + score + "\n\n"; 
+    return name + "\n - Score: " + score + "\n\n";
   }
 
   public String viewsString(){
-    return name + "\n - Views: " + movieCount + "\n\n"; 
+    return name + "\n - Views: " + movieCount + "\n\n";
   }
 
   public Movie(String name, double score, String genre){
@@ -35,7 +35,7 @@ public class Movie {
       throw new IllegalArgumentException("Not specified");
     }
     this.name = name;
-    this.score = score; 
+    this.score = score;
     this.genre=genre;
   }
 
@@ -52,7 +52,7 @@ public class Movie {
       this.genre = genre;
     }
     this.name = name;
-    this.score = score; 
+    this.score = score;
     this.movieCount = movieCount;
   }
   
@@ -96,6 +96,4 @@ public class Movie {
   public int getCount(){
     return this.movieCount;
   }
-
-  
 }

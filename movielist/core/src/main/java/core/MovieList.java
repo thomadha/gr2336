@@ -7,8 +7,8 @@ import java.util.List;
 public class MovieList {
   private List<Movie> movies;
 
-  private String username; 
-  private String password; 
+  private String username;
+  private String password;
 
   public String getUsername() {
     return username;
@@ -27,7 +27,7 @@ public class MovieList {
   }
 
   public void setMovies(List<Movie> movies){
-    this.movies = movies; 
+    this.movies = new ArrayList<>(movies);
   }
 
   public MovieList(){
@@ -36,37 +36,37 @@ public class MovieList {
 
   public List<Movie> getMovies() {
     return new ArrayList<Movie>(movies);
-  } 
+  }
   
   public void addMovie(Movie movie){
     if(!checkDuplicate(movie)){
-      movies.add(movie); 
+      movies.add(movie);
     }
     movies.sort(Comparator.comparingDouble(Movie::getScore).reversed());
   }
 
   public void sortByCount(){
-    movies.sort(Comparator.comparingInt(Movie::getCount).reversed()); 
+    movies.sort(Comparator.comparingInt(Movie::getCount).reversed());
   }
 
   public void sortByBestRating(){
-    movies.sort(Comparator.comparingDouble(Movie::getScore).reversed()); 
+    movies.sort(Comparator.comparingDouble(Movie::getScore).reversed());
   }
 
   public void sortByWorstRating(){
-    movies.sort(Comparator.comparingDouble(Movie::getScore)); 
+    movies.sort(Comparator.comparingDouble(Movie::getScore));
   }
 
   public int getNumberOfMovies(){
-    return movies.size(); 
+    return movies.size();
   }
 
   public String movieListToString(){
-    String s = ""; 
+    String s = "";
     for (Movie movie : movies) {
-      s += movie.getName() + ", " + movie.getScore() + "\n"; 
+      s += movie.getName() + ", " + movie.getScore() + "\n";
     }
-    return s; 
+    return s;
   }
 
   public boolean checkDuplicate(Movie newMovie){
@@ -85,5 +85,4 @@ public class MovieList {
     }
     return hasDuplicate;
   }
-
 }
