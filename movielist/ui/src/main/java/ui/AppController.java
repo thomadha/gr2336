@@ -44,23 +44,44 @@ public class AppController {
 
     private MovieList movieList;
 
+    /**
+     * Method to initiate a new movielist and movielisthandler with the javafx application.
+     */
     public AppController() {
         movieList = new MovieList();
         fileHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
     }
 
+    /**
+     * Getter for movielist.
+     * 
+     * @return a MovieList object.
+     */
     public MovieList getMovieList() {
         return movieList;
     }
 
+    /**
+     * Setter for the MovieList object.
+     * 
+     * @param movieList with Movie objects.
+     */
     public void setMovielist(MovieList movieList){
-        this.movieList = movieList; 
+        this.movieList = movieList;
     }
 
+    /**
+     * Sets the stage for the movie diary.
+     * @param stage.
+     */
     public void setMovieDiaryStage(Stage stage){
-        this.movieDiaryStage = stage; 
+        this.movieDiaryStage = stage;
     }
 
+    /**
+     * FXML method to handle the add button for a movie.
+     * @param event.
+     */
     @FXML
     private void handleAddBtn(ActionEvent event){
         try{
@@ -74,6 +95,9 @@ public class AppController {
         }
     }
 
+    /**
+     * FXML method to reset choices after a movie has been added, meaning clearing the text fiels.
+     */
     @FXML
     private void resetChoises(){
         this.titleField.setText("");
@@ -81,24 +105,36 @@ public class AppController {
         this.genrebtn.setText("Choose genre");
     }
 
+    /**
+     * FXML method to clear field with the movielist, and add the movies in the current MovieList object.
+     */
     @FXML
     public void updateMovieListField(){
         movieListField.getItems().clear();
         movieListField.getItems().addAll(movieList.getMovies());
     }
 
+    /**
+     * FXML method to handle the user choosing a movie gender from the 'menu'.
+     * @param e.
+     */
     @FXML
     private void handleChoise(ActionEvent e){
         MenuItem genrechoise = (MenuItem) e.getSource();
         this.genrebtn.setText(genrechoise.getText());
     }
 
+    /**
+     * FXML method for going back to the login page when in the movielist page.
+     * This is the page you get to after you log in or create user.
+     * @param event.
+     */
     @FXML
     private void handleBackBtn(ActionEvent event){
         try {
             FXMLLoader loaders = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
             Parent roots = loaders.load();
-            LoginController loginController = loaders.getController(); 
+            LoginController loginController = loaders.getController();
             movieListField.getItems().clear();
             resetChoises();
             Scene scenes = new Scene(roots);
@@ -110,9 +146,12 @@ public class AppController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
     }
 
+    /**
+     * FXML method for going from the movielist page to the top rated page. 
+     * @param event.
+     */
     @FXML
     private void handleTopListBtn(ActionEvent event){
         try{
@@ -132,6 +171,11 @@ public class AppController {
         }
     }
 
+    /**
+     * FXML method to delete a movielist.
+     * It can't be regretted and there are extra features to avoid deleting by accident.
+     * @param e.
+     */
     @FXML
     private void handleDeleteMovieList(ActionEvent e){
         Alert alert = new Alert(AlertType.CONFIRMATION);
