@@ -15,6 +15,12 @@ public class MovieListHandler {
 
     private final String filepath;
 
+    /**
+     * Constructor for MovieListHandler.
+     * Initiates a movielisthandler with correct filepath in ui.
+     * 
+     * @param filepath of movielisthandler.
+     */
     public MovieListHandler(String filepath){
       String userdir = System.getProperty("user.dir");
       if(userdir.endsWith("GR2336")){
@@ -24,8 +30,8 @@ public class MovieListHandler {
         userdir = userdir.substring(0, userdir.length()-5);
         userdir = userdir + "/ui";
       }
-      this.filepath = userdir + filepath; 
-    } 
+      this.filepath = userdir + filepath;
+    }
 
     /**
    * Read all movieLists form file.
@@ -48,11 +54,11 @@ public class MovieListHandler {
     return movieListList;
   }
 
-      /**
+  /**
    * Gets a movielist with the specified username and matching password.
    *
    * @param username the username of the movielist to get.
-   * * @param password the password of the specific movielist.
+   * @param password the password of the specific movielist.
    * @return a movielist with the specifed username and correct password.
    * @throws IllegalArgumentException if the movielist does not exist or password is incorrect.
    */
@@ -84,7 +90,6 @@ public class MovieListHandler {
    *
    * @param user the user to update.
    */
-
   public void saveToFile(MovieList movielist) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
     boolean found = false;
@@ -112,15 +117,20 @@ public class MovieListHandler {
     }
   }
 
+  /**
+   * Removes a movielist from saved files.
+   * 
+   * @param movielist to be removed.
+   */
   public void removeMovieList(MovieList movielist){
-    List<MovieList> movieLists = getAllMovieListsFromFile(); 
-    boolean found = false; 
+    List<MovieList> movieLists = getAllMovieListsFromFile();
+    boolean found = false;
     MovieList movieListToRemove = null;
 
     for (MovieList exsistingMovieList : movieLists) {
         if(exsistingMovieList.getUsername().equals(movielist.getUsername())){
-          found = true; 
-          break; 
+          found = true;
+          break;
         }
     }
 
@@ -140,6 +150,4 @@ public class MovieListHandler {
         e.printStackTrace();
     }
   }
-
-  
 }
