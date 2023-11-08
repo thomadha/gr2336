@@ -13,6 +13,9 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+    /**
+     * Method to start javafx app
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("LoginPage.fxml"));
