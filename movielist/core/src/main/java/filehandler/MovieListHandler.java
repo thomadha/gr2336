@@ -13,21 +13,28 @@ import com.google.gson.GsonBuilder;
 
 public class MovieListHandler {
 
-    private final String filepath;
+  /**
+   * field for filepath.
+   */
+  private final String filepath;
+  /**
+   * field for length to remove if the userdir ends with core.
+   */
+  public static final int PATH_REMOVER_LENGTH = 5;
 
     /**
      * Constructor for MovieListHandler.
      * Initiates a movielisthandler with correct filepath in ui.
-     * 
+     *
      * @param filepath of movielisthandler.
      */
-    public MovieListHandler(String filepath){
+    public MovieListHandler(final String filepath) {
       String userdir = System.getProperty("user.dir");
-      if(userdir.endsWith("GR2336")){
+      if (userdir.endsWith("GR2336")) {
         userdir = userdir + "/movielist/ui";
       }
-      if(userdir.endsWith("core")){
-        userdir = userdir.substring(0, userdir.length()-5);
+      if (userdir.endsWith("core")) {
+        userdir = userdir.substring(0, userdir.length() - PATH_REMOVER_LENGTH);
         userdir = userdir + "/ui";
       }
       this.filepath = userdir + filepath;
@@ -40,7 +47,8 @@ public class MovieListHandler {
    */
   public List<MovieList> getAllMovieListsFromFile() {
     List<MovieList> movieListList = new ArrayList<>();
-    try (FileReader reader = new FileReader(filepath, StandardCharsets.UTF_8)) { // Specify UTF-8
+    try (FileReader reader = new FileReader(filepath, StandardCharsets.UTF_8)) { 
+      // Specify UTF-8^^
       Gson gson = new Gson();
       MovieList[] movieListArray = gson.fromJson(reader, MovieList[].class);
       if (movieListArray != null) {
@@ -58,11 +66,10 @@ public class MovieListHandler {
    * Gets a movielist with the specified username and matching password.
    *
    * @param username the username of the movielist to get.
-   * @param password the password of the specific movielist.
    * @return a movielist with the specifed username and correct password.
    * @throws IllegalArgumentException if the movielist does not exist or password is incorrect.
    */
-  public MovieList getMovieList(String username) {
+  public MovieList getMovieList(final String username) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
     if (movieLists == null) {
       throw new IllegalStateException("Error loading movie lists from file");
@@ -79,7 +86,7 @@ public class MovieListHandler {
    * @param username the username to validate.
    * @throws IllegalArgumentException if a movieList with the specified username already exists.
    */
-  public void validateNoExistingMovieList(String username) {
+  public void validateNoExistingMovieList(final String username) {
     if (getAllMovieListsFromFile().stream().anyMatch(a -> a.getUsername().equals(username))) {
       throw new IllegalArgumentException("MovieList already exists");
     }
@@ -88,9 +95,9 @@ public class MovieListHandler {
    /**
    * Updates the user file with the specified user.
    *
-   * @param user the user to update.
+   * @param movielist to update.
    */
-  public void saveToFile(MovieList movielist) {
+  public void saveToFile(final MovieList movielist) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
     boolean found = false;
 
@@ -119,30 +126,30 @@ public class MovieListHandler {
 
   /**
    * Removes a movielist from saved files.
-   * 
+   *
    * @param movielist to be removed.
    */
-  public void removeMovieList(MovieList movielist){
+  public void removeMovieList(final MovieList movielist) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
     boolean found = false;
     MovieList movieListToRemove = null;
 
     for (MovieList exsistingMovieList : movieLists) {
-        if(exsistingMovieList.getUsername().equals(movielist.getUsername())){
+        if (exsistingMovieList.getUsername().equals(movielist.getUsername())) {
           found = true;
           break;
         }
     }
 
-    if(found){
+    if (found) {
       for (MovieList exsistingMovieList : movieLists) {
-        if(exsistingMovieList.getUsername().equals(movielist.getUsername())){
+        if (exsistingMovieList.getUsername().equals(movielist.getUsername())) {
           movieListToRemove = exsistingMovieList;
         }
     }
     movieLists.remove(movieListToRemove);
   }
-      
+
     try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         gson.toJson(movieLists, writer);
