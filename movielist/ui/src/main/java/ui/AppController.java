@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import core.Movie;
 import core.MovieList;
+import dataaccess.MovieListAccess;
 import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +38,8 @@ public class AppController {
     @FXML private Label feedback; 
     @FXML private Button backBtn;
     @FXML private Button deleteMovieListBtn;
+    
+    private MovieListAccess  movielistAccess;
 
     private Stage movieDiaryStage; 
 

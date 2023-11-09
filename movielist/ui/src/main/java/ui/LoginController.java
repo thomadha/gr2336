@@ -3,6 +3,7 @@ package ui;
 import java.io.IOException;
 
 import core.MovieList;
+import dataaccess.MovieListAccess;
 import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,10 +32,21 @@ public class LoginController {
     private MovieListHandler movieListHandler;
     private Stage loginControllerStage; 
 
+    private MovieListAccess  movielistAccess;
+
     public LoginController() {
       movieList = new MovieList();
       movieListHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
   }
+
+    /**
+     * Method for updating ListContainerAccess.
+     *
+     * @param access  remote or direct access
+     */
+    public void initData(MovieListAccess access) {
+      movielistAccess = access;
+    }
 
     public MovieList getMovieList() {
       return movieList;

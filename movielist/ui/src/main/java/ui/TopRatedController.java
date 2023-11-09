@@ -5,6 +5,7 @@ import java.util.List;
 
 import core.Movie;
 import core.MovieList;
+import dataaccess.MovieListAccess;
 import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +32,8 @@ public class TopRatedController {
   private MovieListHandler fileHandler;
   private MovieList movieList;
   private Stage topStage; 
+
+  private MovieListAccess  movielistAccess;
 
   public TopRatedController(){
     this.movieList = new MovieList();
