@@ -6,19 +6,16 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.util.Collection;
 import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import core.Movie;
 import core.MovieList;
 import filehandler.MovieListHandler;
 
 public class MovieListRemoteAccess implements MovieListAccess{
 
+  private MovieList movieList = new MovieList();
   private MovieListHandler filehandler;
   private final URI endpointUri;
   private Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -54,28 +51,90 @@ public class MovieListRemoteAccess implements MovieListAccess{
    * @param uri   the uri you want to find the path to.
    * @return URI  the endpoint URI
    */
-  private URI shoppingListUri(String uri) {  
+  private URI movieListUri(String uri) {  
     return endpointUri.resolve(uri);
   }
 
-
-
-  @Override
-  public void setMovieList(MovieList movieList) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setMovieList'");
-  }
-
+  /**
+   * Access method for MovieList.
+   *
+   * @return MovieList  container of movieList.
+   * 
+   * @throws RuntimeException thrown if not able to perform it's task
+   */
   @Override
   public MovieList getMovieList() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getMovieList'");
+    String mapping = "lists";
+    HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping))
+        .header("Accept", "application/json")
+        .GET().build();
+    try {
+      final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
+          HttpResponse.BodyHandlers.ofString());
+      final String responseString = response.body();
+      movieList = gson.fromJson(responseString, MovieList.class);
+    } catch (IOException | InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+    return movieList;
+  }
+
+  /**
+   * Access method for a specific movielist by name. 
+   *
+   * @param name           the name of the movielist you want to access
+   * @return movielist     the wanted movielist
+   */
+  @Override
+  public MovieList getMovieListByUsername(String username) {
+    String mapping = "lists/";
+    try {
+      HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping + username))
+          .header("Accept", "application/json").GET().build();
+      final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
+          HttpResponse.BodyHandlers.ofString());
+      final String responseString = response.body();
+      MovieList list = gson.fromJson(responseString, MovieList.class);
+      return list;
+    } catch (IOException | InterruptedException e) {
+      return null;
+    }
   }
 
   @Override
-  public MovieList getMovieListByUsername(String username) {
+  public void addMovieList(MovieList movieList) {
     // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getMovieListByUsername'");
+    throw new UnsupportedOperationException("Unimplemented method 'addMovieList'");
+  }
+
+  /**
+   * Method for removing a spesific movielist by name.
+   *
+   * @param name                    the name of the movielist you want to remove
+   * @throws RuntimeException  thrown if not able to perform it's task
+   */
+  @Override
+  public void removeMovieList(String username) {
+    String mapping = "lists/";
+    try {
+      HttpRequest request = HttpRequest
+          .newBuilder(movieListUri(mapping + username))
+          .DELETE()
+          .build();
+      HttpResponse<String> response = HttpClient.newBuilder().build()
+           .send(request, HttpResponse.BodyHandlers.ofString());
+      if (response.statusCode() > 399) {
+        throw new IOException("Not legal status code");
+      }
+    } catch (IOException | InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public Collection<String> getMovieListNames() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getMovieListNames'");
   }
 
   @Override
@@ -90,49 +149,6 @@ public class MovieListRemoteAccess implements MovieListAccess{
     throw new UnsupportedOperationException("Unimplemented method 'validateNoExistingMovieList'");
   }
 
-  @Override
-  public void saveToFile(MovieList movielist) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'saveToFile'");
-  }
-
-  @Override
-  public void addMovie(Movie movie) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'addMovie'");
-  }
-
-  @Override
-  public List<Movie> getMovies() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getMovies'");
-  }
-
-  @Override
-  public boolean checkDuplicate(Movie newMovie) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'checkDuplicate'");
-  }
-
-  @Override
-  public void setUsername(String username) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setUsername'");
-  }
-
-  @Override
-  public void setPassword(String password) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
-  }
-
-  @Override
-  public void setMovies(List<Movie> movies) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setMovies'");
-  }
-
-  
 
 }
 
