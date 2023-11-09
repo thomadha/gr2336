@@ -1,10 +1,14 @@
 package movielist.springboot;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +18,8 @@ import filehandler.MovieListHandler;
 
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Configuration
@@ -21,7 +27,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/movielist")
 public class MovieListRestController {
 
+  // @Bean
+  // public MovieListService movieListBean(){
+  //   return new MovieListService(); 
+  // }
+
   public MovieListService movielistservice = new MovieListService();
+
+  //localhost:8080/movielist/getall
+  @GetMapping("/getall")
+  public List<MovieList> getAllMovieLists(){
+    return movielistservice.getMovieLists(); 
+  }
+
+  //localhost:8080/movielist/movielistbyname
+  @GetMapping("/{username}")
+  public MovieList getMovieListbyname(@PathVariable("username") String username) {
+      return movielistservice.getMovieListByUsername(username); 
+  }
+
+  // Aner ikke hva som blir best måte her, vi vet ikke om add er riktig. 
+  //localhost:8080/movielist/add
+  @PostMapping("/add")
+  public void addMovieList(@RequestBody MovieList movielist) {
+    movielistservice.addMovieList(movielist);
+  }
+  
+
+  // vet ikke om denne er riktig heller
+    //localhost:8080/movielist/getall/delete
+  @DeleteMapping("/{username}")
+  public void deleteMovieList(@RequestBody String username) throws IOException{
+    movielistservice.deleteMovieList(username);
+  }
+
+
+  
+
 
 
 
@@ -78,5 +120,4 @@ public class MovieListRestController {
 //   public void saveAndCloseMovieList(@PathVariable String username) {
 //     movielistservice.saveAndCloseMovieList(username);
 //   }
-
-// }
+}

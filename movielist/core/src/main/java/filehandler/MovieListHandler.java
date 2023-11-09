@@ -24,6 +24,10 @@ public class MovieListHandler {
         userdir = userdir.substring(0, userdir.length()-5);
         userdir = userdir + "/ui";
       }
+      if(userdir.endsWith("springboot")){
+        userdir = userdir.substring(0, userdir.length()-11);
+        userdir = userdir + "/ui"; 
+      }
       this.filepath = userdir + filepath; 
     } 
 

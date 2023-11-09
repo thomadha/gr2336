@@ -16,16 +16,22 @@ import filehandler.MovieListHandler;
 /**
  * Class for handeling server calls.
  */
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 @Service
 public class MovieListService {
 
-  public MovieList movieList = new MovieList();
-  public List<MovieList> movieLists = new ArrayList<MovieList>();
-  public MovieListHandler movieListHandler = new MovieListHandler("/src/main/java/filehandler/MovieList.json"); 
+  public MovieList movieList;
+  public List<MovieList> movieLists;
+  public MovieListHandler movieListHandler; 
   Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-  public MovieListService() throws FileNotFoundException{
-    movieListHandler.saveToFile(movieList);
+  public MovieListService(){
+    movieList = new MovieList();
+    movieLists = new ArrayList<MovieList>();
+    movieListHandler = new MovieListHandler("/src/main/java/json/MovieList.json"); 
+    //movieListHandler.saveToFile(movieList);
   }
 
   public String getUsername(){
@@ -45,7 +51,7 @@ public class MovieListService {
   }
 
   public List<MovieList> getMovieLists(){
-    return movieListHandler.getAllMovieListsFromFile();
+    return movieListHandler.getAllMovieListsFromFile(); 
   }
 
   public MovieList getMovieList(){
@@ -62,7 +68,7 @@ public class MovieListService {
     return null;
   }
 
-  public void addMovieList(MovieList movieList) throws FileNotFoundException{
+  public void addMovieList(MovieList movieList){
     saveChanges();
   }
 
@@ -84,20 +90,10 @@ public class MovieListService {
   }
 
 
-  public void addMovieToList(Movie movie, String movieName){
-    
-  }
 
-
-
-
-  private void saveChanges() throws FileNotFoundException{
+  private void saveChanges(){
     movieListHandler.saveToFile(movieList);
   }
-
-  
-
-  
 
 
   // public MovieList movieList = new MovieList();
