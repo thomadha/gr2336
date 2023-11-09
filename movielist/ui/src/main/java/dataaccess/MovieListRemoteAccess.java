@@ -1,3 +1,146 @@
+package dataaccess;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import core.Movie;
+import core.MovieList;
+import filehandler.MovieListHandler;
+
+public class MovieListRemoteAccess implements MovieListAccess{
+
+  private MovieListHandler filehandler;
+  private final URI endpointUri;
+  private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+  /**
+   * Contstructor for ListContainerRemoteAccess.
+   * Insures that the server is live. 
+   *
+   * @param endUri        the endURI
+   * @param mock          tells whether the server is a mocked one or not,
+   *     and with that information whether to test the conncetion or not
+   * @throws IOException  thrown if the server is not running
+   * @throws InterruptedException thrown if the request is interrupted
+   */
+  public MovieListRemoteAccess(URI endUri, Boolean mock) 
+        throws IOException, InterruptedException {
+    if (!mock) {
+      HttpRequest request = HttpRequest.newBuilder(endUri)
+            .header("Accept", "application/json").GET().build();
+      final HttpResponse<String> response = 
+            HttpClient.newBuilder().build().send(request,
+            HttpResponse.BodyHandlers.ofString());
+      if (!response.body().equals("OK")) {
+        throw new IOException("Server is not running");
+      }
+    }
+    this.endpointUri = endUri;
+  }
+
+  /**
+   * Method for creating the correct path to the URI.
+   *
+   * @param uri   the uri you want to find the path to.
+   * @return URI  the endpoint URI
+   */
+  private URI shoppingListUri(String uri) {  
+    return endpointUri.resolve(uri);
+  }
+
+
+
+  @Override
+  public void setMovieList(MovieList movieList) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setMovieList'");
+  }
+
+  @Override
+  public MovieList getMovieList() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getMovieList'");
+  }
+
+  @Override
+  public MovieList getMovieListByUsername(String username) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getMovieListByUsername'");
+  }
+
+  @Override
+  public List<MovieList> getAllMovieListsFromFile() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getAllMovieListsFromFile'");
+  }
+
+  @Override
+  public void validateNoExistingMovieList(String username) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'validateNoExistingMovieList'");
+  }
+
+  @Override
+  public void saveToFile(MovieList movielist) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'saveToFile'");
+  }
+
+  @Override
+  public void addMovie(Movie movie) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'addMovie'");
+  }
+
+  @Override
+  public List<Movie> getMovies() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getMovies'");
+  }
+
+  @Override
+  public boolean checkDuplicate(Movie newMovie) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'checkDuplicate'");
+  }
+
+  @Override
+  public void setUsername(String username) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setUsername'");
+  }
+
+  @Override
+  public void setPassword(String password) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
+  }
+
+  @Override
+  public void setMovies(List<Movie> movies) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setMovies'");
+  }
+
+  
+
+}
+
+
+
+
+
+
 // package restapi;
 
 // import com.fasterxml.jackson.databind.ObjectMapper;
