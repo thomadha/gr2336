@@ -74,6 +74,12 @@
         "movieCount": 1
       },
       {
+        "name": "testfilm",
+        "genre": "Scifi",
+        "score": 5.0,
+        "movieCount": 1
+      },
+      {
         "name": "thomasToget",
         "genre": "Scifi",
         "score": 3.0,
@@ -81,6 +87,18 @@
       }
     ],
     "username": "TommyT",
+    "password": "123"
+  },
+  {
+    "movies": [
+      {
+        "name": "nye Star Wars",
+        "genre": "Scifi",
+        "score": 7.0,
+        "movieCount": 0
+      }
+    ],
+    "username": "NyeMathilde",
     "password": "123"
   }
 ]

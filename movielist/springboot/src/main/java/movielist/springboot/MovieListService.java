@@ -3,12 +3,10 @@ package movielist.springboot;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import core.MovieList;
 import core.Movie;
@@ -16,8 +14,6 @@ import filehandler.MovieListHandler;
 /**
  * Class for handeling server calls.
  */
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class MovieListService {
@@ -69,7 +65,7 @@ public class MovieListService {
   }
 
   public void addMovieList(MovieList movieList){
-    saveChanges();
+    movieListHandler.saveToFile(movieList);
   }
 
   public void deleteMovieList(String username)throws IOException{
@@ -82,18 +78,49 @@ public class MovieListService {
       if(movieList.getUsername().equals(username)){
         movieLists.remove(i);
         movieListHandler.removeMovieList(movieList);
-        saveChanges();
         break;
       }
       i++;
     }
   }
 
-
-
-  private void saveChanges(){
-    movieListHandler.saveToFile(movieList);
+  public void addMovieToList(String username, Movie movie){
+    MovieList m = getMovieListByUsername(username); 
+    m.addMovie(movie);
+    movieListHandler.saveToFile(m);
   }
+
+  public Movie getMovie(String username, String movieTitle){
+    MovieList movieList = getMovieListByUsername(username); 
+    List<Movie> movies = movieList.getMovies(); 
+    for (Movie m : movies) {
+      if(m.getName().equals(movieTitle)){
+        return m;
+      }
+    }
+    return null;
+  }
+
+  public int getNumberOfMovies(String username){
+    MovieList movieList = getMovieListByUsername(username);
+    List<Movie> movies = movieList.getMovies(); 
+    return movies.size();
+  }
+
+  public String getPassword(String username){
+    MovieList movieList = getMovieListByUsername(username);
+    String password = movieList.getPassword();
+    return password;
+  }
+
+  public MovieList newMovieList(String username, String password){
+    MovieList newMovieList = new MovieList();
+    newMovieList.setUsername(username);
+    newMovieList.setPassword(password);
+    addMovieList(newMovieList);
+    return newMovieList;
+  }
+
 
 
   // public MovieList movieList = new MovieList();

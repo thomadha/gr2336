@@ -7,19 +7,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import core.Movie;
 import core.MovieList;
-import filehandler.MovieListHandler;
 
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @Configuration
@@ -40,7 +36,7 @@ public class MovieListRestController {
     return movielistservice.getMovieLists(); 
   }
 
-  //localhost:8080/movielist/movielistbyname
+  //localhost:8080/movielist/{username}
   @GetMapping("/{username}")
   public MovieList getMovieListbyname(@PathVariable("username") String username) {
       return movielistservice.getMovieListByUsername(username); 
@@ -49,75 +45,50 @@ public class MovieListRestController {
   // Aner ikke hva som blir best måte her, vi vet ikke om add er riktig. 
   //localhost:8080/movielist/add
   @PostMapping("/add")
-  public void addMovieList(@RequestBody MovieList movielist) {
+  public void addMovieList(@RequestBody String body) {
+    Gson gson = new Gson();
+    MovieList movielist = gson.fromJson(body, MovieList.class);
     movielistservice.addMovieList(movielist);
   }
-  
 
-  // vet ikke om denne er riktig heller
-    //localhost:8080/movielist/getall/delete
-  @DeleteMapping("/{username}")
-  public void deleteMovieList(@RequestBody String username) throws IOException{
+  //vet ikke om denne er riktig heller
+  //gir ikke helt mening hvordan den fjerner med å gå inn på samme? 
+  //localhost:8080/movielist/{username}/deleteUser
+  @DeleteMapping("/{username}/deleteUser")
+  public void deleteMovieList(@PathVariable("username") String username) throws IOException{
     movielistservice.deleteMovieList(username);
   }
 
+//localhost:8080/movielist/{username}/addMovie
+  @PostMapping("/{username}/addMovie")
+  public Movie addMovie(@RequestBody String body, @PathVariable("username") String username) throws IOException{
+    Gson gson = new Gson();
+    Movie movie = gson.fromJson(body, Movie.class);
+    movielistservice.addMovieToList(username, movie);
+    return movie;
+  }
 
-  
+  //localhost:8080/movielist/{username}/{movieTitle}
+  @GetMapping("/{username}/{movieTitle}")
+  public Movie getMovie(@PathVariable("movieTitle") String movieTitle, @PathVariable("username") String username) throws IOException{
+    return movielistservice.getMovie(username, movieTitle);
+  }
 
+  //localhost:8080/movielist/{username}/numberOfMovies
+  @GetMapping("/{username}/numberOfMovies")
+  public int getNumberOfMovies(@PathVariable("username") String username){
+    return movielistservice.getNumberOfMovies(username);
+  }
 
+  //localhost:8080/movielist/{username}/password
+  @GetMapping("/{username}/password")
+  public String getPassword(@PathVariable("username") String username){
+    return movielistservice.getPassword(username);
+  }
 
-
-//   // @Autowired
-//   // public MovieListRestController(MovieListHandler movieListHandler) {
-//   //     this.movieListHandler = movieListHandler;
-//   // }
-
-
-  
-//   // @RequestMapping("/movielist")
-//   // public String movielist() {
-//   //   return "Movielist is cool";
-//   // }
-
-//   @Bean
-//   public MovieListService movieListBean() {
-//     return new MovieListService();
-//   }
-
-//   /**
-//    * Method for opening a movielist
-//    * 
-//    * @param username
-//    * @return movieList
-//    */
-//   // localhost:8080/movielist/{username}
-//   @GetMapping("/{username}")
-//   public MovieList getMovieList(@PathVariable String username) {
-//     return movielistservice.getMovieList(username);
-//   }
-
-//   /**
-//    * Method for adding a movie
-//    * 
-//    * @param movie that'll be added to the movielist
-//    * @param username to add the movie to
-//    */
-//   // localhost:8080/movielist/add
-//   @PostMapping("/add")
-//   public void addMovie(@RequestBody Movie movie, @RequestBody String username) {
-//     movielistservice.addMovietoMovielist(movie, username); 
-//   }
-
-
-//   /**
-//    * Method for saving and closing a movielist
-//    * 
-//    * @param username that the list will be saved to
-//    * @param movieList that will be saved
-//    */
-//   // localhost:8080/movielist/{username}
-//   @PutMapping("/{username}")
-//   public void saveAndCloseMovieList(@PathVariable String username) {
-//     movielistservice.saveAndCloseMovieList(username);
-//   }
+  //localhost:8080/movielist/{username}/password/newUser
+  @PostMapping("/{username}/{password}/newUser")
+  public MovieList newMovieList(@PathVariable("username") String username, @PathVariable("password") String password){
+    return movielistservice.newMovieList(username, password);
+  }
 }
