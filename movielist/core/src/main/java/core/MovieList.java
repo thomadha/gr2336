@@ -5,14 +5,23 @@ import java.util.Comparator;
 import java.util.List;
 
 public class MovieList {
-  private List<Movie> movies;
 
+  /**
+   * Paramater for list of movies.
+   */
+  private List<Movie> movies;
+  /**
+   * Paramater for a string username.
+   */
   private String username;
+  /**
+   * Paramater for a string password.
+   */
   private String password;
 
   /**
    * Getter for username of movielist.
-   * 
+   *
    * @return a string of username.
    */
   public String getUsername() {
@@ -21,7 +30,7 @@ public class MovieList {
 
   /**
    * Getter for password of the movielist.
-   * 
+   *
    * @return a string of password.
    */
   public String getPassword() {
@@ -30,54 +39,54 @@ public class MovieList {
 
   /**
    * Setter for username.
-   * 
+   *
    * @param username of object.
    */
-  public void setUsername(String username) {
+  public void setUsername(final String username) {
     this.username = username;
   }
 
   /**
    * Setter for password.
-   * 
+   *
    * @param password of object.
    */
-  public void setPassword(String password) {
+  public void setPassword(final String password) {
     this.password = password;
   }
 
   /**
    * Setter for movies.
-   * 
+   *
    * @param movies in a list.
    */
-  public void setMovies(List<Movie> movies){
+  public void setMovies(final List<Movie> movies) {
     this.movies = new ArrayList<>(movies);
   }
 
   /**
    * Constructor for this class.
    */
-  public MovieList(){
+  public MovieList() {
     this.movies = new ArrayList<Movie>();
   }
 
   /**
    * Getter for movies.
-   * 
+   *
    * @return ArrayList of movies for object.
    */
   public List<Movie> getMovies() {
     return new ArrayList<Movie>(movies);
   }
-  
+
   /**
    * Method to add a movie to the movielist object.
-   * 
+   *
    * @param movie to add.
    */
-  public void addMovie(Movie movie){
-    if(!checkDuplicate(movie)){
+  public void addMovie(final Movie movie) {
+    if (!checkDuplicate(movie)) {
       movies.add(movie);
     }
     movies.sort(Comparator.comparingDouble(Movie::getScore).reversed());
@@ -86,39 +95,39 @@ public class MovieList {
   /**
    * Method to sort list by amount of times the movie's been watched.
    */
-  public void sortByCount(){
+  public void sortByCount() {
     movies.sort(Comparator.comparingInt(Movie::getCount).reversed());
   }
 
   /**
    * Method to sort movies in list by best rating.
    */
-  public void sortByBestRating(){
+  public void sortByBestRating() {
     movies.sort(Comparator.comparingDouble(Movie::getScore).reversed());
   }
 
   /**
    * Method to sort movies in list by worst rating.
    */
-  public void sortByWorstRating(){
+  public void sortByWorstRating() {
     movies.sort(Comparator.comparingDouble(Movie::getScore));
   }
 
   /**
    * Getter for number of movies.
-   * 
+   *
    * @return number of movies in list.
    */
-  public int getNumberOfMovies(){
+  public int getNumberOfMovies() {
     return movies.size();
   }
 
   /**
    * A toString similar method for the class Movielist.java.
-   * 
+   *
    * @return a string of movies in MovieList object.
    */
-  public String movieListToString(){
+  public String movieListToString() {
     String s = "";
     for (Movie movie : movies) {
       s += movie.getName() + ", " + movie.getScore() + "\n";
@@ -127,16 +136,17 @@ public class MovieList {
   }
 
   /**
-   * Method to check if a movie is already in the list, if so it updates the movie with mean score and new genre.
+   * Method to check if a movie is already in the list.
+   * If so it updates the movie with mean score and new genre.
    * @param newMovie to be added to the list.
    * @return true if movie was a duplicate, else false.
    */
-  public boolean checkDuplicate(Movie newMovie){
+  public boolean checkDuplicate(final Movie newMovie) {
     boolean hasDuplicate = false;
     String newTitle = newMovie.getName();
-    for(Movie m : getMovies()){
+    for (Movie m : getMovies()) {
       String oldTitle = m.getName();
-      if (oldTitle.equals(newTitle)){
+      if (oldTitle.equals(newTitle)) {
         Double newScore = ((m.getScore() + newMovie.getScore()) / 2);
         String newGenre = newMovie.getGenre();
         m.setScore(newScore);
