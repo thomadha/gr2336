@@ -2,21 +2,24 @@ package dataaccess;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import core.MovieList;
-import filehandler.MovieListHandler;
 
 public class MovieListRemoteAccess implements MovieListAccess{
 
   private MovieList movieList = new MovieList();
-  private MovieListHandler filehandler;
+  private List<MovieList> movieLists = new ArrayList<>();
   private final URI endpointUri;
   private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -24,11 +27,10 @@ public class MovieListRemoteAccess implements MovieListAccess{
    * Contstructor for ListContainerRemoteAccess.
    * Insures that the server is live. 
    *
-   * @param endUri        the endURI
-   * @param mock          tells whether the server is a mocked one or not,
-   *     and with that information whether to test the conncetion or not
-   * @throws IOException  thrown if the server is not running
-   * @throws InterruptedException thrown if the request is interrupted
+   * @param endUri        the endURI.
+   * @param mock          tells whether the server is a mocked one or not, and with that information whether to test the conncetion or not.
+   * @throws IOException  thrown if the server is not running.
+   * @throws InterruptedException thrown if the request is interrupted.
    */
   public MovieListRemoteAccess(URI endUri, Boolean mock) 
         throws IOException, InterruptedException {
@@ -49,7 +51,7 @@ public class MovieListRemoteAccess implements MovieListAccess{
    * Method for creating the correct path to the URI.
    *
    * @param uri   the uri you want to find the path to.
-   * @return URI  the endpoint URI
+   * @return URI  the endpoint URI.
    */
   private URI movieListUri(String uri) {  
     return endpointUri.resolve(uri);
@@ -60,7 +62,7 @@ public class MovieListRemoteAccess implements MovieListAccess{
    *
    * @return MovieList  container of movieList.
    * 
-   * @throws RuntimeException thrown if not able to perform it's task
+   * @throws RuntimeException thrown if not able to perform it's task.
    */
   @Override
   public MovieList getMovieList() {
@@ -82,8 +84,8 @@ public class MovieListRemoteAccess implements MovieListAccess{
   /**
    * Access method for a specific movielist by name. 
    *
-   * @param name           the name of the movielist you want to access
-   * @return movielist     the wanted movielist
+   * @param name           the name of the movielist you want to access.
+   * @return movielist     the wanted movielist.
    */
   @Override
   public MovieList getMovieListByUsername(String username) {
@@ -103,15 +105,28 @@ public class MovieListRemoteAccess implements MovieListAccess{
 
   @Override
   public void addMovieList(MovieList movieList) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'addMovieList'");
+    String mapping = "lists";
+        String jsonBody = gson.toJson(movieList);
+        HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping))
+                .header("Content-Type", "application/json")
+                .POST(BodyPublishers.ofString(jsonBody))
+                .build();
+        try {
+            final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
+                    HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() != 201) {
+                throw new IOException("Failed to add movie list. Status code: " + response.statusCode());
+            }
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
   }
 
   /**
    * Method for removing a spesific movielist by name.
    *
-   * @param name                    the name of the movielist you want to remove
-   * @throws RuntimeException  thrown if not able to perform it's task
+   * @param name                    the name of the movielist you want to remove.
+   * @throws RuntimeException  thrown if not able to perform it's task.
    */
   @Override
   public void removeMovieList(String username) {
@@ -131,24 +146,28 @@ public class MovieListRemoteAccess implements MovieListAccess{
     }
   }
 
-  @Override
-  public Collection<String> getMovieListNames() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getMovieListNames'");
-  }
 
+
+  //NOT READY OR CORRECT.
   @Override
   public List<MovieList> getAllMovieListsFromFile() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getAllMovieListsFromFile'");
+    String mapping = "lists";
+    HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping))
+        .header("Accept", "application/json")
+        .GET().build();
+    try {
+        final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
+            HttpResponse.BodyHandlers.ofString());
+        final String responseString = response.body();
+        // Parse the JSON response as a list of maps
+        //Type mapListType = new TypeToken<List<Map<String, Object>>>() {}.getType();
+        //List<Map<String, Object>> movieLists = gson.fromJson(responseString, mapListType);
+        //return movieLists;
+    } catch (IOException | InterruptedException e) {
+        throw new RuntimeException(e);
+    }
+    return null;
   }
-
-  @Override
-  public void validateNoExistingMovieList(String username) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'validateNoExistingMovieList'");
-  }
-
 
 }
 

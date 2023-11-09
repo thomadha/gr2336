@@ -1,7 +1,5 @@
 package dataaccess;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import core.MovieList;
@@ -27,17 +25,17 @@ public class MovieListLocalAccess implements MovieListAccess{
     return fileHandler.getMovieList(username);
   }
 
-  /**
-   * Gets the names of the MovieLists.
-   *
-   * @return the names of the MovieLists.
-   */
-  @Override
-  public Collection<String> getMovieListNames() {
-    Collection<String> allNames = new ArrayList<>();
-    fileHandler.getAllMovieListsFromFile().forEach(movieList -> allNames.add(movieList.getUsername()));
-    return allNames;
-  }
+  // /**
+  //  * Gets the names of the MovieLists.
+  //  *
+  //  * @return the names of the MovieLists.
+  //  */
+  // @Override
+  // public Collection<String> getMovieListNames() {
+  //   Collection<String> allNames = new ArrayList<>();
+  //   fileHandler.getAllMovieListsFromFile().forEach(movieList -> allNames.add(movieList.getUsername()));
+  //   return allNames;
+  // }
 
 
   @Override
@@ -55,10 +53,10 @@ public class MovieListLocalAccess implements MovieListAccess{
     fileHandler.removeMovieList(fileHandler.getMovieList(username));
   }
 
-  @Override
-  public void validateNoExistingMovieList(String username) {
-    fileHandler.validateNoExistingMovieList(username);
-  }
+  // @Override
+  // public void validateNoExistingMovieList(String username) {
+  //   fileHandler.validateNoExistingMovieList(username);
+  // }
 
   // @Override
   // public void addMovie(Movie movie) {

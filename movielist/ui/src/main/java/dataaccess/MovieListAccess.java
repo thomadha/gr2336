@@ -1,6 +1,5 @@
 package dataaccess;
 
-import java.util.Collection;
 import java.util.List;
 
 import core.MovieList;
@@ -15,11 +14,11 @@ public interface MovieListAccess {
 
   public void removeMovieList(String username);
 
-  public Collection<String> getMovieListNames();
+  //public Collection<String> getMovieListNames();
 
   public List<MovieList> getAllMovieListsFromFile();
 
-  public void validateNoExistingMovieList(String username);
+  //public void validateNoExistingMovieList(String username);
 
 
   // public void addMovie(Movie movie);
