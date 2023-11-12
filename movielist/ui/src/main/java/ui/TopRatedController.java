@@ -5,7 +5,9 @@ import java.util.List;
 
 import core.Movie;
 import core.MovieList;
-import dataaccess.MovieListAccess;
+//import dataaccess.MovieListAccess;
+import dataaccess.MovieListLocalAccess;
+import dataaccess.MovieListRemoteAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,20 +33,26 @@ public class TopRatedController {
   private MovieList movieList;
   private Stage topStage; 
 
-  private MovieListAccess  movielistAccess;
+  private MovieListRemoteAccess  movielistAccess;
 
   /**
    * Method for getting the containerAccess thats automoticly chosen by setUpAccess().
    *
    * @return this.containerAccess;
    */
-  public MovieListAccess getAccess() {
+  public MovieListRemoteAccess getAccess() {
     return this.movielistAccess;
   }
 
-  public TopRatedController(){
+  public TopRatedController(MovieListRemoteAccess movieListRemoteAccess){
     this.movieList = new MovieList();
-  }
+    this.movielistAccess = movieListRemoteAccess;
+}
+
+  // public TopRatedController(){
+  //   this.movieList = new MovieList();
+  //   this.movielistAccess = new MovieListRemoteAccess(movieList);
+  // }
 
   public void setMovielist(MovieList movieList){
     this.movieList = movieList;

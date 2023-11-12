@@ -21,6 +21,8 @@ public class MovieListRemoteAccess implements MovieListAccess{
   private final URI endpointUri;
   private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+  
+
   /**
    * Contstructor for ListContainerRemoteAccess.
    * Insures that the server is live. 

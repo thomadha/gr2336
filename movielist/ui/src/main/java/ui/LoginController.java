@@ -3,7 +3,9 @@ package ui;
 import java.io.IOException;
 
 import core.MovieList;
-import dataaccess.MovieListAccess;
+//import dataaccess.MovieListAccess;
+import dataaccess.MovieListLocalAccess;
+import dataaccess.MovieListRemoteAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,19 +32,25 @@ public class LoginController {
     private MovieList movieList;
     private Stage loginControllerStage; 
 
-    private MovieListAccess  movielistAccess;
+    private MovieListRemoteAccess  movielistAccess;
 
-    public LoginController() {
-      movieList = new MovieList();
+    public LoginController(MovieListRemoteAccess movieListRemoteAccess){
+      this.movieList = new MovieList();
+      this.movielistAccess = movieListRemoteAccess;
   }
+
+  //   public LoginController() {
+  //     this.movieList = new MovieList();
+  //     this.movielistAccess = new MovieListRemoteAccess(movieList);
+  // }
 
     /**
      * Method for updating ListContainerAccess.
      *
      * @param access  remote or direct access
      */
-    public void initData(MovieListAccess access) {
-      movielistAccess = access;
+    public void initData(MovieListRemoteAccess access) {
+      this.movielistAccess = access;
     }
 
     public MovieList getMovieList() {
