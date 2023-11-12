@@ -25,101 +25,156 @@ import javafx.stage.Stage;
 
 public class AppController {
 
+    /**
+     * Textfield to write title of movie.
+     */
     @FXML private TextField titleField;
+    /**
+     * Slider to choose score of movie.
+     */
     @FXML private Slider scoreField;
+    /**
+     * Button to add a movie to list.
+     */
     @FXML private Button addBtn;
+    /**
+     * View of all movies in the movielist.
+     */
     @FXML private ListView<Movie> movieListField;
-    @FXML private MenuButton genrebtn; 
-    @FXML private MenuItem action; 
-    @FXML private MenuItem horror; 
-    @FXML private MenuItem romcom; 
-    @FXML private Label header; 
-    @FXML private Label feedback; 
+    /**
+     * Button to choose genre of movie.
+     */
+    @FXML private MenuButton genrebtn;
+    /**
+     * Choice in genrebtn.
+     */
+    @FXML private MenuItem action;
+    /**
+     * Choice in genrebtn.
+     */
+    @FXML private MenuItem horror;
+    /**
+     * Choice in genrebtn.
+     */
+    @FXML private MenuItem romcom;
+    /**
+     * Header label for movielist.
+     */
+    @FXML private Label header;
+    /**
+     * Feedback label to show messages.
+     */
+    @FXML private Label feedback;
+    /**
+     * Back button to go back to login page.
+     */
     @FXML private Button backBtn;
+    /**
+     * Delete button for deleting an entire movielist.
+     */
     @FXML private Button deleteMovieListBtn;
-
-    private Stage movieDiaryStage; 
-
+    /**
+    * Stage for the movie diary.
+    */
+    private Stage movieDiaryStage;
+    /**
+     * Filhandler for the movielist.
+     */
     private MovieListHandler fileHandler;
-
+    /**
+     * The movielist to add movies to.
+     */
     private MovieList movieList;
 
     /**
-     * Method to initiate a new movielist and movielisthandler with the javafx application.
+     * Method to initiate a new movielist and movielisthandler.
+     * Uses javafx application.
      */
     public AppController() {
         movieList = new MovieList();
-        fileHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
+        fileHandler = new MovieListHandler(
+            "/src/main/java/json/MovieList.json");
     }
 
     /**
      * Getter for movielist.
-     * 
+     * Creates a copy of the movielist to avoid direct access.
+     *
      * @return a MovieList object.
      */
     public MovieList getMovieList() {
-        return movieList;
+        MovieList movielistCopy = new MovieList();
+        movielistCopy.setMovies(movieList.getMovies());
+        return movielistCopy;
     }
 
     /**
      * Setter for the MovieList object.
-     * 
-     * @param movieList with Movie objects.
+     *
+     * @param movieListInput with Movie objects.
      */
-    public void setMovielist(MovieList movieList){
-        this.movieList = movieList;
+    public void setMovielist(final MovieList movieListInput) {
+        MovieList movieListCopy = new MovieList();
+        movieListCopy.setMovies(movieListInput.getMovies());
+        this.movieList = movieListCopy;
     }
 
     /**
      * Sets the stage for the movie diary.
-     * @param stage.
+     * @param stage
      */
-    public void setMovieDiaryStage(Stage stage){
+    public void setMovieDiaryStage(final Stage stage) {
         this.movieDiaryStage = stage;
     }
 
     /**
      * FXML method to handle the add button for a movie.
-     * @param event.
+     * @param event
      */
     @FXML
-    private void handleAddBtn(ActionEvent event){
-        try{
+    private void handleAddBtn(final ActionEvent event) {
+        try {
             feedback.setText("");
-            movieList.addMovie(new Movie(titleField.getText(), scoreField.getValue(),genrebtn.getText()));
+
+            movieList.addMovie(new Movie(
+            titleField.getText(), scoreField.getValue(), genrebtn.getText()
+            ));
+
             updateMovieListField();
             fileHandler.saveToFile(movieList);
             resetChoises();
-        }catch(Exception e){
+        } catch (Exception e) {
             feedback.setText(e.getMessage());
         }
     }
 
     /**
-     * FXML method to reset choices after a movie has been added, meaning clearing the text fiels.
+     * FXML method to reset choices after a movie has been added.
+     * Means clearing the text fields.
      */
     @FXML
-    private void resetChoises(){
+    private void resetChoises() {
         this.titleField.setText("");
         this.scoreField.setValue(0);
         this.genrebtn.setText("Choose genre");
     }
 
     /**
-     * FXML method to clear field with the movielist, and add the movies in the current MovieList object.
+     * FXML method to clear field with the movielist.
+     * Will also add the movies in the current MovieList object.
      */
     @FXML
-    public void updateMovieListField(){
+    public void updateMovieListField() {
         movieListField.getItems().clear();
         movieListField.getItems().addAll(movieList.getMovies());
     }
 
     /**
      * FXML method to handle the user choosing a movie gender from the 'menu'.
-     * @param e.
+     * @param e
      */
     @FXML
-    private void handleChoise(ActionEvent e){
+    private void handleChoise(final ActionEvent e) {
         MenuItem genrechoise = (MenuItem) e.getSource();
         this.genrebtn.setText(genrechoise.getText());
     }
@@ -127,12 +182,13 @@ public class AppController {
     /**
      * FXML method for going back to the login page when in the movielist page.
      * This is the page you get to after you log in or create user.
-     * @param event.
+     * @param event
      */
     @FXML
-    private void handleBackBtn(ActionEvent event){
+    private void handleBackBtn(final ActionEvent event) {
         try {
-            FXMLLoader loaders = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
+            FXMLLoader loaders = new FXMLLoader(
+                getClass().getResource("LoginPage.fxml"));
             Parent roots = loaders.load();
             LoginController loginController = loaders.getController();
             movieListField.getItems().clear();
@@ -149,13 +205,16 @@ public class AppController {
     }
 
     /**
-     * FXML method for going from the movielist page to the top rated page. 
-     * @param event.
+     * FXML method for switching pages.
+     * Goes from the movielist page to the top rated page.
+     *
+     * @param event
      */
     @FXML
-    private void handleTopListBtn(ActionEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("TopRated.fxml"));
+    private void handleTopListBtn(final ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("TopRated.fxml"));
             Parent root = loader.load();
             TopRatedController topRatedController = loader.getController();
             Scene scene = new Scene(root);
@@ -166,18 +225,20 @@ public class AppController {
             stage.setScene(scene);
             stage.show();
             movieDiaryStage.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
      * FXML method to delete a movielist.
-     * It can't be regretted and there are extra features to avoid deleting by accident.
-     * @param e.
+     * It can't be regretted.
+     * There are extra features to avoid deleting by accident.
+     *
+     * @param e
      */
     @FXML
-    private void handleDeleteMovieList(ActionEvent e){
+    private void handleDeleteMovieList(final ActionEvent e) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Delete movie list");
         alert.setHeaderText("Are you sure?");
@@ -189,9 +250,5 @@ public class AppController {
                 handleBackBtn(e);
             }
         });
-}
-
-
-
-
+    }
 }
