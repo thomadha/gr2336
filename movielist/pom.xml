@@ -85,7 +85,7 @@
                             <id>validate</id>
                             <phase>package</phase>
                             <configuration>
-                                <configLocation>checkstyle.xml</configLocation>
+                                <configLocation>config/checkstyle.xml</configLocation>
                                 <redirectXRefResults>true</redirectXRefResults>
                                 <outputFile>checkstyle-results.txt</outputFile>
                                 <excludes>**/module-info.java</excludes>

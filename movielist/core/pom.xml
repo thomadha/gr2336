@@ -62,7 +62,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Checkstyle Plugin -->
+            <!-- Checkstyle Plugin
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -83,7 +83,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
             <!-- SpotBugs Plugin -->
             <plugin>
