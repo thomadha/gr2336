@@ -1,12 +1,10 @@
 package ui;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 
 import core.MovieList;
 import dataaccess.MovieListAccess;
-//import dataaccess.MovieListAccess;
 import dataaccess.MovieListLocalAccess;
 import dataaccess.MovieListRemoteAccess;
 import javafx.event.ActionEvent;
@@ -17,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 

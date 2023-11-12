@@ -7,9 +7,7 @@ import java.io.IOException;
 import core.Movie;
 import core.MovieList;
 import dataaccess.MovieListAccess;
-//import dataaccess.MovieListAccess;
-import dataaccess.MovieListLocalAccess;
-import dataaccess.MovieListRemoteAccess;
+//import dataaccess.MovieListRemoteAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +40,7 @@ public class AppController {
     @FXML private Button backBtn;
     @FXML private Button deleteMovieListBtn;
     
-    private MovieListRemoteAccess  movielistRemoteAccess;
+    //private MovieListRemoteAccess  movielistRemoteAccess;
     private MovieListAccess  movielistAccess;
 
     private Stage movieDiaryStage; 
@@ -169,8 +167,5 @@ public class AppController {
             }
         });
 }
-
-
-
 
 }

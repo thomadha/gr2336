@@ -7,9 +7,7 @@ import java.util.List;
 import core.Movie;
 import core.MovieList;
 import dataaccess.MovieListAccess;
-//import dataaccess.MovieListAccess;
-import dataaccess.MovieListLocalAccess;
-import dataaccess.MovieListRemoteAccess;
+//import dataaccess.MovieListRemoteAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +33,7 @@ public class TopRatedController {
   private MovieList movieList;
   private Stage topStage; 
 
-  private MovieListRemoteAccess  movielistRemoteAccess;
+  //private MovieListRemoteAccess  movielistRemoteAccess;
   private MovieListAccess movielistAccess;
 
   /**
