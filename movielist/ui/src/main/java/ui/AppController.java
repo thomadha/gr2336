@@ -67,14 +67,14 @@ public class AppController {
             movieList.addMovie(new Movie(titleField.getText(), scoreField.getValue(),genrebtn.getText()));
             updateMovieListField();
             movielistAccess.saveToFile(movieList);
-            resetChoises();
+            resetChoices();
         }catch(Exception e){
             feedback.setText(e.getMessage());
         }
     }
 
     @FXML
-    private void resetChoises(){
+    private void resetChoices(){
         this.titleField.setText("");
         this.scoreField.setValue(0);
         this.genrebtn.setText("Choose genre");
@@ -87,9 +87,9 @@ public class AppController {
     }
 
     @FXML
-    private void handleChoise(ActionEvent e){
-        MenuItem genrechoise = (MenuItem) e.getSource();
-        this.genrebtn.setText(genrechoise.getText());
+    private void handleChoice(ActionEvent e){
+        MenuItem genrechoice = (MenuItem) e.getSource();
+        this.genrebtn.setText(genrechoice.getText());
     }
 
     @FXML
@@ -99,7 +99,7 @@ public class AppController {
             Parent roots = loaders.load();
             LoginController loginController = loaders.getController(); 
             movieListField.getItems().clear();
-            resetChoises();
+            resetChoices();
             Scene scenes = new Scene(roots);
             Stage stages = new Stage();
             stages.setScene(scenes);
