@@ -13,7 +13,7 @@ public class MovieListLocalAccess implements MovieListAccess{
 
   public MovieListLocalAccess(MovieList movielist) {
     movieList = new MovieList();
-    fileHandler = new MovieListHandler("/src/main/java/filehandler/MovieList.json");
+    fileHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
 }
 
   @Override
