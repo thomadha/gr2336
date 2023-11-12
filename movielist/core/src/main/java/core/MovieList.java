@@ -40,28 +40,28 @@ public class MovieList {
   /**
    * Setter for username.
    *
-   * @param username of object.
+   * @param usernameInput of object.
    */
-  public void setUsername(final String username) {
-    this.username = username;
+  public void setUsername(final String usernameInput) {
+    this.username = usernameInput;
   }
 
   /**
    * Setter for password.
    *
-   * @param password of object.
+   * @param passwordInput of object.
    */
-  public void setPassword(final String password) {
-    this.password = password;
+  public void setPassword(final String passwordInput) {
+    this.password = passwordInput;
   }
 
   /**
    * Setter for movies.
    *
-   * @param movies in a list.
+   * @param moviesInput in a list.
    */
-  public void setMovies(final List<Movie> movies) {
-    this.movies = new ArrayList<>(movies);
+  public void setMovies(final List<Movie> moviesInput) {
+    this.movies = new ArrayList<>(moviesInput);
   }
 
   /**

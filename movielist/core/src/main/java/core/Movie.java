@@ -1,5 +1,8 @@
 package core;
 
+/**
+ * Class Movie, out base class.
+ */
 public class Movie {
 
   /**
@@ -19,9 +22,8 @@ public class Movie {
    * Starts at 1.
    */
   private int movieCount = 1;
-
   /**
-   * Maximum value of score
+   * Maximum value of score.
    */
   public static final int MAXIMUM_SCORE = 10;
 
@@ -33,7 +35,10 @@ public class Movie {
    */
   @Override
   public String toString() {
-    return name + " \n - Genre: " + genre + " - Score: " + score + " - Views: " + movieCount;
+    String nameString = this.name + " \n - Genre: ";
+    String genreString = this.genre + " - Score: ";
+    String scoreString = this.score + " - Views: ";
+    return nameString + genreString + scoreString + movieCount;
   }
 
   /**
@@ -57,48 +62,48 @@ public class Movie {
   /**
    * Constructor for movie class without movieCount.
    *
-   * @param name of movie.
-   * @param score of movie.
-   * @param genre of movie.
+   * @param n is name of movie.
+   * @param s is score of movie.
+   * @param g genre of movie.
    */
-  public Movie(final String name, final double score, final String genre) {
-    if (!validScore(score)) {
+  public Movie(final String n, final double s, final String g) {
+    if (!validScore(s)) {
       throw new IllegalArgumentException("Score must be between 0 and 10");
     }
-    if (!validName(name)) {
+    if (!validName(n)) {
       throw new IllegalArgumentException("Must have a name");
     }
-    if (!validgenre(genre)) {
+    if (!validgenre(g)) {
       throw new IllegalArgumentException("Not specified");
     }
-    this.name = name;
-    this.score = score;
-    this.genre = genre;
+    this.name = n;
+    this.score = s;
+    this.genre = g;
   }
 
   /**
    * Constructor for movie class with movieCount.
    *
-   * @param name of movie.
-   * @param score of movie.
-   * @param genre of movie.
-   * @param movieCount which is amount of times a movie has been seen.
+   * @param n is name of movie.
+   * @param s is score of movie.
+   * @param g genre of movie.
+   * @param mC which is amount of times a movie has been seen.
    */
-  public Movie(final String name, final double score, final String genre, final int movieCount) {
-    if (!validScore(score)) {
+  public Movie(final String n, final double s, final String g, final int mC) {
+    if (!validScore(s)) {
       throw new IllegalArgumentException("Score must be between 0 and 10");
     }
-    if (!validName(name)) {
+    if (!validName(n)) {
       throw new IllegalArgumentException("Must have a name");
     }
-    if (!validgenre(genre)) {
+    if (!validgenre(g)) {
       this.genre = "Not specified";
     } else {
-      this.genre = genre;
+      this.genre = g;
     }
-    this.name = name;
-    this.score = score;
-    this.movieCount = movieCount;
+    this.name = n;
+    this.score = s;
+    this.movieCount = mC;
   }
 
   /**
@@ -109,6 +114,7 @@ public class Movie {
   public String getName() {
     return name;
   }
+
   /**
    * Getter for genre.
    *
@@ -117,6 +123,7 @@ public class Movie {
   public String getGenre() {
     return genre;
   }
+
   /**
    * Getter for score.
    *
@@ -125,60 +132,63 @@ public class Movie {
   public double getScore() {
     return score;
   }
+
   /**
    * Setter for name.
    *
-   * @param name of movie.
+   * @param nameInput of movie.
    */
-  public void setName(final String name) {
-    this.name = name;
+  public void setName(final String nameInput) {
+    this.name = nameInput;
   }
+
   /**
    * Setter for score.
    *
-   * @param score
+   * @param scoreInput of the movie.
    */
-  public void setScore(final double score) {
-    this.score = score;
+  public void setScore(final double scoreInput) {
+    this.score = scoreInput;
   }
+
   /**
    * Setter for genre.
    *
-   * @param genre
+   * @param genreInput of movie.
    */
-  public void setGenre(final String genre) {
-    this.genre = genre;
+  public void setGenre(final String genreInput) {
+    this.genre = genreInput;
   }
 
   /**
    * Checks if score is valid.
    * Valid: over or equal to 0.0 and below or equal to 10.0.
    *
-   * @param score of movie.
+   * @param scoreInput of movie.
    * @return a boolean, true if valid and false if not.
    */
-  private boolean validScore(final double score) {
-    return score <= MAXIMUM_SCORE && score >= 0;
+  private boolean validScore(final double scoreInput) {
+    return scoreInput <= MAXIMUM_SCORE && scoreInput >= 0;
   }
 
   /**
    * Checks if name is valid. Meaning not an empty string.
    *
-   * @param name of movie.
+   * @param nameInput of movie.
    * @return a boolean, true if valid and false if not.
    */
-  private boolean validName(final String name) {
-    return !name.isEmpty();
+  private boolean validName(final String nameInput) {
+    return !nameInput.isEmpty();
   }
 
   /**
    * Checks if genre is valid.
    *
-   * @param genre of movie.
+   * @param genreInput of movie.
    * @return a boolean, true if valid and false if not.
    */
-  private boolean validgenre(final String genre) {
-    return !genre.equals("Choose genre");
+  private boolean validgenre(final String genreInput) {
+    return !genreInput.equals("Choose genre");
   }
 
   /**
@@ -190,6 +200,7 @@ public class Movie {
 
   /**
    * Getter for moviecount.
+   *
    * @return movieCount of object.
    */
   public int getCount() {

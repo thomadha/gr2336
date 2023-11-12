@@ -26,9 +26,9 @@ public class MovieListHandler {
      * Constructor for MovieListHandler.
      * Initiates a movielisthandler with correct filepath in ui.
      *
-     * @param filepath of movielisthandler.
+     * @param filepathInput of movielisthandler.
      */
-    public MovieListHandler(final String filepath) {
+    public MovieListHandler(final String filepathInput) {
       String userdir = System.getProperty("user.dir");
       if (userdir.endsWith("GR2336")) {
         userdir = userdir + "/movielist/ui";
@@ -37,7 +37,7 @@ public class MovieListHandler {
         userdir = userdir.substring(0, userdir.length() - PATH_REMOVER_LENGTH);
         userdir = userdir + "/ui";
       }
-      this.filepath = userdir + filepath;
+      this.filepath = userdir + filepathInput;
     }
 
     /**
@@ -47,7 +47,7 @@ public class MovieListHandler {
    */
   public List<MovieList> getAllMovieListsFromFile() {
     List<MovieList> movieListList = new ArrayList<>();
-    try (FileReader reader = new FileReader(filepath, StandardCharsets.UTF_8)) { 
+    try (FileReader reader = new FileReader(filepath, StandardCharsets.UTF_8)) {
       // Specify UTF-8^^
       Gson gson = new Gson();
       MovieList[] movieListArray = gson.fromJson(reader, MovieList[].class);
@@ -67,7 +67,7 @@ public class MovieListHandler {
    *
    * @param username the username of the movielist to get.
    * @return a movielist with the specifed username and correct password.
-   * @throws IllegalArgumentException if the movielist does not exist or password is incorrect.
+   * @throws IllegalArgumentException if the list does not exist/wrong password.
    */
   public MovieList getMovieList(final String username) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
@@ -75,19 +75,20 @@ public class MovieListHandler {
       throw new IllegalStateException("Error loading movie lists from file");
     }
     return movieLists.stream()
-        .filter(a -> a.getUsername().equals(username))
-        .findFirst()
-        .orElseThrow(() -> new IllegalArgumentException("Movielist doesn't exist"));
+      .filter(a -> a.getUsername().equals(username))
+      .findFirst()
+      .orElseThrow(() -> new IllegalArgumentException("List doesn't exist"));
   }
 
   /**
-   * Validates that a movieList with the specified username does not already exist.
+   * Validates that a movielist with the specified username doesn't exist.
    *
    * @param username the username to validate.
-   * @throws IllegalArgumentException if a movieList with the specified username already exists.
+   * @throws IllegalArgumentException if movieList with username already exists.
    */
   public void validateNoExistingMovieList(final String username) {
-    if (getAllMovieListsFromFile().stream().anyMatch(a -> a.getUsername().equals(username))) {
+    if (getAllMovieListsFromFile().stream()
+      .anyMatch(a -> a.getUsername().equals(username))) {
       throw new IllegalArgumentException("MovieList already exists");
     }
   }
