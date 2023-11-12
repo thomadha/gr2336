@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import core.MovieList;
 import dataaccess.MovieListAccess;
-import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,14 +28,12 @@ public class LoginController {
     @FXML private Text changeText;
 
     private MovieList movieList;
-    private MovieListHandler movieListHandler;
     private Stage loginControllerStage; 
 
     private MovieListAccess  movielistAccess;
 
     public LoginController() {
       movieList = new MovieList();
-      movieListHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
   }
 
     /**
@@ -93,8 +90,8 @@ public class LoginController {
       String passwordString = this.passwordInput.getText();
 
       if(validInput(usernameString, passwordString)){
-          movieList = movieListHandler.getMovieList(usernameString);
-          movieListHandler.saveToFile(movieList);
+          movieList = movielistAccess.getMovieListByUsername(usernameString);
+          movielistAccess.saveToFile(movieList);
           loadMovieList();
       }
     }
@@ -113,7 +110,7 @@ public class LoginController {
           movieList =  new MovieList();
           movieList.setUsername(usernameString);
           movieList.setPassword(passwordString);
-          movieListHandler.saveToFile(movieList);
+          movielistAccess.saveToFile(movieList);
           loadMovieList();
       }
           
@@ -127,7 +124,7 @@ public class LoginController {
             return false;
         } 
         try{
-            movieList = movieListHandler.getMovieList(username);
+            movieList = movielistAccess.getMovieListByUsername(username);
         }
         catch (IllegalArgumentException e){
             feedback.setText("Movielist doesn't exist");
@@ -175,7 +172,7 @@ public class LoginController {
    * @throws IllegalArgumentException if a movieList with the specified username already exists
    */
     private boolean takenUsername(String username){
-        return movieListHandler.getAllMovieListsFromFile().stream()
+        return movielistAccess.getAllMovieListsFromFile().stream()
                                                           .map(a -> a.getUsername())
                                                           .anyMatch(a -> a.equals(username));
     }

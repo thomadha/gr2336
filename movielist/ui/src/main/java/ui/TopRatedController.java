@@ -6,7 +6,6 @@ import java.util.List;
 import core.Movie;
 import core.MovieList;
 import dataaccess.MovieListAccess;
-import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,15 +28,22 @@ public class TopRatedController {
 
   private List<MovieList> allMovieLists; 
   private MovieList allMovies;
-  private MovieListHandler fileHandler;
   private MovieList movieList;
   private Stage topStage; 
 
   private MovieListAccess  movielistAccess;
 
+  /**
+   * Method for getting the containerAccess thats automoticly chosen by setUpAccess().
+   *
+   * @return this.containerAccess;
+   */
+  public MovieListAccess getAccess() {
+    return this.movielistAccess;
+  }
+
   public TopRatedController(){
     this.movieList = new MovieList();
-    this.fileHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
   }
 
   public void setMovielist(MovieList movieList){
@@ -54,7 +60,7 @@ public class TopRatedController {
 
   private void getAllMoviesFromFile(){
     allMovies = new MovieList();
-    allMovieLists = fileHandler.getAllMovieListsFromFile();
+    allMovieLists = movielistAccess.getAllMovieListsFromFile();
     for (MovieList MovieList : allMovieLists) {
       for (Movie Movie : MovieList.getMovies()) {
         allMovies.addMovie(Movie);

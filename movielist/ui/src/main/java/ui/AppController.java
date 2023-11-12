@@ -6,7 +6,6 @@ import java.io.IOException;
 import core.Movie;
 import core.MovieList;
 import dataaccess.MovieListAccess;
-import filehandler.MovieListHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,13 +42,10 @@ public class AppController {
 
     private Stage movieDiaryStage; 
 
-    private MovieListHandler fileHandler;
-
     private MovieList movieList;
 
     public AppController() {
         movieList = new MovieList();
-        fileHandler = new MovieListHandler("/src/main/java/filehandler/MovieList.json");
     }
 
     public MovieList getMovieList() {
@@ -70,7 +66,7 @@ public class AppController {
             feedback.setText("");
             movieList.addMovie(new Movie(titleField.getText(), scoreField.getValue(),genrebtn.getText()));
             updateMovieListField();
-            fileHandler.saveToFile(movieList);
+            movielistAccess.saveToFile(movieList);
             resetChoises();
         }catch(Exception e){
             feedback.setText(e.getMessage());
@@ -144,7 +140,7 @@ public class AppController {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                fileHandler.removeMovieList(movieList);
+                movielistAccess.removeMovieList(movieList.getUsername());
                 handleBackBtn(e);
             }
         });
