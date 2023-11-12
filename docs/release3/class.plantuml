@@ -1,0 +1,93 @@
+@startuml Class Diagram
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+class Movie {
+ - Title: String 
+ - Score: double 
+ - Genre: String 
+ - Count: int 
+ + void setName(String)
+ + void setScore(double)
+ + void setGenre(String)
+ + void addDuplicate()
+ + String getName()
+ + String getGenre()
+ + double getScore()
+ + int getCount()
+}
+
+class MovieList {
+ - Movies: List<Movie>
+ + List getMovies()
+ + void addMovie(Movie)
+ + int getNumberOfMovies()
+ + String movieListToString()
+ + boolean checkDuplicate()
+}
+
+
+class AppController {
+    - fileHandler: MovieListHandler 
+    - movieList: MovieList 
+    - movieDiaryStage: Stage
+    + MovieList getMovieList()
+    + void handleAddBtn(ActionEvent)
+    + void setMovielist(MovieList)
+    + void setMovieDiaryStage(Stage)
+    + void updateMovieListField()
+    - void resetChoises()
+    - void handleChoise(ActionEvent)
+    - void handleBackBtn(ActionEvent)
+    - void handleTopListBtn(ActionEvent)
+    - void handleDeleteMovieList(ActionEvent)
+}
+class LoginController {
+    - movieListHandler: MovieListHandler
+    - movieList: MovieList
+    - loginControllerStage: Stage
+    + void initialize()
+    + MovieList getMovieList()
+    + void setLoginControllerStage(Stage)
+    + void openList(ActionEvent)
+    + void newOrLogin(ActionEvent)
+    + void openExistingMovieList()
+    + void makeNewMovieList()
+    + void loadMovieList()
+    - boolean validInput(String,String)
+    - void cleansePage()
+    - void takenUsername(String)
+
+}
+class TopRatedController {
+    - fileHandler: MovieListHandler
+    - movieList: MovieList
+    - allMovies: MovieList
+    - topStage: Stage
+    + void initialize()
+    + void setMovielist(MovieList)
+    + void setStage(Stage)
+    - void getAllMoviesFromFile()
+    - void handleFilterBtn(ActionEvent)
+    - void handleBackBtn(ActionEvent)
+
+}
+
+
+class MovieListHandler {
+    - gson: Gson
+    - filePath: String
+    + void writeMovieListToFile(MovieList, String) 
+    + void writeMovieListToFile(MovieList)
+    + MovieList readMovieListFromFile(String)
+    + MovieList readMovieListFromFile()
+}
+
+MovieList -- "0..*" Movie : movies
+MovieListHandler "1" o-- "1" MovieList : movielists
+AppController "1" -- "1" MovieListHandler : filehandler
+LoginController "1" -- "1" MovieListHandler : filehandler
+TopRatedController "1" -- "1" MovieListHandler : filehandler
+AppController -- "1" MovieList
+
+@enduml
