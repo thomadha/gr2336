@@ -1,0 +1,31 @@
+@startuml Package diagram
+
+component core {
+	package movie.core
+	package movie.json
+}
+
+movie.core ..> movie.json
+
+component gson {
+}
+
+movie.json ..> gson
+
+component ui {
+    package movie.ui
+}
+
+component javafx {
+	component fxml {
+	}
+}
+
+movie.ui ..> javafx
+movie.ui ..> fxml
+
+movie.ui ..> movie.json
+movie.ui ..> movie.core
+
+
+@enduml
