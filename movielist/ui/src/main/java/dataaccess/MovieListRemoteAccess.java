@@ -2,7 +2,6 @@ package dataaccess;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,7 +11,6 @@ import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import core.MovieList;
 
@@ -103,6 +101,7 @@ public class MovieListRemoteAccess implements MovieListAccess{
     }
   }
 
+
   @Override
   public void addMovieList(MovieList movieList) {
     String mapping = "lists";
@@ -167,6 +166,11 @@ public class MovieListRemoteAccess implements MovieListAccess{
         throw new RuntimeException(e);
     }
     return null;
+  }
+
+  @Override
+  public void saveToFile(MovieList movieList) {
+    
   }
 
 }

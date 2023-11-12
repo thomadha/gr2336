@@ -2,6 +2,7 @@ package dataaccess;
 
 import java.util.List;
 
+
 import core.MovieList;
 import filehandler.MovieListHandler;
 
@@ -51,6 +52,16 @@ public class MovieListLocalAccess implements MovieListAccess{
   @Override
   public void removeMovieList(String username) {
     fileHandler.removeMovieList(fileHandler.getMovieList(username));
+  }
+
+  /**
+   * Updates the user file with the specified user.
+   *
+   * @param user the user to update
+   */
+
+  public void saveToFile(MovieList movielist) {
+    fileHandler.saveToFile(movielist);
   }
 
   // @Override

@@ -18,6 +18,8 @@ public interface MovieListAccess {
 
   public List<MovieList> getAllMovieListsFromFile();
 
+  public void saveToFile(MovieList movieList);
+
   //public void validateNoExistingMovieList(String username);
 
 
