@@ -1,5 +1,6 @@
 /**
  * This is the package-level documentation for the 'ui' package.
- * You can describe the purpose and usage of classes in this package here.
+ * It includes classes related to UI controllers.
+ * In addition it includes class to initialize app.
  */
 package ui;
