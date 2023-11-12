@@ -1,8 +1,11 @@
 package ui;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 
 import core.MovieList;
+import dataaccess.MovieListAccess;
 //import dataaccess.MovieListAccess;
 import dataaccess.MovieListLocalAccess;
 import dataaccess.MovieListRemoteAccess;
@@ -14,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -32,26 +36,45 @@ public class LoginController {
     private MovieList movieList;
     private Stage loginControllerStage; 
 
-    private MovieListRemoteAccess  movielistAccess;
+    private MovieListAccess  movielistAccess;
+    //private MovieListRemoteAccess  movielistRemoteAccess;
 
-    public LoginController(MovieListRemoteAccess movieListRemoteAccess){
+
+    public LoginController() {
       this.movieList = new MovieList();
-      this.movielistAccess = movieListRemoteAccess;
+  //     this.movielistAccess = new MovieListRemoteAccess(movieList);
   }
 
-  //   public LoginController() {
-  //     this.movieList = new MovieList();
-  //     this.movielistAccess = new MovieListRemoteAccess(movieList);
-  // }
-
     /**
-     * Method for updating ListContainerAccess.
+     * Method for updating MovieListContainerAccess.
      *
      * @param access  remote or direct access
      */
-    public void initData(MovieListRemoteAccess access) {
+    public void initData(MovieListAccess access) {
       this.movielistAccess = access;
     }
+
+    /**
+   * Method for seting up the server. Tries to connect to the server first.
+   *     If the server is not running, it connects directly to a local file
+   */
+  public void setUpAccess() {
+    try {
+      this.movielistAccess = new MovieListRemoteAccess(new URI("http://localhost:8080/"), false);
+    } catch (Exception e) {
+      this.movielistAccess = new MovieListLocalAccess(this.movieList);
+    }
+  }
+
+    /**
+   * Method for getting the containerAccess that´s automatically chosen by setUpAccess().
+   *
+   * @return this.movielistAccess;
+   */
+  public MovieListAccess getAccess() {
+    return this.movielistAccess;
+  }
+
 
     public MovieList getMovieList() {
       return movieList;
@@ -152,6 +175,7 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListApp.fxml"));
             Parent root = loader.load();
             AppController appController = loader.getController();
+            appController.initData(movieList, movielistAccess);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             appController.setMovielist(movieList);

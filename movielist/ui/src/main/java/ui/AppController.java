@@ -1,10 +1,12 @@
 package ui;
 
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import core.Movie;
 import core.MovieList;
+import dataaccess.MovieListAccess;
 //import dataaccess.MovieListAccess;
 import dataaccess.MovieListLocalAccess;
 import dataaccess.MovieListRemoteAccess;
@@ -40,21 +42,33 @@ public class AppController {
     @FXML private Button backBtn;
     @FXML private Button deleteMovieListBtn;
     
-    private MovieListRemoteAccess  movielistAccess;
+    private MovieListRemoteAccess  movielistRemoteAccess;
+    private MovieListAccess  movielistAccess;
 
     private Stage movieDiaryStage; 
 
     private MovieList movieList;
 
-    public AppController(MovieListRemoteAccess movieListRemoteAccess){
+    public AppController(){
         this.movieList = new MovieList();
-        this.movielistAccess = movieListRemoteAccess;
+        //this.movielistAccess = movieListRemoteAccess;
     }
 
     // public AppController() {
     //     this.movieList = new MovieList();
     //     this.movielistAccess = new MovieListRemoteAccess(movieList);
     // }
+
+    /**
+  * Method for populating the scene with the items
+  *
+  * @throws FileNotFoundException  if file is not found
+  */
+  public void initData(MovieList movieList, MovieListAccess access) 
+        throws FileNotFoundException {
+    this.movieList = movieList;
+    this.movielistAccess = access;
+  }
 
     public MovieList getMovieList() {
         return movieList;
@@ -108,6 +122,7 @@ public class AppController {
             LoginController loginController = loaders.getController(); 
             movieListField.getItems().clear();
             resetChoices();
+            loginController.initData(movielistAccess);
             Scene scenes = new Scene(roots);
             Stage stages = new Stage();
             stages.setScene(scenes);
@@ -126,11 +141,11 @@ public class AppController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("TopRated.fxml"));
             Parent root = loader.load();
             TopRatedController topRatedController = loader.getController();
+            topRatedController.setMovielist(movieList);
+            topRatedController.initialize(movieList, movielistAccess);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             topRatedController.setStage(stage);
-            topRatedController.setMovielist(movieList);
-            topRatedController.initialize();
             stage.setScene(scene);
             stage.show();
             movieDiaryStage.close();
@@ -148,7 +163,8 @@ public class AppController {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                movielistAccess.removeMovieList(movieList.getUsername());
+                String username = this.movieList.getUsername();
+                movielistAccess.removeMovieList(username);
                 handleBackBtn(e);
             }
         });

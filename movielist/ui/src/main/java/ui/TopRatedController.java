@@ -1,10 +1,12 @@
 package ui;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 import core.Movie;
 import core.MovieList;
+import dataaccess.MovieListAccess;
 //import dataaccess.MovieListAccess;
 import dataaccess.MovieListLocalAccess;
 import dataaccess.MovieListRemoteAccess;
@@ -33,20 +35,21 @@ public class TopRatedController {
   private MovieList movieList;
   private Stage topStage; 
 
-  private MovieListRemoteAccess  movielistAccess;
+  private MovieListRemoteAccess  movielistRemoteAccess;
+  private MovieListAccess movielistAccess;
 
   /**
    * Method for getting the containerAccess thats automoticly chosen by setUpAccess().
    *
    * @return this.containerAccess;
    */
-  public MovieListRemoteAccess getAccess() {
+  public MovieListAccess getAccess() {
     return this.movielistAccess;
   }
 
-  public TopRatedController(MovieListRemoteAccess movieListRemoteAccess){
+  public TopRatedController(){
     this.movieList = new MovieList();
-    this.movielistAccess = movieListRemoteAccess;
+    //this.movielistAccess = movieListRemoteAccess;
 }
 
   // public TopRatedController(){
@@ -62,7 +65,9 @@ public class TopRatedController {
     this.topStage = stage;
   }
 
-  public void initialize(){
+  public void initialize(MovieList movieList, MovieListAccess access) throws FileNotFoundException {
+    this.movieList = movieList;
+    this.movielistAccess = access;
     getAllMoviesFromFile();
   }
 

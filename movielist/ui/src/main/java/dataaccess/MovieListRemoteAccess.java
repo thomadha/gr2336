@@ -9,7 +9,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 import core.MovieList;
@@ -17,7 +17,7 @@ import core.MovieList;
 public class MovieListRemoteAccess implements MovieListAccess{
 
   private MovieList movieList = new MovieList();
-  private List<MovieList> movieLists = new ArrayList<>();
+  //private List<MovieList> movieLists = new ArrayList<>();
   private final URI endpointUri;
   private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -159,7 +159,7 @@ public class MovieListRemoteAccess implements MovieListAccess{
     try {
         final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
             HttpResponse.BodyHandlers.ofString());
-        final String responseString = response.body();
+        //final String responseString = response.body();
         // Parse the JSON response as a list of maps
         //Type mapListType = new TypeToken<List<Map<String, Object>>>() {}.getType();
         //List<Map<String, Object>> movieLists = gson.fromJson(responseString, mapListType);

@@ -18,6 +18,7 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("LoginPage.fxml"));
         Parent parent = fxmlLoader.load();
         LoginController loginController = fxmlLoader.getController();
+        loginController.setUpAccess();
         stage.setScene(new Scene(parent));
         stage.show();
         loginController.setLoginControllerStage(stage);
