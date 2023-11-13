@@ -5,38 +5,36 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class MovieTest {
-
     
-    @Test 
+    @Test
     @DisplayName("Checks if the name is correct")
     public void testValidName() throws IllegalArgumentException {
         Movie shark = new Movie("Shark 2", 2, "");
         Assertions.assertEquals("Shark 2", shark.getName());
     }
     
-    @Test 
+    @Test
     @DisplayName("Checks if the score is correct")
     public void testValidScore() throws IllegalArgumentException {
         Movie shark = new Movie("Shark 2", 2, "");
         Assertions.assertEquals(2, shark.getScore());
     }
-    
 
-    @Test 
+    @Test
     @DisplayName("Invalid score throws exception")
     public void testInvalidScore(){
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> {new Movie("Mean Girls", 13, "");}, 
-        "wrong format on score"); 
+        Assertions.assertThrows(IllegalArgumentException.class,
+        () -> {new Movie("Mean Girls", 13, "");},
+        "wrong format on score");
         //sjekker at den kaster når den skal, altså dersom det blir oppgitt feil format på score
     }
     
-    @Test 
+    @Test
     @DisplayName("Invalid score throws exception")
     public void testInvalidName(){
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> {new Movie("", 5, "");}, 
-        "wrong format on name"); 
+        Assertions.assertThrows(IllegalArgumentException.class,
+        () -> {new Movie("", 5, "");},
+        "wrong format on name");
         //sjekker at den kaster når den skal, altså dersom det blir oppgitt feil format på name
     }
 
@@ -45,7 +43,6 @@ public class MovieTest {
     public void testInitialCount(){
         Movie shark = new Movie("Shark 2", 2, "");
         Assertions.assertEquals(1, shark.getCount());
-
     }
 
     @Test
@@ -55,7 +52,6 @@ public class MovieTest {
         shark.addDuplicate();
         shark.addDuplicate();
         Assertions.assertEquals(3, shark.getCount());
-
     }
 
     @Test
@@ -64,6 +60,5 @@ public class MovieTest {
         Movie shark = new Movie("Shark 2", 2, "");
         shark.setGenre("horror");
         Assertions.assertEquals("horror", shark.getGenre());
-
     }
 }

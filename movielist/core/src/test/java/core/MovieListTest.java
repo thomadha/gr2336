@@ -5,9 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class MovieListTest {
-
     
-    @Test 
+    @Test
     @DisplayName("Checks if the list is correct")
     public void testMovieList() throws IllegalArgumentException {
         Movie shark = new Movie("Shark 2", 2, "");
@@ -25,8 +24,6 @@ public class MovieListTest {
         Assertions.assertEquals(meangirls, movielist.getMovies().get(0));
         Assertions.assertEquals(harry, movielist.getMovies().get(1));
         Assertions.assertEquals(3, movielist.getNumberOfMovies());
-
-
     }
 
     @Test
@@ -44,9 +41,5 @@ public class MovieListTest {
 
         Assertions.assertEquals(2 , movielist.getMovies().get(0).getCount());
         Assertions.assertEquals(4.5 , movielist.getMovies().get(0).getScore());
-
-
     }
-
-
 }

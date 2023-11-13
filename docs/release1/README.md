@@ -1,5 +1,3 @@
-En README.md-fil (evt. en fil som README.md lenker til) inni kodingsprosjektet skal beskrive hva appen handler om og er ment å gjøre (når den er mer eller mindre ferdig). Ha med et illustrerende skjermbilde, så det er lettere å forstå. Det må også være minst én brukerhistorie for funksjonaliteten dere starter med.
-
 ## About the project
 
 The Movie App is a JavaFX application that allows you to add and display a list of movies with their scores. It's a first draft of a database where you can save the movies you've watched. It's sorted by score, from highest to lowest.

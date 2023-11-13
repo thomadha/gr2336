@@ -1,0 +1,52 @@
+@startuml Sequence Diagram
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+actor User
+
+participant LoginController
+participant TopRatedController
+participant AppController
+participant MovieList
+participant Movie
+
+
+User -> LoginController: Add Login/Register Input
+LoginController -> MovieList: Find or create MovieList Object to open
+MovieList --> AppController: MovieList opened
+User -> AppController: Delete List
+AppController --> User: Ask for Confirmation og MovieList Deletion
+User -> AppController: Confirm
+AppController -> MovieList: Delete MovieList
+MovieList --> AppController: MovieList deleted
+
+User -> AppController: Go Back
+AppController -> MovieList: Close MovieList
+MovieList --> AppController: MovieList closed
+AppController --> LoginController: Opens Login Controller
+
+
+User -> AppController: Add New Movie Input
+AppController -> Movie: Create New Movie Object
+Movie --> AppController: Movie Object Created
+AppController -> Movie: Initialize Movie Object (name, score, etc.)
+Movie --> AppController: Movie Object Initialized
+AppController -> MovieList: Add Movie Object to List
+MovieList -> MovieList: Add Movie to List
+MovieList --> AppController: Movie Added Successfully
+
+User -> AppController: Show Top Rated Movies
+AppController -> MovieList: Open MovieList of user
+MovieList --> TopRatedController: MovieList opened
+TopRatedController -> MovieList: Sort List by New Choice
+MovieList -> MovieList: Sort List
+MovieList --> TopRatedController: MovieList Sorted
+
+User -> TopRatedController: Go Back
+TopRatedController -> MovieList: Close MovieList
+MovieList --> TopRatedController: MovieList closed
+TopRatedController --> AppController: Open App Controller
+
+
+
+@enduml

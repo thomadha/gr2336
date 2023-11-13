@@ -6,15 +6,15 @@ The project is located inside the folder movielist. Within the project, there ar
     Here you can find the "backend" code for movie. This includes attributes for movie and movielist, and how these work. You can also find tests for the code here.
 
     Movie and MovieList class: movielist/core/src/main/java/core
-    Json file: movielist/core/src/main/java/json
+    Json file: movielist/core/src/main/java/filehandler
     Tests: movielist/core/src/test/java/core
 
 2. ui
 
     ui stands for user interface. Here you can find all the code for how the app interacts with the user, such as the appcontroller or the class that launched the app. You can also find tests for the code in ui here
 
-    App and AppController: movielist/ui/src/main/java/ui
-    FXML-file: movielist/ui/src/main/resources/ui
+    Application and its controllers: movielist/ui/src/main/java/ui
+    FXML-files: movielist/ui/src/main/resources/ui
     AppTest: movielist/ui/src/test/java/ui
 
 Additionally, there is a folder named "docs", as well as an "assets"-folder: 
