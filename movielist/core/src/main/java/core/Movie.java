@@ -4,11 +4,11 @@ public class Movie {
   private String name; 
   private String genre; 
   private double score;
-  private int movieCount = 1;
+  private int count = 1;
 
   @Override
   public String toString() {
-    return name + " \n - Genre: " + genre + " - Score: " + score + " - Views: " + movieCount;
+    return name + " \n - Genre: " + genre + " - Score: " + score + " - Views: " + count;
   }
 
   public String scoreString(){
@@ -16,7 +16,7 @@ public class Movie {
   }
 
   public String viewsString(){
-    return name + "\n - Views: " + movieCount + "\n\n"; 
+    return name + "\n - Views: " + count + "\n\n"; 
   }
 
   public Movie(String name, double score, String genre){
@@ -31,10 +31,10 @@ public class Movie {
     }
     this.name = name;
     this.score = score; 
-    this.genre=genre;
+    this.genre = genre;
   }
 
-  public Movie(String name, double score, String genre, int movieCount){
+  public Movie(String name, double score, String genre, int count){
     if(!validScore(score)){
       throw new IllegalArgumentException("Score must be between 0 and 10");
     }
@@ -48,7 +48,7 @@ public class Movie {
     }
     this.name = name;
     this.score = score; 
-    this.movieCount = movieCount;
+    this.count = count;
   }
   
   public String getName() {
@@ -85,11 +85,11 @@ public class Movie {
   }
 
   public void addDuplicate(){
-    this.movieCount ++;
+    this.count ++;
   }
 
   public int getCount(){
-    return this.movieCount;
+    return this.count;
   }
 
   
