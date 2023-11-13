@@ -78,9 +78,7 @@ public class LoginController {
    * @return a movielist.
    */
   public MovieList getMovieList() {
-    MovieList movieListCopy = new MovieList();
-    movieListCopy.setMovies(this.movieList.getMovies());
-    return movieListCopy;
+    return movieList;
   }
 
   /**
