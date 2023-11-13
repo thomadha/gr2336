@@ -103,9 +103,7 @@ public class AppController {
      * @return a MovieList object.
      */
     public MovieList getMovieList() {
-        MovieList movielistCopy = new MovieList();
-        movielistCopy.setMovies(movieList.getMovies());
-        return movielistCopy;
+        return movieList;
     }
 
     /**
@@ -114,9 +112,7 @@ public class AppController {
      * @param movieListInput with Movie objects.
      */
     public void setMovielist(final MovieList movieListInput) {
-        MovieList movieListCopy = new MovieList();
-        movieListCopy.setMovies(movieListInput.getMovies());
-        this.movieList = movieListCopy;
+        this.movieList = movieListInput;
     }
 
     /**
