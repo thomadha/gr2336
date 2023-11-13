@@ -5,35 +5,63 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" style="-fx-background-color: #9AADBF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.TopRatedController">
    <children>
-      <Label id="header" fx:id="header" layoutX="193.0" layoutY="27.0" text="Top movies based on">
+      <ImageView fitHeight="493.0" fitWidth="608.0" pickOnBounds="true">
+         <image>
+            <Image url="@image/background2.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0c3f6f" height="501.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="608.0" />
+      <ImageView fitHeight="254.0" fitWidth="332.0" layoutX="145.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/moviediarylogoSmall.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdc1e2" height="73.0" layoutX="211.0" layoutY="387.0" opacity="0.7" stroke="#de1d5e" strokeType="INSIDE" width="200.0" />
+      <Label id="header" fx:id="header" layoutX="119.0" layoutY="19.0" text="Top Movies Based On" textFill="#f2c7e9">
          <font>
-            <Font name="Broadway" size="24.0" />
+            <Font name="Trebuchet MS" size="41.0" />
          </font>
       </Label>
-      <Button id="backBtn" fx:id="backBtn2" layoutX="27.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleBackBtn2" style="-fx-background-color: white;" text="Back">
+      <Button id="backBtn" fx:id="backBtn2" layoutX="20.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleBackBtn2" text="Go Back">
          <font>
-            <Font name="American Typewriter" size="13.0" />
+            <Font name="Trebuchet MS Bold" size="13.0" />
          </font>
       </Button>
-      <Label id="header" fx:id="header1" layoutX="205.0" layoutY="56.0" prefHeight="29.0" prefWidth="190.0" text=" " textAlignment="CENTER">
+      <Label id="header" fx:id="header1" layoutX="145.0" layoutY="58.0" prefHeight="29.0" prefWidth="190.0" text=" " textAlignment="CENTER" textFill="#e9aad8">
          <font>
-            <Font name="Broadway" size="24.0" />
+            <Font name="Trebuchet MS Bold" size="28.0" />
          </font>
       </Label>
-      <MenuButton fx:id="filterbtn" layoutX="27.0" layoutY="143.0" mnemonicParsing="false" text="Choose filter">
+      <MenuButton fx:id="filterbtn" layoutX="251.0" layoutY="419.0" mnemonicParsing="false" popupSide="RIGHT" style="-fx-background-color: #DE1D5E;" text="Choose filter" textFill="#fffbfb">
         <items>
             <MenuItem fx:id="views" mnemonicParsing="false" onAction="#handleFilterBtn" text="Views" />
             <MenuItem fx:id="bestRating" mnemonicParsing="false" onAction="#handleFilterBtn" text="Best rating" />
             <MenuItem fx:id="worstRating" mnemonicParsing="false" onAction="#handleFilterBtn" text="Worst rating" />
         </items>
+         <font>
+            <Font name="Century Gothic Bold" size="14.0" />
+         </font>
       </MenuButton>
-      <Text layoutX="27.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose what to filter by:" />
-      <TextArea fx:id="topfield" layoutX="176.0" layoutY="98.0" prefHeight="290.0" prefWidth="248.0" />
+      <Text layoutX="227.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose what to filter by:">
+         <font>
+            <Font name="Century Gothic Bold" size="14.0" />
+         </font></Text>
+      <Line endX="-110.5" endY="-4.0" layoutX="240.0" layoutY="92.0" startX="-110.5" startY="-28.5" stroke="#b60566" strokeWidth="4.0" />
+      <Line endX="100.0" startX="-100.0" />
+      <Line endX="-110.5" endY="276.5" layoutX="283.0" layoutY="98.0" startX="-110.5" startY="-6.0" stroke="#de1d5e" strokeWidth="2.0" />
+      <Line endX="-110.5" endY="276.5" layoutX="560.0" layoutY="99.0" startX="-110.5" startY="-6.0" stroke="#de1d5e" strokeWidth="2.0" />
+      <Line endX="-121.0" endY="-16.5" layoutX="570.0" layoutY="393.0" startX="-398.0" startY="-16.5" stroke="#de1d5e" strokeWidth="2.0" />
+      <Line endX="-121.0" endY="-16.5" layoutX="571.0" layoutY="109.0" startX="-398.0" startY="-16.5" stroke="#de1d5e" strokeWidth="2.0" />
+      <TextArea fx:id="topfield" layoutX="172.0" layoutY="92.0" opacity="0.71" prefHeight="285.0" prefWidth="278.0" style="-fx-background-color: #003399;" />
    </children>
 </Pane>
