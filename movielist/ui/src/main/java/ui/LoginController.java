@@ -1,6 +1,5 @@
 package ui;
 
-import java.io.File;
 import java.io.IOException;
 
 import core.MovieList;
@@ -13,8 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -47,26 +44,6 @@ public class LoginController {
    * Text that shows open or register moviediary.
    */
   @FXML private Text openOrMakeTexts;
-  /**
-   * Background image.
-   */
-  @FXML private ImageView imageBackground;
-  /**
-   * Logo image for movielist logo.
-   */
-  @FXML private ImageView imageLogo;
-  /**
-   * Movielist logo text image.
-   */
-  @FXML private ImageView imageLogoText;
-  /**
-   * Usericon image.
-   */
-  @FXML private ImageView imageUserLogo;
-  /**
-   * Passwordicon image.
-   */
-  @FXML private ImageView imagePasswordLogo;
   /**
    * If you're logging in this shows "want to register instead".
    * And vice versa.
