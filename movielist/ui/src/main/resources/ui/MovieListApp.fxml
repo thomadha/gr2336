@@ -59,7 +59,7 @@
         </items>
       </MenuButton>
       <Separator layoutX="-2.0" layoutY="130.0" prefHeight="15.0" prefWidth="606.0" />
-      <Label layoutX="176.0" layoutY="53.0" text="Movie Diary">
+      <Label layoutX="154.0" layoutY="56.0" text="Movie Diary" textFill="#080000">
          <font>
             <Font name="Broadway" size="48.0" />
          </font>
