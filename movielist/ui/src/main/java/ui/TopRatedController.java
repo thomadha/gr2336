@@ -83,9 +83,7 @@ public class TopRatedController {
    * @param movieListInput to show.
    */
   public void setMovielist(final MovieList movieListInput) {
-    MovieList movieListCopy = new MovieList();
-    movieListCopy.setMovies(movieListInput.getMovies());
-    this.movieList = movieListCopy;
+    this.movieList = movieListInput;
   }
 
   /**
