@@ -62,8 +62,10 @@ public class LoginController {
   public void setUpAccess() throws IOException, InterruptedException, URISyntaxException {
     // try {
       this.movielistAccess = new MovieListRemoteAccess(new URI("http://localhost:8080/movielist"), false);
+      System.out.println("Remote access");
     // } catch (Exception e) {
     //   this.movielistAccess = new MovieListLocalAccess(this.movieList);
+    //   System.out.println("Local access");
     // }
   }
 
@@ -123,7 +125,6 @@ public class LoginController {
 
       if(validInput(usernameString, passwordString)){
           movieList = movielistAccess.getMovieListByUsername(usernameString);
-          movielistAccess.saveToFile(movieList);
           loadMovieList();
       }
     }
@@ -142,7 +143,7 @@ public class LoginController {
           movieList =  new MovieList();
           movieList.setUsername(usernameString);
           movieList.setPassword(passwordString);
-          movielistAccess.saveToFile(movieList);
+          movielistAccess.addMovieList(movieList);
           loadMovieList();
       }
           
