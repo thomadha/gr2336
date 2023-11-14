@@ -14,6 +14,7 @@ import java.net.http.HttpResponse;
 //import java.util.ArrayList;
 import java.util.List;
 
+import core.Movie;
 import core.MovieList;
 
 public class MovieListRemoteAccess implements MovieListAccess{
@@ -83,9 +84,9 @@ public class MovieListRemoteAccess implements MovieListAccess{
     return movieList;
   }
 
-  // public void updateMovieList(MovieList newMovieList){
-  //   this.movieList = newMovieList;
-  // }
+  public void updateMovieList(MovieList newMovieList){
+    this.movieList = newMovieList;
+  }
 
   /**
    * Access method for a specific movielist by name. 
@@ -186,6 +187,43 @@ public class MovieListRemoteAccess implements MovieListAccess{
   public void saveToFile(MovieList movieList) {
     
   }
+  
+  /**
+     * Add a movie to the MovieList on the remote server.
+     *
+     * @param thisMovielist The MovieList to update on the server.
+     * @param newMovie  The movie to add to the list.
+     */
+    public void addMovieToList(Movie newMovie) {
+      String username = this.movieList.getUsername();
+      String add = username + "/addMovie";
+      movieList.addMovie(newMovie);
+      try {
+            String jsonBody = gson.toJson(movieList);
+
+            HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping + add))
+                .header("Add", "application/json")
+                .POST(BodyPublishers.ofString(jsonBody))
+                .build();
+            final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
+            HttpResponse.BodyHandlers.ofString());
+
+            // Check if the response indicates successful update
+            if (response.statusCode() == 200) {
+                // Updating successful
+                System.out.println("Movie added successfully");
+            } else {
+                // Updating failed, print the response body for debugging
+                System.out.println("Failed to add movie. Response body: " + response.body());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    
 
 }
 

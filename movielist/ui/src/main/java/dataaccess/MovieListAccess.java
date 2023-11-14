@@ -2,6 +2,7 @@ package dataaccess;
 
 import java.util.List;
 
+import core.Movie;
 import core.MovieList;
 
 public interface MovieListAccess {
@@ -19,6 +20,10 @@ public interface MovieListAccess {
   public List<MovieList> getAllMovieListsFromFile();
 
   public void saveToFile(MovieList movieList);
+
+  public void addMovieToList(Movie movie);
+
+  public void updateMovieList(MovieList movieList);
 
   //public void validateNoExistingMovieList(String username);
 

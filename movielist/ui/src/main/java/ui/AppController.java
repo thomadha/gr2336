@@ -84,9 +84,13 @@ public class AppController {
     private void handleAddBtn(ActionEvent event){
         try{
             feedback.setText("");
-            movieList.addMovie(new Movie(titleField.getText(), scoreField.getValue(),genrebtn.getText()));
+            movielistAccess.updateMovieList(movieList);
+            Movie newMovie = new Movie(titleField.getText(), scoreField.getValue(),genrebtn.getText());
+            System.out.println(newMovie);
+            movielistAccess.addMovieToList(newMovie);
+            //movieList.addMovie(newMovie);
             updateMovieListField();
-            movielistAccess.saveToFile(movieList);
+            //movielistAccess.saveToFile(movieList);
             resetChoices();
         }catch(Exception e){
             feedback.setText(e.getMessage());

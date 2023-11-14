@@ -2,13 +2,13 @@ package dataaccess;
 
 import java.util.List;
 
-
+import core.Movie;
 import core.MovieList;
 import filehandler.MovieListHandler;
 
 public class MovieListLocalAccess implements MovieListAccess{
 
-  final MovieList movieList;
+  private MovieList movieList;
   private MovieListHandler fileHandler;
 
   public MovieListLocalAccess(MovieList movielist) {
@@ -24,6 +24,10 @@ public class MovieListLocalAccess implements MovieListAccess{
   @Override
   public MovieList getMovieListByUsername(String username) {
     return fileHandler.getMovieList(username);
+  }
+
+  public void updateMovieList(MovieList newMovieList){
+    this.movieList = newMovieList;
   }
 
   // /**
@@ -69,10 +73,10 @@ public class MovieListLocalAccess implements MovieListAccess{
   //   fileHandler.validateNoExistingMovieList(username);
   // }
 
-  // @Override
-  // public void addMovie(Movie movie) {
-  //   movieList.addMovie(movie);
-  // }
+  @Override
+  public void addMovieToList(Movie movie) {
+    movieList.addMovie(movie);
+  }
 
   // @Override
   // public List<Movie> getMovies() {

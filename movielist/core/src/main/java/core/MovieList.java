@@ -72,6 +72,7 @@ public class MovieList {
   public boolean checkDuplicate(Movie newMovie){
     boolean hasDuplicate = false;
     String newTitle = newMovie.getName();
+    System.out.println(getMovies());
     for(Movie m : getMovies()){
       String oldTitle = m.getName();
       if (oldTitle.equals(newTitle)){
