@@ -1,6 +1,8 @@
 package movielist.springboot;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -110,9 +112,38 @@ class MovieListApplicationTests {
     assertEquals(3.0 , list.get(2).getScore());
 	}
 
+	@Test 
+	public void testAddMovieList() throws Exception{
+		MovieList movieList = new MovieList(); 
+		movieList.setUsername("test3");
+		movieList.setPassword("123");
+		Movie m = new Movie("Star Wars", 10, "horror");
+		movieList.addMovie(m);
+
+		String movielistgson = gson.toJson(movieList); 
+
+		mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:8080/movielist/add")
+			.accept(MediaType.APPLICATION_JSON)
+			.content(movielistgson))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andReturn(); 
+
+		String movieListInRestAPI = gson.toJson(get("http://localhost:8080/movielist/test3")); 
+
+		assertTrue(movielistgson.equals(movieListInRestAPI));
+	}
+
 	@Test
-	public void testGetNumberOfMovies(){
-		assertEquals(3,get("http://localhost:8080/movielist/test").getMovies().size());
+	public void testGetNumberOfMovies() throws Exception{
+		String numberOfMoviesString = mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/movielist/test/numberOfMovies")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andReturn()
+				.getResponse() 
+				.getContentAsString(); 
+		int numberOfMovies = Integer.parseInt(numberOfMoviesString); 
+
+		assertEquals(3,numberOfMovies);
 	}
 
 	@Test
@@ -198,7 +229,6 @@ class MovieListApplicationTests {
 
 	@Test
 	public void tryMakingANewUser() throws Exception {
-
 		try{
 			mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:8080/movielist/test2/321/newUser")
 				.accept(MediaType.APPLICATION_JSON))
@@ -215,6 +245,39 @@ class MovieListApplicationTests {
 		String mAsString = gson.toJson(m); 
 
 		assertEquals(mAsString, test2AsString);
+	}
+
+	@Test
+	public void testDeleteMovieList() throws Exception{
+		MovieList movieList = new MovieList(); 
+		movieList.setUsername("test3");
+		movieList.setPassword("123");
+		Movie m = new Movie("Star Wars", 10, "horror");
+		movieList.addMovie(m);
+
+		String movielistgson = gson.toJson(movieList); 
+
+		mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:8080/movielist/add")
+			.accept(MediaType.APPLICATION_JSON)
+			.content(movielistgson))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andReturn(); 
+
+		mockMvc.perform(MockMvcRequestBuilders.delete("http://localhost:8080/movielist/test3/deleteUser")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString(); 
+
+		String allMovieLists = mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/movielist/getall")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andReturn()
+				.getResponse() 
+				.getContentAsString(); 
+
+		assertFalse(allMovieLists.contains(movielistgson));
 	}
 
 }
