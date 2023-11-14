@@ -31,7 +31,7 @@ import ui.LoginController;
 import javafx.scene.text.Text;
 import javafx.scene.control.Label;
 
-public class AppTest extends ApplicationTest {
+public class LoginPageTest extends ApplicationTest {
 
     private LoginController controller;
     private Parent root;
