@@ -132,7 +132,41 @@
                 <configuration>
                     <!-- syntax: module-name/full-app-class-name -->
                     <mainClass>ui.App</mainClass>
+                    <!--> The rest here is configs for jlink-->
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <stripBug>true</stripBug>
+                    <noManPages>true</noManPages>
+                    <launcher>movielistui</launcher>
+                    <jlinkImageName>movielistui</jlinkImageName>
+                    <jlinkZipName>movielistui</jlinkZipName>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                    <artifactId>jpackage-maven-plugin</artifactId>
+                    <version>1.6.0</version>
+                    <configuration>
+                        <name>MovieListUI</name>
+                        <appVersion>1.0.0</appVersion>
+                        <vendor>it1901</vendor>
+                        <destination>target/dist</destination>
+                        <module>ui/ui.App</module>
+                        <runtimeImage>target/movielistui</runtimeImage>
+                        <javaOptions>
+                            <option>-Dfile.encoding=UTF-8</option>
+                        </javaOptions>
+                        <!-- linux things -->
+                        <linuxShortcut>true</linuxShortcut>
+                        <linuxMenyGroup>MovieListUI</linuxMenyGroup>
+
+                        <!-- windows options -->
+                        <winDirChooser>true</winDirChooser>
+                        <winShortcut>true</winShortcut>
+                        <winMeny>true</winMeny>
+                        <winMenyGroup>true</winMenyGroup>
+                    </configuration>
             </plugin>
         </plugins>
     </build>
