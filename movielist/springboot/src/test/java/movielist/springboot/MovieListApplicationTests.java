@@ -160,4 +160,61 @@ class MovieListApplicationTests {
 		assertEquals(m4InJson, movieInJson);
 	}
 
+	@Test
+	public void testGetMovieListByName(){
+		String movieInJson;
+
+		try{
+			movieInJson = mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/movielist/test/StarWars")
+			.accept(MediaType.APPLICATION_JSON))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andReturn()
+			.getResponse()
+			.getContentAsString(); 
+		} catch (Exception e){
+			throw new RuntimeException("Could not retrive movie", e); 
+		}
+
+		assertEquals(gson.toJson(m1), movieInJson);
+
+	}
+
+	@Test 
+	public void testGetUserPassword(){
+		String testPassword;
+		try{
+ 			testPassword = mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/movielist/test/password")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString(); 
+		}catch (Exception e){
+			throw new RuntimeException("Could not retrive password", e); 
+		}
+
+		assertEquals("123", testPassword);
+	}
+
+	@Test
+	public void tryMakingANewUser() throws Exception {
+
+		try{
+			mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:8080/movielist/test2/321/newUser")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andReturn(); 
+		}catch (Exception e){
+			throw new RuntimeException("Not possible to make new user", e); 
+		}
+
+		String test2AsString = gson.toJson(get("http://localhost:8080/movielist/test2")); 
+		MovieList m = new MovieList(); 
+		m.setUsername("test2");
+		m.setPassword("321");
+		String mAsString = gson.toJson(m); 
+
+		assertEquals(mAsString, test2AsString);
+	}
+
 }
