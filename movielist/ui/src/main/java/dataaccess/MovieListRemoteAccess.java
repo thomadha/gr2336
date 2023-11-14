@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -183,10 +182,6 @@ public class MovieListRemoteAccess implements MovieListAccess{
     return null;
   }
 
-  @Override
-  public void saveToFile(MovieList movieList) {
-    
-  }
   
   /**
      * Add a movie to the MovieList on the remote server.
@@ -198,8 +193,10 @@ public class MovieListRemoteAccess implements MovieListAccess{
       String username = this.movieList.getUsername();
       String add = username + "/addMovie";
       movieList.addMovie(newMovie);
+
       try {
             String jsonBody = gson.toJson(movieList);
+            System.out.println("Request Payload: " + jsonBody);
 
             HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping + add))
                 .header("Add", "application/json")

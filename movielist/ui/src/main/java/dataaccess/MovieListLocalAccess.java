@@ -64,9 +64,6 @@ public class MovieListLocalAccess implements MovieListAccess{
    * @param user the user to update
    */
 
-  public void saveToFile(MovieList movielist) {
-    fileHandler.saveToFile(movielist);
-  }
 
   // @Override
   // public void validateNoExistingMovieList(String username) {
@@ -76,6 +73,7 @@ public class MovieListLocalAccess implements MovieListAccess{
   @Override
   public void addMovieToList(Movie movie) {
     movieList.addMovie(movie);
+    fileHandler.saveToFile(movieList);
   }
 
   // @Override
