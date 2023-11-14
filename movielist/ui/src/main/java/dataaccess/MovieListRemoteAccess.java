@@ -200,6 +200,7 @@ public class MovieListRemoteAccess implements MovieListAccess{
 
             HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping + add))
                 .header("Add", "application/json")
+                .header("Content-Type", "application/json")
                 .POST(BodyPublishers.ofString(jsonBody))
                 .build();
             final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
