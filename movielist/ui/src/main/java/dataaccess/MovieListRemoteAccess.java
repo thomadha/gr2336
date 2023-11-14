@@ -2,6 +2,8 @@ package dataaccess;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 import java.io.IOException;
 import java.net.URI;
@@ -20,6 +22,7 @@ public class MovieListRemoteAccess implements MovieListAccess{
   //private List<MovieList> movieLists = new ArrayList<>();
   private final URI endpointUri;
   private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+  private String mapping = "movielist/";
 
   
 
@@ -66,7 +69,6 @@ public class MovieListRemoteAccess implements MovieListAccess{
    */
   @Override
   public MovieList getMovieList() {
-    String mapping = "lists";
     HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping))
         .header("Accept", "application/json")
         .GET().build();
@@ -81,6 +83,10 @@ public class MovieListRemoteAccess implements MovieListAccess{
     return movieList;
   }
 
+  // public void updateMovieList(MovieList newMovieList){
+  //   this.movieList = newMovieList;
+  // }
+
   /**
    * Access method for a specific movielist by name. 
    *
@@ -89,7 +95,6 @@ public class MovieListRemoteAccess implements MovieListAccess{
    */
   @Override
   public MovieList getMovieListByUsername(String username) {
-    String mapping = "lists/";
     try {
       HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping + username))
           .header("Accept", "application/json").GET().build();
@@ -106,18 +111,20 @@ public class MovieListRemoteAccess implements MovieListAccess{
 
   @Override
   public void addMovieList(MovieList movieList) {
-    String mapping = "lists";
+    String username = movieList.getUsername();
+    String password = movieList.getPassword();
+    String addList = "/" + username + "/" + password + "/newUser";
         String jsonBody = gson.toJson(movieList);
-        HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping))
+        HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping + addList))
                 .header("Content-Type", "application/json")
                 .POST(BodyPublishers.ofString(jsonBody))
                 .build();
         try {
             final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
                     HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() != 201) {
-                throw new IOException("Failed to add movie list. Status code: " + response.statusCode());
-            }
+            // if (response.statusCode() != 201) {
+            //     throw new IOException("Failed to add movie list. Status code: " + response.statusCode());
+            // }
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -131,10 +138,10 @@ public class MovieListRemoteAccess implements MovieListAccess{
    */
   @Override
   public void removeMovieList(String username) {
-    String mapping = "lists/";
+    String remove = "/deleteUser";
     try {
       HttpRequest request = HttpRequest
-          .newBuilder(movieListUri(mapping + username))
+          .newBuilder(movieListUri(mapping + username + remove))
           .DELETE()
           .build();
       HttpResponse<String> response = HttpClient.newBuilder().build()
@@ -149,21 +156,26 @@ public class MovieListRemoteAccess implements MovieListAccess{
 
 
 
-  //NOT READY OR CORRECT.
   @Override
   public List<MovieList> getAllMovieListsFromFile() {
-    String mapping = "lists";
-    HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping))
-        .header("Accept", "application/json")
-        .GET().build();
+    String get = "getall";
     try {
-        final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
-            HttpResponse.BodyHandlers.ofString());
-        //final String responseString = response.body();
-        // Parse the JSON response as a list of maps
-        //Type mapListType = new TypeToken<List<Map<String, Object>>>() {}.getType();
-        //List<Map<String, Object>> movieLists = gson.fromJson(responseString, mapListType);
-        //return movieLists;
+      HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping + get))
+          .header("Accept", "application/json").GET().build();
+      final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
+                HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            Gson gson = new Gson();
+            Type movieListType = new TypeToken<List<MovieList>>(){}.getType();
+            List<MovieList> movieLists = gson.fromJson(response.body(), movieListType);
+
+            if (movieLists != null) {
+                return movieLists;
+            }
+        } else {
+            System.out.println("Failed to retrieve movie lists. Status code: " + response.statusCode());
+        }
     } catch (IOException | InterruptedException e) {
         throw new RuntimeException(e);
     }

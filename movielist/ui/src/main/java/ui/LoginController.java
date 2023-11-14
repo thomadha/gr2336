@@ -2,6 +2,7 @@ package ui;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 import core.MovieList;
 import dataaccess.MovieListAccess;
@@ -54,13 +55,16 @@ public class LoginController {
     /**
    * Method for seting up the server. Tries to connect to the server first.
    *     If the server is not running, it connects directly to a local file
+     * @throws URISyntaxException
+     * @throws InterruptedException
+     * @throws IOException
    */
-  public void setUpAccess() {
-    try {
-      this.movielistAccess = new MovieListRemoteAccess(new URI("http://localhost:8080/"), false);
-    } catch (Exception e) {
-      this.movielistAccess = new MovieListLocalAccess(this.movieList);
-    }
+  public void setUpAccess() throws IOException, InterruptedException, URISyntaxException {
+    // try {
+      this.movielistAccess = new MovieListRemoteAccess(new URI("http://localhost:8080/movielist"), false);
+    // } catch (Exception e) {
+    //   this.movielistAccess = new MovieListLocalAccess(this.movieList);
+    // }
   }
 
     /**
