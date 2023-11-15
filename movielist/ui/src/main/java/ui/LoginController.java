@@ -19,6 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * Class for the Login page/controller.
+ */
 public class LoginController {
   
     @FXML private TextField usernameInput;
@@ -79,49 +82,72 @@ public class LoginController {
   }
 
 
-    public MovieList getMovieList() {
-      return movieList;
-    }
+  /**
+   * Getter for the movielist.
+   * Creates a copy to avoid exposing internal representation.
+   *
+   * @return a movielist.
+   */
+  public MovieList getMovieList() {
+    return movieList;
+  }
 
-    public void setLoginControllerStage(Stage stage){
-      this.loginControllerStage = stage;
-    }
+  /**
+   * Method for setting the stage of the logincontroller.
+   *
+   * @param stage
+   */
+  public void setLoginControllerStage(final Stage stage) {
+    this.loginControllerStage = stage;
+  }
 
 
-    @FXML
-    public void openList (ActionEvent event){
-      if(openListBtn.getText().equals("Log in")){
-          openExistingMovieList();
-      }
-      else if(openListBtn.getText().equals("Register")){
-          makeNewMovieList();
-      }
+  /**
+   * Method for opening a list by the username input.
+   * If Register is clicked a new movielist if generated with that username.
+   *
+   * @param event
+   */
+  @FXML
+  public void openList(final ActionEvent event) {
+    if (openListBtn.getText().equals("Log in")) {
+      openExistingMovieList();
+    } else if (openListBtn.getText().equals("Register")) {
+      makeNewMovieList();
     }
-  
-    @FXML
-    public void newOrLogin (ActionEvent event){
-      if(newOrLoginBtn.getText().equals("Make new movie diary")){
+  }
+
+  /**
+   * FXML Method to check if user wants to log in or register to Movie Diary.
+   *
+   * @param event
+   */
+  @FXML
+  public void newOrLogin(final ActionEvent event) {
+    if (newOrLoginBtn.getText().equals("Make new movie diary")) {
         openOrMakeTexts.setText("Make your movie diary:");
         openListBtn.setText("Register");
         changeText.setText("Already have a movie list? Log in instead!");
         newOrLoginBtn.setText("Log into your account");
         cleansePage();
-      }
-      else if(newOrLoginBtn.getText().equals("Log into your account")){
+    } else if (newOrLoginBtn.getText().equals("Log into your account")) {
         openOrMakeTexts.setText("Open your movie diary:");
         openListBtn.setText("Log in");
-        changeText.setText("Don't have one yet? Make your own movie diary now!");
+        changeText.setText("Don't have one yet? Make your movie diary now!");
         newOrLoginBtn.setText("Make new movie diary");
         cleansePage();
-      }
     }
+  }
 
 
+  /**
+   * FXML method to open an exciting movie list when log in is clicked.
+   */
   @FXML
-    public void openExistingMovieList (){
-  
-      String usernameString = this.usernameInput.getText();
-      String passwordString = this.passwordInput.getText();
+  public void openExistingMovieList() {
+
+    String usernameString = this.usernameInput.getText();
+    String passwordString = this.passwordInput.getText();
 
       if(validInput(usernameString, passwordString)){
           movieList = movielistAccess.getMovieListByUsername(usernameString);
@@ -199,8 +225,8 @@ public class LoginController {
         feedback.setText("");
     }
 
-    /**
-   * Validates that a movieList with the specified username does not already exist.
+  /**
+   * Validates that a movieList with the specified username doesn't exist.
    *
    * @param username the username to validate
    * @throws IllegalArgumentException if a movieList with the specified username already exists

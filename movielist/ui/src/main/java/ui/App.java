@@ -10,10 +10,13 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 /**
- * JavaFX App
+ * JavaFX App.
  */
 public class App extends Application {
 
+    /**
+     * Method to start javafx app.
+     */
     @Override
     public void start(Stage stage) throws IOException, InterruptedException, URISyntaxException {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("LoginPage.fxml"));
@@ -25,7 +28,11 @@ public class App extends Application {
         loginController.setLoginControllerStage(stage);
     }
 
-    public static void main(String[] args) {
+    /**
+     * Method to launch javafx app.
+     * @param args
+     */
+    public static void main(final String[] args) {
         launch();
     }
 }
