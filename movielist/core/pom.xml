@@ -53,6 +53,16 @@
                 </configuration>
 	        </plugin>
 
+            <!-- Run the checkstyle code quality tool -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            <!-- Run the spotbugs code quality tool -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+            </plugin>
         
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -64,28 +74,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Checkstyle Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>validate</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <!-- <configLocation>checkstyle.xml</configLocation> -->
-                            <redirectXRefResults>true</redirectXRefResults>
-                            <outputFile>checkstyle-results.txt</outputFile>
-                            <excludes>**/module-info.java</excludes>
-                            <failOnViolation>false</failOnViolation>
-                        </configuration>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin> 
         </plugins>
     </build>
     
