@@ -2,6 +2,31 @@
 
 The Movie App is a JavaFX application that allows you to add and display a list of movies with their scores. This is the third and final draft of a database where you can save the movies you've watched. It's sorted by score, from highest to lowest.
 
+## Assets
+
+Screenshots of the final application:
+
+_The login-page that the application lanches to:_
+![release3](assets/release3/(1)LoginPage.png "Picture"){width=500}
+
+_Changed interface after pressing the button to register new user:_
+![release3](assets/release3/(2)MakeNewMovieList.png "Picture"){width=500}
+
+_Login-Page with the necessary info written:_
+![release3](assets/release3/(3)LoginWithInfo.png "Picture"){width=500}
+
+_The main application page, where you add movies by entering title, score and genre:_
+![release3](assets/release3/(4)AddMovieToNewList.png "Picture"){width=500}
+
+_How the movielist looks after adding multiple movies:_
+![release3](assets/release3/(5)MoviesInList.png "Picture"){width=500}
+
+_Pop-up when pressing button to delete movielist:_
+![release3](assets/release3/(6)DeleteMovieList.png "Picture"){width=500}
+
+_TopRatedPage, accessed from the movielist-page, the back-button brings the user back to its movielist:_
+![release3](assets/release3/(7)TopRatedPage.png "Picture"){width=500}
+
 ## New features for this release
 
 1. The login feature is improved immensly in this release
