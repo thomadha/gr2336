@@ -10,7 +10,7 @@ Ui has five primary uses, and consequently contains:
 1. The controllers of the javafx app, meaning the methods/commands that users use to interact with the app. Our application has 3 controllers, each with its own page. These can be found within the inner folder "ui".
 2. A "json" folder, where the movielists that are created are saved to file.
 3. A "resources" folder that store the fxml files for user interface.
-4. From release 3, a "dataaccess"-folder, supporting the REST-API. In this folder there is a localaccess and a remoteaccess, both implementing the same interface. 
+4. A "dataaccess"-folder, supporting the REST-API. In this folder there is a localaccess and a remoteaccess, both implementing the same interface. 
 5. Test classes within its own folder "test".
 
 ## How to use
@@ -68,7 +68,7 @@ The fxml file for the top rated movies page, connected to the TopRatedController
 _Filepath: movielist\ui\src\main\resources\ui\TopRated.fxml_
 
 
-### Dataaccess Classes
+### Dataaccess
 **MovieListAccess:** 
 
 Interface for the access-classes. Includes all the necessary methods for the application to run and function. Made to simplify the implementation of running on either a local or remote server from the controller classes.
@@ -89,7 +89,7 @@ Implements interface MovieListAccess. Sends HTTP-requests to the REST-API, perfo
 _Filepath: movielist\ui\src\main\java\dataaccess\MovieListRemoteAccess.java_
 
 
-### Test Classes
+### Test
 **AppTest:** 
 
 Test-class for the fxml app. Tests basic functionality of the app and controllers.

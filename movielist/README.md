@@ -74,4 +74,5 @@ _Can also be found inside the documentation for release 2 (docs/release2)_
 
 
 Screenshots showing the application and its functionality: assets/release3
+
 _Can also be found inside the documentation for release 3 (docs/release3)_
