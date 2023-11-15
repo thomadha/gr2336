@@ -46,7 +46,7 @@ _Filepath: movielist\ui\src\main\java\ui\TopRatedController.java_
 ### json
 **MovieList.json:** 
 
-Contains all MovieLists that are created in the App. If app is run correctly it will be able to open lists that are made in previous runs. The [MovieListHandler](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/5c02099bc95888c26d57d3989272abd208c33148/movielist/core/src/main/java/filehandler/MovieListHandler.java) has access to deleting movielists from this json file.
+Contains all MovieLists that are created in the App. If the app is run correctly, it will be able to open lists that are made in previous runs. The [MovieListHandler](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/5c02099bc95888c26d57d3989272abd208c33148/movielist/core/src/main/java/filehandler/MovieListHandler.java) has access to deleting movielists from this json file.
 
 ### Resources
 **LoginPage.fxml:** 
@@ -66,6 +66,27 @@ _Filepath: movielist\ui\src\main\resources\ui\MovieListApp.fxml_
 The fxml file for the top rated movies page, connected to the TopRatedController.
 
 _Filepath: movielist\ui\src\main\resources\ui\TopRated.fxml_
+
+
+### Dataaccess Classes
+**MovieListAccess:** 
+
+Interface for the access-classes. Includes all the necessary methods for the application to run and function. Made to simplify the implementation of running on either a local or remote server from the controller classes.
+
+_Filepath: movielist\ui\src\main\java\dataaccess\MovieListAccess.java_
+
+
+**MovieListLocalAccess:** 
+
+Implements interface MovieListAccess. Uses mostly the logic from core, especially calling on methods in MovieListHandler. Is used when a remote server is not running.
+
+_Filepath: movielist\ui\src\main\java\dataaccess\MovieListLocalAccess.java_
+
+**MovieListRemoteAccess:** 
+
+Implements interface MovieListAccess. Sends HTTP-requests to the REST-API, performing the same logic as the localAccess class, but through the methods in  the springboot-folder. Is used when a remote server is running. This is determined when the application is launched in the App-class, where setUpAccess(); in the first controller is called.
+
+_Filepath: movielist\ui\src\main\java\dataaccess\MovieListRemoteAccess.java_
 
 
 ### Test Classes
