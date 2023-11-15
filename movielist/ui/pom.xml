@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>it1901</groupId>
     <artifactId>ui</artifactId>
 
     <parent>
@@ -93,7 +94,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Checkstyle Plugin  
+            <!-- Checkstyle Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -103,7 +104,7 @@
                         <id>validate</id>
                         <phase>package</phase>
                         <configuration>
-                            <configLocation>../checkstyle.xml</configLocation>
+                            <!-- <configLocation>checkstyle.xml</configLocation> -->
                             <redirectXRefResults>true</redirectXRefResults>
                             <outputFile>checkstyle-results.txt</outputFile>
                             <excludes>**/module-info.java</excludes>
@@ -114,7 +115,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin> 
 
             <!-- SpotBugs Plugin -->
             <plugin>
@@ -132,8 +133,43 @@
                 <configuration>
                     <!-- syntax: module-name/full-app-class-name -->
                     <mainClass>ui.App</mainClass>
+                    <!--> The rest here is configs for jlink-->
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <stripBug>true</stripBug>
+                    <noManPages>true</noManPages>
+                    <launcher>movielistui</launcher>
+                    <jlinkImageName>movielistui</jlinkImageName>
+                    <jlinkZipName>movielistui</jlinkZipName>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                    <artifactId>jpackage-maven-plugin</artifactId>
+                    <version>1.6.0</version>
+                    <configuration>
+                        <name>MovieListUI</name>
+                        <appVersion>1.0.0</appVersion>
+                        <vendor>it1901</vendor>
+                        <destination>target/dist</destination>
+                        <module>ui/ui.App</module>
+                        <runtimeImage>target/movielistui</runtimeImage>
+                        <javaOptions>
+                            <option>-Dfile.encoding=UTF-8</option>
+                        </javaOptions>
+                        <!-- linux things -->
+                        <linuxShortcut>true</linuxShortcut>
+                        <linuxMenyGroup>MovieListUI</linuxMenyGroup>
+
+                        <!-- windows options -->
+                        <winDirChooser>true</winDirChooser>
+                        <winShortcut>true</winShortcut>
+                        <winMeny>true</winMeny>
+                        <winMenyGroup>true</winMenyGroup>
+                    </configuration>
+            </plugin>            
+
         </plugins>
     </build>
 

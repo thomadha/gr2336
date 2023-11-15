@@ -1,11 +1,13 @@
 package ui;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 import core.Movie;
 import core.MovieList;
-import filehandler.MovieListHandler;
+import dataaccess.MovieListAccess;
+//import dataaccess.MovieListRemoteAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,18 +57,20 @@ public class TopRatedController {
    * A movielist containing all movies ever added.
    */
   private MovieList allMovies;
-  /**
-   * Filehandler for the movielist.
-   */
-  private MovieListHandler fileHandler;
-  /**
-   * One single movielist for a user.
-   */
   private MovieList movieList;
+  private Stage topStage; 
+
+  //private MovieListRemoteAccess  movielistRemoteAccess;
+  private MovieListAccess movielistAccess;
+
   /**
-   * Stage for Top Rated Controller.
+   * Method for getting the containerAccess thats automoticly chosen by setUpAccess().
+   *
+   * @return this.containerAccess;
    */
-  private Stage topStage;
+  public MovieListAccess getAccess() {
+    return this.movielistAccess;
+  }
 
   /**
    * Constructor for the toprated controller.
@@ -74,19 +78,20 @@ public class TopRatedController {
    */
   public TopRatedController() {
     this.movieList = new MovieList();
-    this.fileHandler = new MovieListHandler(
-      "/src/main/java/json/MovieList.json");
-  }
+    //this.movielistAccess = movieListRemoteAccess;
+}
+
+  // public TopRatedController(){
+  //   this.movieList = new MovieList();
+  //   this.movielistAccess = new MovieListRemoteAccess(movieList);
+  // }
 
   /**
    * Setter for the movielist.
-   * @param movieListInput to show.
+   * @param movieList to show.
    */
-  public void setMovielist(final MovieList movieListInput) {
-    // MovieList movieListCopy = new MovieList();
-    // movieListCopy.setMovies(movieListInput.getMovies());
-    // this.movieList = movieListCopy;
-    this.movieList = movieListInput;
+  public void setMovielist(final MovieList movieList) {
+    this.movieList = movieList;
   }
 
   /**
@@ -97,10 +102,9 @@ public class TopRatedController {
     this.topStage = stage;
   }
 
-  /**
-   * Initializer that uses the getAllMoviesFromFile method.
-   */
-  public void initialize() {
+  public void initialize(MovieList movieList, MovieListAccess access) throws FileNotFoundException {
+    this.movieList = movieList;
+    this.movielistAccess = access;
     getAllMoviesFromFile();
   }
 
@@ -109,7 +113,7 @@ public class TopRatedController {
    */
   private void getAllMoviesFromFile() {
     allMovies = new MovieList();
-    allMovieLists = fileHandler.getAllMovieListsFromFile();
+    allMovieLists = movielistAccess.getAllMovieListsFromFile();
     for (MovieList movielist : allMovieLists) {
       for (Movie movie : movielist.getMovies()) {
         allMovies.addMovie(movie);
@@ -168,6 +172,8 @@ public class TopRatedController {
       Scene scene = new Scene(root);
       Stage stage = new Stage();
       appController.setMovielist(movieList);
+      movielistAccess.updateMovieList(movieList);
+      appController.initData(movieList, movielistAccess);
       appController.updateMovieListField();
       appController.setMovieDiaryStage(stage);
       stage.setScene(scene);

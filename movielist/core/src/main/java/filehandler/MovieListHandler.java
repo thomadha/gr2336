@@ -20,24 +20,27 @@ public class MovieListHandler {
   /**
    * field for length to remove if the userdir ends with core.
    */
-  public static final int PATH_REMOVER_LENGTH = 5;
 
     /**
      * Constructor for MovieListHandler.
      * Initiates a movielisthandler with correct filepath in ui.
      *
-     * @param filepathInput of movielisthandler.
+     * @param filepath of movielisthandler.
      */
-    public MovieListHandler(final String filepathInput) {
+    public MovieListHandler(final String filepath) {
       String userdir = System.getProperty("user.dir");
       if (userdir.endsWith("GR2336")) {
         userdir = userdir + "/movielist/ui";
       }
       if (userdir.endsWith("core")) {
-        userdir = userdir.substring(0, userdir.length() - PATH_REMOVER_LENGTH);
+        userdir = userdir.substring(0, userdir.length() - 5);
         userdir = userdir + "/ui";
       }
-      this.filepath = userdir + filepathInput;
+      if (userdir.endsWith("springboot")) {
+        userdir = userdir.substring(0, userdir.length()-11);
+        userdir = userdir + "/ui";
+      }
+      this.filepath = userdir + filepath;
     }
 
     /**
@@ -48,7 +51,6 @@ public class MovieListHandler {
   public List<MovieList> getAllMovieListsFromFile() {
     List<MovieList> movieListList = new ArrayList<>();
     try (FileReader reader = new FileReader(filepath, StandardCharsets.UTF_8)) {
-      // Specify UTF-8^^
       Gson gson = new Gson();
       MovieList[] movieListArray = gson.fromJson(reader, MovieList[].class);
       if (movieListArray != null) {
@@ -98,7 +100,7 @@ public class MovieListHandler {
    *
    * @param movielist to update.
    */
-  public void saveToFile(final MovieList movielist) {
+  public void saveToFile(MovieList movielist) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
     boolean found = false;
 
@@ -115,6 +117,7 @@ public class MovieListHandler {
     if (!found) {
         movieLists.add(movielist);
     }
+    System.out.println("ALL MOVIES: " + movieLists);
 
     // Save the entire list to the file.
     try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) {
@@ -130,7 +133,7 @@ public class MovieListHandler {
    *
    * @param movielist to be removed.
    */
-  public void removeMovieList(final MovieList movielist) {
+  public void removeMovieList(MovieList movielist) {
     List<MovieList> movieLists = getAllMovieListsFromFile();
     boolean found = false;
     MovieList movieListToRemove = null;
