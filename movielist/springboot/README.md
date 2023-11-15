@@ -80,7 +80,7 @@ We chose to implement all features that we deamed usefull regardig storing and r
 >
 > Host: localhost:8080
 
-This request wil return all MovieLists stored in the REST-API 
+This request will return all MovieLists stored in the REST-API 
 
 ### Request to get spesific user 
 > GET /movielist/{username}
@@ -111,7 +111,7 @@ This request uses a pathvariable in the URL to determine what user to return to 
 >    "password": "123"
 > }
 
-This request will add the MovieList in jsonformat to the json file. The restController wil turn the json String into a MovieList object and the Service class will add it to a list. The movieListHandler class will search for duplicates. 
+This request will add the MovieList in jsonformat to the json file. The restController will turn the json String into a MovieList object and the Service class will add it to a list. The movieListHandler class will search for duplicates. 
 
 ### Request to delete a user 
 > DELETE /movielist/{username}/deleteUser
@@ -120,7 +120,7 @@ This request will add the MovieList in jsonformat to the json file. The restCont
 >
 > Host: localhost:8080 
 
-This request deletes the MovieList with the username that coresponds with the pathvariable
+This request deletes the MovieList with the username that corresponds  with the path variable.
 
 ### Request to add a movie 
 > POST /movielist/{username}/addMovie
@@ -136,7 +136,7 @@ This request deletes the MovieList with the username that coresponds with the pa
 >    "count": 1
 >  }
 
-This request adds the Movie in jsonformat in the body to the user spesified as the pathvariable 
+This request adds the Movie in jsonformat in the body to the user specified as the path variable. 
 
 ### Request to get a movie
 > GET /movielist/{username}/{movieTitle}
@@ -145,7 +145,7 @@ This request adds the Movie in jsonformat in the body to the user spesified as t
 >
 > Host: localhost:8080
 
-This request wil return the movie in the movielist spesified by the pathvariables username and movieTitle 
+This request will return the movie in the movielist specified by the path variables username and movieTitle.
 
 ### Request to get number of movies
 > GET /movielist/{username}/numberOfMovies
@@ -154,7 +154,7 @@ This request wil return the movie in the movielist spesified by the pathvariable
 >
 > Host: localhost:8080
 
-This request wil return the number of movies in the movieList spesified by the pathvariable username 
+This request will return the number of movies in the movieList specified by the path variable username.
 
 ### Request to get number password of user
 > GET /movielist/{username}/password
@@ -163,7 +163,7 @@ This request wil return the number of movies in the movieList spesified by the p
 >
 > Host: localhost:8080
 
-This request wil return the password to the user spesified by the pathvariable username
+This request will return the password to the user specified by the path variable username.
 
 ### Reauest to add a new user
 > POST /movielist/{username}/{password}/newUser
@@ -172,8 +172,15 @@ This request wil return the password to the user spesified by the pathvariable u
 >
 > Host: localhost:8080
 
-This request wil make a new user with the username and password spesified in the pathvariables username and password. The MovieList wil not contain any movies from the start. 
+This request will make a new user with the username and password specified in the path variables username and password. The MovieList will not contain any movies from the start.
+
 
 ## Test coverage
+The class for testing of the springboot module is found using following filepath
+
+_Filepath: movielist\springboot\src\main\java\movielist\springboot\src\test\java\movielist\springboot\SpringbootApplicationTests.java_
+
+The module implements jacoco to measure how well the tests is testing. By seeing the jacoco reports we discovered that the tests cover 100% of the controller class, and around 80% of the service class. We usually aim for as high percentage as possible, but it can often not be easy to get 100%. We deemed the methods that we didn’t manage to test in the service class as not crucial since the part of the controller that used these methods worked as expected. 
+
 
 
