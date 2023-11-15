@@ -10,12 +10,12 @@ The Movie App is a JavaFX application that allows you to add and display a list 
     - This also means that you can close the app and retrieve the list the next time you run it, as all the data related to the movie diary is saved to a file. The logic regarding the file handling is significally improved.
 2. A dedicated page is implemented for top rated movies
     - This shows the user an overview for highest rated movies, most viewed and most popular genre.
-    - As a result, 
+    - The data displayed in this page is retrieved from all movie lists within the application, combining the average scores and summarizing the total view count. 
     - Similarily to the login page, this page has its own controller and fxml-file
 3. Making it possible to delete your movie list profile
     - Implementing a new button within the application interface, enabling users to delete their profiles.
-    - The user is given an alert when pressing this button, ensuring that they actually want their movie diary deleted
-    - If the user selects "Cancel," they are redirected back to their list. However, choosing "OK" deletes their movie diary from the file, causing the application to return to the home page since the previously accessed movie list no longer exists.
+    - The user is given an alert when pressing this button, ensuring that they actually want their movie diary deleted.
+    - If the user selects "Cancel," they are redirected back to their list. However, choosing "OK" deletes their movie diary from the file, causing the application to return to the home page, since the previously accessed movie list no longer exists.
 
 ## How to use
 
@@ -25,7 +25,12 @@ If you haven't already, you need to clone the repository to your local machine. 
 
 For this release, the group has included updated versions of the three diagrams, to illustrate the architecture of the application. The class diagram, sequence diagram and package diagram are linked underneath:
 
-## ADD LINKS HERE WHEN FINISHED!
+**Basic Functionality Sequence Diagram:**
+![Sequence Diagram](http://your-plantuml-server-url.com/plantuml/png/ZP9DJiCm48NtFiKiGQ8Se0lKg6mgqRA8EC0m7g81npRs65HEZzDKaAX4OkE_zxutrjYRh9Yqz0vQVY_iYU5Ui4lOc_mcFc9TGQj7nv0r2GtMgNA6zfmpTjmuwNpFNe7gmCaO90q9dlAmheWAISIgDp5kWzSKdAlILDc73-47oNfvQimG1AkxERw6nbeuyEVeWfsFHStCCZ0dSGtRnAWyiJy-lpAf6JUho_2fwqpRnVIT5nLqyiLpxifZppUGAQGwiTBjzJyh_YOkLHsQDVPW1cg0Knj_F8l07ywbIrM8BRI5gBxuIt7kQCo6lQtVuXi0 "Sequence Diagram")
+
+**Controllers Sequence Diagram:**
+![Sequence Diagram](http://your-plantuml-server-url.com/plantuml/png/dLNRJkGm37tFL_XnaM1vdmV4C6WH4XU9BXyG4ay9aoObIK6pNu_JbkarNU2bhMmVd-FOJizzu2vKXOOCNoiq0k5IyTpnWlcTCYMdByZ2NYFuu9I8eNrF2xf5xtcEQwroKw098EY1ZZ4kWdNmwECtGO8IgkJalx6vCXjhWhDQaxFl-slB1nvG9jphianuRksRmXlbmzJA68iYuEHiJBs2jPIDyVG1Sq9JsBKfgy16aH5ye5Z17sKaK7728QdjF73_z88YGB1WIpIiSvnGWe7wLGyLOr4UL8xYBb4ZaTJ53LnrqWYYElmEjYI8d5lb2XwKDM3p7aUTXQmfbXOvPXYKtIhfplgBzSaQ9rcA-yh21HUxHUwDjlu7r2B2vCovJKRXdfhW6pFqXYmfEexE7RutNEtKp1T0ufivwSAREMcAI1RmEKqDMYQpNniL5DVg7mvnlmmly1Yyi8vU6CJleoyoTXdbObFY6Go0DFZZxYG0Cv4fKGH22Lab15qrsqhhVR8fsRDzZvS8rBT8W_UB9SIszrTn2rMyiOQofjVIpFfEWqPKcNMXBXgUzlKiR9wj4fWyh4FyjzH4L7_Nvg8_5-w_afUtRbb8ktfp7DF6rMqWst3rs3aQIR-T3m00 "Sequence Diagram")
+
 
 
 ## Architecture
