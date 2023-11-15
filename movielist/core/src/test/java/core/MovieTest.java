@@ -109,7 +109,7 @@ public class MovieTest {
         Assertions.assertEquals("horror", shark.getGenre());
 
         Movie lion = new Movie("Lion", 2, "Choose genre", 2);
-        Assertions.assertEquals("Not specified", lion.getGenre());
+        Assertions.assertEquals("Must specify genre", lion.getGenre());
 
     }
 
