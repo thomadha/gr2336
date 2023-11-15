@@ -1,3 +1,24 @@
+## THE MOVIE LIST PROJECT 
+
+This project is a movielist application. It has undergone three releases, each encompassing significant enhancements. 
+The application serves as a platform where users can create and manage their personalized lists of favorite films. 
+Users can input film titles, ratings, and genres. Security measures are implemented through the use of a username and password, 
+ensuring the confidentiality of individual lists.
+
+Upon accessing the application's homepage, users are presented with the option to either log in to an existing account or create a new one. 
+Following valid input, the application directs users to their respective movie lists, allowing them to add as many films as desired. 
+The films are then sorted in descending order based on the assigned ratings. Additionally, users can access other users' data through the 
+"TopRated" page, which provides an overview of the highest-rated films added to the movie list section. Users can opt to sort the list 
+based on the most-watched films, highest-rated films, or lowest-rated films.
+
+The application facilitates user interaction by allowing them to log out or permanently delete their accounts. All movie lists are stored in a 
+JSON file through file storage, and the application is designed to function seamlessly on both local and remote servers.
+
+
+Underneath, there are user stories connected to each release, describing the implemented functionality in detail.
+Screenshots from the different stages of development are also provided with the corresponding user stories.
+
+
 ## USER STORIES
 
 # Release 1
@@ -12,9 +33,9 @@
     Jack is thrilled that he now has a simple way of accessing all of his favorite movies.
 
     
-Screenshot showing the application and its functionality: assets/release1
+Screenshot showing the application and its functionality: (assets/release1)
 
-_Can also be found inside the documentation for release 1 (docs/release1)_
+![release1](assets/release1/release1.png "Picture"){width=500}
 
 # Release 2
 
@@ -36,9 +57,9 @@ _Can also be found inside the documentation for release 1 (docs/release1)_
     This way, when Alex opens the application to make his movie list, he is able to create a new personal list, instead of sharing with everyone using the application. 
 
 
-Screenshot showing the application and its functionality: assets/release2
+Screenshot showing the application and its functionality: (assets/release2)
 
-_Can also be found inside the documentation for release 2 (docs/release2)_
+![release2](assets/release2/release2.png "Picture"){width=500}
 
 # Release 3
 
@@ -73,6 +94,32 @@ _Can also be found inside the documentation for release 2 (docs/release2)_
     his movie choices and maintaining the security of his account.
 
 
-Screenshots showing the application and its functionality: assets/release3
+Screenshots showing the application and its functionality: (assets/release3)
 
-_Can also be found inside the documentation for release 3 (docs/release3)_
+_The login-page that the application lanches to:_
+
+![release3](assets/release3/(1)LoginPage.png "Picture"){width=500}
+
+_Changed interface after pressing the button to register new user:_
+
+![release3](assets/release3/(2)MakeNewMovieList.png "Picture"){width=500}
+
+_Login-Page with the necessary info written:_
+
+![release3](assets/release3/(3)LoginWithInfo.png "Picture"){width=500}
+
+_The main application page, where you add movies by entering title, score and genre:_
+
+![release3](assets/release3/(4)AddMovieToNewList.png "Picture"){width=500}
+
+_How the movielist looks after adding multiple movies:_
+
+![release3](assets/release3/(5)MoviesInList.png "Picture"){width=500}
+
+_Pop-up when pressing button to delete movielist:_
+
+![release3](assets/release3/(6)DeleteMovieList.png "Picture"){width=500}
+
+_TopRatedPage, accessed from the movielist-page, the back-button brings the user back to its movielist:_
+
+![release3](assets/release3/(7)TopRatedPage.png "Picture"){width=500}
