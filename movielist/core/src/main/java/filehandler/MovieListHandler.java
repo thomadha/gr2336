@@ -117,7 +117,6 @@ public class MovieListHandler {
     if (!found) {
         movieLists.add(movielist);
     }
-    System.out.println("ALL MOVIES: " + movieLists);
 
     // Save the entire list to the file.
     try (FileWriter writer = new FileWriter(filepath, StandardCharsets.UTF_8)) {
