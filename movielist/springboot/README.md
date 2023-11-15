@@ -68,3 +68,112 @@ All fields and methods have a javadoc comment explaining what the field is, or w
 The code adheres to the standards of sun_checks.xml, which is the built-in Sun's Style for checkstyle. This is specified in the pom in the root directory, and to test this you therefore need to be in the root directory (i.e movielist). From here you can write: mvn checkstyle:check. If it's not working, you might need to write "mvn clean" and "mvn compile" or "mvn install -DskipTests" beforehand.
 
 The code also can be checked with spotbugs, which is sspecified in the pom.xml in ui. To check this you therefore need to be in movielist\springboot. From here you can write "mvn spotbugs: check". **SKRIV FORVENTET RESULTAT AV KJØRINGEN**
+
+
+## Suported requests 
+We chose to implement all features that we deamed usefull regardig storing and retriving information from each movieList. 
+
+### Request to get all movieLists
+> GET /movielist/getall 
+>
+> Content type: aplication/json 
+>
+> Host: localhost:8080
+
+This request wil return all MovieLists stored in the REST-API 
+
+### Request to get spesific user 
+> GET /movielist/{username}
+>
+> Content type: aplication/json 
+>
+> Host: localhost:8080 
+
+This request uses a pathvariable in the URL to determine what user to return to the request 
+
+### Request to add a user
+> POST /movielist/add 
+>
+> Content type: aplication/json 
+>
+> Host: localhost:8080 
+>
+> {
+>  "movies": [
+>    {
+>      "name": "Star Wars",
+>      "genre": "scifi",
+>      "score": 10.0,
+>      "count": 1
+>    }
+>  ],
+>    "username": "example",
+>    "password": "123"
+> }
+
+This request will add the MovieList in jsonformat to the json file. The restController wil turn the json String into a MovieList object and the Service class will add it to a list. The movieListHandler class will search for duplicates. 
+
+### Request to delete a user 
+> DELETE /movielist/{username}/deleteUser
+>
+> Content type: aplication/json
+>
+> Host: localhost:8080 
+
+This request deletes the MovieList with the username that coresponds with the pathvariable
+
+### Request to add a movie 
+> POST /movielist/{username}/addMovie
+>
+> Content type: aplication/json 
+>
+> Host: localhost:8080
+>
+>  {
+>    "name": "Star Wars",
+>    "genre": "scifi",
+>    "score": 10.0,
+>    "count": 1
+>  }
+
+This request adds the Movie in jsonformat in the body to the user spesified as the pathvariable 
+
+### Request to get a movie
+> GET /movielist/{username}/{movieTitle}
+>
+> Content type: aplication/json 
+>
+> Host: localhost:8080
+
+This request wil return the movie in the movielist spesified by the pathvariables username and movieTitle 
+
+### Request to get number of movies
+> GET /movielist/{username}/numberOfMovies
+>
+> Content type: aplication/json 
+>
+> Host: localhost:8080
+
+This request wil return the number of movies in the movieList spesified by the pathvariable username 
+
+### Request to get number password of user
+> GET /movielist/{username}/password
+>
+> Content type: aplication/json 
+>
+> Host: localhost:8080
+
+This request wil return the password to the user spesified by the pathvariable username
+
+### Reauest to add a new user
+> POST /movielist/{username}/{password}/newUser
+>
+> Content type: aplication/json 
+>
+> Host: localhost:8080
+
+This request wil make a new user with the username and password spesified in the pathvariables username and password. The MovieList wil not contain any movies from the start. 
+
+## Test coverage
+
+
