@@ -6,6 +6,10 @@ module springboot {
   requires spring.context;
   requires spring.boot.autoconfigure;
   requires spring.beans;
+  requires java.net.http;
   requires core;
+
+  exports movielist.springboot;
+  opens movielist.springboot; 
     
 }
