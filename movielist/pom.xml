@@ -74,35 +74,13 @@
                         </execution>
                     </executions>
                 </plugin>
-
-                <!-- Checkstyle Plugin -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.3.0</version>
-                    <executions>
-                        <execution>
-                            <id>validate</id>
-                            <phase>package</phase>
-                            <configuration>
-                                <configLocation>config/checkstyle.xml</configLocation>
-                                <redirectXRefResults>true</redirectXRefResults>
-                                <outputFile>checkstyle-results.txt</outputFile>
-                                <excludes>**/module-info.java</excludes>
-                                <failOnViolation>false</failOnViolation>
-                            </configuration>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
     <modules>
         <module>core</module>
+        <module>springboot</module>
         <module>ui</module>
     </modules>
 </project>

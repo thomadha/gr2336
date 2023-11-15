@@ -51,11 +51,11 @@
       </Label>
       <MenuButton id="genrebtn" fx:id="genrebtn" layoutX="332.0" layoutY="366.0" mnemonicParsing="false" text="Choose genre">
         <items>
-          <MenuItem id="action" fx:id="action" mnemonicParsing="false" onAction="#handleChoise" text="Action" />
-          <MenuItem id="horror" fx:id="horror" mnemonicParsing="false" onAction="#handleChoise" text="Horror" />
-          <MenuItem id="romcom" fx:id="romcom" mnemonicParsing="false" onAction="#handleChoise" text="Romcom" />
-          <MenuItem id="scifi" fx:id="scifi" mnemonicParsing="false" onAction="#handleChoise" text="Scifi" />
-          <MenuItem id="other" fx:id="other" mnemonicParsing="false" onAction="#handleChoise" text="Other" />
+          <MenuItem id="action" fx:id="action" mnemonicParsing="false" onAction="#handleChoice" text="Action" />
+          <MenuItem id="horror" fx:id="horror" mnemonicParsing="false" onAction="#handleChoice" text="Horror" />
+          <MenuItem id="romcom" fx:id="romcom" mnemonicParsing="false" onAction="#handleChoice" text="Romcom" />
+          <MenuItem id="scifi" fx:id="scifi" mnemonicParsing="false" onAction="#handleChoice" text="Scifi" />
+          <MenuItem id="other" fx:id="other" mnemonicParsing="false" onAction="#handleChoice" text="Other" />
         </items>
       </MenuButton>
       <Separator layoutX="-2.0" layoutY="130.0" prefHeight="15.0" prefWidth="606.0" />

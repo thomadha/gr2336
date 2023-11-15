@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.3">
+<file name="C:\Users\Lenovo\Prosjekter\gr2336\movielist\core\src\main\java\core\Movie.java">
+</file>
+<file name="C:\Users\Lenovo\Prosjekter\gr2336\movielist\core\src\main\java\core\MovieList.java">
+</file>
+<file name="C:\Users\Lenovo\Prosjekter\gr2336\movielist\core\src\main\java\core\package-info.java">
+</file>
+<file name="C:\Users\Lenovo\Prosjekter\gr2336\movielist\core\src\main\java\filehandler\MovieListHandler.java">
+<error line="31" column="42" severity="error" message="&apos;filepath&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="41" column="56" severity="error" message="&apos;-&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="41" column="56" severity="error" message="&apos;-&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="41" column="57" severity="error" message="&apos;11&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+</file>
+<file name="C:\Users\Lenovo\Prosjekter\gr2336\movielist\core\src\main\java\filehandler\package-info.java">
+</file>
+</checkstyle>

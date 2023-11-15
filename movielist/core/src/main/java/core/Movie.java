@@ -107,6 +107,13 @@ public class Movie {
   }
 
   /**
+   * Empty constructor.
+   */
+  public Movie() {
+
+  }
+
+  /**
    * Getter for moviename.
    *
    * @return String of moviename.
