@@ -87,8 +87,6 @@ public class MovieListService {
   public void addMovieToList(String username, Movie movie){
     MovieList movieList = getMovieListByUsername(username); 
     movieList.addMovie(movie);
-    System.out.println(movie);
-    //movieListHandler.saveToFile(movieList);
     addMovieList(movieList);
   }
 

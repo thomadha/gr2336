@@ -209,7 +209,6 @@ public class MovieListRemoteAccess implements MovieListAccess{
             if (response.statusCode() == 200) {
                 // Updating successful
                 System.out.println("Movie added successfully");
-                //System.out.println(request);
             } else {
                 // Updating failed, print the response body for debugging
                 System.out.println("Failed to add movie. Response body: " + response.body());

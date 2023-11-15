@@ -63,13 +63,13 @@ public class LoginController {
      * @throws IOException
    */
   public void setUpAccess() throws IOException, InterruptedException, URISyntaxException {
-    // try {
+     try {
       this.movielistAccess = new MovieListRemoteAccess(new URI("http://localhost:8080/movielist"), false);
       System.out.println("Remote access");
-    // } catch (Exception e) {
-    //   this.movielistAccess = new MovieListLocalAccess(this.movieList);
-    //   System.out.println("Local access");
-    // }
+     } catch (Exception e) {
+       this.movielistAccess = new MovieListLocalAccess(this.movieList);
+       System.out.println("Local access");
+     }
   }
 
     /**
@@ -184,6 +184,10 @@ public class LoginController {
         } 
         try{
             movieList = movielistAccess.getMovieListByUsername(username);
+            if (movieList == null) {
+              feedback.setText("Movielist doesn't exist");
+              return false;
+            }
         }
         catch (IllegalArgumentException e){
             feedback.setText("Movielist doesn't exist");

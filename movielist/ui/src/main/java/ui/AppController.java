@@ -147,11 +147,8 @@ public class AppController {
             feedback.setText("");
             movielistAccess.updateMovieList(movieList);
             Movie newMovie = new Movie(titleField.getText(), scoreField.getValue(),genrebtn.getText());
-            System.out.println(newMovie);
             movielistAccess.addMovieToList(newMovie);
-            //movieList.addMovie(newMovie);
             updateMovieListField();
-            //movielistAccess.saveToFile(movieList);
             resetChoices();
         }catch(Exception e){
             feedback.setText(e.getMessage());
