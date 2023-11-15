@@ -6,7 +6,7 @@ The Movie App is a JavaFX application that allows you to add and display a list 
 
 Screenshot of the current application:
 
-![release2](assets/release2/release2.png "Picture"){width=100}
+![release2](assets/release2/release2.png "Picture"){width=200}
 
 ## New features for this release
 
