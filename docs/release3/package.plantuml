@@ -27,14 +27,14 @@ movie.ui ..> fxml
 movie.ui ..> movie.json
 movie.ui ..> movie.core
 
-component springboot/RESTfull API {
+component springboot_restserver {
 	package movielist.springboot
 }
 
 component springboot {
 }
 
-springboot/RESTfull API ..> springboot
+springboot_restserver ..> springboot
 movielist.springboot ..> movie.core 
 movielist.springboot ..> movie.json 
 
