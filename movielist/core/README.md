@@ -6,10 +6,11 @@ The core folder for the Movie App contains all code for the functionality of the
 For more information on how the Movie App works, see: [Release3 README.md](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/fc9c16f967deb79b1ca3a573d488ae8833a76ded/docs/release3/README.md) or [Overall README.md](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/35ca9ff71abb5b937204ef06ec9f3f67d3bceb0e/README.md)
 
 ## Architecture
-Core has three primary uses. 
-It contains the files Movie.java and MovieList.java, that have the core functionality of the entire app. 
-In the filehandler folder in core you can find the MovieListHandler, that writes, reads and deletes movielists to/from file. These three files are crucial to the functionality of the app.
-In addition, the folder test\java\core includes tests for the respective classes mentioned. 
+Core has three primary uses:
+1. It contains the files Movie.java and MovieList.java, that have the core functionality of the entire app. 
+2. In the filehandler folder in core you can find the MovieListHandler, that writes, reads and deletes movielists to/from file. These three files are crucial to the functionality of the app.
+3. In addition, the folder test\java\core includes tests for the respective classes mentioned. 
+
 These three main parts of core is explained further in: Detailed Description.
 
 ## How to use

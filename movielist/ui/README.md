@@ -6,7 +6,7 @@ The ui, or user interface, folder of the Movie App contains all code for how the
 For more information on how the Movie App works, see: [Release3 README.md](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/fc9c16f967deb79b1ca3a573d488ae8833a76ded/docs/release3/README.md) or [Overall README.md](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/35ca9ff71abb5b937204ef06ec9f3f67d3bceb0e/README.md)
 
 ## Architecture
-Core has four primary uses. 
+Ui has four primary uses:
 1. It contains the controllers of the javafx app, meaning the methods/commands that users use to interact with the app.
 2. It contains a json folder where the movielists that are created are saved to file.
 3. It contains a resources folder that stores the fxml files for user interface.
