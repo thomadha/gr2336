@@ -57,6 +57,7 @@ If you haven't already, you need to clone the repository to your local machine. 
 
 For this release, the group has included updated versions of the three diagrams, to illustrate the architecture of the application. The class diagram, sequence diagram and package diagram are linked underneath:
 
+
 **Basic Functionality Sequence Diagram:**
 ![Sequence Diagram](http://your-plantuml-server-url.com/plantuml/png/ZP9DJiCm48NtFiKiGQ8Se0lKg6mgqRA8EC0m7g81npRs65HEZzDKaAX4OkE_zxutrjYRh9Yqz0vQVY_iYU5Ui4lOc_mcFc9TGQj7nv0r2GtMgNA6zfmpTjmuwNpFNe7gmCaO90q9dlAmheWAISIgDp5kWzSKdAlILDc73-47oNfvQimG1AkxERw6nbeuyEVeWfsFHStCCZ0dSGtRnAWyiJy-lpAf6JUho_2fwqpRnVIT5nLqyiLpxifZppUGAQGwiTBjzJyh_YOkLHsQDVPW1cg0Knj_F8l07ywbIrM8BRI5gBxuIt7kQCo6lQtVuXi0 "Sequence Diagram")
 

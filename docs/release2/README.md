@@ -27,7 +27,14 @@ If you haven't already, you need to clone the repository to your local machine. 
 
 For this release, the group has included three diagrams to illustrate the architecture of the application. The class diagram, sequence diagram and package diagram are linked underneath:
 
-![release2](class.plantuml "Class Diagram")
+**Class diagram:**
+![release2](assets/release2/class/ClassDiagram.png "Class diagram"){width=500}
+
+**Package diagram:**
+![release2](assets/release2/package/PackageDiagram.png "Package diagram"){width=500}
+
+**Sequence diagram:**
+![release2](assets/release2/sequence/SequenceDiagram.png "Sequennce diagram"){width=500}
 
 ![Class Diagram](http://your-plantuml-server-url.com/plantuml/svg/ZLJRRjim37ttL-ZHsPOVC8QXMRfs3xqCY7z0iLY7g2ovafpTi7-VH4cnrIP0ys1OXuU7XnITA-kuSTCWsLPoQzaryjxmeRBFg4RktzZE_PR0h3FO1Tuo0YyJg0xkmLhUmqPYhmPGZdN-0QQgEfAyrqS4zhTYQzQYaz1uIOEgPm7PTTfuHEXfxwi4v1QKAJbRFIdNCFJA5Vl8ZXe5i-0U-01rfAsME4dMKR48aFAR32x4zJHAxBY3ck1KkaybNc5HXS3akiyr2GmsFKAcFVAl6CCTMXT7GKVRi81yfiENa4q4dnx3TM6Ji9gUoqeFqx07y_YqJ4bsXroprH69qRtM4hXYtG6wvsNptkniSxtMwUwQA6HpAvjnt6hbZ9OIJ6Z7_zRi2ILyvqfuh9cxJGXBf9EZ1IN7PY0F81o2PGhJ652XGoxn3vJuWSfiXFZgLBtf76hrxUZNi21rlclJmYztWo25BHNoW5jDLK_rBvIdEEcKCjCe_2nFsMSOqUhseD72HQi6yiA6XixaFuwWteudndRyc4TtPl_oZUHxwwrM3RlrpyL5_k3ka3z2WjCQ_ZIuwAxLDvuxp-fJobYnz-Ui4dM-VGDSp0CqUg24qtVxBdQvoxdb3yibIrij_RkjofM-pAkkG0d_D_WV "Class Diagram")
 
