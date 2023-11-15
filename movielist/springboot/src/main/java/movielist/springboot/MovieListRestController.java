@@ -47,7 +47,6 @@ public class MovieListRestController {
       return movielistservice.getMovieListByUsername(username); 
   }
 
-  // Aner ikke hva som blir best måte her, vi vet ikke om add er riktig. 
   //localhost:8080/movielist/add
   @PostMapping("/add")
   public void addMovieList(@RequestBody String body) {
@@ -56,8 +55,6 @@ public class MovieListRestController {
     movielistservice.addMovieList(movielist);
   }
 
-  //vet ikke om denne er riktig heller
-  //gir ikke helt mening hvordan den fjerner med å gå inn på samme? 
   //localhost:8080/movielist/{username}/deleteUser
   @DeleteMapping("/{username}/deleteUser")
   public void deleteMovieList(@PathVariable("username") String username) throws IOException{
