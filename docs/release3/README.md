@@ -57,14 +57,29 @@ If you haven't already, you need to clone the repository to your local machine. 
 
 For this release, the group has included updated versions of the three diagrams, to illustrate the architecture of the application. The class diagram, sequence diagram and package diagram are linked underneath:
 
+**Class Diagram:**
+
+![release3](assets/release3/class/ClassDiagram.png "Class diagram"){width=500}
+
+**Package Diagram:**
+
+![release3](assets/release3/package/PackageDiagram.png "Package diagram"){width=500}
 
 **Basic Functionality Sequence Diagram:**
-![Sequence Diagram](http://your-plantuml-server-url.com/plantuml/png/ZP9DJiCm48NtFiKiGQ8Se0lKg6mgqRA8EC0m7g81npRs65HEZzDKaAX4OkE_zxutrjYRh9Yqz0vQVY_iYU5Ui4lOc_mcFc9TGQj7nv0r2GtMgNA6zfmpTjmuwNpFNe7gmCaO90q9dlAmheWAISIgDp5kWzSKdAlILDc73-47oNfvQimG1AkxERw6nbeuyEVeWfsFHStCCZ0dSGtRnAWyiJy-lpAf6JUho_2fwqpRnVIT5nLqyiLpxifZppUGAQGwiTBjzJyh_YOkLHsQDVPW1cg0Knj_F8l07ywbIrM8BRI5gBxuIt7kQCo6lQtVuXi0 "Sequence Diagram")
+
+![release3](assets/release3/sequenceBasicFunctionality/SequenceDiagram1.png "Sequence diagram"){width=500}
 
 **Controllers Sequence Diagram:**
-![Sequence Diagram](http://your-plantuml-server-url.com/plantuml/png/dLNRJkGm37tFL_XnaM1vdmV4C6WH4XU9BXyG4ay9aoObIK6pNu_JbkarNU2bhMmVd-FOJizzu2vKXOOCNoiq0k5IyTpnWlcTCYMdByZ2NYFuu9I8eNrF2xf5xtcEQwroKw098EY1ZZ4kWdNmwECtGO8IgkJalx6vCXjhWhDQaxFl-slB1nvG9jphianuRksRmXlbmzJA68iYuEHiJBs2jPIDyVG1Sq9JsBKfgy16aH5ye5Z17sKaK7728QdjF73_z88YGB1WIpIiSvnGWe7wLGyLOr4UL8xYBb4ZaTJ53LnrqWYYElmEjYI8d5lb2XwKDM3p7aUTXQmfbXOvPXYKtIhfplgBzSaQ9rcA-yh21HUxHUwDjlu7r2B2vCovJKRXdfhW6pFqXYmfEexE7RutNEtKp1T0ufivwSAREMcAI1RmEKqDMYQpNniL5DVg7mvnlmmly1Yyi8vU6CJleoyoTXdbObFY6Go0DFZZxYG0Cv4fKGH22Lab15qrsqhhVR8fsRDzZvS8rBT8W_UB9SIszrTn2rMyiOQofjVIpFfEWqPKcNMXBXgUzlKiR9wj4fWyh4FyjzH4L7_Nvg8_5-w_afUtRbb8ktfp7DF6rMqWst3rs3aQIR-T3m00 "Sequence Diagram")
 
+![release3](assets/release3/sequenceControllers/SequenceDiagram2.png "Sequence diagram"){width=500}
 
+**REST-API Sequence Siagram:**
+
+![release3](assets/release3/sequenceRESTAPI/SequenceDiagram3.png "Sequence diagram"){width=500}
+
+**REST-API With App Sequence Siagram:**
+
+![release3](assets/release3/sequenceRESTAPIwithapp/SequenceDiagram4.png "Sequence diagram"){width=500}
 
 ## Architecture
 
