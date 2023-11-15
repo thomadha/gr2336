@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Class for storing Movie objects in a list.
+ */
 public class MovieList {
 
   /**
@@ -138,6 +141,7 @@ public class MovieList {
   /**
    * Method to check if a movie is already in the list.
    * If so it updates the movie with mean score and new genre.
+   *
    * @param newMovie to be added to the list.
    * @return true if movie was a duplicate, else false.
    */
