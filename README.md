@@ -1,8 +1,8 @@
 ## Content
 
-The project is located inside the folder movielist. Within the project, there are two primary dividers:
+_The project is located inside the folder movielist. Within the project, there are two primary dividers:_
 
-1. core
+**1. core**
 
     Here you can find the "backend" code for movie. This includes attributes for movie and movielist, and how these work. The movieListHandler handles reading and writing to the json file. You can also find tests for the code here.
 
@@ -10,7 +10,7 @@ The project is located inside the folder movielist. Within the project, there ar
     Filehandler-class: movielist/core/src/main/java/filehandler
     Tests: movielist/core/src/test/java/core
 
-2. ui
+**2. ui**
 
     ui stands for user interface. Here you can find all the code controlling how the app interacts with the user, such as the appcontroller and the App-class that launches the application. The json-file that is used for file storage can also be located within ui. Tests for the code in ui are here as well. Lastly, ui consists of the data-access classes that are used to interact with the REST-API that was implemented in release 3.
 
@@ -22,17 +22,17 @@ The project is located inside the folder movielist. Within the project, there ar
     Data-access classes for REST-API:  movielist/ui/src/main/java/dataaccess
 
 
-The third folder within movielist is springboot:
+_The third folder within movielist is springboot:_
 
-3. springboot
+**3. springboot**
 
     The REST-API of this application was built using springboot. This folder therefore includes all the classes necessary to communicate the core logic of the application with the REST-API. Movielist can be run remotely or locally, which the classes within this folder makes sure of. More info regarding REST-API and springboot can be found within the README.md-file in this folder.
 
     Application, service, rest-controller and more: movielist/springboot/src/main/java/movielist/springboot
 
-Outside of the movielist-folder, information regarding documentation can be found. You can find both a folder named "docs", as well as an "assets"-folder: 
+_Outside of the movielist-folder, information regarding documentation can be found. You can find both a folder named "docs", as well as an "assets"-folder:_
 
-1. docs
+**1. docs**
 
     Here you can find all the documentation and illustrations of how the project works. It's sorted into releases.
 
@@ -40,7 +40,7 @@ Outside of the movielist-folder, information regarding documentation can be foun
     Release 2: docs/release2
     Release 3: docs/release3
 
-2. assets
+**2. assets**
 
     The "assets"-folder is where all pictures and other media are stored. This mainly includes screenshots regarding the application and its functionality. Filepaths leading to these assets are provided in the corresponding README.md-files. Diagrams exported as png are also included in the assets-folder, sorted within their respective release-folder.
 
