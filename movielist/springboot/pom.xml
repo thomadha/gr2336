@@ -138,13 +138,6 @@
                     </propertyName>
                 </configuration>
             </plugin>
-			
-			<!-- Run the spotbugs quality tool-->
-			<!-- <plugin>
-				<groupId>com.github.spotbugs</groupId>
-				<artifactId>spotbugs-boot-maven-plugin</artifactId>
-				<version>4.7.3.6</version>
-			</plugin> -->
 		</plugins>
 	</build>
 

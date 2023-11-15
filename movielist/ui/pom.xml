@@ -117,13 +117,6 @@
                 </executions>
             </plugin> 
 
-            <!-- SpotBugs Plugin -->
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.7.3.6</version>
-            </plugin>
-
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -169,13 +162,6 @@
                         <winMenyGroup>true</winMenyGroup>
                     </configuration>
             </plugin>            
-
         </plugins>
-    </build>
-
-    <properties>
-        <!-- Skip SpotBugs when running -->
-        <skipSpotbugs>true</skipSpotbugs>
-    </properties>
-    
+    </build>   
 </project>
