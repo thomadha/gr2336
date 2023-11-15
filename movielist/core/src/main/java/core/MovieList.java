@@ -9,17 +9,11 @@ import java.util.List;
  */
 public class MovieList {
 
-  /**
-   * Paramater for list of movies.
-   */
+
   private List<Movie> movies;
-  /**
-   * Paramater for a string username.
-   */
+
   private String username;
-  /**
-   * Paramater for a string password.
-   */
+
   private String password;
 
   /**
