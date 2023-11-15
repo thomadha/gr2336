@@ -83,8 +83,8 @@ public class MovieListRemoteAccess implements MovieListAccess{
     return movieList;
   }
 
-  public void updateMovieList(MovieList newMovieList){
-    this.movieList = newMovieList;
+  public void updateMovieList(MovieList movieList){
+    this.movieList = movieList;
   }
 
   /**
@@ -133,7 +133,7 @@ public class MovieListRemoteAccess implements MovieListAccess{
   /**
    * Method for removing a spesific movielist by name.
    *
-   * @param name                    the name of the movielist you want to remove.
+   * @param username the name of the movielist you want to remove.
    * @throws RuntimeException  thrown if not able to perform it's task.
    */
   @Override
@@ -182,20 +182,19 @@ public class MovieListRemoteAccess implements MovieListAccess{
     return null;
   }
 
-  
+
   /**
      * Add a movie to the MovieList on the remote server.
      *
-     * @param thisMovielist The MovieList to update on the server.
      * @param newMovie  The movie to add to the list.
      */
     public void addMovieToList(Movie newMovie) {
       String username = this.movieList.getUsername();
       String add = username + "/addMovie";
-      movieList.addMovie(newMovie);
+      movieList.addMovie(newMovie); // MULIG DEN IKKE LIKER AT VI HAR DENNE HER MATHILDE; FINNES EVT BEDRE STED MEN MÅ VÆRE MED FOR Å FÅ OPP FILMENE I LISTA
 
       try {
-            String jsonBody = gson.toJson(movieList);
+            String jsonBody = gson.toJson(newMovie);
             System.out.println("Request Payload: " + jsonBody);
 
             HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping + add))
@@ -210,6 +209,7 @@ public class MovieListRemoteAccess implements MovieListAccess{
             if (response.statusCode() == 200) {
                 // Updating successful
                 System.out.println("Movie added successfully");
+                //System.out.println(request);
             } else {
                 // Updating failed, print the response body for debugging
                 System.out.println("Failed to add movie. Response body: " + response.body());

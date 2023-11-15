@@ -100,11 +100,11 @@ public class AppController {
     // }
 
     /**
-  * Method for populating the scene with the items
-  *
-  * @throws FileNotFoundException  if file is not found
-  */
-  public void initData(MovieList movieList, MovieListAccess access) 
+    * Method for populating the scene with the items
+    *
+    * @throws FileNotFoundException  if file is not found
+    */
+    public void initData(MovieList movieList, MovieListAccess access) 
         throws FileNotFoundException {
     this.movieList = movieList;
     this.movielistAccess = access;
@@ -123,10 +123,10 @@ public class AppController {
     /**
      * Setter for the MovieList object.
      *
-     * @param movieListInput with Movie objects.
+     * @param movieList with Movie objects.
      */
-    public void setMovielist(final MovieList movieListInput) {
-        this.movieList = movieListInput;
+    public void setMovielist(final MovieList movieList) {
+        this.movieList = movieList;
     }
 
     /**

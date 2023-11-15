@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServerController {
 
   @Autowired
-  private MovieListService service; 
-  
+  private MovieListService service;
+
   @GetMapping
   public String health() {
     return "OK";

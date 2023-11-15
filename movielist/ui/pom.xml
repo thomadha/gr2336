@@ -94,7 +94,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Checkstyle Plugin  
+            <!-- Checkstyle Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -104,7 +104,7 @@
                         <id>validate</id>
                         <phase>package</phase>
                         <configuration>
-                            <configLocation>../checkstyle.xml</configLocation>
+                            <!-- <configLocation>checkstyle.xml</configLocation> -->
                             <redirectXRefResults>true</redirectXRefResults>
                             <outputFile>checkstyle-results.txt</outputFile>
                             <excludes>**/module-info.java</excludes>
@@ -115,7 +115,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin> 
 
             <!-- SpotBugs Plugin -->
             <plugin>
@@ -168,7 +168,8 @@
                         <winMeny>true</winMeny>
                         <winMenyGroup>true</winMenyGroup>
                     </configuration>
-            </plugin>
+            </plugin>            
+
         </plugins>
     </build>
 

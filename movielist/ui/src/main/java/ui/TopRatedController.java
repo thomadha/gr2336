@@ -88,10 +88,10 @@ public class TopRatedController {
 
   /**
    * Setter for the movielist.
-   * @param movieListInput to show.
+   * @param movieList to show.
    */
-  public void setMovielist(final MovieList movieListInput) {
-    this.movieList = movieListInput;
+  public void setMovielist(final MovieList movieList) {
+    this.movieList = movieList;
   }
 
   /**
@@ -114,9 +114,9 @@ public class TopRatedController {
   private void getAllMoviesFromFile() {
     allMovies = new MovieList();
     allMovieLists = movielistAccess.getAllMovieListsFromFile();
-    for (MovieList MovieList : allMovieLists) {
-      for (Movie Movie : MovieList.getMovies()) {
-        allMovies.addMovie(Movie);
+    for (MovieList movielist : allMovieLists) {
+      for (Movie movie : movielist.getMovies()) {
+        allMovies.addMovie(movie);
       }
     }
   }
@@ -172,6 +172,8 @@ public class TopRatedController {
       Scene scene = new Scene(root);
       Stage stage = new Stage();
       appController.setMovielist(movieList);
+      movielistAccess.updateMovieList(movieList);
+      appController.initData(movieList, movielistAccess);
       appController.updateMovieListField();
       appController.setMovieDiaryStage(stage);
       stage.setScene(scene);
