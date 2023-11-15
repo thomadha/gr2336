@@ -27,5 +27,15 @@ movie.ui ..> fxml
 movie.ui ..> movie.json
 movie.ui ..> movie.core
 
+component springboot/RESTfull API {
+	package movielist.springboot
+}
+
+component springboot {
+}
+
+springboot/RESTfull API ..> springboot
+movielist.springboot ..> movie.core 
+movielist.springboot ..> movie.json 
 
 @enduml
