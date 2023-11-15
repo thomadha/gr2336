@@ -184,6 +184,10 @@ public class LoginController {
         } 
         try{
             movieList = movielistAccess.getMovieListByUsername(username);
+            if (movieList == null) {
+              feedback.setText("Movielist doesn't exist");
+              return false;
+            }
         }
         catch (IllegalArgumentException e){
             feedback.setText("Movielist doesn't exist");
