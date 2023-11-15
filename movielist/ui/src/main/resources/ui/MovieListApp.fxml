@@ -103,9 +103,9 @@
             <Font name="Trebuchet MS" size="44.0" />
          </font>
       </Label>
-      <Label fx:id="feedback" layoutX="164.0" layoutY="47.0" prefHeight="27.0" prefWidth="291.0" textFill="#d31313">
+      <Label fx:id="feedback" layoutX="454.0" layoutY="332.0" prefHeight="27.0" prefWidth="138.0" textFill="#d31313">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <Line endX="502.0" layoutX="102.0" layoutY="49.0" startX="-104.0" stroke="#ffe1e7" />

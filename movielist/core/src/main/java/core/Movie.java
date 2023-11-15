@@ -73,7 +73,7 @@ public class Movie {
       throw new IllegalArgumentException("Must have a name");
     }
     if (!validgenre(genre)) {
-      this.genre = "Not specified";
+      this.genre = "Must specify genre";
     } else {
       this.genre = genre;
     this.name = name;
