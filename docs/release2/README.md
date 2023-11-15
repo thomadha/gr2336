@@ -2,6 +2,12 @@
 
 The Movie App is a JavaFX application that allows you to add and display a list of movies with their scores. This is the second draft of a database where you can save the movies you've watched. It's sorted by score, from highest to lowest.
 
+## Assets
+
+Screenshot of the current application:
+
+![release2](assets/release2/release2.png "Picture"){width=75%}
+
 ## New features for this release
 
 - If you add the same movie more than once, the data connected combines instead of making duplicates
