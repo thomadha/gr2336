@@ -88,6 +88,21 @@ public class MovieListLocalAccessTest {
         .getMovies().get(0).toString());
 
   }
+
+    
+  // @Test
+  // @DisplayName("Checks deleting a movielist")
+  // public void checkRemoveMovieList() {
+  //   filehandler.removeMovieList(movielist);
+  //   List<MovieList> allMovieLists = new ArrayList<>(filehandler.getAllMovieListsFromFile());
+
+  //   Assertions.assertEquals(2, allMovieLists.size());
+  //   Assertions.assertEquals(allMovieLists.get(0).movieListToString(), filehandler
+  //         .getMovieList("testuser").movieListToString());
+  //   Assertions.assertEquals(allMovieLists.get(1).movieListToString(), filehandler
+  //         .getMovieList("coolTestUser").movieListToString());
+  // }
+
   
 //   @Test
 //   @DisplayName("Valid username returns movielist, getMovieList")
@@ -154,17 +169,5 @@ public class MovieListLocalAccessTest {
 
 //   }
 
-  
-//   @Test
-//   @DisplayName("Checks deleting a movielist")
-//   public void checkRemoveMovieList() {
-//     filehandler.removeMovieList(movielist);
-//     List<MovieList> allMovieLists = new ArrayList<>(filehandler.getAllMovieListsFromFile());
 
-//     Assertions.assertEquals(2, allMovieLists.size());
-//     Assertions.assertEquals(allMovieLists.get(0).movieListToString(), filehandler
-//           .getMovieList("testuser").movieListToString());
-//     Assertions.assertEquals(allMovieLists.get(1).movieListToString(), filehandler
-//           .getMovieList("coolTestUser").movieListToString());
-//   }
 }
