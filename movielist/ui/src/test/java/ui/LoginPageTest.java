@@ -9,6 +9,7 @@ import javafx.scene.control.DialogPane;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 import javafx.scene.control.ButtonType;
 
+import javafx.scene.control.MenuButton;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -106,6 +107,10 @@ public class LoginPageTest extends ApplicationTest {
             clickOn("#usernameInput").write("test3");
             clickOn("#passwordInput").write("123");
             clickOn("#loginBtn");
+            //initializing text-field to check correct output
+            String text = "My Movie Diary";
+            Label header = (Label) lookup("#header").query();
+            assertEquals(header.getText(), text);
         
     }
 
@@ -191,18 +196,29 @@ public class LoginPageTest extends ApplicationTest {
 
 
         clickOn("#topBtn");
-        sleep(2000);
 
         clickOn("#filterbtn");
         clickOn("#views");
+        //check correct output
+        String t1 = "Views";
+        MenuButton btn1 = (MenuButton) lookup("#filterbtn").query();
+        assertEquals(btn1.getText(), t1);
         
 
         clickOn("#filterbtn");
         clickOn("#bestRating");
+        //check correct output
+        String t2 = "Best rating";
+        MenuButton btn2 = (MenuButton) lookup("#filterbtn").query();
+        assertEquals(btn2.getText(), t2);
 
         
         clickOn("#filterbtn");
         clickOn("#worstRating");
+         //check correct output
+         String t3 = "Worst rating";
+         MenuButton btn3 = (MenuButton) lookup("#filterbtn").query();
+         assertEquals(btn3.getText(), t3);
 
         clickOn("#backBtn");
         removeNewUser();
