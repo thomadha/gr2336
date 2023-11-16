@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <module name="TreeWalker">
+        <!-- Other Checkstyle rules -->
+
+        <!-- Customizing VariableDeclarationUsageDistanceCheck -->
+        <module name="VariableDeclarationUsageDistance">
+            <!-- Set the maximum distance to a higher value -->
+            <property name="maxDistance" value="6"/>
+        </module>
+
+        <!-- Other Checkstyle rules -->
+    </module>
+</module>
