@@ -1,6 +1,6 @@
 ## Content
 
-_The project is located inside the folder movielist. Within the project, there are two primary dividers:_
+_The project is located inside the folder movielist. Within the project, there are three primary dividers:_
 
 **1. core**
 
@@ -28,9 +28,6 @@ _The project is located inside the folder movielist. Within the project, there a
     Json-file: movielist/ui/src/main/java/json
     AppTest: movielist/ui/src/test/java/ui
     Data-access classes for REST-API:  movielist/ui/src/main/java/dataaccess
-
-
-_The third folder within movielist is springboot:_
 
 **3. springboot**
 
