@@ -29,11 +29,23 @@ _Filepath: movielist\core\src\main\java\filehandler\MovieListHandler.java_
 
 ### Test Classes
 **MovieTest:** Is a test-class for the Movie.java class. It tests that all inputs are correct and exceptions are thrown when they should.
+
+**Test coverage:** According to jacoco MovieTest has a coverage of 100% which is great. 
+
 _Filepath: movielist\core\src\test\java\core\MovieTest.java_
 
 
-**MovieListTest:** Is a test-class for the MovieList.java class. It tests that the list itself is working when adding movies, and that it handles duplicates of movies correctly.  
+**MovieListTest:** Is a test-class for the MovieList.java class. It tests that the list itself is working when adding movies, and that it handles duplicates of movies correctly.
+
+**Test coverage:** According to jacoco MovieListTest has a coverage of 100% which is great. 
+
 _Filepath: movielist\core\src\test\java\core\MovieListTest.java_
+
+**MovieListHandlerTest:** Is a test-class for the MovieList.java class. It tests that the different parts of the MovieListFilehandler works as expected. This includes get all MovieLists from file, save a new MovieList, save an already existing MovieList, deleting a MovieList and that exceptions is thrown when expected. 
+
+**Test coverage:** According to jacoco MovieListHandlerTest has a coverage of 89% which is sufficient. The part of the code that is not tested is all the catch blocks. Tests for this part of the code is hard to test without mocking of IOexeptions, which we deemed unnecessary. 
+
+_Filepath: movielist\core\src\test\java\filehandler\MovieListFilehandler.java_
 
 ### Other 
 The core folder also contain a few other files. The *pom.xml* has specific core configuration, as well as specifying project dependencies, plugins and other relatted settings. In folders containing functionality classes you'll find a *package-info.java* that specifies the package level documentations shortly.
