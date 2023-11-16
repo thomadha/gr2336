@@ -62,7 +62,7 @@
   {
     "movies": [
       {
-        "name": "StarWars",
+        "name": "Star Wars",
         "genre": "Scifi",
         "score": 10.0,
         "count": 3
