@@ -30,7 +30,7 @@ public class MovieListRestController {
   // }
 
 
-  public MovieListRestController(){
+  public MovieListRestController() {
     movielistservice = new MovieListService();
   }
 
@@ -63,7 +63,7 @@ public class MovieListRestController {
 
   //localhost:8080/movielist/{username}/deleteUser
   @DeleteMapping("/{username}/deleteUser")
-  public void deleteMovieList(@PathVariable("username") String username) throws IOException{
+  public void deleteMovieList(@PathVariable("username") String username) throws IOException {
     movielistservice.deleteMovieList(username);
   }
 
@@ -94,20 +94,20 @@ public class MovieListRestController {
 
   //localhost:8080/movielist/{username}/numberOfMovies
   @GetMapping("/{username}/numberOfMovies")
-  public int getNumberOfMovies(@PathVariable("username") String username){
+  public int getNumberOfMovies(@PathVariable("username") String username) {
     return movielistservice.getNumberOfMovies(username);
   }
 
   //localhost:8080/movielist/{username}/password
   @GetMapping("/{username}/password")
-  public String getPassword(@PathVariable("username") String username){
+  public String getPassword(@PathVariable("username") String username) {
     return movielistservice.getPassword(username);
   }
 
   //localhost:8080/movielist/{username}/password/newUser
   @PostMapping("/{username}/{password}/newUser")
   public MovieList newMovieList(@PathVariable("username") String username,
-        @PathVariable("password") String password){
+        @PathVariable("password") String password) {
     return movielistservice.newMovieList(username, password);
   }
 }
