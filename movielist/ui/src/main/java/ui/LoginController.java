@@ -16,8 +16,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.Node;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Class for the Login page/controller.
@@ -36,6 +40,7 @@ public class LoginController {
 
   private MovieList movieList;
   private Stage loginControllerStage; 
+  //private boolean remote; 
 
   private MovieListAccess  movielistAccess;
 
@@ -62,6 +67,28 @@ public class LoginController {
    * @throws IOException signals that I/= has occurred
    */
   public void setUpAccess() throws IOException, InterruptedException, URISyntaxException {
+    // this.remote = false;
+
+    // try{
+    // URL url = new URL("http://localhost:8080/movielist");
+    // HttpURLConnection connect = (HttpURLConnection) url.openConnection();
+    // connect.setRequestMethod("GET");
+    // connect.connect();
+
+    // int responseCode = connect.getResponseCode();
+    
+    // if (responseCode == HttpURLConnection.HTTP_OK) {
+    //   this.remote = true;
+    // }
+    // } catch (IOException e) {
+    //   System.out.println("error fetching remote movielist");
+    // }
+
+    // if(remote) {
+    //   this.movielistAccess = new MovieListRemoteAccess(new URI("http://localhost:8080/movielist"), false);
+    // } else {
+    //   this.movielistAccess = new MovieListLocalAccess(this.movieList);
+    // }
     try {
       this.movielistAccess = new MovieListRemoteAccess(new URI("http://localhost:8080/movielist"), false);
       System.out.println("Remote access");
@@ -71,25 +98,25 @@ public class LoginController {
     }
   }
 
-  /**
-   * Method for getting the containerAccess that´s automatically chosen by setUpAccess().
-   *
-   * @return this.movielistAccess;
-   */
-  public MovieListAccess getAccess() {
-    return this.movielistAccess;
-  }
+  // /**
+  //  * Method for getting the containerAccess that´s automatically chosen by setUpAccess().
+  //  *
+  //  * @return this.movielistAccess;
+  //  */
+  // public MovieListAccess getAccess() {
+  //   return this.movielistAccess;
+  // }
 
 
-  /**
-   * Getter for the movielist.
-   * Creates a copy to avoid exposing internal representation.
-   *
-   * @return a movielist.
-   */
-  public MovieList getMovieList() {
-    return movieList;
-  }
+  // /**
+  //  * Getter for the movielist.
+  //  * Creates a copy to avoid exposing internal representation.
+  //  *
+  //  * @return a movielist.
+  //  */
+  // public MovieList getMovieList() {
+  //   return movieList;
+  // }
 
   /**
    * Method for setting the stage of the logincontroller.
@@ -110,9 +137,9 @@ public class LoginController {
   @FXML
   public void openList(final ActionEvent event) {
     if (openListBtn.getText().equals("Log in")) {
-      openExistingMovieList();
+      openExistingMovieList(event);
     } else if (openListBtn.getText().equals("Register")) {
-      makeNewMovieList();
+      makeNewMovieList(event);
     }
   }
 
@@ -143,14 +170,14 @@ public class LoginController {
    * FXML method to open an exciting movie list when log in is clicked.
    */
   @FXML
-  public void openExistingMovieList() {
+  public void openExistingMovieList(ActionEvent event) {
 
     String usernameString = this.usernameInput.getText();
     String passwordString = this.passwordInput.getText();
 
     if (validInput(usernameString, passwordString)) {
       movieList = movielistAccess.getMovieListByUsername(usernameString);
-      loadMovieList();
+      loadMovieList(event);
     }
   }
 
@@ -158,7 +185,7 @@ public class LoginController {
    * FXML method to make a new movie list.
    */
   @FXML
-  public void makeNewMovieList() {
+  public void makeNewMovieList(ActionEvent event) {
     String usernameString = this.usernameInput.getText();
     String passwordString = this.passwordInput.getText();
 
@@ -171,7 +198,7 @@ public class LoginController {
       movieList.setUsername(usernameString);
       movieList.setPassword(passwordString);
       movielistAccess.addMovieList(movieList);
-      loadMovieList();
+      loadMovieList(event);
     }
   }
 
@@ -189,7 +216,7 @@ public class LoginController {
       return false;
     } 
     try {
-      movieList = movielistAccess.getMovieListByUsername(username);
+      movieList = this.movielistAccess.getMovieListByUsername(username);
       if (movieList == null) {
         feedback.setText("Movielist doesn't exist");
         return false;
@@ -210,13 +237,14 @@ public class LoginController {
    * FXML method to load a movie list, i.e movie diary.
    */
   @FXML
-  public void loadMovieList() {
+  public void loadMovieList(ActionEvent event) {
     try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListApp.fxml"));
       Parent root = loader.load();
       AppController appController = loader.getController();
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       appController.initData(movieList, movielistAccess);
-      Stage stage = new Stage();
+      //Stage stage = new Stage();
       appController.setMovielist(movieList);
       appController.updateMovieListField();
       appController.setMovieDiaryStage(stage);
@@ -224,7 +252,7 @@ public class LoginController {
       stage.setScene(scene);
       stage.show();
       cleansePage();
-      loginControllerStage.close();
+      //loginControllerStage.close();
     } catch (IOException e) {
       e.printStackTrace();
     }

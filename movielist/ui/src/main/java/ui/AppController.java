@@ -52,6 +52,8 @@ public class AppController {
   @FXML private Button backBtn;
 
   @FXML private Button deleteMovieListBtn;
+
+  @FXML private Button topListBtn;
     
   private MovieListAccess  movielistAccess;
     
@@ -74,15 +76,15 @@ public class AppController {
     this.movielistAccess = access;
   }
 
-  /**
-   * Getter for movielist.
-   * Creates a copy of the movielist to avoid direct access.
-   *
-   * @return a MovieList object.
-   */
-  public MovieList getMovieList() {
-    return movieList;
-  }
+  // /**
+  //  * Getter for movielist.
+  //  * Creates a copy of the movielist to avoid direct access.
+  //  *
+  //  * @return a MovieList object.
+  //  */
+  // public MovieList getMovieList() {
+  //   return movieList;
+  // }
 
   /**
    * Setter for the MovieList object.

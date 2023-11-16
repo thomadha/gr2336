@@ -45,6 +45,7 @@ public class AppTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListApp.fxml"));
         root = loader.load();
         this.controller = loader.getController();
+        //controller.setUpAccess();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -72,7 +73,7 @@ public class AppTest extends ApplicationTest {
         Slider slider = lookup("#scoreField").query();
 
         // Define the desired slider value (e.g., 5)
-        double desiredValue = 9.0;
+        double desiredValue = 5.0;
 
         //locates the slider "button"
         Node thumb = slider.lookup(".thumb");
