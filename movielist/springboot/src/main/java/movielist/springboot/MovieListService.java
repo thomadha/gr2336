@@ -1,7 +1,5 @@
 package movielist.springboot;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import core.Movie;
 import core.MovieList;
 import filehandler.MovieListHandler;
@@ -19,7 +17,6 @@ public class MovieListService {
   public MovieList movieList;
   public List<MovieList> movieLists;
   public MovieListHandler movieListHandler; 
-  // Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
   /**
    * Method for initiating a movielist-service.
