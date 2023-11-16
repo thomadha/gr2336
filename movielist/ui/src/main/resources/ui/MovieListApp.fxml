@@ -92,7 +92,7 @@
             <Image url="@image/moviediarylogoSmall.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="196.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0   1   2   3   4   5   6   7   8   9  10" wrappingWidth="170.0">
+      <Text fill="WHITE" layoutX="193.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0    1    2    3    4    5    6    7    8    9   10" wrappingWidth="170.0">
          <font>
             <Font size="11.0" />
          </font>

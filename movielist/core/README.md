@@ -31,20 +31,22 @@ _Filepath: movielist/core/src/main/java/filehandler/MovieListHandler.java_
 ### Test Classes
 **MovieTest:** Is a test-class for the Movie.java class. It tests that all inputs are correct and exceptions are thrown when they should.
 
-**Test coverage:** According to jacoco MovieTest has a coverage of 100% which is great. 
+**Test coverage:** According to jacoco MovieTest has a coverage of 100%. It's important to us that this class is covered properly, as it has the core logic of the movielist.
+![<jacoco coverage](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/78-final-changes/assets/release3/(8)TestCoverageMovie.png)
 
 _Filepath: movielist\core\src\test\java\core\MovieTest.java_
 
-
 **MovieListTest:** Is a test-class for the MovieList.java class. It tests that the list itself is working when adding movies, and that it handles duplicates of movies correctly.
 
-**Test coverage:** According to jacoco MovieListTest has a coverage of 100% which is great. 
+**Test coverage:** According to jacoco MovieListTest has a coverage of 100%. It's important to us that this class is covered properly, as it has the core logic of the movielist.
+![jacoco coverage](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/78-final-changes/assets/release3/(9)TestCoverageMovieList.png)
 
 _Filepath: movielist\core\src\test\java\core\MovieListTest.java_
 
 **MovieListHandlerTest:** Is a test-class for the MovieList.java class. It tests that the different parts of the MovieListFilehandler works as expected. This includes get all MovieLists from file, save a new MovieList, save an already existing MovieList, deleting a MovieList and that exceptions is thrown when expected. 
 
 **Test coverage:** According to jacoco MovieListHandlerTest has a coverage of 89% which is sufficient. The part of the code that is not tested is all the catch blocks. Tests for this part of the code is hard to test without mocking of IOexeptions, which we deemed unnecessary. 
+![jacoco coverage](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2336/gr2336/-/blob/78-final-changes/assets/release3/(10)TestCoverageFilehandler.png)
 
 _Filepath: movielist\core\src\test\java\filehandler\MovieListFilehandler.java_
 

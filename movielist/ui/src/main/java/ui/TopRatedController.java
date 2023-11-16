@@ -59,8 +59,7 @@ public class TopRatedController {
    */
   public TopRatedController() {
     this.movieList = new MovieList();
-    //this.movielistAccess = movieListRemoteAccess;
-  }
+}
 
 
   /**

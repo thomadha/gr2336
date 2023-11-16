@@ -32,7 +32,6 @@ public class MovieListLocalAccess implements MovieListAccess {
     this.movieList = newMovieList;
   }
 
-
   @Override
   public List<MovieList> getAllMovieListsFromFile() {
     return fileHandler.getAllMovieListsFromFile();
@@ -48,11 +47,9 @@ public class MovieListLocalAccess implements MovieListAccess {
     fileHandler.removeMovieList(fileHandler.getMovieList(username));
   }
 
-
   @Override
   public void addMovieToList(Movie movie) {
     movieList.addMovie(movie);
     fileHandler.saveToFile(movieList);
   }
-
 }

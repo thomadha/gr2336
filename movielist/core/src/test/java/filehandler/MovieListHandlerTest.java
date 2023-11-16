@@ -26,7 +26,7 @@ public class MovieListHandlerTest {
   @BeforeEach
   public void setUp() {
     filehandler = new MovieListHandler(
-      "/src/test/java/ui/resources/MovieList.json");
+      "/src/test/java/ui/resources/MovieListTest.json");
   
     movielist = new MovieList();
     movielist.setUsername("newuser");
@@ -66,15 +66,6 @@ public class MovieListHandlerTest {
     Assertions.assertNotNull(movieList);
     Assertions.assertEquals("testuser", movieList.getUsername());
   }
-
-  // @Test
-  // @DisplayName("checks that getmovielist throws illegal state")
-  // public void checkGetMovieListWhenEmptyState() {
-  //   testFileHandler = new MovieListHandler("/src/test/java/ui/resources/EmptyMovieList.json");
-
-  //   Assertions.assertThrows(IllegalStateException.class, () -> {
-  //     testFileHandler.getMovieList(""); }, "no lists in file");
-  // }
 
   @Test
   @DisplayName("checks that getmovielist throws illegal argument")
