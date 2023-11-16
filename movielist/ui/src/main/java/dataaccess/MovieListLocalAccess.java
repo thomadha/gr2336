@@ -1,12 +1,14 @@
 package dataaccess;
 
-import java.util.List;
-
 import core.Movie;
 import core.MovieList;
 import filehandler.MovieListHandler;
+import java.util.List;
 
-public class MovieListLocalAccess implements MovieListAccess{
+/**
+ * Class for local movielist access.
+ */
+public class MovieListLocalAccess implements MovieListAccess {
 
   private MovieList movieList;
   private MovieListHandler fileHandler;
@@ -14,7 +16,7 @@ public class MovieListLocalAccess implements MovieListAccess{
   public MovieListLocalAccess(MovieList movielist) {
     movieList = new MovieList();
     fileHandler = new MovieListHandler("/src/main/java/json/MovieList.json");
-}
+  }
 
   @Override
   public MovieList getMovieList() {
@@ -26,7 +28,7 @@ public class MovieListLocalAccess implements MovieListAccess{
     return fileHandler.getMovieList(username);
   }
 
-  public void updateMovieList(MovieList newMovieList){
+  public void updateMovieList(MovieList newMovieList) {
     this.movieList = newMovieList;
   }
 

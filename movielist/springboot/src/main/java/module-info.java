@@ -7,7 +7,7 @@ module springboot {
   requires spring.boot.autoconfigure;
   requires spring.beans;
   requires java.net.http;
-  requires core;
+  requires transitive core;
 
   exports movielist.springboot;
   opens movielist.springboot; 

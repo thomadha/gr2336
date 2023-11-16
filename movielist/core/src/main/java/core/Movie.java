@@ -5,19 +5,10 @@ package core;
  */
 public class Movie {
 
-  /**
-   * Name of movie.
-   */
   private String name;
-  /**
-   * Genre of movie.
-   */
   private String genre;
-  /**
-   * Score of movie.
-   */
   private double score;
-  
+
   private int count = 1;
 
   /**
@@ -39,7 +30,7 @@ public class Movie {
     return name + "\n - Score: " + score + "\n\n";
   }
 
-  public String viewsString(){
+  public String viewsString() {
     return name + "\n - Views: " + count + "\n\n"; 
   }
 
@@ -65,8 +56,16 @@ public class Movie {
     this.genre = genre;
   }
 
-  public Movie(String name, double score, String genre, int count){
-    if(!validScore(score)){
+  /**
+   * Constructor with four inputs for Movie class.
+   *
+   * @param name of movie
+   * @param score of movie
+   * @param genre of movie
+   * @param count of movie
+   */
+  public Movie(String name, double score, String genre, int count) {
+    if (!validScore(score)) {
       throw new IllegalArgumentException("Score must be between 0 and 10");
     }
     if (!validName(name)) {
@@ -76,9 +75,9 @@ public class Movie {
       this.genre = "Must specify genre";
     } else {
       this.genre = genre;
-    this.name = name;
-    this.score = score; 
-    this.count = count;
+      this.name = name;
+      this.score = score; 
+      this.count = count;
     }
   }
   
@@ -162,11 +161,11 @@ public class Movie {
     return !genreInput.equals("Choose genre");
   }
 
-  public void addDuplicate(){
-    this.count ++;
+  public void addDuplicate() {
+    this.count++;
   }
 
-  public int getCount(){
+  public int getCount() {
     return this.count;
   }
 }
