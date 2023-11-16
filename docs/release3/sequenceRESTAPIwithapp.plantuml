@@ -1,0 +1,26 @@
+@startuml Sequence Diagram
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+actor User 
+participant AddMoviePage 
+participant MovieListRemoteAccess 
+participant RESTAPI 
+participant MovieListJson 
+
+User -> AddMoviePage: Opens add movie page 
+activate AddMoviePage 
+AddMoviePage -> MovieListRemoteAccess: getMovieListByUsername(exampleuser)
+activate MovieListRemoteAccess 
+MovieListRemoteAccess -> RESTAPI: GET /movielist/exampleuser
+activate RESTAPI 
+RESTAPI -> MovieListJson: getMovieListByUsername(exampleuser)
+activate MovieListJson
+MovieListJson -> RESTAPI: MovieList in jsonformat
+deactivate MovieListJson
+RESTAPI -> MovieListRemoteAccess: MovieList 
+deactivate RESTAPI 
+MovieListRemoteAccess -> AddMoviePage: MovieList
+deactivate MovieListRemoteAccess 
+AddMoviePage -> User: Visualize the data on screen
+deactivate AddMoviePage

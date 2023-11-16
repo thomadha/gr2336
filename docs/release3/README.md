@@ -2,6 +2,38 @@
 
 The Movie App is a JavaFX application that allows you to add and display a list of movies with their scores. This is the third and final draft of a database where you can save the movies you've watched. It's sorted by score, from highest to lowest.
 
+## Assets
+
+Screenshots of the final application:
+
+_The login-page that the application lanches to:_
+
+![release3](assets/release3/(1)LoginPage.png "Picture"){width=500}
+
+_Changed interface after pressing the button to register new user:_
+
+![release3](assets/release3/(2)MakeNewMovieList.png "Picture"){width=500}
+
+_Login-Page with the necessary info written:_
+
+![release3](assets/release3/(3)LoginWithInfo.png "Picture"){width=500}
+
+_The main application page, where you add movies by entering title, score and genre:_
+
+![release3](assets/release3/(4)AddMovieToNewList.png "Picture"){width=500}
+
+_How the movielist looks after adding multiple movies:_
+
+![release3](assets/release3/(5)MoviesInList.png "Picture"){width=500}
+
+_Pop-up when pressing button to delete movielist:_
+
+![release3](assets/release3/(6)DeleteMovieList.png "Picture"){width=500}
+
+_TopRatedPage, accessed from the movielist-page, the back-button brings the user back to its movielist:_
+
+![release3](assets/release3/(7)TopRatedPage.png "Picture"){width=500}
+
 ## New features for this release
 
 1. The login feature is improved immensly in this release
@@ -10,12 +42,12 @@ The Movie App is a JavaFX application that allows you to add and display a list 
     - This also means that you can close the app and retrieve the list the next time you run it, as all the data related to the movie diary is saved to a file. The logic regarding the file handling is significally improved.
 2. A dedicated page is implemented for top rated movies
     - This shows the user an overview for highest rated movies, most viewed and most popular genre.
-    - As a result, 
+    - The data displayed in this page is retrieved from all movie lists within the application, combining the average scores and summarizing the total view count. 
     - Similarily to the login page, this page has its own controller and fxml-file
 3. Making it possible to delete your movie list profile
     - Implementing a new button within the application interface, enabling users to delete their profiles.
-    - The user is given an alert when pressing this button, ensuring that they actually want their movie diary deleted
-    - If the user selects "Cancel," they are redirected back to their list. However, choosing "OK" deletes their movie diary from the file, causing the application to return to the home page since the previously accessed movie list no longer exists.
+    - The user is given an alert when pressing this button, ensuring that they actually want their movie diary deleted.
+    - If the user selects "Cancel," they are redirected back to their list. However, choosing "OK" deletes their movie diary from the file, causing the application to return to the home page, since the previously accessed movie list no longer exists.
 
 ## How to use
 
@@ -25,8 +57,29 @@ If you haven't already, you need to clone the repository to your local machine. 
 
 For this release, the group has included updated versions of the three diagrams, to illustrate the architecture of the application. The class diagram, sequence diagram and package diagram are linked underneath:
 
-## ADD LINKS HERE WHEN FINISHED!
+**Class Diagram:**
 
+![release3](assets/release3/class/ClassDiagram.png "Class diagram"){width=500}
+
+**Package Diagram:**
+
+![release3](assets/release3/package/PackageDiagram.png "Package diagram"){width=500}
+
+**Basic Functionality Sequence Diagram:**
+
+![release3](assets/release3/sequenceBasicFunctionality/SequenceDiagram1.png "Sequence diagram"){width=500}
+
+**Controllers Sequence Diagram:**
+
+![release3](assets/release3/sequenceControllers/SequenceDiagram2.png "Sequence diagram"){width=500}
+
+**REST-API Sequence Siagram:**
+
+![release3](assets/release3/sequenceRESTAPI/SequenceDiagram3.png "Sequence diagram"){width=500}
+
+**REST-API With App Sequence Siagram:**
+
+![release3](assets/release3/sequenceRESTAPIwithapp/SequenceDiagram4.png "Sequence diagram"){width=500}
 
 ## Architecture
 

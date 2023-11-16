@@ -1,0 +1,44 @@
+@startuml Sequence Diagram
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+actor User
+participant MovieListRestController 
+participant MovieListService 
+participant SpringbootApplication 
+participant ServerController 
+
+User -> SpringbootApplication: Run
+activate SpringbootApplication
+SpringbootApplication -> ServerController: startServer()
+activate ServerController
+ServerController --> SpringbootApplication: "OK"
+deactivate ServerController
+deactivate SpringbootApplication
+
+User -> MovieListRestController: GET /movielist/getall
+activate MovieListRestController
+MovieListRestController -> MovieListService: getAllMovieLists()
+activate MovieListService
+MovieListService --> MovieListRestController: List<MovieLists>
+deactivate MovieListService
+deactivate MovieListRestController
+
+User -> MovieListRestController: POST /movielist/exampleuser/addMovie
+activate MovieListRestController
+MovieListRestController -> MovieListService: addMovieToList(exampleuser, movie)
+activate MovieListService
+MovieListService --> MovieListRestController: void
+note right: Request Body:\n {"name": "Star Wars","genre": "Scifi","score": 6.5,"movieCount": 2}
+deactivate MovieListService
+deactivate MovieListRestController
+
+User -> MovieListRestController: DELETE /movielist/exampleuser/deleteUser
+activate MovieListRestController
+MovieListRestController -> MovieListService: deleteMovieList(exampleuser)
+activate MovieListService
+MovieListService --> MovieListRestController: void
+deactivate MovieListService
+deactivate MovieListRestController
+
+@enduml
