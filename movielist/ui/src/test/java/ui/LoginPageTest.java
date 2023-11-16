@@ -1,43 +1,40 @@
 package ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.testfx.api.FxAssert.verifyThat;
-
-import javafx.scene.input.MouseButton;
-import org.testfx.util.WaitForAsyncUtils;
-import javafx.scene.control.DialogPane;
-import static org.testfx.matcher.control.LabeledMatchers.hasText;
-import javafx.scene.control.ButtonType;
-
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import javafx.scene.Node;
-import java.lang.reflect.InvocationTargetException;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
+import java.lang.reflect.InvocationTargetException;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
-import javafx.stage.Stage;
+import org.testfx.util.WaitForAsyncUtils;
+
 import ui.AppController;
 import ui.LoginController;
-import javafx.scene.text.Text;
-import javafx.scene.control.Label;
 
 public class LoginPageTest extends ApplicationTest {
 
@@ -106,6 +103,10 @@ public class LoginPageTest extends ApplicationTest {
             clickOn("#usernameInput").write("test3");
             clickOn("#passwordInput").write("123");
             clickOn("#loginBtn");
+            //initializing text-field to check correct output
+            String text = "My Movie Diary";
+            Label header = (Label) lookup("#header").query();
+            assertEquals(header.getText(), text);
         
     }
 
@@ -191,18 +192,29 @@ public class LoginPageTest extends ApplicationTest {
 
 
         clickOn("#topBtn");
-        sleep(2000);
 
         clickOn("#filterbtn");
         clickOn("#views");
+        //check correct output
+        String t1 = "Views";
+        MenuButton btn1 = (MenuButton) lookup("#filterbtn").query();
+        assertEquals(btn1.getText(), t1);
         
 
         clickOn("#filterbtn");
         clickOn("#bestRating");
+        //check correct output
+        String t2 = "Best rating";
+        MenuButton btn2 = (MenuButton) lookup("#filterbtn").query();
+        assertEquals(btn2.getText(), t2);
 
         
         clickOn("#filterbtn");
         clickOn("#worstRating");
+         //check correct output
+         String t3 = "Worst rating";
+         MenuButton btn3 = (MenuButton) lookup("#filterbtn").query();
+         assertEquals(btn3.getText(), t3);
 
         clickOn("#backBtn");
         removeNewUser();
