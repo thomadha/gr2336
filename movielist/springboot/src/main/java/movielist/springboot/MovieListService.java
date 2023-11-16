@@ -19,7 +19,7 @@ public class MovieListService {
   public MovieList movieList;
   public List<MovieList> movieLists;
   public MovieListHandler movieListHandler; 
-  Gson gson = new GsonBuilder().setPrettyPrinting().create();
+  // Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
   /**
    * Method for initiating a movielist-service.
