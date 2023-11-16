@@ -46,6 +46,7 @@ public class TopRatedTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("TopRated.fxml"));
         root = loader.load();
         this.controller = loader.getController();
+        //controller.setUpAccess();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -57,12 +58,12 @@ public class TopRatedTest extends ApplicationTest {
     }
 
     
-    // @Test
-    // public void testAppInitialization() {
-    //     // Test the initialization of the App class
-    //     assertNotNull(controller);
+    @Test
+    public void testAppInitialization() {
+        // Test the initialization of the App class
+        assertNotNull(controller);
         
-    // }
+    }
 
     // @Test
     // public void testTopViews(){

@@ -44,14 +44,14 @@ public class TopRatedController {
 
   private MovieListAccess movielistAccess;
 
-  /**
-   * Method for getting the containerAccess thats automoticly chosen by setUpAccess().
-   *
-   * @return this.containerAccess;
-   */
-  public MovieListAccess getAccess() {
-    return this.movielistAccess;
-  }
+  // /**
+  //  * Method for getting the containerAccess thats automoticly chosen by setUpAccess().
+  //  *
+  //  * @return this.containerAccess;
+  //  */
+  // public MovieListAccess getAccess() {
+  //   return this.movielistAccess;
+  // }
 
   /**
    * Constructor for the toprated controller.

@@ -15,6 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.scene.Node;
+import java.lang.reflect.InvocationTargetException;
+import static org.junit.jupiter.api.Assertions.fail;
+
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -46,6 +49,7 @@ public class LoginPageTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
         root = loader.load();
         this.controller = loader.getController();
+        controller.setUpAccess();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -96,49 +100,115 @@ public class LoginPageTest extends ApplicationTest {
         assertEquals(btn.getText(), "Log in");
     }
 
-    // @Test
-    // public void iterateThrough(){
-    //     // creating new user
-    //     clickOn("#usernameInput").write("test3");
-    //     clickOn("#passwordInput").write("123");
-    //     clickOn("#loginBtn");
-
-    // }
-
-
-
-   //
-    //     // initializing text-field to check correct output
-    //     String text = "My movie diary:";
-    //     Label header = (Label) lookup("#header").query();
-    //     assertEquals(header.getText(), text);
-
-        //navigate back
-        //clickOn("#backBtn");
+    @Test
+    public void loginExistingUser() {
+            // logging in existing user
+            clickOn("#usernameInput").write("test3");
+            clickOn("#passwordInput").write("123");
+            clickOn("#loginBtn");
         
-    //     // try to create new user, with the already used username
-    //     clickOn("#newUserBtn");
+    }
+
+
+    @Test
+    public void iterateThrough() throws InvocationTargetException{
+        
+        // new user
+        newUser();
+        
+        // initializing text-field to check correct output
+        // String text = "My movie diary";
+        // Label header = (Label) lookup("#header").query();
+        // assertEquals(header.getText(), text);
+        
+        //navigate back
+        clickOn("#backBtn");
+        
+        // try to create new user, with the already used username
+        clickOn("#newUserBtn");
  
-    //     clickOn("#usernameInput").write("TestUser");
+        clickOn("#usernameInput").write("TestUser");
  
-    //     clickOn("#passwordInput").write("NEW");
-    //     clickOn("#loginBtn");
+        clickOn("#passwordInput").write("NEW");
+        clickOn("#loginBtn");
  
-    //     // initializing text-field to check correct output
-    //     String text2 = "The username you typed is taken";
-    //     Label feedback = (Label) root.lookup("#feedback");
-    //     assertEquals(feedback.getText(), text2);
+        // initializing text-field to check correct output
+        String text = "";
+        Label feedback = (Label) root.lookup("#feedback");
+        assertEquals(feedback.getText(), text);
  
-    // //     //back to loginmeny
-    // //     clickOn("#newUserBtn");
+        //back to loginmeny
+        clickOn("#newUserBtn");
 
-    // //     logInWithNewUser();
-    // //     removeNewUser();
+        logInWithNewUser();
+        removeNewUser();
 
-    //}
+    }
+
+    @Test
+    public void testAddMovie(){
+
+        newUser();
+
+        // Writes title
+        clickOn("#titleField").write("Batman");
+        
+        // initiates slider
+        Slider slider = lookup("#scoreField").query();
+
+        // Define the desired slider value (e.g., 5)
+        double desiredValue = 5.0;
+
+        //locates the slider "button"
+        Node thumb = slider.lookup(".thumb");
+        // Click on the slider to focus it
+        clickOn(thumb, MouseButton.PRIMARY);
+
+        // Calculate the relative x-coordinate based on the desired value
+        double sliderMaxValue = slider.getMax();
+        double sliderWidth = slider.getWidth();
+        double relativeX = (desiredValue / sliderMaxValue) * sliderWidth;
+
+        // Simulate dragging the button to the desired value
+        drag(thumb).dropBy(relativeX, 0);
+        sleep(1000);
+
+        // select genre for the movie added
+        clickOn("#genrebtn");
+        clickOn("#action");
+
+        //adds movie
+        clickOn("#addBtn");
+
+        removeNewUser();
+        
+    }
+
+    @Test
+    public void testTopList(){
+        newUser();
+        WaitForAsyncUtils.waitForFxEvents();
 
 
+        clickOn("#topBtn");
+        sleep(2000);
 
+        clickOn("#filterbtn");
+        clickOn("#views");
+        
+
+        clickOn("#filterbtn");
+        clickOn("#bestRating");
+
+        
+        clickOn("#filterbtn");
+        clickOn("#worstRating");
+
+        clickOn("#backBtn");
+        removeNewUser();
+        
+    }
+    
 
     public void newUser(){
         // selecting new user
@@ -181,6 +251,5 @@ public class LoginPageTest extends ApplicationTest {
         });
 
     }
-    
 
 }
