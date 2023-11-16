@@ -37,7 +37,7 @@ public class MovieListLocalAccessTest {
     movielist.setPassword("newpassword");
 
     Movie shark = new Movie("Shark 2", 2, "");
-    Movie meangirls = new Movie("Mean Girls", 10, "");
+    Movie meangirls = new Movie("Mean Girls", 9.5, "");
     Movie harry = new Movie("Harry Potter 1", 9, "", 5);
     movielist.addMovie(shark);
     movielist.addMovie(meangirls);
@@ -77,7 +77,7 @@ public class MovieListLocalAccessTest {
     movieList.addMovie(cool);
     filehandler.saveToFile(movieList);
 
-    MovieList newMovielist = filehandler.getMovieList("username");
+    MovieList newMovielist = filehandler.getMovieList("newuser");
 
     Assertions.assertEquals("a cool movie \n - Genre: horror - Score: 10.0 - Views: 1", newMovielist
         .getMovies().get(0).toString());
@@ -110,7 +110,7 @@ public class MovieListLocalAccessTest {
 
     MovieList testAddMovieList = filehandler.getMovieList("addUser");
     filehandler.removeMovieList(testAddMovieList);
-    Assertions.assertEquals(newMovieList, testAddMovieList);
+    Assertions.assertEquals(newMovieList.movieListToString(), testAddMovieList.movieListToString());
   }
 
   @Test
