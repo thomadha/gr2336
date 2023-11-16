@@ -27,11 +27,11 @@ public class MovieListLocalAccessTest {
   private MovieList movielist;
   private MovieListLocalAccess localAccess;
 
-    /**
- * Sets up user credentials and creates a MovieList with predefined movies before all tests.
- *
- * @throws FileNotFoundException if there is an issue with loading or saving movie list data.
- */
+  /**
+   * Sets up user credentials and creates a MovieList with predefined movies before all tests.
+   *
+   * @throws FileNotFoundException if there is an issue with loading or saving movie list data.
+   */
   @BeforeAll 
   public void preSetUp() throws FileNotFoundException{
     filehandler = new MovieListHandler("/src/main/java/json/MovieList.json");
@@ -69,24 +69,25 @@ public class MovieListLocalAccessTest {
     Assertions.assertEquals(newMovieList.movieListToString(), movieList.movieListToString());
     Assertions.assertEquals("TestUser", movieList.getUsername());
     Assertions.assertEquals("password", movieList.getPassword());
-}
+  }
 
 
-//   @Test
-//   @DisplayName("Checks adding movies to a user works.")
-//   public void checkAddMovieToListWorks() {
-//     MovieList movieList = filehandler.getMovieList("newuser");
-//     Movie cool = new Movie("a cool movie", 10.0, "horror");
+  @Test
+  @DisplayName("Checks adding movies to a user works.")
+  public void checkAddMovieToListWorks() {
 
-//     movieList.addMovie(cool);
-//     filehandler.saveToFile(movieList);
+    this.movielist = localAccess.getMovieListByUsername("TestUser");
+    Movie cool = new Movie("a cool movie", 10.0, "horror");
 
-//     MovieList newMovielist = filehandler.getMovieList("newuser");
+    localAccess.updateMovieList(movielist);
+    localAccess.addMovieToList(cool);
 
-//     Assertions.assertEquals("a cool movie \n - Genre: horror - Score: 10.0 - Views: 1", newMovielist
-//         .getMovies().get(0).toString());
+    MovieList newMovielist = filehandler.getMovieList("TestUser");
 
-//   }
+    Assertions.assertEquals("a cool movie \n - Genre: horror - Score: 10.0 - Views: 1", newMovielist
+        .getMovies().get(0).toString());
+
+  }
   
 //   @Test
 //   @DisplayName("Valid username returns movielist, getMovieList")
