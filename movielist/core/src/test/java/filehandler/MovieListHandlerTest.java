@@ -1,42 +1,40 @@
 package filehandler;
 
+import core.Movie;
+import core.MovieList;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import core.Movie;
-import core.MovieList;
 
 
-
+/**
+ * Class for the moviehhandlertest.
+ */
 public class MovieListHandlerTest {
 
   private MovieListHandler filehandler;
-  private MovieListHandler testFileHandler;
   private MovieList movielist;
 
-
+  /**
+   * Method before each test.
+   */
   @BeforeEach
   public void setUp() {
     filehandler = new MovieListHandler(
       "/src/test/java/ui/resources/MovieList.json");
   
-    Movie shark = new Movie("Shark 2", 2, "");
-    Movie meangirls = new Movie("Mean Girls", 10, "");
-    Movie harry = new Movie("Harry Potter 1", 9, "", 5);
-
     movielist = new MovieList();
     movielist.setUsername("newuser");
     movielist.setPassword("newpassword");
 
+    Movie shark = new Movie("Shark 2", 2, "");
+    Movie meangirls = new Movie("Mean Girls", 10, "");
+    Movie harry = new Movie("Harry Potter 1", 9, "", 5);
     movielist.addMovie(shark);
     movielist.addMovie(meangirls);
     movielist.addMovie(harry);
@@ -53,7 +51,7 @@ public class MovieListHandlerTest {
 
     List<MovieList> movieLists = filehandler.getAllMovieListsFromFile();
 
-    assertNotNull(movieLists);
+    Assertions.assertNotNull(movieLists);
     Assertions.assertEquals("testuser", movieLists.get(0).getUsername());
     Assertions.assertEquals("coolTestUser", movieLists.get(1).getUsername());
 
@@ -65,8 +63,8 @@ public class MovieListHandlerTest {
 
     MovieList movieList = filehandler.getMovieList("testuser");
 
-    assertNotNull(movieList);
-    assertEquals("testuser", movieList.getUsername());
+    Assertions.assertNotNull(movieList);
+    Assertions.assertEquals("testuser", movieList.getUsername());
   }
 
   // @Test
@@ -99,7 +97,8 @@ public class MovieListHandlerTest {
     filehandler.saveToFile(movielist);
     String user = movielist.getUsername();
 
-    Assertions.assertEquals(movielist.getMovies().toString(), filehandler.getMovieList(user).getMovies().toString());
+    Assertions.assertEquals(movielist.getMovies().toString(), filehandler
+          .getMovieList(user).getMovies().toString());
 
   }
 
@@ -115,7 +114,8 @@ public class MovieListHandlerTest {
 
     String user = movielist.getUsername();
 
-    Assertions.assertEquals(movielist.getMovies().toString(), filehandler.getMovieList(user).getMovies().toString());
+    Assertions.assertEquals(movielist.getMovies().toString(), filehandler
+        .getMovieList(user).getMovies().toString());
 
   }
 
@@ -126,11 +126,10 @@ public class MovieListHandlerTest {
     List<MovieList> allMovieLists = new ArrayList<>(filehandler.getAllMovieListsFromFile());
 
     Assertions.assertEquals(2, allMovieLists.size());
-    Assertions.assertEquals(allMovieLists.get(0).movieListToString(), filehandler.getMovieList("testuser").movieListToString());
-    Assertions.assertEquals(allMovieLists.get(1).movieListToString(), filehandler.getMovieList("coolTestUser").movieListToString());
+    Assertions.assertEquals(allMovieLists.get(0).movieListToString(), filehandler
+          .getMovieList("testuser").movieListToString());
+    Assertions.assertEquals(allMovieLists.get(1).movieListToString(), filehandler
+          .getMovieList("coolTestUser").movieListToString());
   }
-
-
-
 
 }

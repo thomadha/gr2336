@@ -2,16 +2,22 @@
   {
     "movies": [
       {
-        "name": "TEST",
-        "genre": "Action",
-        "score": 6.5,
-        "movieCount": 0
-      },
-      {
         "name": "HALLA",
         "genre": "Romcom",
         "score": 5.0,
-        "movieCount": 0
+        "count": 0
+      },
+      {
+        "name": "NY FILM",
+        "genre": "Scifi",
+        "score": 5.0,
+        "count": 1
+      },
+      {
+        "name": "TEST",
+        "genre": "Action",
+        "score": 4.25,
+        "count": 1
       }
     ],
     "username": "finaltest2",
@@ -23,19 +29,19 @@
         "name": "StarWars",
         "genre": "scifi",
         "score": 10.0,
-        "movieCount": 1
+        "count": 0
       },
       {
         "name": "HarryPotter",
         "genre": "action",
         "score": 5.0,
-        "movieCount": 1
+        "count": 0
       },
       {
         "name": "ThomasToget",
         "genre": "horror",
         "score": 3.0,
-        "movieCount": 1
+        "count": 0
       }
     ],
     "username": "test",
@@ -57,7 +63,7 @@
         "name": "Star Wars",
         "genre": "horror",
         "score": 10.0,
-        "movieCount": 1
+        "count": 0
       }
     ],
     "username": "test3",

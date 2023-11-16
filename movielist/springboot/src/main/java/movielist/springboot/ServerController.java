@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Class for checking if the server is running.
  */
-
 @RestController
 @RequestMapping("/movielist")
 public class ServerController {

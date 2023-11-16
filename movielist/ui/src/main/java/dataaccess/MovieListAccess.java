@@ -1,10 +1,12 @@
 package dataaccess;
 
-import java.util.List;
-
 import core.Movie;
 import core.MovieList;
+import java.util.List;
 
+/**
+ * Interface for the remote and local access classes.
+ */
 public interface MovieListAccess {
 
   public MovieList getMovieList();

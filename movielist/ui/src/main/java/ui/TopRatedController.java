@@ -1,13 +1,12 @@
 package ui;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
 
 import core.Movie;
 import core.MovieList;
 import dataaccess.MovieListAccess;
-//import dataaccess.MovieListRemoteAccess;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,43 +23,25 @@ import javafx.stage.Stage;
  */
 public class TopRatedController {
 
-  /**
-   * Button for filering the ratings.
-   */
+
   @FXML private MenuButton filterbtn;
-  /**
-   * Item in filerbutton.
-   */
+
   @FXML private MenuItem views;
-  /**
-   * Item in filerbutton.
-   */
+
   @FXML private MenuItem bestRating;
-  /**
-   * Item in filerbutton.
-   */
+
   @FXML private MenuItem worstRating;
-  /**
-   * Header label.
-   */
+
   @FXML private Label header1;
-  /**
-   * Text area for topfield.
-   */
+
   @FXML private TextArea topfield;
 
-  /**
-   * List of all the different movielists.
-   */
   private List<MovieList> allMovieLists;
-  /**
-   * A movielist containing all movies ever added.
-   */
+
   private MovieList allMovies;
   private MovieList movieList;
   private Stage topStage; 
 
-  //private MovieListRemoteAccess  movielistRemoteAccess;
   private MovieListAccess movielistAccess;
 
   /**
@@ -79,15 +60,12 @@ public class TopRatedController {
   public TopRatedController() {
     this.movieList = new MovieList();
     //this.movielistAccess = movieListRemoteAccess;
-}
+  }
 
-  // public TopRatedController(){
-  //   this.movieList = new MovieList();
-  //   this.movielistAccess = new MovieListRemoteAccess(movieList);
-  // }
 
   /**
    * Setter for the movielist.
+   *
    * @param movieList to show.
    */
   public void setMovielist(final MovieList movieList) {
@@ -96,12 +74,20 @@ public class TopRatedController {
 
   /**
    * Setter for the TopRatedController stage.
-   * @param stage
+   *
+   * @param stage for controller
    */
   public void setStage(final Stage stage) {
     this.topStage = stage;
   }
 
+  /**
+   * Method to initialize controller.
+   *
+   * @param movieList to use
+   * @param access if the movielistaccess
+   * @throws FileNotFoundException if file not found
+   */
   public void initialize(MovieList movieList, MovieListAccess access) throws FileNotFoundException {
     this.movieList = movieList;
     this.movielistAccess = access;
@@ -123,50 +109,52 @@ public class TopRatedController {
 
   /**
    * FXML method to filter movies by users choice.
-   * @param event
+   *
+   * @param event actionevent
    */
   @FXML
   private void handleFilterBtn(final ActionEvent event) {
-      MenuItem filterchoise = (MenuItem) event.getSource();
-      String text = filterchoise.getText();
-      header1.setText(text.toLowerCase());
-      this.filterbtn.setText(text);
-      topfield.setText("");
-      switch (text) {
-        case "Views":
-          allMovies.sortByCount();
-          for (Movie m : allMovies.getMovies()) {
-            topfield.setText(topfield.getText() + m.viewsString());
-          }
-          break;
+    MenuItem filterchoise = (MenuItem) event.getSource();
+    String text = filterchoise.getText();
+    header1.setText(text.toLowerCase());
+    this.filterbtn.setText(text);
+    topfield.setText("");
+    switch (text) {
+      case "Views":
+        allMovies.sortByCount();
+        for (Movie m : allMovies.getMovies()) {
+          topfield.setText(topfield.getText() + m.viewsString());
+        }
+        break;
 
-        case "Worst rating":
-          allMovies.sortByWorstRating();
-          for (Movie m : allMovies.getMovies()) {
-            topfield.setText(topfield.getText() + m.scoreString());
-          }
-          break;
+      case "Worst rating":
+        allMovies.sortByWorstRating();
+        for (Movie m : allMovies.getMovies()) {
+          topfield.setText(topfield.getText() + m.scoreString());
+        }
+        break;
 
-        default:
-          allMovies.sortByBestRating();
-          for (Movie m : allMovies.getMovies()) {
-            topfield.setText(topfield.getText() + m.scoreString());
-          }
-          break;
-      }
+      default:
+        allMovies.sortByBestRating();
+        for (Movie m : allMovies.getMovies()) {
+          topfield.setText(topfield.getText() + m.scoreString());
+        }
+        break;
+    }
   }
 
 
   /**
    * Back button to return to the MovieDiary.
    * Does not return to login page.
-   * @param event
+   *
+   * @param event actionevent
    */
   @FXML
   private void handleBackBtn2(final ActionEvent event) {
-  try {
+    try {
       FXMLLoader loader = new FXMLLoader(
-        getClass().getResource("MovieListApp.fxml"));
+          getClass().getResource("MovieListApp.fxml"));
       Parent root = loader.load();
       AppController appController = loader.getController();
       Scene scene = new Scene(root);
