@@ -1,6 +1,5 @@
 package dataaccess;
 
-
 import core.Movie;
 import core.MovieList;
 import filehandler.MovieListHandler;
@@ -13,10 +12,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-
-
 /**
- * Test class for the locall movieaccess.
+ * Test class for the local movieaccess.
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MovieListLocalAccessTest {
@@ -162,9 +159,4 @@ public class MovieListLocalAccessTest {
     Assertions.assertEquals(allMovieLists.get(1).movieListToString(), filehandler
           .getMovieList("coolTestUser").movieListToString());
   }
-
-
- 
-
-
 }
