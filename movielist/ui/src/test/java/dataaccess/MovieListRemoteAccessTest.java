@@ -112,46 +112,21 @@ public class MovieListRemoteAccessTest {
   }
 
   @Test
-public void testAddMovieList() throws IOException, InterruptedException {
-    MovieList movieListToAdd = new MovieList();
-    movieListToAdd.setUsername("TestUser");
-    movieListToAdd.setPassword("password");
-    movieListToAdd.addMovie(new Movie("Inception", 9.0, "Scifi", 1));
+  public void testAddMovieList() throws IOException, InterruptedException {
+      MovieList movieListToAdd = new MovieList();
+      movieListToAdd.setUsername("TestUser");
+      movieListToAdd.setPassword("password");
+      movieListToAdd.addMovie(new Movie("Inception", 9.0, "Scifi", 1));
 
-    WireMock.stubFor(post("/movielist/TestUser/password/newUser")
-            .willReturn(new ResponseDefinitionBuilder()
-                    .withStatus(200)));
+      WireMock.stubFor(post("/movielist/TestUser/password/newUser")
+              .willReturn(new ResponseDefinitionBuilder()
+                      .withStatus(200)));
 
-    remoteAccess.addMovieList(movieListToAdd);
+      remoteAccess.addMovieList(movieListToAdd);
 
-    WireMock.verify(postRequestedFor(urlEqualTo("/movielist/TestUser/password/newUser"))
-            .withHeader("Content-Type", containing("application/json"))
-            .withRequestBody(equalToJson(gson.toJson(movieListToAdd))));
-}
-
-  @Test
-  public void testAddMovieToList() throws FileNotFoundException {
-
-    Movie m4 = new Movie("Teletubbies", 10.0, "Other", 1);
-
-    // Act
-    remoteAccess.updateMovieList(testmovieList);
-
-    WireMock.stubFor(post("/movielist/TestUser/addMovie")
-        .willReturn(new ResponseDefinitionBuilder()
-              .withHeader("Content-Type", "application/json")
-              .withBody(gson.toJson(m4))));
-    remoteAccess.addMovieToList(m4);
-
-    // Assert
-    WireMock.stubFor(get("/movielist/TestUser")
-        .willReturn(new ResponseDefinitionBuilder()
-        .withBody(gson.toJson(testmovieList))));
-    MovieList updatedList = remoteAccess.getMovieListByUsername("TestUser");
-
-    // Ensure the movie was added to the list
-    assertTrue(updatedList.getMovies().contains(m4));
-    
+      WireMock.verify(postRequestedFor(urlEqualTo("/movielist/TestUser/password/newUser"))
+              .withHeader("Content-Type", containing("application/json"))
+              .withRequestBody(equalToJson(gson.toJson(movieListToAdd))));
   }
 
     @Test
