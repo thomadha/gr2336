@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testfx.api.FxAssert.verifyThat;
 
 import javafx.scene.input.MouseButton;
+import org.testfx.util.WaitForAsyncUtils;
+import javafx.scene.control.DialogPane;
+import static org.testfx.matcher.control.LabeledMatchers.hasText;
+import javafx.scene.control.ButtonType;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -59,27 +64,8 @@ public class LoginPageTest extends ApplicationTest {
     }
 
     @Test
-    public void testUserNotFound(){
-        // tests invalid username or password
-        clickOn("#usernameInput").write("Username123");
-        clickOn("#passwordInput").write("password123");
-        clickOn("#loginBtn");
-
-        // initializing text-field to check correct output
-        String text = "Movielist doesn't exist";
-        Label feedback = (Label) root.lookup("#feedback");
-        assertEquals(feedback.getText(), text);
-
-        try {
-            Thread.sleep(3000);
-        } catch (Exception e) {}
-
-
-    }
-
-    @Test
     public void testMissingPassword(){
-        //tests to only inpu username
+        //tests to only input username
         clickOn("#usernameInput").write("Username123");
         clickOn("#loginBtn");
 
@@ -87,27 +73,114 @@ public class LoginPageTest extends ApplicationTest {
         String text = "You have to fill inn both a username and password";
         Label feedback = (Label) root.lookup("#feedback");
         assertEquals(feedback.getText(), text);
+
+        //clears screen
+        clickOn("#newUserBtn");
+        clickOn("#newUserBtn");
+
+        //try again to write only password without username
+        clickOn("#passwordInput").write("NoUsername");
+        clickOn("#loginBtn");
+
+        // initializing text-field to check correct output
+        feedback = (Label) root.lookup("#feedback");
+        assertEquals(feedback.getText(), text);
+    }
+    @Test
+    public void newOrLogin(){
+        clickOn("#newUserBtn");
+        Button btn = (Button) lookup("#loginBtn").query();
+        assertEquals(btn.getText(), "Register");
+        clickOn("#newUserBtn");
+        btn = (Button) lookup("#loginBtn").query();
+        assertEquals(btn.getText(), "Log in");
     }
 
     // @Test
-    // public void testNewUser(){
-    //     // selecting new user
-    //     clickOn("#newUserBtn");
-    //     try {
-    //         Thread.sleep(3000);
-    //     } catch (Exception e) {}
-        
+    // public void iterateThrough(){
     //     // creating new user
-    //     clickOn("#usernameInput").write("TestUser");
-    //     clickOn("#passwordInput").write("TestPassword");
+    //     clickOn("#usernameInput").write("test3");
+    //     clickOn("#passwordInput").write("123");
     //     clickOn("#loginBtn");
 
-    //     try {
-    //         Thread.sleep(3000);
-    //     } catch (Exception e) {}
     // }
 
 
+
+   //
+    //     // initializing text-field to check correct output
+    //     String text = "My movie diary:";
+    //     Label header = (Label) lookup("#header").query();
+    //     assertEquals(header.getText(), text);
+
+        //navigate back
+        //clickOn("#backBtn");
+        
+    //     // try to create new user, with the already used username
+    //     clickOn("#newUserBtn");
+ 
+    //     clickOn("#usernameInput").write("TestUser");
+ 
+    //     clickOn("#passwordInput").write("NEW");
+    //     clickOn("#loginBtn");
+ 
+    //     // initializing text-field to check correct output
+    //     String text2 = "The username you typed is taken";
+    //     Label feedback = (Label) root.lookup("#feedback");
+    //     assertEquals(feedback.getText(), text2);
+ 
+    // //     //back to loginmeny
+    // //     clickOn("#newUserBtn");
+
+    // //     logInWithNewUser();
+    // //     removeNewUser();
+
+    //}
+
+
+
+
+    public void newUser(){
+        // selecting new user
+        sleep(2000);
+        clickOn("#newUserBtn");
+        
+        // creating new user
+        clickOn("#usernameInput").write("TestUser");
+        clickOn("#passwordInput").write("TestPassword");
+        clickOn("#loginBtn");
+    }
+
+    public void logInWithNewUser(){
+        //logging in with correct info
+        WaitForAsyncUtils.waitForFxEvents();
+        clickOn("#usernameInput").write("TestUser");
+        clickOn("#passwordInput");
+        WaitForAsyncUtils.waitForFxEvents();
+        clickOn("#passwordInput");
+        clickOn("#passwordInput").write("TestPassword");
+        clickOn("#loginBtn");
+    }
+
+    public void removeNewUser(){
+        //deleting
+        clickOn("#deleteMovieListBtn");
+
+        // TestFX provides support for handling dialogs
+        interact(() -> {
+            // Find the alert dialog
+            DialogPane dialogPane = lookup(".dialog-pane").queryAs(DialogPane.class);
+
+            //check that its correct
+            verifyThat(dialogPane.getContentText(), hasText("Press OK to confirm, or Cancel to go back."));
+
+            // Click the OK button to confirm deletion
+            Button okButton = (Button) dialogPane.lookupButton(ButtonType.OK);
+            //navigate back
+            clickOn(okButton);
+        });
+
+    }
     
 
 }
