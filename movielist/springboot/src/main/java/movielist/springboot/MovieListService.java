@@ -27,7 +27,6 @@ public class MovieListService {
     movieList = new MovieList();
     movieLists = new ArrayList<MovieList>();
     movieListHandler = new MovieListHandler("/src/main/java/json/MovieList.json"); 
-    //movieListHandler.saveToFile(movieList);
   }
 
   public String getUsername(){

@@ -24,16 +24,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class MovieListRestController {
   private MovieListService movielistservice; 
 
-  // @Bean
-  // public MovieListService movieListBean(){
-  //   return new MovieListService(); 
-  // }
-
   public MovieListRestController(){
     movielistservice = new MovieListService();
   }
-
-
 
   //localhost:8080/movielist/getall
   @GetMapping("/getall")

@@ -20,7 +20,6 @@ public class MovieListTest {
         
         movielist.addMovie(shark);
         movielist.addMovie(meangirls);
-        //movielist.addMovie(new Movie("WRONG", 13));
         movielist.addMovie(harry);
 
         Assertions.assertEquals(shark, movielist.getMovies().get(2));
@@ -164,7 +163,6 @@ public class MovieListTest {
     public void checkSetMovies() throws IllegalArgumentException {
         Movie shark = new Movie("Shark 2", 2, "");
         Movie meangirls = new Movie("Mean Girls", 10, "");
-        // Movie harry = new Movie("Harry Potter 1", 9, "", 5);
 
         List<Movie> movies = new ArrayList<>();
 

@@ -96,49 +96,6 @@ public class LoginPageTest extends ApplicationTest {
         assertEquals(btn.getText(), "Log in");
     }
 
-    // @Test
-    // public void iterateThrough(){
-    //     // creating new user
-    //     clickOn("#usernameInput").write("test3");
-    //     clickOn("#passwordInput").write("123");
-    //     clickOn("#loginBtn");
-
-    // }
-
-
-
-   //
-    //     // initializing text-field to check correct output
-    //     String text = "My movie diary:";
-    //     Label header = (Label) lookup("#header").query();
-    //     assertEquals(header.getText(), text);
-
-        //navigate back
-        //clickOn("#backBtn");
-        
-    //     // try to create new user, with the already used username
-    //     clickOn("#newUserBtn");
- 
-    //     clickOn("#usernameInput").write("TestUser");
- 
-    //     clickOn("#passwordInput").write("NEW");
-    //     clickOn("#loginBtn");
- 
-    //     // initializing text-field to check correct output
-    //     String text2 = "The username you typed is taken";
-    //     Label feedback = (Label) root.lookup("#feedback");
-    //     assertEquals(feedback.getText(), text2);
- 
-    // //     //back to loginmeny
-    // //     clickOn("#newUserBtn");
-
-    // //     logInWithNewUser();
-    // //     removeNewUser();
-
-    //}
-
-
-
 
     public void newUser(){
         // selecting new user

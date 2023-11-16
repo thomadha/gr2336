@@ -30,19 +30,6 @@ public class MovieListLocalAccess implements MovieListAccess{
     this.movieList = newMovieList;
   }
 
-  // /**
-  //  * Gets the names of the MovieLists.
-  //  *
-  //  * @return the names of the MovieLists.
-  //  */
-  // @Override
-  // public Collection<String> getMovieListNames() {
-  //   Collection<String> allNames = new ArrayList<>();
-  //   fileHandler.getAllMovieListsFromFile().forEach(movieList -> allNames.add(movieList.getUsername()));
-  //   return allNames;
-  // }
-
-
   @Override
   public List<MovieList> getAllMovieListsFromFile() {
     return fileHandler.getAllMovieListsFromFile();
@@ -58,48 +45,9 @@ public class MovieListLocalAccess implements MovieListAccess{
     fileHandler.removeMovieList(fileHandler.getMovieList(username));
   }
 
-  /**
-   * Updates the user file with the specified user.
-   *
-   * @param user the user to update
-   */
-
-
-  // @Override
-  // public void validateNoExistingMovieList(String username) {
-  //   fileHandler.validateNoExistingMovieList(username);
-  // }
-
   @Override
   public void addMovieToList(Movie movie) {
     movieList.addMovie(movie);
     fileHandler.saveToFile(movieList);
   }
-
-  // @Override
-  // public List<Movie> getMovies() {
-  //   return movieList.getMovies();
-  // }
-
-
-  // @Override
-  // public boolean checkDuplicate(Movie newMovie) {
-  //   return movieList.checkDuplicate(newMovie);
-  // }
-
-  // @Override
-  // public void setUsername(String username) {
-  //   movieList.setUsername(username);
-  // }
-
-  // @Override
-  // public void setPassword(String password) {
-  //   movieList.setPassword(password);
-  // }
-
-  // @Override
-  // public void setMovies(List<Movie> movies) {
-  //   movieList.setMovies(movies);
-  // }
-
 }
