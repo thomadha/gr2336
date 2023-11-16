@@ -1,7 +1,5 @@
 package movielist.springboot;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import core.Movie;
 import core.MovieList;
 import filehandler.MovieListHandler;
