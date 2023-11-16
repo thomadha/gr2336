@@ -90,23 +90,15 @@ _Filepath: movielist\ui\src\main\java\dataaccess\MovieListRemoteAccess.java_
 
 
 ### Test
-**AppTest:** 
-
-Test-class for the fxml app-interface. Tests basic functionality of the app and controllers.
-
-_Filepath: movielist\ui\src\test\java\ui\AppTest.java_
 
 **LoginPageTest:** 
 
-Test-class for the fxml login-interface. Tests basic functionality of the app and controllers.
+Test-class for the fxml files LoginPage.fxml, MovieListApp.fxml and TopRated.fxml. Tests basic functionality of the app interface and controllers.
+
+**Test coverage with jaCoCo:** 
+The test coverage for ui measured by jaCoCo totalt 88%. The main reason that pulls the score down is missing test coverage for the App.java class. Since this only contains start and lauch methods for the app, and is strictly for initiating the interface, which clearly works, this is not tested (at 0%). If we neglect this, the totalling test coverage (jaCoCo) is at 93%, which we conclude is satisfactory. 
 
 _Filepath: movielist\ui\src\test\java\ui\LoginPageTest.java_
-
-**TopRatedTest:** 
-
-Test-class for the fxml rating-interface. Tests basic functionality of the app and controllers.
-
-_Filepath: movielist\ui\src\test\java\ui\TopRatedTest.java_
 
 
 

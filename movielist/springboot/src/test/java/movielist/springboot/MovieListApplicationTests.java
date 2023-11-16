@@ -43,12 +43,6 @@ class MovieListApplicationTests {
 	private Movie m3; 
 	private List<Movie> list; 
 
-
-	// @BeforeAll
-	// public void saveMovieList(){
-	// 	movieList = handler.getMovieList("test"); 
-	// }
-
 	@AfterAll 
 	public void loadMovielist(){
 		handler.saveToFile(movieList);

@@ -2,21 +2,57 @@
   {
     "movies": [
       {
-        "name": "HALLA",
-        "genre": "Romcom",
-        "score": 5.0,
-        "count": 0
-      },
-      {
-        "name": "NY FILM",
-        "genre": "Scifi",
-        "score": 5.0,
+        "name": "Harry Potter",
+        "genre": "Action",
+        "score": 6.5,
         "count": 1
       },
       {
-        "name": "TEST",
+        "name": "Mean Girls",
+        "genre": "RomCom",
+        "score": 7.0,
+        "count": 1
+      },
+      {
+        "name": "Forrest Gump",
+        "genre": "Romcom",
+        "score": 10.0,
+        "count": 4
+      },
+      {
+        "name": "Casablanca",
         "genre": "Action",
-        "score": 4.25,
+        "score": 5.0,
+        "count": 2
+      },
+      {
+        "name": "Scarface",
+        "genre": "Horror",
+        "score": 9.0,
+        "count": 1
+      },
+      {
+        "name": "Divergent",
+        "genre": "Action",
+        "score": 5.0,
+        "count": 2
+      },
+      {
+        "name": "Love Actually",
+        "genre": "RomCom",
+        "score": 9.3,
+        "count": 5
+      },
+      {
+        "name": "Karate Kid",
+        "genre": "Action",
+        "score": 7.0,
+        "count": 2
+      },
+      {
+        "name": "The Silence of the Lambs",
+        "genre": "Horror",
+        "score": 10.0,
         "count": 1
       }
     ],
@@ -61,12 +97,150 @@
     "movies": [
       {
         "name": "Star Wars",
-        "genre": "horror",
+        "genre": "Scifi",
         "score": 10.0,
         "count": 1
       }
     ],
-    "username": "test3",
-    "password": "123"
+    "username": "Norasfilmdagbok",
+    "password": "ntnu2023"
+  },
+  {
+    "movies": [
+      {
+        "name": "Star Wars",
+        "genre": "Action",
+        "score": 10.0,
+        "count": 1
+      },
+      {
+        "name": "The Hunger Games 1",
+        "genre": "Action",
+        "score": 10.0,
+        "count": 1
+      },
+      {
+        "name": "The Hunger Games 2",
+        "genre": "Action",
+        "score": 9.0,
+        "count": 1
+      },
+      {
+        "name": "The Exorcist",
+        "genre": "Horror",
+        "score": 6.0,
+        "count": 1
+      },
+      {
+        "name": "White Chicks",
+        "genre": "RomCom",
+        "score": 8.0,
+        "count": 4
+      },
+      {
+        "name": "Mean Girls",
+        "genre": "RomCom",
+        "score": 9.0,
+        "count": 6
+      },
+      {
+        "name": "The Exorcist",
+        "genre": "Horror",
+        "score": 6.0,
+        "count": 1
+      },
+      {
+        "name": "Scarface",
+        "genre": "Horror",
+        "score": 9.0,
+        "count": 1
+      },
+      {
+        "name": "The Matrix",
+        "genre": "Action",
+        "score": 10.0,
+        "count": 2
+      },
+      {
+        "name": "Jaws",
+        "genre": "Horror",
+        "score": 8.0,
+        "count": 1
+      }
+    ],
+    "username": "Mathildesliste",
+    "password": "trondheim3105"
+  },
+  {
+    "movies": [
+      {
+        "name": "Haisommer",
+        "genre": "Scifi",
+        "score": 6.0,
+        "count": 1
+      },
+      {
+        "name": "Harry Potter",
+        "genre": "Scifi",
+        "score": 6.0,
+        "count": 1
+      },
+      {
+        "name": "The Exorcist",
+        "genre": "Horror",
+        "score": 4.0,
+        "count": 1
+      },
+      {
+        "name": "The Marvels",
+        "genre": "Action",
+        "score": 6.0,
+        "count": 1
+      },
+      {
+        "name": "The Killer",
+        "genre": "Horror",
+        "score": 7.0,
+        "count": 1
+      },
+      {
+        "name": "Priscilla",
+        "genre": "RomCom",
+        "score": 8.0,
+        "count": 1
+      },
+      {
+        "name": "Schindler's List",
+        "genre": "Other",
+        "score": 8.0,
+        "count": 2
+      },
+      {
+        "name": "Pulp Fiction",
+        "genre": "Other",
+        "score": 9.0,
+        "count": 3
+      },
+      {
+        "name": "The Godfather",
+        "genre": "Other",
+        "score": 8.0,
+        "count": 1
+      },
+      {
+        "name": "Back to the Future",
+        "genre": "Action",
+        "score": 10.0,
+        "count": 1
+      },
+      {
+        "name": "Lord of the Rings",
+        "genre": "Action",
+        "score": 10.0,
+        "count": 1
+      }
+    ],
+    "username": "Isaksfavoritter",
+    "password": "jegelskerfilm2412"
   }
 ]

@@ -75,7 +75,7 @@
             <Font name="Century Gothic Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="250.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleTopListBtn" opacity="0.9" prefHeight="31.0" prefWidth="106.0" text="Open Top Lists">
+      <Button id="topBtn" fx:id="topBtn" layoutX="250.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleTopListBtn" opacity="0.9" prefHeight="31.0" prefWidth="106.0" text="Open Top Lists">
          <font>
             <Font name="Century Gothic Bold" size="12.0" />
          </font></Button>
@@ -92,12 +92,12 @@
             <Image url="@image/moviediarylogoSmall.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="196.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0   1   2   3   4   5   6   7   8   9  10" wrappingWidth="170.0">
+      <Text fill="WHITE" layoutX="193.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0    1    2    3    4    5    6    7    8    9   10" wrappingWidth="170.0">
          <font>
             <Font size="11.0" />
          </font>
       </Text>
-      <Slider id="scoreField" fx:id="scoreField" layoutX="188.0" layoutY="417.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="47.0" prefWidth="170.0" showTickMarks="true" snapToTicks="true" style="-fx-block-increment: #B8184D;" />
+      <Slider id="scoreField" fx:id="scoreField" layoutX="188.0" layoutY="417.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="47.0" prefWidth="170.0" showTickMarks="true" snapToTicks="true" />
       <Label id="header" fx:id="header" layoutX="155.0" layoutY="65.0" text="My Movie Diary" textFill="#f2c7e9">
          <font>
             <Font name="Trebuchet MS" size="44.0" />
