@@ -19,11 +19,6 @@ public class MovieListLocalAccess implements MovieListAccess {
   }
 
   @Override
-  public MovieList getMovieList() {
-    return movieList;
-  }
-
-  @Override
   public MovieList getMovieListByUsername(String username) {
     return fileHandler.getMovieList(username);
   }
