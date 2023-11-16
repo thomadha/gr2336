@@ -92,9 +92,21 @@ _Filepath: movielist\ui\src\main\java\dataaccess\MovieListRemoteAccess.java_
 ### Test
 **AppTest:** 
 
-Test-class for the fxml app. Tests basic functionality of the app and controllers.
+Test-class for the fxml app-interface. Tests basic functionality of the app and controllers.
 
 _Filepath: movielist\ui\src\test\java\ui\AppTest.java_
+
+**LoginPageTest:** 
+
+Test-class for the fxml login-interface. Tests basic functionality of the app and controllers.
+
+_Filepath: movielist\ui\src\test\java\ui\LoginPageTest.java_
+
+**TopRatedTest:** 
+
+Test-class for the fxml rating-interface. Tests basic functionality of the app and controllers.
+
+_Filepath: movielist\ui\src\test\java\ui\TopRatedTest.java_
 
 
 
