@@ -97,7 +97,7 @@
             <Font size="11.0" />
          </font>
       </Text>
-      <Slider id="scoreField" fx:id="scoreField" layoutX="188.0" layoutY="417.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="47.0" prefWidth="170.0" showTickMarks="true" snapToTicks="true" style="-fx-block-increment: #B8184D;" />
+      <Slider id="scoreField" fx:id="scoreField" layoutX="188.0" layoutY="417.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="47.0" prefWidth="170.0" showTickMarks="true" snapToTicks="true" />
       <Label id="header" fx:id="header" layoutX="155.0" layoutY="65.0" text="My Movie Diary" textFill="#f2c7e9">
          <font>
             <Font name="Trebuchet MS" size="44.0" />
