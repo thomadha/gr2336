@@ -29,19 +29,19 @@
         "name": "StarWars",
         "genre": "scifi",
         "score": 10.0,
-        "count": 0
+        "count": 1
       },
       {
         "name": "HarryPotter",
         "genre": "action",
         "score": 5.0,
-        "count": 0
+        "count": 1
       },
       {
         "name": "ThomasToget",
         "genre": "horror",
         "score": 3.0,
-        "count": 0
+        "count": 1
       }
     ],
     "username": "test",
@@ -63,7 +63,7 @@
         "name": "Star Wars",
         "genre": "horror",
         "score": 10.0,
-        "count": 0
+        "count": 1
       }
     ],
     "username": "test3",

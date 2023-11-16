@@ -1,13 +1,22 @@
 package dataaccess;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.delete;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalToJson;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
@@ -40,7 +49,7 @@ public class MovieListRemoteAccessTest {
   private MovieList testmovieList;
 
   private MovieListHandler movielisthandler = new MovieListHandler(
-      "/src/test/java/resources/MovieListTest.json"); 
+    "/src/main/java/json/MovieList.json"); 
   private Gson gson = new Gson();
   
   /**
@@ -49,13 +58,13 @@ public class MovieListRemoteAccessTest {
  * @throws FileNotFoundException if there is an issue with loading or saving movie list data.
  */
   @BeforeAll 
-  public void preSetUp() throws FileNotFoundException{
+  public void preSetUp() throws FileNotFoundException {
     testmovieList = new MovieList();
     testmovieList.setUsername("TestUser");
     testmovieList.setPassword("password");
-    Movie m1 = new Movie("Star Wars", 8.0, "scifi");
-    Movie m2 = new Movie("Harry Potter", 6.0, "fantasy");
-    Movie m3 = new Movie("ThomasToget", 2.0, "other");
+    Movie m1 = new Movie("Star Wars", 8.0, "Scifi", 1);
+    Movie m2 = new Movie("Harry Potter", 6.0, "Fantasy", 1);
+    Movie m3 = new Movie("ThomasToget", 2.0, "Other", 1);
     testmovieList.addMovie(m1);
     testmovieList.addMovie(m2);
     testmovieList.addMovie(m3);
@@ -82,11 +91,14 @@ public class MovieListRemoteAccessTest {
   }
   
   @Test
-  public void testGetMovieLists() throws FileNotFoundException{
+  public void testGetAllMovieListsFromFile() throws FileNotFoundException{
     List<MovieList> testMovieLists = movielisthandler.getAllMovieListsFromFile();
-    WireMock.stubFor(get("/getall")
+    WireMock.stubFor(get("/movielist/getall")
             .willReturn(new ResponseDefinitionBuilder()
             .withBody(gson.toJson(testMovieLists))));
+    List<MovieList> actualMovieLists = remoteAccess.getAllMovieListsFromFile();
+    assertNotNull(actualMovieLists);
+    assertEquals(testMovieLists.size(), actualMovieLists.size());
   }
 
   @Test
@@ -99,72 +111,77 @@ public class MovieListRemoteAccessTest {
     assertEquals(gson.toJson(testList), gson.toJson(movieList));
   }
 
-  // @Test
-  //   public void testGetMovieList() throws Exception {
-  //   MovieList testList = remoteAccess.getMovieList();
-  //   assertEquals(3, testList.getMovies().size()); 
-  //   }
+  @Test
+public void testAddMovieList() throws IOException, InterruptedException {
+    MovieList movieListToAdd = new MovieList();
+    movieListToAdd.setUsername("TestUser");
+    movieListToAdd.setPassword("password");
+    movieListToAdd.addMovie(new Movie("Inception", 9.0, "Scifi", 1));
 
-  // @Test
-  //public void testAddMovie() throws FileNotFoundException {
-  //   Movie m4 = new Movie("Teletubbies", 10.0, "other"); 
-  //   testmovieList.addMovie(m4);
-  //   remoteAccess.addMovieToList(m4);
-  //   WireMock.stubFor(get("/movielist/TestUser/getMovie?movieName=Teletubbies")
-  //                     .willReturn(new ResponseDefinitionBuilder()
-  //                     .withBody(gson.toJson(m4))));
-  //   MovieList movielist = remoteAccess.getMovieListByUsername("TestUser"); 
+    WireMock.stubFor(post("/movielist/TestUser/password/newUser")
+            .willReturn(new ResponseDefinitionBuilder()
+                    .withStatus(200)));
 
-  //   assertThrows(RuntimeException.class, () -> {
-  //     remoteAccess.addMovieToList(null);
-  //   }); 
-    //assertEquals(4, movielist.getNumberOfMovies()); 
+    remoteAccess.addMovieList(movieListToAdd);
 
-    //aner ikke om jeg gjør det riktig, men dette gir litt mer mening i mitt hode hvertfall. 
+    WireMock.verify(postRequestedFor(urlEqualTo("/movielist/TestUser/password/newUser"))
+            .withHeader("Content-Type", containing("application/json"))
+            .withRequestBody(equalToJson(gson.toJson(movieListToAdd))));
+}
+
+  @Test
+  public void testAddMovieToList() throws FileNotFoundException {
+
+    Movie m4 = new Movie("Teletubbies", 10.0, "Other", 1);
+
+    // Act
+    remoteAccess.updateMovieList(testmovieList);
+
+    WireMock.stubFor(post("/movielist/TestUser/addMovie")
+        .willReturn(new ResponseDefinitionBuilder()
+              .withHeader("Content-Type", "application/json")
+              .withBody(gson.toJson(m4))));
+    remoteAccess.addMovieToList(m4);
+
+    // Assert
+    WireMock.stubFor(get("/movielist/TestUser")
+        .willReturn(new ResponseDefinitionBuilder()
+        .withBody(gson.toJson(testmovieList))));
+    MovieList updatedList = remoteAccess.getMovieListByUsername("TestUser");
+
+    // Ensure the movie was added to the list
+    assertTrue(updatedList.getMovies().contains(m4));
     
-    // MovieList testMovieList = movielisthandler.getMovieList("TestUser");
-    // List<Movie> testMovies = testMovieList.getMovies();
-    // Movie testMovie = testMovies.get(0);
-    // WireMock.stubFor(get("/movielist/TestUser/getMovie?movieName=Jaws")
-    //                 .willReturn(new ResponseDefinitionBuilder()
-    //                 .withBody(gson.toJson(testMovie))));
-    // MovieList movieList = remoteAccess.getMovieListByUsername("TestUser");
-  // }
-
-  // @Test
-  // public void testRemoveMovieList() {
-  //   String username = testmovieList.getUsername();
-  //   stubFor(delete("/movielist/" + username + "/deleteUser")
-  //           .willReturn(aResponse().withStatus(200)));
-
-  //   // Call the method to test
-  //   assertThrows(RuntimeException.class, () -> {remoteAccess.removeMovieList(username);});
-
-    // RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-    //   remoteAccess.removeMovieList(username);
-    // });
-    // assertTrue(exception.getCause() instanceof IOException);
-    // assertEquals("Name is null", exception.getCause().getMessage());
-
-    // String username = testmovieList.getUsername();
-    // stubFor(delete("/movielist/" + username + "/deleteUser")
-    //       .willReturn(aResponse().withStatus(200)));
-    // remoteAccess.removeMovieList(username);
-
-    // stubFor(delete("/movielist/")
-    //       .willReturn(aResponse().withStatus(405)));
-    // assertThrows(RuntimeException.class, () -> {
-    //   remoteAccess.removeMovieList(username);
-    // });
-  // }
-
-  @AfterEach
-  public void tearDown() {
-    server.stop();
   }
 
-  @AfterAll
-  public void rigDown() throws FileNotFoundException {
-    movielisthandler.removeMovieList(testmovieList);
-  }
+    @Test
+    public void testRemoveMovieList() throws Exception{
+      String username = "testUser";
+      remoteAccess = new MovieListRemoteAccess(URI.create("http://localhost:8080"), true);
+      
+      stubFor(delete(urlPathEqualTo("/movielist/" + username + "/deleteUser"))
+              .willReturn(aResponse().withStatus(200)));
+        
+      assertDoesNotThrow(() -> remoteAccess.removeMovieList(username));
+
+      //tries to do the same again, but expect a exception to be thrown.
+      stubFor(delete(urlPathEqualTo("/movielist/" + username + "/deleteUser"))
+              .willReturn(aResponse().withStatus(500)));
+
+      RuntimeException exception = assertThrows(RuntimeException.class,
+              () -> remoteAccess.removeMovieList(username));
+
+      assertTrue(exception.getCause() instanceof IOException);
+      assertEquals("Not legal status code", exception.getCause().getMessage());
+    }
+
+@AfterEach
+public void tearDown() {
+  server.stop();
+}
+
+@AfterAll
+public void rigDown() throws FileNotFoundException {
+  movielisthandler.removeMovieList(testmovieList);
+}
 }

@@ -5,19 +5,19 @@
         "name": "Movie1",
         "genre": "Other",
         "score": 10.0,
-        "movieCount": 1
+        "count": 0
       },
       {
         "name": "Movie2",
         "genre": "Scifi",
         "score": 6.5,
-        "movieCount": 2
+        "count": 0
       },
       {
         "name": "Movie3",
         "genre": "Romcom",
         "score": 4.0,
-        "movieCount": 1
+        "count": 0
       }
     ],
     "username": "testuser",
@@ -29,13 +29,13 @@
         "name": "CoolMovie 1",
         "genre": "Scifi",
         "score": 7.0,
-        "movieCount": 1
+        "count": 0
       },
       {
         "name": "CoolMovie 2",
         "genre": "Romcom",
         "score": 1.0,
-        "movieCount": 3
+        "count": 0
       }
     ],
     "username": "coolTestUser",
