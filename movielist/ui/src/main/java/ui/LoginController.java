@@ -38,12 +38,9 @@ public class LoginController {
     private Stage loginControllerStage; 
 
     private MovieListAccess  movielistAccess;
-    //private MovieListRemoteAccess  movielistRemoteAccess;
-
 
     public LoginController() {
       this.movieList = new MovieList();
-  //     this.movielistAccess = new MovieListRemoteAccess(movieList);
   }
 
     /**

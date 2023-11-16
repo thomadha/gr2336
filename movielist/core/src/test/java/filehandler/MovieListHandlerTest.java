@@ -69,15 +69,6 @@ public class MovieListHandlerTest {
     assertEquals("testuser", movieList.getUsername());
   }
 
-  // @Test
-  // @DisplayName("checks that getmovielist throws illegal state")
-  // public void checkGetMovieListWhenEmptyState() {
-  //   testFileHandler = new MovieListHandler("/src/test/java/ui/resources/EmptyMovieList.json");
-
-  //   Assertions.assertThrows(IllegalStateException.class, () -> {
-  //     testFileHandler.getMovieList(""); }, "no lists in file");
-  // }
-
   @Test
   @DisplayName("checks that getmovielist throws illegal argument")
   public void checkGetMovieListWhenEmptySrgument() {
@@ -129,8 +120,5 @@ public class MovieListHandlerTest {
     Assertions.assertEquals(allMovieLists.get(0).movieListToString(), filehandler.getMovieList("testuser").movieListToString());
     Assertions.assertEquals(allMovieLists.get(1).movieListToString(), filehandler.getMovieList("coolTestUser").movieListToString());
   }
-
-
-
 
 }

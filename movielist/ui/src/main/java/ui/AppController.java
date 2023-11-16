@@ -7,7 +7,6 @@ import java.io.IOException;
 import core.Movie;
 import core.MovieList;
 import dataaccess.MovieListAccess;
-//import dataaccess.MovieListRemoteAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,7 +75,6 @@ public class AppController {
      */
     @FXML private Button deleteMovieListBtn;
     
-    //private MovieListRemoteAccess  movielistRemoteAccess;
     private MovieListAccess  movielistAccess;
     /**
     * Stage for the movie diary.
@@ -91,13 +89,7 @@ public class AppController {
 
     public AppController(){
         this.movieList = new MovieList();
-        //this.movielistAccess = movieListRemoteAccess;
     }
-
-    // public AppController() {
-    //     this.movieList = new MovieList();
-    //     this.movielistAccess = new MovieListRemoteAccess(movieList);
-    // }
 
     /**
     * Method for populating the scene with the items

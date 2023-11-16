@@ -49,44 +49,11 @@ public class TopRatedTest extends ApplicationTest {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        //controller.setMovieDiaryStage(stage);
     }
  
     public Parent getRootNode() {
         return root;
     }
-
-    
-    // @Test
-    // public void testAppInitialization() {
-    //     // Test the initialization of the App class
-    //     assertNotNull(controller);
-        
-    // }
-
-    // @Test
-    // public void testTopViews(){
-    //   clickOn("#filterbtn");
-    //   clickOn("#views");
-    // }
-
-    // @Test
-    // public void testBestRating(){
-    //   clickOn("#filterbtn");
-    //   clickOn("#bestRating");
-    // }
-
-    // @Test
-    // public void testWorstRating(){
-    //   clickOn("#filterbtn");
-    //   clickOn("#worstRating");
-    // }
-
-    // @Test
-    // public void testBackBtn(){
-    //     clickOn("#backBtn");
-    // }
-
 
 
   }
