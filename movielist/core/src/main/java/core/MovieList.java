@@ -40,28 +40,28 @@ public class MovieList {
   /**
    * Setter for username.
    *
-   * @param usernameInput of object.
+   * @param username of object.
    */
-  public void setUsername(final String usernameInput) {
-    this.username = usernameInput;
+  public void setUsername(final String username) {
+    this.username = username;
   }
 
   /**
    * Setter for password.
    *
-   * @param passwordInput of object.
+   * @param password of object.
    */
-  public void setPassword(final String passwordInput) {
-    this.password = passwordInput;
+  public void setPassword(final String password) {
+    this.password = password;
   }
 
   /**
    * Setter for movies.
    *
-   * @param moviesInput in a list.
+   * @param movies in a list.
    */
-  public void setMovies(final List<Movie> moviesInput) {
-    this.movies = new ArrayList<>(moviesInput);
+  public void setMovies(final List<Movie> movies) {
+    this.movies = new ArrayList<>(movies);
   }
 
   /**
@@ -85,7 +85,7 @@ public class MovieList {
    *
    * @param movie to add.
    */
-  public void addMovie(final Movie movie) {
+  public void addMovie(Movie movie) {
     if (!checkDuplicate(movie)) {
       movies.add(movie);
     }
@@ -141,7 +141,7 @@ public class MovieList {
    * @param newMovie to be added to the list.
    * @return true if movie was a duplicate, else false.
    */
-  public boolean checkDuplicate(final Movie newMovie) {
+  public boolean checkDuplicate(Movie newMovie) {
     boolean hasDuplicate = false;
     String newTitle = newMovie.getName();
     for (Movie m : getMovies()) {

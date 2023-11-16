@@ -2,85 +2,65 @@
   {
     "movies": [
       {
-        "name": "thomasToget",
-        "genre": "Other",
-        "score": 10.0,
-        "movieCount": 1
-      },
-      {
-        "name": "Star Wars",
-        "genre": "Scifi",
+        "name": "TEST",
+        "genre": "Action",
         "score": 6.5,
-        "movieCount": 2
+        "movieCount": 0
       },
       {
-        "name": "Harry Potter",
+        "name": "HALLA",
         "genre": "Romcom",
-        "score": 4.0,
-        "movieCount": 1
+        "score": 5.0,
+        "movieCount": 0
       }
     ],
-    "username": "thomas",
+    "username": "finaltest2",
     "password": "123"
   },
   {
     "movies": [
       {
-        "name": "Star Wars",
-        "genre": "Scifi",
-        "score": 7.0,
-        "movieCount": 1
-      },
-      {
-        "name": "TooCoolForSchool",
-        "genre": "Romcom",
-        "score": 1.0,
-        "movieCount": 1
-      }
-    ],
-    "username": "jorgen",
-    "password": "123"
-  },
-  {
-    "movies": [
-      {
-        "name": "GOT",
-        "genre": "Romcom",
+        "name": "StarWars",
+        "genre": "scifi",
         "score": 10.0,
         "movieCount": 1
       },
       {
-        "name": "The Joker",
-        "genre": "Action",
-        "score": 9.96875,
-        "movieCount": 6
-      },
-      {
-        "name": "Star Wars",
-        "genre": "Action",
-        "score": 8.0,
+        "name": "HarryPotter",
+        "genre": "action",
+        "score": 5.0,
         "movieCount": 1
       },
       {
-        "name": "Harry Potter",
-        "genre": "Horror",
-        "score": 7.0,
-        "movieCount": 1
-      },
-      {
-        "name": "Haisommer",
-        "genre": "Action",
-        "score": 6.0,
-        "movieCount": 1
-      },
-      {
-        "name": "thomasToget",
-        "genre": "Scifi",
+        "name": "ThomasToget",
+        "genre": "horror",
         "score": 3.0,
         "movieCount": 1
       }
     ],
-    "username": "TommyT",
+    "username": "test",
+    "password": "123"
+  },
+  {
+    "movies": [],
+    "username": "test2",
+    "password": "321"
+  },
+  {
+    "movies": [],
+    "username": "Andy",
+    "password": "Passord"
+  },
+  {
+    "movies": [
+      {
+        "name": "Star Wars",
+        "genre": "horror",
+        "score": 10.0,
+        "movieCount": 1
+      }
+    ],
+    "username": "test3",
     "password": "123"
   }
 ]

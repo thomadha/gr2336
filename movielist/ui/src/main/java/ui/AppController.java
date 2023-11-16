@@ -1,11 +1,13 @@
 package ui;
 
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import core.Movie;
 import core.MovieList;
-import filehandler.MovieListHandler;
+import dataaccess.MovieListAccess;
+//import dataaccess.MovieListRemoteAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,28 +75,40 @@ public class AppController {
      * Delete button for deleting an entire movielist.
      */
     @FXML private Button deleteMovieListBtn;
+    
+    //private MovieListRemoteAccess  movielistRemoteAccess;
+    private MovieListAccess  movielistAccess;
     /**
     * Stage for the movie diary.
     */
     private Stage movieDiaryStage;
     /**
      * Filhandler for the movielist.
-     */
-    private MovieListHandler fileHandler;
-    /**
+     */    /**
      * The movielist to add movies to.
      */
     private MovieList movieList;
 
-    /**
-     * Method to initiate a new movielist and movielisthandler.
-     * Uses javafx application.
-     */
-    public AppController() {
-        movieList = new MovieList();
-        fileHandler = new MovieListHandler(
-            "/src/main/java/json/MovieList.json");
+    public AppController(){
+        this.movieList = new MovieList();
+        //this.movielistAccess = movieListRemoteAccess;
     }
+
+    // public AppController() {
+    //     this.movieList = new MovieList();
+    //     this.movielistAccess = new MovieListRemoteAccess(movieList);
+    // }
+
+    /**
+    * Method for populating the scene with the items
+    *
+    * @throws FileNotFoundException  if file is not found
+    */
+    public void initData(MovieList movieList, MovieListAccess access) 
+        throws FileNotFoundException {
+    this.movieList = movieList;
+    this.movielistAccess = access;
+  }
 
     /**
      * Getter for movielist.
@@ -109,10 +123,10 @@ public class AppController {
     /**
      * Setter for the MovieList object.
      *
-     * @param movieListInput with Movie objects.
+     * @param movieList with Movie objects.
      */
-    public void setMovielist(final MovieList movieListInput) {
-        this.movieList = movieListInput;
+    public void setMovielist(final MovieList movieList) {
+        this.movieList = movieList;
     }
 
     /**
@@ -131,15 +145,12 @@ public class AppController {
     private void handleAddBtn(final ActionEvent event) {
         try {
             feedback.setText("");
-
-            movieList.addMovie(new Movie(
-            titleField.getText(), scoreField.getValue(), genrebtn.getText()
-            ));
-
+            movielistAccess.updateMovieList(movieList);
+            Movie newMovie = new Movie(titleField.getText(), scoreField.getValue(),genrebtn.getText());
+            movielistAccess.addMovieToList(newMovie);
             updateMovieListField();
-            fileHandler.saveToFile(movieList);
-            resetChoises();
-        } catch (Exception e) {
+            resetChoices();
+        }catch(Exception e){
             feedback.setText(e.getMessage());
         }
     }
@@ -149,7 +160,7 @@ public class AppController {
      * Means clearing the text fields.
      */
     @FXML
-    private void resetChoises() {
+    private void resetChoices(){
         this.titleField.setText("");
         this.scoreField.setValue(0);
         this.genrebtn.setText("Choose genre");
@@ -170,9 +181,9 @@ public class AppController {
      * @param e
      */
     @FXML
-    private void handleChoise(final ActionEvent e) {
-        MenuItem genrechoise = (MenuItem) e.getSource();
-        this.genrebtn.setText(genrechoise.getText());
+    private void handleChoice(ActionEvent e){
+        MenuItem genrechoice = (MenuItem) e.getSource();
+        this.genrebtn.setText(genrechoice.getText());
     }
 
     /**
@@ -188,7 +199,8 @@ public class AppController {
             Parent roots = loaders.load();
             LoginController loginController = loaders.getController();
             movieListField.getItems().clear();
-            resetChoises();
+            resetChoices();
+            loginController.initData(movielistAccess);
             Scene scenes = new Scene(roots);
             Stage stages = new Stage();
             stages.setScene(scenes);
@@ -213,11 +225,11 @@ public class AppController {
                 getClass().getResource("TopRated.fxml"));
             Parent root = loader.load();
             TopRatedController topRatedController = loader.getController();
+            topRatedController.setMovielist(movieList);
+            topRatedController.initialize(movieList, movielistAccess);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             topRatedController.setStage(stage);
-            topRatedController.setMovielist(movieList);
-            topRatedController.initialize();
             stage.setScene(scene);
             stage.show();
             movieDiaryStage.close();
@@ -242,7 +254,8 @@ public class AppController {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                fileHandler.removeMovieList(movieList);
+                String username = this.movieList.getUsername();
+                movielistAccess.removeMovieList(username);
                 handleBackBtn(e);
             }
         });
