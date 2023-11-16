@@ -9,8 +9,6 @@ import java.util.List;
  */
 public interface MovieListAccess {
 
-  public MovieList getMovieList();
-
   public MovieList getMovieListByUsername(String username);
 
   public void addMovieList(MovieList movieList);

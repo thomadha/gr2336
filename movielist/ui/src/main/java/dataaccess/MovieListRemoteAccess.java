@@ -62,28 +62,6 @@ public class MovieListRemoteAccess implements MovieListAccess {
     return endpointUri.resolve(uri);
   }
 
-  /**
-   * Access method for MovieList.
-   *
-   * @return MovieList  container of movieList.
-   * 
-   * @throws RuntimeException thrown if not able to perform it's task.
-   */
-  @Override
-  public MovieList getMovieList() {
-    HttpRequest request = HttpRequest.newBuilder(movieListUri(mapping))
-        .header("Accept", "application/json")
-        .GET().build();
-    try {
-      final HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
-          HttpResponse.BodyHandlers.ofString());
-      final String responseString = response.body();
-      movieList = gson.fromJson(responseString, MovieList.class);
-    } catch (IOException | InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-    return movieList;
-  }
 
   public void updateMovieList(MovieList movieList) {
     this.movieList = movieList;

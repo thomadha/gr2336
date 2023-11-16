@@ -56,8 +56,42 @@
         "count": 1
       }
     ],
-    "username": "Thomas",
-    "password": "haugli123"
+    "username": "finaltest2",
+    "password": "123"
+  },
+  {
+    "movies": [
+      {
+        "name": "StarWars",
+        "genre": "scifi",
+        "score": 10.0,
+        "count": 1
+      },
+      {
+        "name": "HarryPotter",
+        "genre": "action",
+        "score": 5.0,
+        "count": 1
+      },
+      {
+        "name": "ThomasToget",
+        "genre": "horror",
+        "score": 3.0,
+        "count": 1
+      }
+    ],
+    "username": "test",
+    "password": "123"
+  },
+  {
+    "movies": [],
+    "username": "test2",
+    "password": "321"
+  },
+  {
+    "movies": [],
+    "username": "Andy",
+    "password": "Passord"
   },
   {
     "movies": [
@@ -65,91 +99,7 @@
         "name": "Star Wars",
         "genre": "Scifi",
         "score": 10.0,
-        "count": 3
-      },
-      {
-        "name": "Harry Potter",
-        "genre": "Action",
-        "score": 5.0,
         "count": 1
-      },
-      {
-        "name": "ThomasToget",
-        "genre": "Horror",
-        "score": 3.0,
-        "count": 2
-      },
-      {
-        "name": "Laura",
-        "genre": "Other",
-        "score": 6.0,
-        "count": 3
-      },
-      {
-        "name": "Oppenheimer",
-        "genre": "Other",
-        "score": 9.0,
-        "count": 1
-      },
-      {
-        "name": "Barbie",
-        "genre": "RomCom",
-        "score": 10.0,
-        "count": 1
-      },
-      {
-        "name": "Loki",
-        "genre": "Action",
-        "score": 7.0,
-        "count": 2
-      },
-      {
-        "name": "Mission Impossible",
-        "genre": "Action",
-        "score": 6.0,
-        "count": 3
-      },
-      {
-        "name": "Interstellar",
-        "genre": "Other",
-        "score": 9.5,
-        "count": 2
-      },
-      {
-        "name": "The Marvels",
-        "genre": "Action",
-        "score": 7.0,
-        "count": 1
-      },
-      {
-        "name": "Fight Club",
-        "genre": "Action",
-        "score": 9.0,
-        "count": 1
-      },
-      {
-        "name": "Mean Girls",
-        "genre": "RomCom",
-        "score": 7.0,
-        "count": 3
-      },
-      {
-        "name": "The Silence of the Lambs",
-        "genre": "Horror",
-        "score": 9.0,
-        "count": 1
-      },
-      {
-        "name": "Back to the Future",
-        "genre": "Action",
-        "score": 10.0,
-        "count": 1
-      },
-      {
-        "name": "Lord of the Rings",
-        "genre": "Action",
-        "score": 9.5,
-        "count": 4
       }
     ],
     "username": "Norasfilmdagbok",

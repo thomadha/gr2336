@@ -26,7 +26,7 @@ public class MovieListHandlerTest {
   @BeforeEach
   public void setUp() {
     filehandler = new MovieListHandler(
-      "/src/test/java/ui/resources/MovieListTest.json");
+      "/src/test/java/resources/MovieListTest.json");
   
     movielist = new MovieList();
     movielist.setUsername("newuser");
