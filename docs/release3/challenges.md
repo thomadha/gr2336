@@ -1,12 +1,20 @@
-Challenges for the group
+# Challenges for the group
 
-1. The testing in ui failing for some group members, even though it worked for the person merging
+## 1. The testing in ui failing for some group members, even though it worked for the person merging
 
-challenge description - a few sentences describing what the issue is
-strategy that the group has taken to solve the issue - a few sentences describing the approaches used
-reflection on the cause and what was learned in the process
+_Description:_ 
 
-2. Sickness 
+The testing in the ui module failed for 3 members of the group, but not for the person doing the last merging. 
+
+_Strategy to solve the issue:_
+
+This was discovered after the deadline when other members also tried to run the project. We decided to contact our TA to ask for advice since we didnt want to push new commits to the repo after the deadline. The TA advised us to write this as a challenge we had in release 3. 
+
+_Reflection:_ 
+
+It was reckless of us as a group to do so many finishing changes this close to the deadline. We have now learned that the merging and checking of the project should be done by multiple people on different computers to ensure that it runs properly for everyone. 
+
+## 2. Sickness 
 
 _Description:_
 
