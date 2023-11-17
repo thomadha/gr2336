@@ -11,7 +11,7 @@
 		<groupId>it1901</groupId>
 		<artifactId>movielist</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../..</relativePath>
+		<relativePath>..</relativePath>
     </parent>
 
 	<!-- <version>0.0.1-SNAPSHOT</version>
